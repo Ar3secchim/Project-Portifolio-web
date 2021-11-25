@@ -1,0 +1,35 @@
+body{
+  background: #cccccc;
+}
+.title-principal{
+  padding-left: 15px;
+}
+#destaque{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background: black;
+  border-radius: 0.5rem;
+}
+.coluna-A{
+  padding-left:10px;
+}
+.coluna_B{ 
+  
+}
+
+#perfil{
+  width: 50%;
+  border-radius:20rem;
+}
+
+.text-destaque{
+  font-size:35px;
+  margin:15px;
+  width:50%; 
+  color: white;
+}
+
+#project{
+  text-align: center;
+  background-color:white;
+}
