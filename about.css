@@ -1,0 +1,30 @@
+header{
+  position: relative;
+  width: 1080px;
+  margin: 0 auto;
+}
+.navegação{
+  position: absolute;
+}
+
+.title-principal{
+  text-align: center;
+  font-size: 35px;
+  padding: 2rem;
+}
+
+nav li{
+  display:inline;
+  margin: 0 0 0 15px;
+}
+
+nav a{
+  text-transform: uppercase;
+  color: silver;
+  font-size: 22px;
+  text-decoration: none;
+}
+li:nth-child(4) {
+  margin-left: 18rem;
+}
+

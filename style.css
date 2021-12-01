@@ -3,7 +3,7 @@ body{
 }
   
 .title-principal{
-  padding-left: 15px;
+  text-align: center;
 }
 .destaque{ 
   display: grid;
@@ -18,19 +18,25 @@ body{
 }
 
 .perfil{
-  width: 70%;
+  width: 50%;
   border-radius:20rem;
 }
 
 .text-destaque{
-  font-size:35px;
+  font-size:45px;
   margin:15px;
   width:50%; 
   color: white;
   text-align: center;
 }
 
-#project{
-  text-align: center;
+.project{
   background-color:white;
+  font-size: 25px;
+  border-radius:0.5rem;
+  padding:0.01%;
+  padding-left: 1rem;
+}
+.img-cob{
+  width:550px;
 }
