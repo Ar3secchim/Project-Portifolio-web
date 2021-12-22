@@ -1,42 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Roboto+Mono:wght@300&display=swap');
+ 
+* {
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+ }
+
+html{
+  background: #fff;
+}
+
 body{
-  background: #cccccc;
+  font-family: 'open sans', sans-serif;
 }
-  
-.title-principal{
+
+footer{
+  background: #a19999;
+  border-radius: 0.5em;
+  padding: 10px 0;
   text-align: center;
+  color: #fff;
 }
-.destaque{ 
-  display: grid;
-  grid-template-columns: 50% 50%;
+
+nav{
+  background: #a19999;
+  border-radius: 0.5em;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10;
+}
+
+nav li{
+ padding: 0 0 0 15px;
+ margin: 1rem;
+}
+
+.menu{
+  display: inline-flex;
+  font-size: 1.5rem;
+  list-style-type: none;
+} 
+
+.social-media{
+  display: inline-flex;
+  align-items: center; 
+  list-style-type: none;
+}
+
+.Title-logo{
+  text-align: center;
+  font-size: 18px; 
+  font-family: 'robotomono', monospace;
+  padding-top: 15px;
+}
+
+#container-project{
+  background-color: rgb(182, 182, 182);
+  border-radius: 10px;
+  margin: 1.5rem;
+  padding: 15px;
+  display: block;
+}
+
+.destaque{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
   align-items: center;
-  background: black;
-  border-radius: 0.5rem;
+  background-color: rgb(12, 12, 12);
+  border-radius: 1rem;
+  margin-top: 1rem;
 }
 
-.coluna-A{
-  padding-left:100px;
-}
-
-.perfil{
-  width: 50%;
-  border-radius:20rem;
-}
-
-.text-destaque{
-  font-size:45px;
-  margin:15px;
-  width:50%; 
-  color: white;
-  text-align: center;
-}
-
-.project{
-  background-color:white;
-  font-size: 25px;
-  border-radius:0.5rem;
-  padding:0.01%;
-  padding-left: 1rem;
-}
-.img-cob{
-  width:550px;
+.destaque-text{
+  align-items: center;
+  font-size: 2.5rem;
+  font-family: 'robotomono', monospace;
+  color: #fff;
 }
