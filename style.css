@@ -1,31 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Roboto+Mono:wght@300&display=swap');
- 
-* {
-  margin: 0;
-  box-sizing: border-box;
-  text-decoration: none;
- }
+
+:root {
+  --cor-principal: rgb(238, 238, 238);
+  --cor-secundaria: rgb(196, 193, 202); 
+  --cor-terciaria: rgb(92, 44, 114); 
+  --text-principal: 'open sans',sans-serif;
+  --text-corpo:'robotoMono', monospace;
+}
+
+:link{
+  text-decoration: none; 
+  color: var(--cor-principal);
+}
 
 html{
-  background: #fff;
+  background-color: var(--cor-principal);
 }
 
 body{
-  font-family: 'open sans', sans-serif;
+  font-family: var(--text-principal);
 }
 
 footer{
-  background: #a19999;
-  border-radius: 0.5em;
+  background: var(--cor-secundaria);
   padding: 10px 0;
   text-align: center;
-  color: #fff;
-}
+  color: var(--cor-terciaria);
+} 
 
 nav{
-  background: #a19999;
-  border-radius: 0.5em;
-  color: #fff;
   display: flex;
   justify-content: space-between;
   padding: 10;
@@ -40,6 +43,7 @@ nav li{
   display: inline-flex;
   font-size: 1.5rem;
   list-style-type: none;
+  align-items: center;
 } 
 
 .social-media{
@@ -48,15 +52,9 @@ nav li{
   list-style-type: none;
 }
 
-.Title-logo{
-  text-align: center;
-  font-size: 18px; 
-  font-family: 'robotomono', monospace;
-  padding-top: 15px;
-}
-
 #container-project{
-  background-color: rgb(182, 182, 182);
+  background-color: var(--cor-secundaria);
+  backdrop-filter: blur(100px);
   border-radius: 10px;
   margin: 1.5rem;
   padding: 15px;
@@ -68,7 +66,7 @@ nav li{
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  background-color: rgb(12, 12, 12);
+  background:linear-gradient(rgba(38, 40, 145), rgb(145, 38, 131), rgb(187, 107, 54));
   border-radius: 1rem;
   margin-top: 1rem;
 }
@@ -76,6 +74,11 @@ nav li{
 .destaque-text{
   align-items: center;
   font-size: 2.5rem;
-  font-family: 'robotomono', monospace;
+  font-family: var(--text-corpo);
   color: #fff;
+}
+.logo{
+ font-size: 2.5rem;
+ align-items: center;
+ font-family: var(--text-corpo);
 }
