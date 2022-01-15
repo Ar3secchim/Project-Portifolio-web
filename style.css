@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Roboto+Mono:wght@300&display=swap');
 
+*{
+  margin: 0;
+}
+
 :root {
   --cor-principal: rgb(238, 238, 238);
   --cor-secundaria: rgb(196, 193, 202); 
@@ -7,10 +11,11 @@
   --text-principal: 'open sans',sans-serif;
   --text-corpo:'robotoMono', monospace;
 }
-:link{
+:link{ 
   text-decoration: none; 
   color: var(--cor-principal);
 }
+
 html{
   background-color: var(--cor-principal);
 }
@@ -24,10 +29,11 @@ footer{
   color: var(--cor-terciaria);
 } 
 nav{
-  display: flex;
+    display: flex;
   justify-content: space-between;
   box-shadow: 0px 0px 30px rgb(184, 184, 184);
   border-radius: 15px;
+  margin: 1rem;
 }
 nav li{
  padding: 0 0 0 20px;
@@ -39,7 +45,7 @@ nav li{
   font-size: 1.5rem;
   list-style-type: none;
   align-items: center;
-  margin: 0;
+  margin: 10px;
 } 
 .logo{
   font-size: 3rem;
@@ -72,20 +78,18 @@ nav li{
   margin: 30px 100px 30px 100px;
   padding: 15px;
   display: block;
-  box-shadow: 0px 0px 15px rgb(168, 168, 168);
 }
 .destaque{
   display: flex;
-  width: 100%;
   justify-content: space-around;
   align-items: center;
   background:linear-gradient(rgb(38, 40, 145), rgb(145, 38, 131), rgb(187, 107, 54));
   border-radius: 1rem;
-  margin-top: 1rem;
+  margin: 0rem 1rem;
   box-shadow: 0px 0px 20px rgb(148, 148, 148);
 }
 .destaque-text{
-  align-items: center;
+  padding: 0;
   font-size: 2.5rem;
   font-family: var(--text-corpo);
   color: #fff;
