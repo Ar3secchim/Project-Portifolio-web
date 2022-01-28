@@ -2,39 +2,37 @@
 
 *{
   margin: 0;
+  text-decoration: none;
 }
 
 :root {
-  --cor-principal: rgb(238, 238, 238);
-  --cor-secundaria: rgb(196, 193, 202); 
-  --cor-terciaria: rgb(92, 44, 114); 
+  --cor-principal: rgb(82, 7, 115);
+  --cor-secundaria: rgb(242, 86, 29); 
+  --cor-terciaria: rgb(242, 239, 189); 
+  --cor-background: rgb(23, 29,36);
   --text-principal: 'open sans',sans-serif;
   --text-corpo:'robotoMono', monospace;
 }
-:link{ 
-  text-decoration: none; 
-  color: var(--cor-principal);
-}
 
 html{
-  background-color: var(--cor-principal);
+  background-color: var(--cor-background);
 }
 body{
   font-family: var(--text-principal);
 }
 footer{
-  background: var(--cor-secundaria);
   padding: 10px 0;
   text-align: center;
   color: var(--cor-terciaria);
 } 
+
 nav{
     display: flex;
   justify-content: space-between;
-  box-shadow: 0px 0px 30px rgb(184, 184, 184);
   border-radius: 15px;
   margin: 1rem;
 }
+
 nav li{
  padding: 0 0 0 20px;
 }
@@ -52,33 +50,6 @@ nav li{
   align-items: center;
  }
 
-.social-media{
-  display: inline-flex;
-  list-style-type: none;
-  align-items: center;
-  padding-right: 30px;
-}
-.github-icon{
-  width: 3.5rem;
-  height: 2rem;
-}
-.insta-icon{
-  width: 3rem;
-  height: 3rem;
-}
-.email-icon{
-  width: 2rem;
-  height: 2.5rem;
-}
-
-#container-project{
-  background-color: var(--cor-secundaria);
-  backdrop-filter: blur(100px);
-  border-radius: 10px;
-  margin: 30px 100px 30px 100px;
-  padding: 15px;
-  display: block;
-}
 .destaque{
   display: flex;
   justify-content: space-around;
@@ -86,11 +57,17 @@ nav li{
   background:linear-gradient(rgb(38, 40, 145), rgb(145, 38, 131), rgb(187, 107, 54));
   border-radius: 1rem;
   margin: 0rem 1rem;
-  box-shadow: 0px 0px 20px rgb(148, 148, 148);
 }
+
 .destaque-text{
   padding: 0;
   font-size: 2.5rem;
   font-family: var(--text-corpo);
   color: #fff;
+}
+#container-project{
+  border-radius: 10px;
+  margin: 30px 100px 30px 100px;
+  padding: 15px;
+  display: block;
 }
