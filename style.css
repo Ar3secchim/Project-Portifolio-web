@@ -66,6 +66,12 @@ nav ul{
   margin: 0;
 }
 
+/* .nav-bar-btn{
+  float: right;
+  font-size: 2rem;
+  display: none;
+} */
+
 /* -------------------- DESTAQUE ---------------------- */
 .destaque{
   height: 400px;
@@ -117,8 +123,67 @@ nav ul{
   backdrop-filter: blur(20px);
 }
 .project-ux{
-  
+
 }
 .img-responsice{
   height:150px;
+}
+
+/* ----------- Responsividade ----------------- */
+
+@media only screen and (max-width:800px){
+  nav{
+    padding:0;
+    margin: 0;
+  }
+
+  nav li{
+    padding:1rem;
+  }
+
+  /* .nav-bar-btn{
+    float:right;
+  } */
+
+  .menu{
+    width:500px;
+    font-size:1rem;
+  }
+
+  .logo{
+    height: 40px;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Destaque */
+  
+  .destaque{
+    height:200px;
+    padding: 0;
+    margin: 0 1rem;
+  }
+
+  .destaque-text {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  .img-perfil{
+    height:150px;
+    padding: 0.5rem;
+  }
+
+  #container-project {
+    height:100px;
+    margin: 1rem;
+  }
+
+  .img-responsice{
+    height:50px;
+  }
+
+  .project-ux{
+    font-size: 0.5rem;
+  }
 }
