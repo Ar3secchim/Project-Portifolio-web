@@ -1,64 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Roboto+Mono:wght@300&display=swap');
- 
-* {
+
+*{
   margin: 0;
-  box-sizing: border-box;
- }
+}
+
+:root {
+  --cor-principal: rgb(238, 238, 238);
+  --cor-secundaria: rgb(196, 193, 202); 
+  --cor-terciaria: rgb(92, 44, 114); 
+  --text-principal: 'open sans',sans-serif;
+  --text-corpo:'robotoMono', monospace;
+}
+:link{ 
+  text-decoration: none; 
+  color: var(--cor-principal);
+}
 
 html{
-  background: #fff;
+  background-color: var(--cor-principal);
 }
-
 body{
-  font-family: 'open sans', sans-serif;
+  font-family: var(--text-principal);
 }
-
 footer{
-  background: #a19999;
-  border-radius: 0.5em;
+  background: var(--cor-secundaria);
   padding: 10px 0;
   text-align: center;
-  color: #fff;
-}
-
+  color: var(--cor-terciaria);
+} 
 nav{
-  background: #a19999;
-  border-radius: 0.5em;
-  color: #fff;
-  display: flex;
+    display: flex;
   justify-content: space-between;
-  padding: 0;
+  box-shadow: 0px 0px 30px rgb(184, 184, 184);
+  border-radius: 15px;
+  margin: 1rem;
 }
-
 nav li{
- padding: 0 0 0 15px;
- margin: 1rem;
+ padding: 0 0 0 20px;
 }
 
 .menu{
+  font-family: var(--text-principal);
   display: inline-flex;
   font-size: 1.5rem;
   list-style-type: none;
+  align-items: center;
+  margin: 10px;
 } 
+.logo{
+  font-size: 3rem;
+  align-items: center;
+ }
 
 .social-media{
   display: inline-flex;
-  align-items: center; 
   list-style-type: none;
+  align-items: center;
+  padding-right: 30px;
 }
-
-.Title-logo{
-  text-align: center;
-  font-size: 18px; 
-  font-family: 'robotomono', monospace;
+.github-icon{
+  width: 3.5rem;
+  height: 2rem;
 }
-
-#container-project{
-  background-color: rgb(182, 182, 182);
-  border-radius: 10px;
-  margin: 1.5rem;
-  padding: 15px;
-  display: block;
+.insta-icon{
+  width: 3rem;
+  height: 3rem;
 }
-
+.email-icon{
+  width: 2rem;
+  height: 2.5rem;
+}
 
