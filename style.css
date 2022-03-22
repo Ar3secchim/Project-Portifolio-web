@@ -34,6 +34,7 @@ nav{
   justify-content:space-between;
   border-radius: 15px;
   margin: 0 4.5rem;
+  align-items: center;
 }
 
 nav li{
@@ -44,7 +45,7 @@ nav ul{
   padding: 0;
 }
 
-.menu {
+#menu-nav {
   font-family: var(--text-principal);
   font-weight: 600;
   font-size: 2rem;
@@ -55,22 +56,27 @@ nav ul{
   margin: 1rem;
 } 
 
-.menu a{
+#menu-nav a{
   color: #F2561D;
 }
 
 .logo{
-  
   align-items: center;
   padding:0;
   margin: 0;
 }
 
-/* .nav-bar-btn{
-  float: right;
-  font-size: 2rem;
-  display: none;
-} */
+#nav-bar-btn{
+  display:none;
+  font-size: 1.5rem;
+  height:2rem;
+  color: #F2561D;
+
+  background: radial-gradient(93.92% 93.92% at 50.05% 0%, rgba(39, 49, 61, 0.495) 8.74%, rgba(23, 29, 36, 0.495) 74.07%, rgba(18, 22, 27, 0.495) 100%);
+  border: 1px solid rgba(52, 59, 66, 0.253);
+  border-radius:0.5rem;
+  
+}
 
 /* -------------------- DESTAQUE ---------------------- */
 .destaque{
@@ -128,9 +134,7 @@ nav ul{
   filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
   backdrop-filter: blur(10px);
 }
-.project-ux{
 
-}
 .img-responsice{
   height:150px;
 }
@@ -147,13 +151,9 @@ nav ul{
     padding:1rem;
   }
 
-  /* .nav-bar-btn{
-    float:right;
-  } */
-
-  .menu{
-    width:500px;
-    font-size:1rem;
+  #menu-nav{
+    display:flex;
+    font-size:1.5rem;
   }
 
   .logo{
@@ -191,5 +191,34 @@ nav ul{
 
   .project-ux{
     font-size: 0.5rem;
+  }
+}
+
+@media (max-width:430px){
+  nav{
+    margin: 0.5rem;
+  }
+
+  #nav-bar-btn{
+    display:block;
+  }
+
+  #menu-nav{
+    display:none;
+    position:absolute;
+    flex-direction: column;
+    justify-content:center;
+    top: 3rem;
+
+    width:90%;
+    height:100%;
+    z-index: 1;
+
+    background-color:aliceblue;
+    border-radius:1rem;
+  }
+
+  #menu-nav.active#menu-nav{
+    display:flex;
   }
 }
