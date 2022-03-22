@@ -18,7 +18,7 @@
 }
 
 html{
-  background-image: url(/assets/BACK.svg);
+  background-image: url(https://raw.githubusercontent.com/Ar3secchim/Project-Portifolio-web/d8aaef5cfd0a83d677bbc6a47311946852f042fe/assets/BACK.svg);
   background-repeat: no-repeat;
 }
 
@@ -191,34 +191,5 @@ nav ul{
 
   .project-ux{
     font-size: 0.5rem;
-  }
-}
-
-@media (max-width:430px){
-  nav{
-    margin: 0.5rem;
-  }
-
-  #nav-bar-btn{
-    display:block;
-  }
-
-  #menu-nav{
-    display:none;
-    position:absolute;
-    flex-direction: column;
-    justify-content:center;
-    top: 3rem;
-
-    width:90%;
-    height:100%;
-    z-index: 1;
-
-    background-color:aliceblue;
-    border-radius:1rem;
-  }
-
-  #menu-nav.active#menu-nav{
-    display:flex;
   }
 }
