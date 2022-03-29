@@ -267,14 +267,7 @@ nav ul {
   font-size: 1.5em;
 } 
 
-/*------------- CONTAINER PROJECTS ------------*/
 
-#container-project {
-  font-family: var(--text-corpo);
-  border-radius: 10px;
-  margin: 1.5rem 0rem;
-  padding: 1rem;
-}
 
 .container-design ul,
 .container-languages ul{
@@ -303,6 +296,97 @@ nav ul {
 .container-languages p{
   margin-top: 1rem;
 }
+/*------------- CONTAINER PROJECTS ------------*/
+/* Container left */
+.container-project .project{
+  display:flex;
+  position: relative;
+  margin: 0.5rem;
+}
+
+.body-project{
+  width: 700px;
+  height:320px
+}
+
+.img-aside-left{
+  position: absolute;
+  left: 35rem;
+}
+.img-project{
+  height:300px;
+}
+
+/* Container right */
+
+.img-aside{
+  position: absolute;
+}
+
+.body-project-left{
+  width: 700px;
+  height:320px;
+  position: relative;
+  left: 20rem;
+  text-align: right;
+}
+.tag-redes-sociais-right{
+  justify-content: flex-end;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  color:#F2EFBD ;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--text-corpo);
+}
+
+/* tiltes */
+.sub-title-project{
+  font-family: var(--text-corpo);
+  font-size:1.3rem;
+  color:#9F00E5;
+  font-weight:700;
+}
+
+.principal-title-project{
+  font-family: var(--text-corpo);
+  font-size:1.5rem;
+  color:#F2EFBD;
+  font-weight:700;
+}
+
+.body-text-project{
+  font-family: var(--text-corpo);
+  font-size:1rem;
+  color:#B1A8A5;
+  font-weight:500;
+
+  background: rgba(59, 63, 69, 0.87);
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 1rem 0rem;
+
+  position:relative;
+  z-index: 99;
+}
+
+.tag-redes-sociais{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  color:#F2EFBD ;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--text-corpo);
+}
+
+.tag-redes-sociais img{
+  height:20px;
+}
+
 
 /* ----------- RESPONSIVIDADE  ----------------- */
 
