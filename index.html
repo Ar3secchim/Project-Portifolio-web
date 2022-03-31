@@ -30,9 +30,10 @@
       </ul>
 
       <ul id="menu-nav" class="">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about"><span class="number-1">01.</span> About</a></li>
+        <li><a href="#Skills"><span class="number-1">02.</span> Skills</a></li>
+        <li><a href="#projects"><span class="number-1">03.</span> Projects</a></li>
+        <li><a href="#contact"><span class="number-1">04.</span> Contact</a></li>
       </ul>
 
       <button type="checkbox" id="nav-bar-btn">
@@ -47,8 +48,9 @@
         </div>
 
         <div class="destaque-text">
-          <p>Hello,</p>
-          <p>I am <strong>Renara</strong></p>
+          <p>Hello, my name is</p>
+          <p>Renara Secchim.</p>
+          <p>I build things for the web.</p>
         </div>
       </section>
 
@@ -81,7 +83,7 @@
         </div>
       </section>
 
-      <section class="skills">
+      <section id="Skills" class="skills">
         <div class="container-title-section">
           <h3 class="number-title">02.</h3>
           <h1 class="skill-title">Skills</h1>
@@ -227,13 +229,19 @@
                 inventore maiores nisi unde eum ducimus similique hic est,
                 distinctio enim fuga rerum!
               </p>
-              <div class="tag-redes-sociais">
-                <img src="/assets/GITHUB.png" />
-                <img src="/assets/LINK.png" />
-                <p>HTML</p>
-                <p>CSS</p>
-                <p>JAVASCRIPT</p>
+
+              <div class="tag-redes-sociais-left">
+                <div class="tag-technology">
+                  <p>HTML</p>
+                  <p>CSS</p>
+                  <p>JAVASCRIPT</p>
+                </div>
+                <div class="redes-sociais">
+                  <img src="/assets/GITHUB.png" />
+                  <img src="/assets/LINK.png" />
+                </div>
               </div>
+
             </div>
             
             <div class="img-aside-left">
@@ -260,19 +268,60 @@
                 inventore maiores nisi unde eum ducimus similique hic est,
                 distinctio enim fuga rerum!
               </p>
+
               <div class="tag-redes-sociais-right">
-                <img src="/assets/GITHUB.png" />
-                <img src="/assets/LINK.png" />
-                <p>HTML</p>
-                <p>CSS</p>
-                <p>JAVASCRIPT</p>
+                <div class="tag-technology">
+                  <p>HTML</p>
+                  <p>CSS</p>
+                  <p>JAVASCRIPT</p>
+                </div>
+
+                <div class="redes-sociais">
+                  <img src="/assets/GITHUB.png" />
+                  <img src="/assets/LINK.png" />
+                </div>
+
               </div>
+            </div>
+
+            
+          </div>
+        </div>
+
+        <div class="container-project">
+          <div class="project">
+            <div class="body-project">
+              <p class="sub-title-project">Feature project</p>
+              <p class="principal-title-project">CURRENCY CONVERTER</p>
+              <p class="body-text-project">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, neque ullam, aperiam reprehenderit quod ratione unde nihil repellendus quo sunt sed quaerat temporibus tenetur deleniti nobis nesciunt consequuntur impedit obcaecati?
+                <br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                nostrum consectetur pariatur ipsa autem ipsam dolor possimus
+                inventore maiores nisi unde eum ducimus similique hic est,
+                distinctio enim fuga rerum!
+              </p>
+
+              <div class="tag-redes-sociais-left">
+                <div class="tag-technology">
+                  <p>HTML</p>
+                  <p>CSS</p>
+                  <p>JAVASCRIPT</p>
+                </div>
+                <div class="redes-sociais">
+                  <img src="/assets/GITHUB.png" />
+                  <img src="/assets/LINK.png" />
+                </div>
+              </div>
+
+            </div>
+            
+            <div class="img-aside-left">
+              <img class="img-project" src="/assets/COB.svg" />
             </div>
 
           </div>
         </div>
-
-
 
       <section id="contact">
         <div class="container-title-section">
@@ -280,13 +329,39 @@
           <h1 class="contact-title">Contact</h1>
           <div class="line-vertical"></div>
         </div>
+
+        <div class="container-msg">
+          <h1>Send a message</h1>
+          <p>Got a question or proposal, or just wan</p>
+          <p>to say hello? Go ahead.</p>
+        </div>
+        
+        <form action="/formulario-contato" method="post">
+          <div class="container-name-email">
+              <div>
+                <label for="nome"><p>Your Nome:</p></label>
+                <input type="texto" id="nome" name="nome_usuario" placeholder=" enter your name">
+              </div>
+
+              <div>
+                <label for="email"><p>E-mail adress:</p></label>
+                <input type="email" id="email" name="email_usuario" placeholder=" enter your email address">
+              </div>
+          </div>
+          <div class="textarea">
+              <label for="texto"><p>Your message:</p></label>
+              <textarea placeholder=" Hi, I think we need a design system for our products at Company X. How soon can you hop on to discuss this?" id="texto" name="texto_usuario"></textarea>
+          </div>
+          <div class="button">
+            <button type="submit">Send</button>
+          </div>
+        </form>
       </section>
     </main>
 
     <footer>
       <p>Designed and built by Renara Secchim</p>
     </footer>
-
     <script src="/script.js"></script>
   </body>
 </html>
