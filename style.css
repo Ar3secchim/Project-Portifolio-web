@@ -316,7 +316,7 @@ nav ul {
 .container-project .project{
   display:flex;
   position: relative;
-  margin: 6rem 0rem;
+  margin: 10rem 0rem;
 }
 
 .body-project{
@@ -325,7 +325,7 @@ nav ul {
 }
 
 .img-project{
-  height:300px;
+  height:400px;
 }
 .img-aside{
   position: absolute;
@@ -364,7 +364,7 @@ nav ul {
   width: 700px;
   height:320px;
   position: relative;
-  left: 20rem;
+  left: 30rem;
   text-align: right;
 }
 
