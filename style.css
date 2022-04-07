@@ -21,7 +21,6 @@
 
 html {
   background-image: url("./assets/BACK.svg");
-  background:rgb(23, 29, 36);
   background-repeat: no-repeat;
 }
 
@@ -421,7 +420,7 @@ nav ul {
 .tag-redes-sociais img{
   height:20px;
 }
-/* ----------- outher  ----------------- */
+/* ----------- Other  ----------------- */
 .container-outher h1{
   text-align: center;
   font-family: var(--text-corpo);
@@ -450,6 +449,7 @@ nav ul {
 
 .container-projecto .tag-technology{
   margin-top: 1rem;
+  color: #520773;
 }
 
 .icones{
@@ -459,7 +459,7 @@ nav ul {
   align-items:center;
 }
 
-.icones :nth-child(2){
+.icones :nth-child(2) img{
   height:22px;
 }
 .icones :nth-child(1){
@@ -565,7 +565,7 @@ footer{
 
 /* ----------- RESPONSIVIDADE  ----------------- */
 
-@media (max-width:850px){
+/* @media (max-width:850px){
   body {
     margin: 2rem;
   }
@@ -589,7 +589,7 @@ footer{
     margin: 0;
   }
 
-  /* Destaque */
+  /* Destaque 
   
   .destaque{
     height:200px;
@@ -619,9 +619,9 @@ footer{
   .project-ux{
     font-size: 0.5rem;
   }
-}
+} */
 
-@media (max-width: 450px) {
+/* @media (max-width: 450px) {
   body{
     margin: 1rem;
     padding: 0rem;
@@ -684,7 +684,7 @@ footer{
   }
 
   .about-text{
-    font-size: 0.7rem;
+    font-size: 0.rem;
     line-height: 1rem;
     margin: 1rem;
   }
@@ -720,6 +720,6 @@ footer{
     width:350px;
     height:350px;
   }
-}
+} */
 
 
