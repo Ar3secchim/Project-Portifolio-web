@@ -1,89 +1,394 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-     <meta charset="UTF-8">
-      <title>Renara Secchim</title>
-      <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renara Secchim</title>
-    
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-  </head>
-
   <body>
-    <nav>
-      <!-- <input type="checkbox" id="nav-bar">        
-      <label for="nav-bar" class="nav-bar-btn">
-        <i class="fa fa-bars"></i>
-      </label> -->
+    <nav id="menu" class="">
       <ul class="menu">
-        <li class="logo"><a href="index.html"><img class="logo" src="/assets/logo-orange.png"></a></li>
+        <li class="logo">
+          <a href="index.html">
+            <img
+              class="logo"
+              src="https://github.com/Ar3secchim/Project-Portifolio-web/blob/master/assets/logo-orange.png?raw=true"
+            />
+          </a>
+        </li>
       </ul>
 
-      <ul class="menu">
-        <li><a href="Page_about.html">About</a></li>
-        <li><a href="">Projects</a></li>
-        <li><a href="">Contact</a></li>
+      <ul id="menu-nav" class="">
+        <li><a href="#about"><span class="number-1">01.</span> About</a></li>
+        <li><a href="#Skills"><span class="number-1">02.</span> Skills</a></li>
+        <li><a href="#projects"><span class="number-1">03.</span> Projects</a></li>
+        <li><a href="#contact"><span class="number-1">04.</span> Contact</a></li>
       </ul>
+
+      <button type="checkbox" id="nav-bar-btn">
+        <i class="fa fa-bars"></i>
+      </button>
     </nav>
 
     <main>
       <section class="destaque">
         <div>
-          <img class="img-perfil" src="/assets/1.png"/>
+          <img class="img-perfil" src="/assets/perfil_img.svg" />
         </div>
 
         <div class="destaque-text">
-          <p>Hi,</p>
-          <p>Im am <strong>Renara Secchim</strong></p>
+          <p>Hello, my name is</p>
+          <p>Renara Secchim.</p>
+          <p>I build things for the web.</p>
         </div>
       </section>
 
-      <section class="project">
-          <section id="container-project">
-            <div class="project-ux">
-                <p>UX - PROJECT UI E UX</p>
-                <img class="img-responsice" src="/assets/INSTA-LOGO.png" />
-                <a>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                  tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                </a>
-                <a>Saiba mais...</a>
-            </div>
-          </section>
+      <section id="about">
+        <div class="container-title-section">
+          <h3 class="number-title">01.</h3>
+          <h1 class="about-title">About</h1>
+          <a class="line-vertical"></a>
+        </div>
 
-          <section id="container-project">
-            <div class="project-site">
-              <p>DS2 - PROJECT SITE</p>
-              <img src="\Img\project-02.jpg" />
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
-                luctus nec ullamcorper mattis, pulvinar dapibus leo.
-              </p>
-              <p>Saiba mais...</p>
-            </div>
-          </section>
-          
-          <section id="container-project">
-            <div class="project-dental">
-              <p>COB - DENTAL CLINIC</p>
-              <img src="\Img\project-02.jpg" />
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
-                luctus nec ullamcorper mattis, pulvinar dapibus leo.
-              </p>
-              <p>Saiba mais...</p>
-            </div>
-          </section>
-
+        <div class="about-container">
+          <div class="about-text">
+            <p>
+              Hi, I'm Renara. Hi! My name is Renara and I like to create things
+              that live in the internet and helps people in their daily lives.
+              my interest in programming, when the 2020 pandemic started and
+              realized the how much solutions are helping to help society to go
+              through that one - it turned out that curiosity was dispersed to
+              know how it works behind a "screen" of cell phones, notebooks and
+              thus came the first 'Hello world' with HTML and CSS!
+            </p>
+            <br />
+            <p>
+              My main focus today is to study more and more and build products
+              accessible and that provides digital experiences to the different
+              customers.
+            </p>
+          </div>
+          <img class="ilustration" src="/assets/ilustration-destaque.svg" />
+        </div>
       </section>
-    </main>
+
+      <section id="Skills" class="skills">
+        <div class="container-title-section">
+          <h3 class="number-title">02.</h3>
+          <h1 class="skill-title">Skills</h1>
+          <div class="line-vertical"></div>
+        </div>
+
+        <div class="container-languages">
+          <h3>• Programming Languages</h3>
+          <ul>
+            <li>
+              <div class="card" id="html">
+                <svg class="circle">
+                  <circle cx="70" cy="70" r="60"></circle>
+                  <circle cx="70" cy="70" r="60"></circle>
+                </svg>
+                <div class="number">
+                  <h3>40%</h3>
+                </div>
+              </div>
+              <p>HTML</p>
+            </li>
+            <li>
+              <div class="card" id="css">
+                <svg class="circle">
+                  <circle cx="70" cy="70" r="60"></circle>
+                  <circle cx="70" cy="70" r="60"></circle>
+                </svg>
+                <div class="number">
+                  <h3>30%</h3>
+                </div>
+              </div>
+              <p>CSS</p>
+            </li>
+            <li>
+              <div class="card" id="javascript">
+                <svg class="circle">
+                  <circle cx="70" cy="70" r="60"></circle>
+                  <circle cx="70" cy="70" r="60"></circle>
+                </svg>
+                <div class="number">
+                  <h3>10%</h3>
+                </div>
+              </div>
+              <p>JAVASCRIPT</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="container-tools">
+          <h3>• Tools & Platforms</h3>
+          <ul>
+            <li>
+              <div class="card" id="github">
+                <svg class="circle">
+                  <circle cx="70" cy="70" r="60"></circle>
+                  <circle cx="70" cy="70" r="60"></circle>
+                </svg>
+                <div class="number">
+                  <h3>20%</h3>
+                </div>
+              </div>
+              <p>GITHUB & GIT</p>
+            </li>
+            <li>
+              <div class="card" id="vercel">
+                <svg class="circle">
+                  <circle cx="70" cy="70" r="60"></circle>
+                  <circle cx="70" cy="70" r="60"></circle>
+                </svg>
+                <div class="number">
+                  <h3>10%</h3>
+                </div>
+              </div>
+              <p>VERCEL</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="container-design">
+          <h3>• DESIGN</h3>
+          <ul>
+            <li>
+              <div class="card" id="figma">
+                <svg class="circle">
+                  <circle cx="70" cy="70" r="60"></circle>
+                  <circle cx="70" cy="70" r="60"></circle>
+                </svg>
+                <div class="number">
+                  <h3>40%</h3>
+                </div>
+              </div>
+              <p>FIGMA</p>
+            </li>
+
+            <li>
+              <div class="card" id="adobe-xd">
+                <svg class="circle">
+                  <circle cx="70" cy="70" r="60"></circle>
+                  <circle cx="70" cy="70" r="60"></circle>
+                </svg>
+                <div class="number">
+                  <h3>40%</h3>
+                </div>
+              </div>
+              <p>ADOBE XD</p>
+            </li>
+
+            <li>
+              <div class="card" id="illustrator">
+                <svg class="circle">
+                  <circle cx="70" cy="70" r="60"></circle>
+                  <circle cx="70" cy="70" r="60"></circle>
+                </svg>
+                <div class="number">
+                  <h3>55%</h3>
+                </div>
+              </div>
+              <p>ILlUSTRATOR</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="projects" class="project">
+        <div class="container-title-section">
+          <h3 class="number-title">03.</h3>
+          <h1 class="project-title">Some Things I’ve Built</h1>
+          <div class="line-vertical"></div>
+        </div>
+
+        <div class="container-project">
+          <div class="project">
+            <div class="body-project">
+              <p class="sub-title-project">Feature project</p>
+              <p class="principal-title-project">CURRENCY CONVERTER</p>
+              <p class="body-text-project">
+                Project developed at Imersão da Alura - A teaching school
+                about technology- project was to start studying with
+                javascript and start manipulating data with DOM.
+                <br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                nostrum consectetur pariatur ipsa autem ipsam dolor possimus
+                inventore maiores nisi unde eum ducimus similique hic est,
+                distinctio enim fuga rerum!
+              </p>
+
+              <div class="tag-redes-sociais-left">
+                <div class="tag-technology">
+                  <p>HTML</p>
+                  <p>CSS</p>
+                  <p>JAVASCRIPT</p>
+                </div>
+                <div class="redes-sociais">
+                  <a href="https://github.com/Ar3secchim/Conversor-de-moeda/tree/master/conversor_de_moeda" target="_blank"/><img src="/assets/GITHUB.png" /></a>
+                  <a href="https://ar3secchim.github.io/Conversor-de-moeda/conversor_de_moeda/" target="_blank"><img src="/assets/LINK.png" /></a>
+                </div>
+              </div>
+
+            </div>
+            
+            <div class="img-aside-left">
+              <img class="img-project" src="/assets/CONVERTER.svg" />
+            </div>
+
+          </div>
+        </div>
+
+        <div class="container-project">
+          <div class="project">
+            <div class="img-aside">
+              <img class="img-project" src="/assets/COUNT.svg" />
+            </div>
+
+            <div class="body-project-left">
+              <p class="sub-title-project">Feature project</p>
+              <p class="principal-title-project">COUNTDOWN TIMER</p>
+              <p class="body-text-project">
+                Project developed from a Rocketseat challenge. In this challenge I developed a page soon for the launch of a website, product or service, and the page has a countdown timer informing how much time is left for the launch.
+                <br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                nostrum consectetur pariatur ipsa autem ipsam dolor possimus
+                inventore maiores nisi unde eum ducimus similique hic est,
+                distinctio enim fuga rerum!
+              </p>
+
+              <div class="tag-redes-sociais-right">
+                <div class="tag-technology">
+                  <p>HTML</p>
+                  <p>CSS</p>
+                  <p>JAVASCRIPT</p>
+                </div>
+
+                <div class="redes-sociais">
+                  <a href="https://github.com/Ar3secchim/desafio_countdown" target="_blank"><img src="/assets/GITHUB.png" /></a>
+                  <a href="https://ar3secchim.github.io/desafio_countdown/" target="_blank"><img src="/assets/LINK.png" /></a>
+                </div>
+
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+
+        <div class="container-project">
+          <div class="project">
+            <div class="body-project">
+              <p class="sub-title-project">Feature project</p>
+              <p class="principal-title-project">DENTEL CLINIC IN BELÉM </p>
+              <p class="body-text-project">
+                Interface development project for a Dental Clinic with the objective of offering information to possible patients about treatments, services, professionals, about the space and with the main channel of direct care.
+
+                <br>
+                <br>
+                <br>
+                <br>
+                
+              </p>
+
+              <div class="tag-redes-sociais-left">
+                <div class="tag-technology">
+                  <p>AdobeXD</p>
+                  <p>UI/UX</p>
+                </div>
+                <div class="redes-sociais">
+                  <img src="/assets/GITHUB.png" />
+                  <a href="https://cobbelem.com.br/" target="_blank">
+                    <img src="/assets/LINK.png" />
+                  </a>
+                </div>
+              </div>
+
+            </div>
+            
+            <div class="img-aside-left">
+              <img class="img-project" src="/assets/COB.svg" />
+            </div>
+
+          </div>
+        </div>
+
+        <section class="container-outher">
+          <h1> Other notable projects</h1>
+          <div class="container-outher-proj">
+            <div class="container-projecto">
+              <div class="icones">
+                <img src="/assets/hierarchy-3.svg">
+                <a href="https://desafio-rocketseat-princing-table.vercel.app/" target="_blank">
+                  <img src="/assets/link-purple.svg">
+                </a>
+              </div>
+              <h2>Princing Table</h2>
+              <p>Landing page for a packaged product. Page developed from a Rocketseat challenge.</p>
+              <div class="tag-technology">
+                <p>HTML</p>
+                <p>CSS</p>
+              </div>
+            </div>
+            <div class="container-projecto">
+              <div class="icones">
+                <img src="/assets/hierarchy-3.svg">
+                <a href="https://desafio-rocketcard.vercel.app/ " target="_blank">
+                  <img src="/assets/link-purple.svg">
+                </a>
+              </div>
+              <h2>RocketCard</h2>
+              <p>Challenge made by Rocktseat to develop a card that brings information from the Github API and has a button that changes the color of the card's background.</p>
+              <div class="tag-technology">
+                <p>HTML</p>
+                <p>CSS</p>
+                <p>JAVASCRIPT</p>
+              </div>
+            </div>
+          </div>
+          </section>      
+          
+        <section id="contact">
+          <div class="container-title-section">
+            <h3 class="number-title">04.</h3>
+            <h1 class="contact-title">Contact</h1>
+            <div class="line-vertical"></div>
+          </div>
+        
+
+        <div class="container-msg">
+          <h1>Send a message</h1>
+          <p>Got a question or proposal, or just wan</p>
+          <p>to say hello? Go ahead.</p>
+        </div>
+        
+        <form onsubmit="addUser()" method="post">
+          <div class="container-name-email">
+              <div>
+                <label for="nome"><p>Your Nome:</p></label>
+                <input type="texto" id="nome" name="nome_usuario" placeholder=" enter your name">
+              </div>
+
+              <div>
+                <label for="email"><p>E-mail adress:</p></label>
+                <input type="email" id="email" name="email_usuario" placeholder=" enter your email address">
+              </div>
+          </div>
+          <div class="textarea">
+              <label for="texto"><p>Your message:</p></label>
+              <textarea placeholder=" Hi, I think we need a design system for our products at Company X. How soon can you hop on to discuss this?" id="texto" name="texto_usuario"></textarea>
+          </div>
+          <div class="button">
+            <button type="submit">Send</button>
+          </div>
+        </form>
+      </section>
+  </main>
+
     <footer>
-      <p>Copyright &copy; Renara Secchim</p>  
+      <p>Designed and built by Renara Secchim</p>
     </footer>
+    <script src="/script.js"></script>
   </body>
 </html>
