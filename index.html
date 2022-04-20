@@ -363,7 +363,7 @@
           <p>to say hello? Go ahead.</p>
         </div>
         
-        <form onsubmit="addUser()" method="post">
+        <form action="https://formsubmit.co/renarasecchim@gmail.com" method="post">
           <div class="container-name-email">
               <div>
                 <label for="nome"><p>Your Nome:</p></label>
@@ -379,6 +379,7 @@
               <label for="texto"><p>Your message:</p></label>
               <textarea placeholder=" Hi, I think we need a design system for our products at Company X. How soon can you hop on to discuss this?" id="texto" name="texto_usuario"></textarea>
           </div>
+          <input type="hidden" name="_next" value="http://127.0.0.1:5500/thanks.html">
           <div class="button">
             <button type="submit">Send</button>
           </div>
