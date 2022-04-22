@@ -316,7 +316,7 @@ nav ul {
 .container-project .project{
   display:flex;
   position: relative;
-  margin: 10rem 0rem;
+  margin: 5rem 0rem;
 }
 
 .body-project{
@@ -325,8 +325,9 @@ nav ul {
 }
 
 .img-project{
-  height:400px;
+  height:300px;
 }
+
 .img-aside{
   position: absolute;
 }
@@ -364,7 +365,7 @@ nav ul {
   width: 700px;
   height:320px;
   position: relative;
-  left: 30rem;
+  left: 20rem;
   text-align: right;
 }
 
@@ -449,7 +450,7 @@ nav ul {
 
 .container-projecto .tag-technology{
   margin-top: 1rem;
-  color: #520773;
+  color: var(--cor-terciaria);
 }
 
 .icones{
@@ -489,13 +490,15 @@ nav ul {
   justify-content:space-between;
 
   color:#F2EFBD ;
-  font-size: 1.3rem;
+  font-size:1.5rem;
   font-weight: 500;
   font-family: var(--text-principal);
 }
 
 input{
   font-family: var(--text-principal);
+  font-size:1.3rem;
+  margin-top:1rem;
 }
 
 input[type=texto] {
@@ -524,6 +527,8 @@ textarea{
   border-bottom: 1px solid #B1A8A5;
   font-family: var(--text-principal);
   color:#F2EFBD ;
+  font-size: 1.4rem;
+  margin-top: 1rem;
 }
 
 .textarea{
