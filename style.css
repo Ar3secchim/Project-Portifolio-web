@@ -570,7 +570,7 @@ footer{
 
 /* ----------- RESPONSIVIDADE  ----------------- */
 
-/* @media (max-width:850px){
+@media (max-width:850px){
   body {
     margin: 2rem;
   }
@@ -594,7 +594,7 @@ footer{
     margin: 0;
   }
 
-  /* Destaque 
+  /* Destaque */
   
   .destaque{
     height:200px;
@@ -624,7 +624,36 @@ footer{
   .project-ux{
     font-size: 0.5rem;
   }
-} */
+
+  /* Project */
+  /* container-rigth */
+  .container-project .project{
+    margin: 0rem 0rem;
+  }
+
+  .img-aside-left{
+    left: 23rem;
+  }
+
+  .body-project .body-text-project{
+    max-width: 50ch;
+  }
+
+  /* container-left */
+  .body-project-left {
+    width: 480px;
+    left: 17rem;
+  }
+  .body-project-left .body-text-project{
+    text-overflow: ellipsis;
+    
+  }
+
+  /* Global */
+  .img-project{
+    height: 250px
+  }
+}
 
 /* @media (max-width: 450px) {
   body{
