@@ -171,7 +171,7 @@ nav ul {
   content: '';
   background-color: var(--brand-purple);
 
-  width: 100vh;
+  width: 70vh;
   height:0;
   position: absolute;
 
@@ -599,4 +599,140 @@ footer{
   font-weight: 700;
   font-size: 1rem;
   color: #837F80;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 950px) {
+
+  .container-project .project {
+    display:none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .img-aside-left {
+    padding:0rem;
+    top: 0;
+  }
+
+  .img-project{
+    position: relative;
+  }
+
+  .body-project{
+    width: 53.325rem;
+    text-align: center;
+    align-items: center;
+    padding: 0;
+    top: 35rem;
+
+    background:radial-gradient( 93.92% 93.92% at 50.05% 0%, rgba(39, 49, 61, 0.591) 20.74%, rgba(38, 49, 63, 0.813) 74.07%, rgba(42, 50, 59, 0.722) 100% );
+    position: relative;
+    z-index: 99;
+
+    border-radius: 2.5rem;
+  }
+  
+  .tag-redes-sociais-left{
+    align-items: center;
+    position: relative;
+    z-index: 99;
+  }
+
+  .sub-title-project,
+  .body-text-project{
+    display:none;
+  }
+
+  .body-project-left{
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    top:-10rem;
+    width: 53.325rem;
+
+    background:radial-gradient( 93.92% 93.92% at 50.05% 0%, rgba(39, 49, 61, 0.591) 20.74%, rgba(38, 49, 63, 0.813) 74.07%, rgba(42, 50, 59, 0.722) 100% );
+    position: relative;
+    z-index: 99;
+
+    border-radius: 2.5rem;
+  }
+
+  .img-aside{
+    top: 0;
+    margin-top:8rem;
+    padding:0;
+  }
+  .tag-redes-sociais-right{
+    align-items: center;
+  }
+}
+
+@media (max-width: 1024px){
+  html{
+    padding: 0rem 5rem;
+  }
+
+  body{
+    margin: 0rem;
+  }
+
+  .logo{
+    width: 7.8rem;
+  }
+
+  .destaque{
+    padding:3rem;
+  }
+
+  .container-img{
+    width:60%;
+  }
+
+  .img-perfil{
+    width:70%
+  }
+
+  #menu-nav{
+    font-size:1.6rem;
+  }
+
+  .destaque-text :nth-child(1){
+    font-size:1.6rem;
+  }
+
+  .destaque-text :nth-child(2){
+    font-size:3rem;
+  }
+
+  .destaque-text :nth-child(3){
+    font-size:1.6rem;
+  }
+
+  .about-text {
+    font-size:1.4rem;
+    line-height:2rem;
+  }
+
+  .skills h3{
+    font-size: 2.4rem;
+  }
+
+  .container-name-email{
+    display: inline-block;
+    width: 100%;
+  }
+  
+  input[type=email]{
+    width: 100%;
+  }
+
+  input[type=texto]{
+    width: 100%;
+  }
+
+  .textarea{
+    width: 100%;
+  }
 }
