@@ -1,11 +1,18 @@
-const btnMobile = document.getElementById("nav-bar-btn");
 
-function toggleMenu() {
-  let menu = document.getElementById("menu-nav");
-  menu.classList.toggle("active");
+let menuExpanded = document.getElementById("menu")
+let menuHide = document.getElementById("menu-nav")
+
+function openMenu() {
+  menuExpanded.classList.add("menu-expanded")
+  menuHide.classList.remove("menu-hide")
 }
 
-btnMobile.addEventListener("click", toggleMenu);
+function closeMenu() {
+  menuExpanded.classList.remove("menu-expanded")
+  menuHide.classList.add("menu-hide")
+}
+
+
 
 // lib scroll
 ScrollReveal({

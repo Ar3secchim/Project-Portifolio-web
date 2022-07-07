@@ -20,20 +20,44 @@
         </li>
       </ul>
 
-      <ul id="menu-nav" class="">
+      <ul id="menu-nav" class="menu-hide">
         <li><a href="#about"><!--span class="number-1">01.</---span--> About</a></li>
         <li><a href="#Skills"><!--span class="number-1">02.</!--span--> Skills</a></li>
         <li><a href="#projects"><!--span class="number-1">03.</!--span--> Projects</a></li>
         <li><a href="#contact"><!--span class="number-1">04.</!--span--> Contact</a></li>
       </ul>
-
-      <button type="checkbox" id="nav-bar-btn">
-        <i class="fa fa-bars"></i>
+    
+      <button
+      aria-label="abrir menu"
+      aria-expanded="false"
+      onclick="openMenu()" class="open-menu">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 20H30" stroke="#331983" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M10 12H30" stroke="#331983" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M18 28L30 28" stroke="#331983" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </button>
+
+      <button onclick="closeMenu()" class="close-menu">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10L10 30M10 10L30 30" stroke="#FFFAF1" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+      
     </nav>
 
     <main>
+
       <section class="destaque">
+        <button class="">
+          Linkedin
+        </button>
+
+        <button class="">
+          Github
+        </button>
+
         <div class="container-img">
           <img class="img-perfil" src="/assets/perfil_img.png" />
         </div>
