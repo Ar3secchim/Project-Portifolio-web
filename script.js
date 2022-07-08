@@ -13,7 +13,6 @@ function closeMenu() {
 }
 
 
-
 // lib scroll
 ScrollReveal({
   origin:'top',
