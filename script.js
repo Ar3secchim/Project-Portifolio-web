@@ -1,3 +1,18 @@
+function navOnScroll(){
+  if (scrollY > 0) {
+    menu.classList.add("scroll")
+  } else {
+    menu.classList.remove("scroll")
+  }
+}
+
+function onScroll() {
+  if (scrollY > 300) {
+    backToTopButton.classList.add("show")
+  }else{
+    backToTopButton.classList.remove("show")
+  }
+}
 
 let menuExpanded = document.getElementById("menu")
 let menuHide = document.getElementById("menu-nav")

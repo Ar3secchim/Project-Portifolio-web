@@ -68,6 +68,17 @@ nav ul {
   stroke:var(--color-styles-terciary);
 }
 
+#menu.scroll{
+  position: fixed;
+  z-index: 120;
+  width: 80vw;
+
+  display: flex;
+
+  background:hsl(280, 97%, 15%);
+  margin: 0;
+  border-radius: 0rem;
+}
 
 #menu-nav {
   font-family: var(--typography-styles-body);
@@ -608,6 +619,28 @@ button{
   font-family: var(--typography-styles-title);
   font-weight: 700;
   font-size: 1.4rem;
+}
+
+#backToTopButton{
+  position: fixed;
+  bottom: 2rem;
+  right: 5rem;
+
+  opacity: 0;
+  visibility:hidden;
+  
+  transform: translateY(100%);
+  transition: 300ms;
+}
+#backToTopButton circle{
+  fill:hsl(280, 97%, 15%);
+}
+
+#backToTopButton.show{
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
 }
 /* ----------- FOOTER  ----------------- */
 
