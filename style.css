@@ -828,8 +828,9 @@ footer{
   }
 
   main{
-    margin:0rem 4rem;
+    margin:0rem 0rem;
   }
+  
   /* menu expanded and hide */
   .menu-expanded .open-menu{
     display:none;
