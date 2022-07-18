@@ -29,9 +29,10 @@
 html {
   background-image: url("./assets/BACK.svg");
   background-repeat: no-repeat;
+  margin: 0;
 }
 
-body {
+main {
   display: flex;
   flex-direction: column;
   margin: 0rem 10rem;
@@ -44,7 +45,7 @@ nav {
   justify-content: space-between;
   border-radius: 1.5rem;
   align-items: center;
-  margin-top:1rem;
+  padding: 1rem;
 }
 
 nav li {
@@ -70,14 +71,16 @@ nav ul {
 
 #menu.scroll{
   position: fixed;
+  margin:0;
   z-index: 120;
-  width: 80vw;
+  width: 100%;
 
   display: flex;
 
   background:hsl(280, 97%, 15%);
   margin: 0;
   border-radius: 0rem;
+  padding: 1rem;
 }
 
 #menu-nav {
@@ -632,8 +635,9 @@ button{
   transform: translateY(100%);
   transition: 300ms;
 }
+
 #backToTopButton circle{
-  fill:hsl(280, 97%, 15%);
+  fill:var(--color-styles-principal);
 }
 
 #backToTopButton.show{
@@ -668,7 +672,7 @@ footer{
   }
 
   html{
-    padding: 0rem 5rem;
+    padding: 0rem 0rem;
   }
 
   body{
@@ -817,6 +821,15 @@ footer{
 }
 /* =========================================MEDIA QUERY MOBILE  */
 @media (max-width: 650px){
+  html{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  main{
+    margin:0rem 4rem;
+  }
   /* menu expanded and hide */
   .menu-expanded .open-menu{
     display:none;
@@ -834,6 +847,7 @@ footer{
     background-color: hsl(280, 97%, 15%);
     border-radius: 0rem;
   }
+
   #menu-nav.menu-hide{
     display: none;
   }
@@ -846,9 +860,9 @@ footer{
     background-color: hsl(280, 97%, 15%);
     position: absolute;
     z-index: 100;
-    top:6rem;
+    top:4.5rem;
 
-    width:75vw;
+    width:100vw;
     height: 100vh;
 
     display: flex;
