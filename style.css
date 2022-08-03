@@ -80,13 +80,13 @@ nav ul {
   background:hsl(280, 97%, 15%);
   margin: 0;
   border-radius: 0rem;
-  padding: 1rem;
+  padding: 0rem 1rem;
 }
 
 #menu-nav {
   font-family: var(--typography-styles-body);
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 2rem;
   list-style-type: none;
 
   display: inline-flex;
@@ -99,8 +99,7 @@ nav ul {
 
 .logo {
   align-items: center;
-  padding: 0;
-  margin: 0;
+  width: 9rem;
 }
 .number-1{
   color: var(--color-styles-principal);
@@ -679,10 +678,6 @@ footer{
     margin: 0rem;
   }
 
-  .logo{
-    width: 7.8rem;
-  }
-
   .destaque{
     padding:3rem;
   }
@@ -802,6 +797,20 @@ footer{
     border-radius: 2.5rem;
   }
 
+  .container-languages ul,
+  .container-tools ul,
+  .container-design ul{
+    justify-content: flex-start;
+    overflow-y: auto;
+    gap: 2rem;
+  }
+
+  .number{
+    position: relative;
+    margin-top:-6rem;
+    margin-bottom: 3rem;
+  }
+
   .img-aside{
     top: 0;
     margin-top:8rem;
@@ -847,6 +856,11 @@ footer{
   nav#menu.menu-expanded{
     background-color: hsl(280, 97%, 15%);
     border-radius: 0rem;
+    display: flex;
+    flex-direction: row;
+    padding-top: 1rem;
+    align-items: flex-start;
+
   }
 
   #menu-nav.menu-hide{
@@ -859,20 +873,17 @@ footer{
 
   #menu-nav{
     background-color: hsl(280, 97%, 15%);
-    position: absolute;
     z-index: 100;
-    top:4.5rem;
 
     width:100vw;
     height: 100vh;
 
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 5rem;
+    justify-content:center;
+    gap: 3rem;
     align-items: center;
 
-    font-size:2em;
+    font-size:2.5em;
   }
 
   /* DESTAQUE */
