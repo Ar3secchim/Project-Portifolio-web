@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="imagem/png" href="/assets/orange24X24.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
   <body onscroll="onScroll(),navOnScroll()">
     <nav id="menu" class="">
       <ul class="menu">
@@ -18,6 +18,12 @@
             />
           </a>
         </li>
+        <li><button onclick="closeMenu()" class="close-menu">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 10L10 30M10 10L30 30" stroke="#FFFAF1" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button></li>
       </ul>
 
       <ul id="menu-nav" class="menu-hide">
@@ -26,7 +32,7 @@
         <li><a onclick="closeMenu()" href="#projects"><!--span class="number-1">03.</!--span--> Projects</a></li>
         <li><a onclick="closeMenu()" href="#contact"><!--span class="number-1">04.</!--span--> Contact</a></li>
       </ul>
-    
+
       <button
       aria-label="abrir menu"
       aria-expanded="false"
@@ -38,13 +44,6 @@
         </svg>
       </button>
 
-      <button onclick="closeMenu()" class="close-menu">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M30 10L10 30M10 10L30 30" stroke="#FFFAF1" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </button>
-      
     </nav>
 
     <main id="main">
@@ -56,7 +55,7 @@
         </button>
 
         <button class="mobile-rede">
-          <a target="_blank" 
+          <a target="_blank"
           href="https://github.com/Ar3secchim">Github</a>
         </button>
 
@@ -101,7 +100,7 @@
 
       <section id="Skills" class="skills">
         <div class="container-title-section">
-          
+
           <h1 class="skill-title">Skills</h1>
           <div class="line-vertical"></div>
         </div>
@@ -133,7 +132,7 @@
                   </div>
                   <p>CSS</p>
                 </div>
-            
+
               </li>
               <li>
                 <div class="card" id="javascript">
@@ -257,7 +256,7 @@
               </div>
 
             </div>
-            
+
             <div class="img-aside-left">
               <img class="img-project" src="/assets/CONVERTER.svg" />
             </div>
@@ -324,7 +323,7 @@
               </div>
 
             </div>
-            
+
             <div class="img-aside-left">
               <img class="img-project" src="/assets/COB.svg" />
             </div>
@@ -385,21 +384,21 @@
             </div>
 
           </div>
-        </section>      
-          
+        </section>
+
         <section id="contact">
           <div class="container-title-section">
             <h1 class="contact-title">Contact</h1>
             <div class="line-vertical"></div>
           </div>
-        
+
 
         <div class="container-msg">
           <h1>Send a message</h1>
           <p>Got a question or proposal, or just wan</p>
           <p>to say hello? Go ahead.</p>
         </div>
-        
+
         <form action="https://formsubmit.co/renarasecchim@gmail.com" method="post">
           <div class="container-name-email">
               <div>
@@ -422,7 +421,7 @@
           </div>
         </form>
       </section>
-  
+
     </main>
 
     <footer>
@@ -433,7 +432,7 @@
           <path d="M20 27V13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M13 20L20 13L27 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          
+
       </a>
 
       <p>Designed and built by Renara Secchim</p>

@@ -65,7 +65,7 @@ nav ul {
 
 .open-menu path,
 .close-menu path{
-  stroke-width:0.2rem; 
+  stroke-width:0.2rem;
   stroke:var(--color-styles-terciary);
 }
 
@@ -80,7 +80,6 @@ nav ul {
   background:hsl(280, 97%, 15%);
   margin: 0;
   border-radius: 0rem;
-  padding: 1rem;
 }
 
 #menu-nav {
@@ -102,6 +101,7 @@ nav ul {
   padding: 0;
   margin: 0;
 }
+
 .number-1{
   color: var(--color-styles-principal);
   font-size: 1.2rem;
@@ -227,8 +227,8 @@ nav ul {
 }
 
 .ilustration {
-  width: 50%; 
-} 
+  width: 50%;
+}
 
 
 /*------------- CONTAINER SKILL ------------*/
@@ -253,7 +253,7 @@ nav ul {
   border-radius: 1rem;
   padding:2rem;
   margin:3rem 0rem;
-  
+
   color: #B1A8A5;
   font-family: var(--typography-styles-body);
 }
@@ -288,41 +288,41 @@ nav ul {
 
 #html:nth-child(1) .circle circle:nth-child(2){
   stroke: var(--color-styles-principal);
-  stroke-dashoffset: calc(380 - (380 * 45) / 100); 
+  stroke-dashoffset: calc(380 - (380 * 45) / 100);
 }
 
 #css:nth-child(1) .circle circle:nth-child(2){
   stroke: var(--color-styles-principal);
-  stroke-dashoffset: calc(380 - (380 * 30) / 100); 
+  stroke-dashoffset: calc(380 - (380 * 30) / 100);
 }
 
 #javascript:nth-child(1) .circle circle:nth-child(2){
   stroke: var(--color-styles-principal);
-  stroke-dashoffset: calc(380 - (380 * 15) / 100); 
+  stroke-dashoffset: calc(380 - (380 * 15) / 100);
 }
 
 #github:nth-child(1) .circle circle:nth-child(2){
   stroke: var(--color-styles-principal);
-  stroke-dashoffset: calc(380 - (380 * 20) / 100); 
+  stroke-dashoffset: calc(380 - (380 * 20) / 100);
 }
 
 #vercel:nth-child(1) .circle circle:nth-child(2){
   stroke: var(--color-styles-principal);
-  stroke-dashoffset: calc(380 - (380 * 10) / 100); 
+  stroke-dashoffset: calc(380 - (380 * 10) / 100);
 }
 
 #figma:nth-child(1) .circle circle:nth-child(2){
   stroke: var(--color-styles-principal);
-  stroke-dashoffset: calc(380 - (380 * 45) / 100); 
+  stroke-dashoffset: calc(380 - (380 * 45) / 100);
 }
 
 #adobe-xd:nth-child(1) .circle circle:nth-child(2){
   stroke: var(--color-styles-principal);
-  stroke-dashoffset: calc(380 - (380 * 40) / 100); 
+  stroke-dashoffset: calc(380 - (380 * 40) / 100);
 }
 #illustrator:nth-child(1) .circle circle:nth-child(2){
   stroke:var(--color-styles-principal);
-  stroke-dashoffset: calc(380 - (380 * 50) / 100); 
+  stroke-dashoffset: calc(380 - (380 * 50) / 100);
 }
 
 .number {
@@ -331,7 +331,7 @@ nav ul {
   font-weight: 700;
   font-size: 3rem;
   margin-top: 3rem;
-} 
+}
 
 
 
@@ -369,12 +369,12 @@ nav ul {
   flex-direction: column;
   padding-right: 30rem;
   position: relative;
-} 
+}
 
 .img-project{
   position: absolute;
   height:35rem;
-} 
+}
 
 
 /* Container left */
@@ -396,7 +396,7 @@ nav ul {
 .tag-technology{
   display: flex;
   gap: 1rem;
-  
+
   color:var(--color-styles-terciary) ;
   font-size: 1.2rem;
   font-weight: 500;
@@ -553,7 +553,7 @@ nav ul {
   display:flex;
 
   margin: 2rem 0rem;
-  
+
   padding-top:2rem;
 
   color:var(--color-styles-terciary) ;
@@ -631,7 +631,7 @@ button{
 
   opacity: 0;
   visibility:hidden;
-  
+
   transform: translateY(100%);
   transition: 300ms;
 }
@@ -653,7 +653,7 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   font-family: var(--typography-styles-title);
   font-weight: 700;
   font-size: 1rem;
@@ -680,7 +680,7 @@ footer{
   }
 
   .logo{
-    width: 7.8rem;
+    width: 6rem;
   }
 
   .destaque{
@@ -696,7 +696,7 @@ footer{
   }
 
   #menu-nav{
-    font-size:1.6rem;
+    font-size:1.4rem;
   }
 
   .destaque-text :nth-child(1){
@@ -724,12 +724,12 @@ footer{
     display: inline-block;
     width: 100%;
   }
-  
+
   input[type=email]{
     width: 100%;
   }
 
-  
+
 
   input[type=texto]{
     width: 100%;
@@ -776,7 +776,7 @@ footer{
 
     border-radius: 2.5rem;
   }
-  
+
   .tag-redes-sociais-left{
     align-items: center;
     position: relative;
@@ -830,7 +830,7 @@ footer{
   main{
     margin:0rem 5rem;
   }
-  
+
   /* menu expanded and hide */
   .menu-expanded .open-menu{
     display:none;
@@ -847,6 +847,16 @@ footer{
   nav#menu.menu-expanded{
     background-color: hsl(280, 97%, 15%);
     border-radius: 0rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  nav .menu{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   #menu-nav.menu-hide{
@@ -859,7 +869,7 @@ footer{
 
   #menu-nav{
     background-color: hsl(280, 97%, 15%);
-    position: absolute;
+
     z-index: 100;
     top:4.5rem;
 
@@ -888,7 +898,7 @@ footer{
   .destaque-text :nth-child(1){
     visibility: hidden;
   }
-  
+
   .destaque-text :nth-child(2){
     font-size:2rem;
     font-weight: 500;
@@ -912,9 +922,9 @@ footer{
 
   /* ABOUT */
   .about-container{
-    flex-direction: column-reverse; 
+    flex-direction: column-reverse;
     gap: 2rem;
-  }  
+  }
 
   .about-text{
     text-align: center;
@@ -942,7 +952,7 @@ footer{
     justify-content: flex-start;
     overflow-y: auto;
     gap: 2rem;
-  } 
+  }
 
   .number{
     position: relative;
@@ -982,7 +992,7 @@ footer{
   .img-aside{
     display:none;
   }
-  
+
   .principal-title{
     display:flex;
     justify-content:center;
@@ -1008,14 +1018,14 @@ footer{
     font-weight: bold;
     color: var(--color-styles-terciary);
   }
-  
+
 
   .body-project,
   .body-project-left{
     display:none;
   }
 
-  .container-outher-proj{    
+  .container-outher-proj{
     flex-direction: column;
     align-items: center;
   }
@@ -1036,5 +1046,5 @@ footer{
   input[type=texto]{
     margin-bottom:2rem;
   }
-  
+
 }
