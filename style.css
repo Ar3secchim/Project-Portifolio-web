@@ -849,7 +849,7 @@ footer{
   nav#menu.menu-expanded{
     background-color: hsl(280, 97%, 15%);
     border-radius: 0rem;
-    width: 104vw;
+    width: 108vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -860,7 +860,7 @@ footer{
     display: flex;
     justify-content: space-between;
   }
-  
+
   nav .menu{
     width: 104vw;
     display: flex;
