@@ -80,7 +80,6 @@ nav ul {
   background:hsl(280, 97%, 15%);
   margin: 0;
   border-radius: 0rem;
-  padding: 1rem;
 }
 
 #menu-nav {
@@ -103,6 +102,7 @@ nav ul {
   margin: 0;
   width: 7.8rem;
 }
+
 .number-1{
   color: var(--color-styles-principal);
   font-size: 1.2rem;
@@ -374,8 +374,7 @@ nav ul {
 
 .img-project{
   position: absolute;
-  height:30rem;
-  border-radius: 2rem;
+  height:35rem;
 }
 
 
@@ -682,7 +681,7 @@ footer{
   }
 
   .logo{
-    width: 7.8rem;
+    width: 6rem;
   }
 
   .destaque{
@@ -698,7 +697,7 @@ footer{
   }
 
   #menu-nav{
-    font-size:1.6rem;
+    font-size:1.4rem;
   }
 
   .destaque-text :nth-child(1){
@@ -850,6 +849,16 @@ footer{
   nav#menu.menu-expanded{
     background-color: hsl(280, 97%, 15%);
     border-radius: 0rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  nav .menu{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   #menu-nav.menu-hide{
@@ -862,7 +871,7 @@ footer{
 
   #menu-nav{
     background-color: hsl(280, 97%, 15%);
-    position: absolute;
+
     z-index: 100;
     top:4.5rem;
 
