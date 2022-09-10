@@ -763,10 +763,11 @@ footer{
 
   .img-project{
     position: relative;
+    height: 35rem;
   }
 
   .body-project{
-    width: 53.325rem;
+    width: 54rem;
     text-align: center;
     align-items: center;
     padding: 0;
@@ -794,7 +795,7 @@ footer{
     align-items: center;
     text-align: center;
     padding: 0;
-    top:-10rem;
+    top:-9.5rem;
     width: 53.325rem;
 
     background:radial-gradient( 93.92% 93.92% at 50.05% 0%, rgba(39, 49, 61, 0.591) 20.74%, rgba(38, 49, 63, 0.813) 74.07%, rgba(42, 50, 59, 0.722) 100% );
