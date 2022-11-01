@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html{
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Rajdhani', sans-serif;
 }
