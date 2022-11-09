@@ -29,7 +29,7 @@ module.exports = {
         },
         gray:{
           300:'#EFEAEA',
-          400:'#3B3F45',
+          500:'#3B3F45',
         },
       },
     },
