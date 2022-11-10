@@ -1,26 +1,28 @@
 import { ReactComponent as ImgEmphasissds } from "../assets/imgs/img- emphasissds.svg"
 import WomenWeb from "../assets/imgs/womenWeb.png"
+import Project2 from "../assets/imgs/project1.png"
 
 import { CardSkill } from "../components/CardSkill"
 import { NavBar } from "../components/NavBar"
-// import { Skills } from "../components/Skills"
+import { CardProjects } from "../components/cardProjects"
+import { fromJSON } from "postcss"
 
 export function Home() {
   const post = [
-    {id: 1, title: 'HTML', percent: 60 },
-    {id: 2, title: 'CSS', percent: 50 },
-    {id: 3, title: 'JavaScript', percent: 30 },
+    { id: 1, title: 'HTML', percent: 60 },
+    { id: 2, title: 'CSS', percent: 50 },
+    { id: 3, title: 'JavaScript', percent: 30 },
   ]
 
   const frameworksLibrary = [
-    {id: 5, title: 'React', percent: 15 },
-    {id: 6, title: 'Tailwind css', percent: 25 },
-    {id: 7, title: 'Git & GitHub', percent: 40 },
+    { id: 5, title: 'React', percent: 15 },
+    { id: 6, title: 'Tailwind css', percent: 25 },
+    { id: 7, title: 'Git & GitHub', percent: 40 },
   ]
 
   const UxAndUi = [
-    {id: 8, title: 'Figma', percent: 90 },
-    {id: 9, title: 'AdobeXd', percent: 90 },
+    { id: 8, title: 'Figma', percent: 90 },
+    { id: 9, title: 'AdobeXd', percent: 90 },
   ]
 
   return (
@@ -57,13 +59,29 @@ export function Home() {
           </div>
 
         </section>
-        
+
         <section>
           <h1>Skill</h1>
-          <CardSkill title="Programming Languages" post={post}/>
-          <CardSkill title="Frameworks & Library & Tools" post={frameworksLibrary}/>
-          <CardSkill title="UX / UI " post={UxAndUi}/>
+          <CardSkill title="Programming Languages" post={post} />
+          <CardSkill title="Frameworks & Library & Tools" post={frameworksLibrary} />
+          <CardSkill title="UX / UI " post={UxAndUi} />
 
+        </section>
+
+        <section>
+          <h1>Projetos Reaizados</h1>
+          <CardProjects
+            title="Conversor de moeda"
+            text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
+            image={Project2}
+          />
+
+          <CardProjects
+            title="Project 2"
+            text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
+            image={Project2}
+            type='SECONDARY'
+          />
         </section>
       </main>
 
