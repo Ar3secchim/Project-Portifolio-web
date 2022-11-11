@@ -1,16 +1,4 @@
 
-//  function CardSkill({ Headers}) {
-//   return (
-//     <div className="flex flex-col">
-//       <h2>{Headers}</h2>
-//       <div className="flex">
-
-//       </div>
-//     </div>
-//   )
-
-// }
-
 export function CardSkill({title, post}) {
   const Headers = () => <h1>{ title }</h1>
 

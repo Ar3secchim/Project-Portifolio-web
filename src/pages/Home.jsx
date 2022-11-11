@@ -4,8 +4,9 @@ import Project2 from "../assets/imgs/project1.png"
 
 import { CardSkill } from "../components/CardSkill"
 import { NavBar } from "../components/NavBar"
-import { CardProjects } from "../components/cardProjects"
-import { fromJSON } from "postcss"
+import { CardProjects } from "../components/CardProjects"
+import { CardOuthersProjects } from "../components/CardOtherProjects"
+
 
 export function Home() {
   const post = [
@@ -45,7 +46,7 @@ export function Home() {
           <div>
             <div>
               <p>
-                Olá, eu sou a Renata. Oi! Meu nome é Renara e gosto de criar coisas que vivam no internet e ajuda as pessoas no seu dia-a-dia. meu interesse em programação, quando começou a pandemia de 2020 e percebeu o quanto as soluções estão ajudando a ajudar
+                Meu nome é Renara e gosto de criar coisas que vivam no internet e ajuda as pessoas no seu dia-a-dia. meu interesse em programação, quando começou a pandemia de 2020 e percebeu o quanto as soluções estão ajudando a ajudar
                 sociedade a passar por isso - descobriu-se que a curiosidade era dispersos para saber como funciona por trás de uma "tela" de celulares, notebooks e assim surgiu o primeiro 'Hello world' com HTML e CSS!
               </p>
               <p>
@@ -74,6 +75,7 @@ export function Home() {
             title="Conversor de moeda"
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}
+
           />
 
           <CardProjects
@@ -82,6 +84,41 @@ export function Home() {
             image={Project2}
             type='SECONDARY'
           />
+
+          <CardProjects
+            title="Project 2"
+            text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
+            image={Project2}
+          />
+
+          <CardProjects
+            title="Conversor de moeda"
+            text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
+            image={Project2}
+            type='SECONDARY'
+          />
+        </section>
+
+        <section>
+          <h2>Outros projetos</h2>
+          <CardOuthersProjects Title="OUTROS" Content="2" />
+        </section>
+
+        <section>
+          <h2>Contato</h2>
+          <h3>Me envie um mensagem</h3>
+          <p>Tem uma pergunta ou proposta, ou apenas quer
+            para dizer oi? Vá em frente.</p>
+
+          <form className="flex flex-col">
+            <input type='text' placeholder="Nome *" />
+            <input tupe='email' placeholder="Email *"/>
+            <input tupe='text' placeholder="Assunto"/>
+            <input tupe='text' placeholder="Mensagem *"/>
+            <button type="submit" className="border-2 bg-purple-700 text-white
+            rounded px-2 hover:bg-violet-300 hover:text-purple-700 font-bold"> Enviar </button>
+          </form>
+
         </section>
       </main>
 
