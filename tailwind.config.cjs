@@ -16,9 +16,9 @@ module.exports = {
       '4xl':['52px','66px']
     },
     fontWeight:{
-      thin: 100,
-      regular: 400,
-      bold: 700,
+      thin: 300,
+      regular: 600,
+      bold: 800,
     },
     extend: {
       colors:{

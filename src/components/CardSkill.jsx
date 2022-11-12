@@ -4,9 +4,8 @@ export function CardSkill({title, post}) {
 
   const circumference = 380
 
-
   const Content = post.map((post) =>
-      <div key={post.id} className="flex flex-col items-center" >
+      <div key={post.id} className="flex flex-col items-center " >
         <svg className="inline-block -rotate-90 h-40 w-44" >
           <circle cx="80" cy="80" r="60" stroke="currentColor" strokeWidth="15" fill="transparent" className="text-purple-700" />
 
@@ -29,7 +28,7 @@ export function CardSkill({title, post}) {
         <Headers title={title} />
       </div>
 
-      <div className="flex">
+      <div className="flex overflow-auto">
         {Content}
        </div>
     </div>

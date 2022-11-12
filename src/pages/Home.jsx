@@ -29,13 +29,26 @@ export function Home() {
   return (
     <>
       <NavBar />
-      <main>
-        <section className=" container flex">
-          <div>
+      <main className="container mx-auto ">
+        <section className=" flex flex-col gap-8 items-center">
+          <div className="text-center pt-4 ">
             <h3 className="text-lg">Hellou,</h3>
-            <h1 className="text-xl"> Eu sou a Renara Secchim</h1>
+            <h1 className="effect text-2xl"> Eu sou a <strong className=" text-purple-700 underline decoration-purple-200"> Renara Secchim</strong></h1>
           </div>
-          <ImgEmphasissds width={240} />
+
+            <ImgEmphasissds width={240} />
+
+            <div className="">
+              <a href="" className=" border-2 bg-purple-700 text-white text-lg
+              rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700 font-regular">
+                LINKEDIN
+              </a>
+              <a href="" className="border-2 bg-purple-700 text-white text-lg
+            rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700 font-regular">
+                GITHUB
+              </a>
+            </div>
+
         </section>
 
         <section>
@@ -69,9 +82,9 @@ export function Home() {
 
         </section>
 
-        <section>
+        <section className="overflow-x-auto">
           <h1>Projetos Reaizados</h1>
-          <CardProjects
+          <CardProjects className="overflow-x-auto"
             title="Conversor de moeda"
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}

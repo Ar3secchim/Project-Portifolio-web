@@ -7,7 +7,7 @@ export function CardProjects({ title, text, image, type = 'PRIMARY'}) {
 
   const Primary = () => {
     return (
-      <div className="flex">
+      <div className="flex auto">
         <div >
           <div className="">
             <h3>Projeto de destaque</h3>
