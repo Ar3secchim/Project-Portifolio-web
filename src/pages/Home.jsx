@@ -6,7 +6,7 @@ import { CardSkill } from "../components/CardSkill"
 import { NavBar } from "../components/NavBar"
 import { CardProjects } from "../components/CardProjects"
 import { CardOuthersProjects } from "../components/CardOtherProjects"
-
+import { TitleSection } from "../components/TitleSection"
 
 export function Home() {
   const post = [
@@ -33,28 +33,26 @@ export function Home() {
         <section className=" flex flex-col gap-8 items-center">
           <div className="text-center pt-4 ">
             <h3 className="text-lg">Hellou,</h3>
-            <h1 className="effect text-2xl"> Eu sou a <strong className=" text-purple-700 underline decoration-purple-200"> Renara Secchim</strong></h1>
+            <h1 className="effect text-[28px]"> Eu sou a <strong className=" text-purple-700 underline decoration-purple-200"> Renara Secchim</strong></h1>
           </div>
 
-            <ImgEmphasissds width={240} />
+          <ImgEmphasissds width={240} />
 
-            <div className="">
-              <a href="" className=" border-2 bg-purple-700 text-white text-lg
-              rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700 font-regular">
-                LINKEDIN
-              </a>
-              <a href="" className="border-2 bg-purple-700 text-white text-lg
+          <div className="">
+            <a href="" className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
+              rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular">
+              LINKEDIN
+            </a>
+            <a href="" className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
             rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700 font-regular">
-                GITHUB
-              </a>
-            </div>
+              GITHUB
+            </a>
+          </div>
 
         </section>
 
         <section>
-          <div>
-            <h1>About</h1>
-          </div>
+          <TitleSection title="Sobre mim" />
 
           <div>
             <div>
@@ -75,7 +73,7 @@ export function Home() {
         </section>
 
         <section>
-          <h1>Skill</h1>
+          <TitleSection title="Skills" />
           <CardSkill title="Programming Languages" post={post} />
           <CardSkill title="Frameworks & Library & Tools" post={frameworksLibrary} />
           <CardSkill title="UX / UI " post={UxAndUi} />
@@ -83,7 +81,7 @@ export function Home() {
         </section>
 
         <section className="overflow-x-auto">
-          <h1>Projetos Reaizados</h1>
+          <TitleSection title="Projetos realizados" />
           <CardProjects className="overflow-x-auto"
             title="Conversor de moeda"
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
@@ -118,18 +116,18 @@ export function Home() {
         </section>
 
         <section>
-          <h2>Contato</h2>
+          <TitleSection title="Contato" />
           <h3>Me envie um mensagem</h3>
           <p>Tem uma pergunta ou proposta, ou apenas quer
             para dizer oi? Vá em frente.</p>
 
           <form className="flex flex-col">
             <input type='text' placeholder="Nome *" />
-            <input tupe='email' placeholder="Email *"/>
-            <input tupe='text' placeholder="Assunto"/>
-            <input tupe='text' placeholder="Mensagem *"/>
-            <button type="submit" className="border-2 bg-purple-700 text-white
-            rounded px-2 hover:bg-violet-300 hover:text-purple-700 font-bold"> Enviar </button>
+            <input tupe='email' placeholder="Email *" />
+            <input tupe='text' placeholder="Assunto" />
+            <input tupe='text' placeholder="Mensagem *" />
+            <button type="submit" className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
+              rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular"> ENVIAR </button>
           </form>
 
         </section>
