@@ -56,11 +56,11 @@ export function Home() {
 
           <div>
             <div>
-              <p>
-                Meu nome é Renara e gosto de criar coisas que vivam no internet e ajuda as pessoas no seu dia-a-dia. meu interesse em programação, quando começou a pandemia de 2020 e percebeu o quanto as soluções estão ajudando a ajudar
-                sociedade a passar por isso - descobriu-se que a curiosidade era dispersos para saber como funciona por trás de uma "tela" de celulares, notebooks e assim surgiu o primeiro 'Hello world' com HTML e CSS!
+              <p className="text-justify">
+                Meu nome é Renara e gosto de criar coisas que vivam no internet e ajuda as pessoas no seu dia-a-dia. meu interesse em programação, quando começou a pandemia de 2020 e percebeu o quanto as soluções estão ajudando a ajudar sociedade a passar por isso - descobriu-se que a curiosidade era dispersos para saber como funciona por trás de uma "tela" de celulares, notebooks e assim surgiu o primeiro 'Hello world' com HTML e CSS!
               </p>
-              <p>
+              <div className="h-4"></div>
+              <p className="text-justify" >
                 Meu foco principal hoje é estudar cada vez mais e construir produtos
                 acessível e que proporciona experiências digitais aos diferentes
                 clientes.
@@ -86,7 +86,7 @@ export function Home() {
             title="Conversor de moeda"
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}
-
+            Tech ="CSS JAVACRIPT HTML"
           />
 
           <CardProjects
@@ -94,25 +94,22 @@ export function Home() {
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}
             type='SECONDARY'
+            Tech ="CSS JAVACRIPT HTML"
           />
 
           <CardProjects
             title="Project 2"
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}
-          />
-
-          <CardProjects
-            title="Conversor de moeda"
-            text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
-            image={Project2}
-            type='SECONDARY'
+            Tech ="CSS JAVACRIPT HTML"
           />
         </section>
 
-        <section>
+        <section className ="px-6">
           <h2>Outros projetos</h2>
-          <CardOuthersProjects Title="OUTROS" Content="2" />
+          <div className="">
+            <CardOuthersProjects Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
+          </div>
         </section>
 
         <section>
@@ -129,10 +126,10 @@ export function Home() {
             <button type="submit" className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
               rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular"> ENVIAR </button>
           </form>
-
         </section>
       </main>
 
+      <footer></footer>
     </>
   )
 }
