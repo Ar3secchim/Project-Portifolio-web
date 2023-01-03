@@ -10,20 +10,20 @@ import { TitleSection } from "../components/TitleSection"
 
 export function Home() {
   const post = [
-    { id: 1, title: 'HTML', percent: 60 },
-    { id: 2, title: 'CSS', percent: 50 },
-    { id: 3, title: 'JavaScript', percent: 30 },
+    { id: Math.random(), title: 'HTML', percent: 60 },
+    { id: Math.random(), title: 'CSS', percent: 50 },
+    { id: Math.random(), title: 'JavaScript', percent: 30 },
   ]
 
   const frameworksLibrary = [
-    { id: 5, title: 'React', percent: 15 },
-    { id: 6, title: 'Tailwind css', percent: 25 },
-    { id: 7, title: 'Git & GitHub', percent: 40 },
+    { id: Math.random(), title: 'React', percent: 15 },
+    { id: Math.random(), title: 'Tailwind css', percent: 25 },
+    { id: Math.random(), title: 'Git & GitHub', percent: 40 },
   ]
 
   const UxAndUi = [
-    { id: 8, title: 'Figma', percent: 90 },
-    { id: 9, title: 'AdobeXd', percent: 90 },
+    { id: Math.random(), title: 'Figma', percent: 90 },
+    { id: Math.random(), title: 'AdobeXd', percent: 90 },
   ]
 
   return (
@@ -80,7 +80,7 @@ export function Home() {
 
         </section>
 
-        <section className="overflow-x-auto">
+        <section className="overflow-x-auto ">
           <TitleSection title="Projetos realizados" />
           <CardProjects className="overflow-x-auto"
             title="Conversor de moeda"
@@ -97,7 +97,7 @@ export function Home() {
             Tech ="CSS JAVACRIPT HTML"
           />
 
-          <CardProjects
+          <CardProjects className="hidden"
             title="Project 2"
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}
@@ -106,8 +106,14 @@ export function Home() {
         </section>
 
         <section className ="px-6">
-          <h2>Outros projetos</h2>
-          <div className="">
+          <h2 className="text-center text-purple-700 font-bold text-xl">Outros projetos</h2>
+          <div className="flex gap-8 flex-col justify-center lg:justify-center lg:flex-row md:flex-wrap md:justify-center">
+            <CardOuthersProjects className="hidden" Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
+
+            <CardOuthersProjects Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
+
+            <CardOuthersProjects Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
+
             <CardOuthersProjects Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
           </div>
         </section>
@@ -120,9 +126,9 @@ export function Home() {
 
           <form className="flex flex-col">
             <input type='text' placeholder="Nome *" />
-            <input tupe='email' placeholder="Email *" />
-            <input tupe='text' placeholder="Assunto" />
-            <input tupe='text' placeholder="Mensagem *" />
+            <input type='email' placeholder="Email *" />
+            <input type='text' placeholder="Assunto" />
+            <input type='text' placeholder="Mensagem *" />
             <button type="submit" className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
               rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular"> ENVIAR </button>
           </form>
