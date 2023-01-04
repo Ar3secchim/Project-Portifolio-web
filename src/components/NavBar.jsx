@@ -3,6 +3,7 @@ import { ReactComponent as CloseBar } from "../assets/icons/closeBar.svg"
 import { useState } from "react"; // import state
 
 export function NavBar() {
+  const urlDownloaded =  'https://drive.google.com/file/d/1jNllLICD4YHlo8E6cRNy7mBvc-uB9NSE/view?usp=share_link'
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
@@ -12,7 +13,7 @@ export function NavBar() {
       </a>
 
       <div>
-        <section className="MOBILE-MENU flex sm:hidden lg:hidden[760px] ">
+        <section className="MOBILE-MENU flex lg:hidden sm:hidden ">
           <div
             className="HAMBURGER-ICON space-y-2"
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
@@ -34,16 +35,19 @@ export function NavBar() {
             </div>
             <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-xl ">
               <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
-                <a href="/portfolio">Sobre mim</a>
+                <a href="#About">Sobre mim</a>
               </li>
+
               <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
-                <a href="/contact">Projetos</a>
+                <a href="#projects">Projetos</a>
               </li>
+
               <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
-                <a href="/contact">Contato</a>
+                <a href="#Contact">Contato</a>
               </li>
+
               <li>
-                <button className="border-2 border-purple-500[0.4]   text-purple-700 rounded px-4 py-2 hover:bg-violet-100 font-regular my-8"> Resume </button>
+                <a href={urlDownloaded} target="_blank" className="border-2 border-purple-500[0.4]   text-purple-700 rounded px-4 py-2 hover:bg-violet-100 font-regular my-8"> Resume </a>
               </li>
             </ul>
           </div>
@@ -55,21 +59,26 @@ export function NavBar() {
         <ul className="flex gap-6 items-center">
           <li className="hover:text-purple-300 hover:underline underline-offset-8
           font-regular">
-            <a href="" > Home </a>
+            <a href="home" > Home </a>
           </li>
 
           <li className="hover:text-purple-300 hover:underline underline-offset-8
           font-regular">
-            <a href="" > Sobre mim </a>
+            <a href="#About" > Sobre mim </a>
           </li>
 
           <li className="hover:text-purple-300 hover:underline underline-offset-8
           font-regular">
-            <a href="" > Projetos </a>
+            <a href="#projects" > Projetos </a>
+          </li>
+
+          <li className="hover:text-purple-300 hover:underline underline-offset-8
+          font-regular">
+            <a href="#Contact" > Contato </a>
           </li>
 
           <li>
-            <button className="border-2 border-purple-500[0.4]  rounded px-2 hover:bg-violet-100 font-regular"> Resume </button>
+            <a href={urlDownloaded} target="_blank" className="border-2 border-purple-500[0.4]  rounded px-2 hover:bg-violet-100 font-regular"> Resume </a>
           </li>
 
         </ul>

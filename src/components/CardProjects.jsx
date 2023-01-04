@@ -20,8 +20,8 @@ export function CardProjects({ title, text, image, type = 'PRIMARY', Site, GitHu
             </p>
 
             <div className="hidden md:hidden lg:flex lg:pt-4 lg:flex-col" >
-                <span className="text-gray-500 hidden lg:inline">{Tech}</span>
-              <div className="lg:flex lg:pt-2">
+              <span className="text-gray-500 hidden lg:inline">{Tech}</span>
+              <div className="lg:flex lg:pt-2 ">
                 <a href={GitHub} className="pr-2">
                   <Github width={24} height={24} fill="#3B3F45" />
                 </a>
@@ -33,16 +33,16 @@ export function CardProjects({ title, text, image, type = 'PRIMARY', Site, GitHu
 
           </div>
 
-          <div className=" lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px]">
+          <div className=" lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] flex justify-center">
             <img src={image} />
           </div>
 
         </div>
-
-        <ul className="flex justify-between lg:hidden">
+        {/* list links mobile */}
+        <ul className="lg:hidden">
           <span className="text-gray-500 hidden lg:inline">{Tech}</span>
 
-          <div className="flex ">
+          <div className="flex mt-2 justify-end">
             <a href={GitHub} className="pr-2">
               <Github width={24} height={24} fill="#3B3F45" />
             </a>
@@ -59,11 +59,11 @@ export function CardProjects({ title, text, image, type = 'PRIMARY', Site, GitHu
     return (
       <div className=" overflow-hidden flex flex-col-reverse md:hidden
       lg:py-8 lg:flex lg:justify-center lg:relative">
-
-        <ul className="flex py-2 justify-between lg:hidden">
+        {/* list links mobile */}
+        <ul className="lg:hidden">
           <span className="text-gray-500 hidden lg:inline">{Tech}</span>
 
-          <div className="flex ">
+          <div className="flex mt-2 justify-end">
             <a href={GitHub} className="pr-2">
               <Github width={24} height={24} fill="#3B3F45" />
             </a>
@@ -73,7 +73,7 @@ export function CardProjects({ title, text, image, type = 'PRIMARY', Site, GitHu
           </div>
         </ul>
 
-        <div className=" lg:-right-2/4 lg:w-6/12 lg:blur-[1px]">
+        <div className=" lg:-right-2/4 lg:w-6/12 lg:blur-[1px] flex justify-center">
           <img src={image} />
         </div>
 

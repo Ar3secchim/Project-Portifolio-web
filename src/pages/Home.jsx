@@ -12,38 +12,45 @@ export function Home() {
   const post = [
     { id: Math.random(), title: 'HTML', percent: 60 },
     { id: Math.random(), title: 'CSS', percent: 50 },
-    { id: Math.random(), title: 'JavaScript', percent: 30 },
+    { id: Math.random(), title: 'JavaScript', percent: 40 },
   ]
 
   const frameworksLibrary = [
-    { id: Math.random(), title: 'React', percent: 15 },
+    { id: Math.random(), title: 'React', percent: 35 },
     { id: Math.random(), title: 'Tailwind css', percent: 25 },
     { id: Math.random(), title: 'Git & GitHub', percent: 40 },
+    { id: Math.random(), title: 'Style Component', percent: 25 },
   ]
 
   const UxAndUi = [
-    { id: Math.random(), title: 'Figma', percent: 90 },
-    { id: Math.random(), title: 'AdobeXd', percent: 90 },
+    { id: Math.random(), title: 'Figma', percent: 80 },
+    { id: Math.random(), title: 'AdobeXd', percent: 75 },
   ]
 
   return (
     <>
       <NavBar />
-      <main className="container mx-auto ">
+      <main id="home" className="container mx-auto ">
+
         <section className=" flex flex-col gap-8 items-center">
           <div className="text-center pt-4 ">
             <h3 className="text-lg">Hellou,</h3>
             <h1 className="effect text-[28px]"> Eu sou a <strong className=" text-purple-700 underline decoration-purple-200"> Renara Secchim</strong></h1>
           </div>
 
-          <ImgEmphasissds width={240} />
+          <ImgEmphasissds width={380} />
 
-          <div className="">
-            <a href="" className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
+          <div>
+            <a href="https://www.linkedin.com/in/renarasecchim/"
+              target="_blank"
+              className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
               rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular">
               LINKEDIN
             </a>
-            <a href="" className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
+
+            <a href="https://github.com/Ar3secchim"
+              target="_blank"
+              className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
             rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700 font-regular">
               GITHUB
             </a>
@@ -51,42 +58,44 @@ export function Home() {
 
         </section>
 
-        <section>
+        {/*About  */}
+        <section id="About">
           <TitleSection title="Sobre mim" />
 
-          <div>
-            <div>
-              <p className="text-justify">
+          <div className="lg:flex lg:items-center">
+            <div className="flex-1" >
+              <p className="text-justify lg:text-lg">
                 Meu nome é Renara e gosto de criar coisas que vivam no internet e ajuda as pessoas no seu dia-a-dia. meu interesse em programação, quando começou a pandemia de 2020 e percebeu o quanto as soluções estão ajudando a ajudar sociedade a passar por isso - descobriu-se que a curiosidade era dispersos para saber como funciona por trás de uma "tela" de celulares, notebooks e assim surgiu o primeiro 'Hello world' com HTML e CSS!
               </p>
               <div className="h-4"></div>
-              <p className="text-justify" >
+
+              <p className="text-justify lg:text-lg" >
                 Meu foco principal hoje é estudar cada vez mais e construir produtos
                 acessível e que proporciona experiências digitais aos diferentes
                 clientes.
               </p>
             </div>
 
-            <img src={WomenWeb} />
+            <img className="flex-1" src={WomenWeb} />
           </div>
-
         </section>
 
-        <section>
+        {/*Skills */}
+        <section id="Skills">
           <TitleSection title="Skills" />
           <CardSkill title="Programming Languages" post={post} />
           <CardSkill title="Frameworks & Library & Tools" post={frameworksLibrary} />
           <CardSkill title="UX / UI " post={UxAndUi} />
-
         </section>
 
-        <section className="overflow-x-auto ">
+        {/* projects */}
+        <section id="projects" className="overflow-x-auto ">
           <TitleSection title="Projetos realizados" />
           <CardProjects className="overflow-x-auto"
             title="Conversor de moeda"
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}
-            Tech ="CSS JAVACRIPT HTML"
+            Tech="CSS JAVACRIPT HTML"
           />
 
           <CardProjects
@@ -94,48 +103,67 @@ export function Home() {
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}
             type='SECONDARY'
-            Tech ="CSS JAVACRIPT HTML"
+            Tech="CSS JAVACRIPT HTML"
           />
 
           <CardProjects className="hidden"
             title="Project 2"
             text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
             image={Project2}
-            Tech ="CSS JAVACRIPT HTML"
+            Tech="CSS JAVACRIPT HTML"
           />
         </section>
-
-        <section className ="px-6">
+        {/* projects */}
+        <section className="px-6">
           <h2 className="text-center text-purple-700 font-bold text-xl">Outros projetos</h2>
-          <div className="flex gap-8 flex-col justify-center lg:justify-center lg:flex-row md:flex-wrap md:justify-center">
-            <CardOuthersProjects className="hidden" Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
+          <div className="flex gap-2 flex-col justify-center lg:justify-center lg:flex-row md:flex-wrap md:justify-center lg:gap-8">
+            <CardOuthersProjects Title="Tasks List"
+              Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
+              Tech="HTML CSS"
+            />
 
-            <CardOuthersProjects Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
+            <CardOuthersProjects Title="Tasks List"
+              Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
+              Tech="HTML CSS"
+            />
 
-            <CardOuthersProjects Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
+            <CardOuthersProjects Title="Tasks List"
+              Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
+              Tech="HTML CSS"
+            />
 
-            <CardOuthersProjects Title="Tasks List" Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini." Tech="HTML CSS" />
+            <CardOuthersProjects Title="Tasks List"
+              Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
+              Tech="HTML CSS"
+            />
           </div>
         </section>
 
-        <section>
+        {/* Contact */}
+        <section id="Contact">
           <TitleSection title="Contato" />
-          <h3>Me envie um mensagem</h3>
-          <p>Tem uma pergunta ou proposta, ou apenas quer
+          <h3 className="text-center font-regular text-purple-700 text-lg m-4">Me envie um mensagem</h3>
+          <p className="text-center mb-6">Tem uma pergunta ou proposta, ou apenas quer
             para dizer oi? Vá em frente.</p>
 
-          <form className="flex flex-col">
-            <input type='text' placeholder="Nome *" />
-            <input type='email' placeholder="Email *" />
-            <input type='text' placeholder="Assunto" />
-            <input type='text' placeholder="Mensagem *" />
-            <button type="submit" className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
-              rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular"> ENVIAR </button>
+          <form className="flex flex-col items-center lg:w-full">
+            <input className="lg:w-3/6 p-2 my-2 outline-none border rounded-md " type='text' placeholder="Nome *" />
+            <input className="lg:w-3/6 p-2 my-2 outline-none border rounded-md pl-2" type='email' placeholder="Email *" />
+            <input className="lg:w-3/6 p-2 my-2 outline-none border rounded-md pl-2" type='text' placeholder="Assunto" />
+            <input className="lg:w-3/6 p-2 my-2 mb-6 outline-none border rounded-md pl-2" type='text' placeholder="Mensagem *" />
+            <button type="submit" className=" lg:w-44 bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
+              rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular">
+              ENVIAR
+            </button>
           </form>
         </section>
       </main>
 
-      <footer></footer>
+      <footer className="h-12 flex justify-center items-center">
+        <p className="text-center text-sm text-gray-500">
+          Designed and built by Renara Secchim
+        </p>
+      </footer>
     </>
   )
 }
