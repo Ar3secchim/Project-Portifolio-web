@@ -1,14 +1,26 @@
 import { ReactComponent as ImgEmphasissds } from "../assets/imgs/img- emphasissds.svg"
 import WomenWeb from "../assets/imgs/womenWeb.png"
-import Project2 from "../assets/imgs/project1.png"
 
 import { CardSkill } from "../components/CardSkill"
 import { NavBar } from "../components/NavBar"
 import { CardProjects } from "../components/CardProjects"
 import { CardOuthersProjects } from "../components/CardOtherProjects"
 import { TitleSection } from "../components/TitleSection"
+import { useFetch } from '../hooks/useFetch'
 
 export function Home() {
+  // async function fetchUser() {
+  //   try {
+  //     Client.setToken("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");
+  //     const pinned = await Client.getPinnedRepos("Ar3secchim");
+  //     console.log(pinned);
+  //   } catch (err) {
+  //     console.log('Erro:', err);
+  //   }
+  // }
+  // fetchUser()
+  const { repos, loading, setRepos } = useFetch()
+
   const post = [
     { id: Math.random(), title: 'HTML', percent: 60 },
     { id: Math.random(), title: 'CSS', percent: 50 },
@@ -91,51 +103,27 @@ export function Home() {
         {/* projects */}
         <section id="projects" className="overflow-x-auto ">
           <TitleSection title="Projetos realizados" />
-          <CardProjects className="overflow-x-auto"
-            title="Conversor de moeda"
-            text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
-            image={Project2}
-            Tech="CSS JAVACRIPT HTML"
-          />
 
-          <CardProjects
-            title="Project 2"
-            text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
-            image={Project2}
-            type='SECONDARY'
-            Tech="CSS JAVACRIPT HTML"
-          />
+          {repos.map(((repos, index) =>
+            <CardProjects
+              key={index}
+              Title={repos.repo}
+              Text={repos.description}
+              Image={repos.image}
+              Tech={repos.language}
+              GitHub={repos.link}
+              Site={repos.website}
+            />))
+          }
 
-          <CardProjects className="hidden"
-            title="Project 2"
-            text="Projeto desenvolvido na Imersão da Alura - Uma escola de ensino sobre tecnologia- projeto era começar a estudar com javascript e começar a manipular dados com DOM."
-            image={Project2}
-            Tech="CSS JAVACRIPT HTML"
-          />
         </section>
         {/* projects */}
         <section className="px-6">
           <h2 className="text-center text-purple-700 font-bold text-xl">Outros projetos</h2>
           <div className="flex gap-2 flex-col justify-center lg:justify-center lg:flex-row md:flex-wrap md:justify-center lg:gap-8">
-            <CardOuthersProjects Title="Tasks List"
-              Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
-              Tech="HTML CSS"
-            />
 
-            <CardOuthersProjects Title="Tasks List"
-              Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
-              Tech="HTML CSS"
-            />
 
-            <CardOuthersProjects Title="Tasks List"
-              Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
-              Tech="HTML CSS"
-            />
 
-            <CardOuthersProjects Title="Tasks List"
-              Content=" Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
-              Tech="HTML CSS"
-            />
           </div>
         </section>
 
