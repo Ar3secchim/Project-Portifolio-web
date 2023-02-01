@@ -4,6 +4,7 @@ import { useState } from "react"; // import state
 
 export function NavBar() {
   const urlDownloaded =  'https://drive.google.com/file/d/1jNllLICD4YHlo8E6cRNy7mBvc-uB9NSE/view?usp=share_link'
+
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
@@ -33,9 +34,10 @@ export function NavBar() {
             >
               <CloseBar />
             </div>
+
             <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-xl ">
               <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
-                <a href="#About">Sobre mim</a>
+                <a onClick={() => setIsNavOpen(false)} href="#About">Sobre mim</a>
               </li>
 
               <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
@@ -43,7 +45,7 @@ export function NavBar() {
               </li>
 
               <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
-                <a href="#Contact">Contato</a>
+                <a onClick={() => setIsNavOpen(false)} href="#Contact">Contato</a>
               </li>
 
               <li>

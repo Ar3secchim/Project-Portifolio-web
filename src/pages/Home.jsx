@@ -6,20 +6,12 @@ import { NavBar } from "../components/NavBar"
 import { CardProjects } from "../components/CardProjects"
 import { CardOuthersProjects } from "../components/CardOtherProjects"
 import { TitleSection } from "../components/TitleSection"
-import { useFetch } from '../hooks/useFetch'
+
+import { getRepos, getReposPinned } from '../hooks/useFetch'
 
 export function Home() {
-  // async function fetchUser() {
-  //   try {
-  //     Client.setToken("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");
-  //     const pinned = await Client.getPinnedRepos("Ar3secchim");
-  //     console.log(pinned);
-  //   } catch (err) {
-  //     console.log('Erro:', err);
-  //   }
-  // }
-  // fetchUser()
-  const { repos, loading, setRepos } = useFetch()
+  const { reposPinned, setReposPinned } = getReposPinned()
+  const { repos, setRepos } = getRepos()
 
   const post = [
     { id: Math.random(), title: 'HTML', percent: 60 },
@@ -104,7 +96,7 @@ export function Home() {
         <section id="projects" className="overflow-x-auto ">
           <TitleSection title="Projetos realizados" />
 
-          {repos.map(((repos, index) =>
+          {reposPinned.map(((repos, index) =>
             <CardProjects
               key={index}
               Title={repos.repo}
@@ -122,8 +114,17 @@ export function Home() {
           <h2 className="text-center text-purple-700 font-bold text-xl">Outros projetos</h2>
           <div className="flex gap-2 flex-col justify-center lg:justify-center lg:flex-row md:flex-wrap md:justify-center lg:gap-8">
 
-
-
+          {repos.map(((reposOther, index) =>
+            <CardOuthersProjects
+              key={index}
+              Github={reposOther.html_url}
+              Title={reposOther.name}
+              Content={reposOther.description}
+              Tech={reposOther.language}
+              Site={reposOther.homepage}
+            />))
+          }
+            
           </div>
         </section>
 
