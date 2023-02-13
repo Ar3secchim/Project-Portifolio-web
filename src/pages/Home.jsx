@@ -1,3 +1,5 @@
+import  emailJS from "@emailjs/browser"
+
 import { ReactComponent as ImgEmphasissds } from "../assets/imgs/img- emphasissds.svg"
 import WomenWeb from "../assets/imgs/womenWeb.png"
 
@@ -8,6 +10,7 @@ import { CardOuthersProjects } from "../components/CardOtherProjects"
 import { TitleSection } from "../components/TitleSection"
 
 import { getRepos, getReposPinned } from '../hooks/useFetch'
+import { useState } from "react"
 
 export function Home() {
   const { reposPinned, setReposPinned } = getReposPinned()
@@ -30,6 +33,34 @@ export function Home() {
     { id: Math.random(), title: 'Figma', percent: 80 },
     { id: Math.random(), title: 'AdobeXd', percent: 75 },
   ]
+
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [message, setMessage] = useState("")
+
+  function sendEmail(e){
+    e.preventDefault()
+    if(name === ""|| email==="" || message=== ""){
+      alert("preencha os campos")
+      return
+    }
+
+    const templateParams= {
+      from_name: name,
+      message:message,
+      email: email
+    }
+    
+    emailJS.send("service_qe0y1mq","template_i3cr15t",templateParams, "UiwZKI13oo8oASXPi")
+    .then((response)=>{
+      console.log("email enviado", response.status, response.text)
+      setEmail("")
+      setName("")
+      setMessage("")
+    }, (error)=>{
+      console.log("ERROR:",error)
+    })
+  }
 
   return (
     <>
@@ -109,22 +140,22 @@ export function Home() {
           }
 
         </section>
-        {/* projects */}
-        <section className="px-6">
+        {/* other projects */}
+        <section className="">
           <h2 className="text-center text-purple-700 font-bold text-xl">Outros projetos</h2>
-          <div className="flex gap-2 flex-col justify-center lg:justify-center lg:flex-row md:flex-wrap md:justify-center lg:gap-8">
+          <div className="flex gap-2 flex-col justify-center lg:justify-start lg:gap-6  lg:flex-row md:flex-wrap ">
 
-          {repos.map(((reposOther, index) =>
-            <CardOuthersProjects
-              key={index}
-              Github={reposOther.html_url}
-              Title={reposOther.name}
-              Content={reposOther.description}
-              Tech={reposOther.language}
-              Site={reposOther.homepage}
-            />))
-          }
-            
+            {repos.map(((reposOther, index) =>
+              <CardOuthersProjects
+                key={index}
+                Github={reposOther.html_url}
+                Title={reposOther.name}
+                Content={reposOther.description}
+                Tech={reposOther.language}
+                Site={reposOther.homepage}
+              />))
+            }
+              
           </div>
         </section>
 
@@ -135,11 +166,29 @@ export function Home() {
           <p className="text-center mb-6">Tem uma pergunta ou proposta, ou apenas quer
             para dizer oi? Vá em frente.</p>
 
-          <form className="flex flex-col items-center lg:w-full">
-            <input className="lg:w-3/6 p-2 my-2 outline-none border rounded-md " type='text' placeholder="Nome *" />
-            <input className="lg:w-3/6 p-2 my-2 outline-none border rounded-md pl-2" type='email' placeholder="Email *" />
-            <input className="lg:w-3/6 p-2 my-2 outline-none border rounded-md pl-2" type='text' placeholder="Assunto" />
-            <input className="lg:w-3/6 p-2 my-2 mb-6 outline-none border rounded-md pl-2" type='text' placeholder="Mensagem *" />
+          <form className="flex flex-col items-center lg:w-full"
+            onSubmit={sendEmail}>
+            <input className="lg:w-3/6 p-2 my-2 outline-none border rounded-md " 
+              type='text' 
+              placeholder="Nome *"
+              onChange={(e)=> setName(e.target.value)}  
+              value={name}
+            />
+
+            <input className="lg:w-3/6 p-2 my-2 outline-none border rounded-md pl-2" 
+              type='email' 
+              placeholder="Email *" 
+              onChange={(e)=> setEmail(e.target.value)}  
+              value={email}
+            />
+
+            <input className="lg:w-3/6 p-2 my-2 mb-6 outline-none border rounded-md pl-2" 
+              type='text' 
+              placeholder="Mensagem *" 
+              onChange={(e)=> setMessage(e.target.value)}  
+              value={message}  
+            />
+
             <button type="submit" className=" lg:w-44 bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
               rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular">
               ENVIAR

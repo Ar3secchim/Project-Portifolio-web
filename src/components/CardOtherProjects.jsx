@@ -5,7 +5,7 @@ export function CardOuthersProjects ({Title, Content, Tech, Github, Site}) {
   const site = `https://${Site}`
   
   return(
-    <div className="w-80 my-2 p-4 bg-gray-100 shadow-lg shadow-purple-700/25 rounded-xl lg:inline lg:w-96">
+    <div className="w-80 my-2 p-4 bg-gray-100 shadow-lg shadow-purple-700/25 rounded-xl lg:inline lg:max-w-sm">
       <ul className="flex justify-between">
         <a href={Github} target="blank"><Branch width={28} stroke ="#34014E" /></a>
         <a href={site}
