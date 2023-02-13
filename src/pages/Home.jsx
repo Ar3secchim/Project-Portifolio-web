@@ -100,14 +100,14 @@ export function Home() {
           <div className="lg:flex lg:items-center">
             <div className="flex-1" >
               <p className="text-justify lg:text-lg">
-                Meu nome é Renara e gosto de criar coisas que vivam no internet e ajuda as pessoas no seu dia-a-dia. meu interesse em programação, quando começou a pandemia de 2020 e percebeu o quanto as soluções estão ajudando a ajudar sociedade a passar por isso - descobriu-se que a curiosidade era dispersos para saber como funciona por trás de uma "tela" de celulares, notebooks e assim surgiu o primeiro 'Hello world' com HTML e CSS!
+              Sou Renara Secchim, tenho 26 anos e sou formada em Arquitetura e urbanismo porém iniciando minha transição de carreira. Estudo programação e desenvolvo projetos há mais de 1 anos.
+
+              Sou uma apaixonada na área de tecnologia, onde atualmente realizo muitos curso da área para aumentar o meu conhecimento. Me considero um pessoa dedicada, adaptativa e que não tem medo de tirar dúvidas quando necessário.
               </p>
               <div className="h-4"></div>
 
               <p className="text-justify lg:text-lg" >
-                Meu foco principal hoje é estudar cada vez mais e construir produtos
-                acessível e que proporciona experiências digitais aos diferentes
-                clientes.
+              Estou buscando minha primeira oportunidade no mercado de trabalho que seja desafiadora na qual eu possa está sempre buscando a evolução na área, e que eu possa aplicar novos conhecimentos adquiridos. Gosto bastante de trabalhar na área de FrontEnd Web.
               </p>
             </div>
 
