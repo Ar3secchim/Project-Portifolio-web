@@ -1,28 +1,40 @@
- 
-# *Portifolio Web project*
+# Project 
+Apresentação do meu site pessoal para expor os projetos desenvolvido consumido a Api do GitHub
+
+&nbsp;
+## Screenshot
 
 ![2](/src/assets/screnshot/Screenshot%202023-02-13%20134457.jpg)
 ![3](/src/assets/screnshot/Screenshot%202023-02-13%20134617.jpg)
 ![4](/src/assets/screnshot/Screenshot%202023-02-13%20134751.jpg)
 
-# *About this project*
+&nbsp;
+## Funcionalidades
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+- Api rest GitHub
 
-- Create for portifilio web
-- This repository is under construction e updates Design web
+- JavaScript- para interações e efeitos
 
-# Why
+&nbsp;
+## Funcionalidades em produção
 
->This project is part of my portfolio, I will be happy to receive feedback on the project, on the codes, structure or anything that helps me evolve to become a better developer.
+- Mode Dark
+
+&nbsp;
+## Stack utilizada
+
+- **Front-end:** React, CSS 3
+
+- **Libary:** Style-components
+
+&nbsp;
+## Maiores desafios
+- Consumo da Api
+
+&nbsp;
+## Feedback
+Este projeto faz parte do meu portfólio, ficarei feliz em receber feedback sobre o projeto, sobre os códigos, estrutura ou qualquer coisa que me ajude a evoluir para me tornar uma desenvolvedora melhor
 
 Email: renarasecchim@hotmail.com
 
-connect with me on [Linkedin](https://www.linkedin.com/in/renarasecchim/)
-
-# Tech
-
-- HTML5 - HTML structure!
-- CSS3- for style and design
-- JavaScript- for interctions and effects
-- Api rest GitHub
+Conecte-se comigo [Linkedin](https://www.linkedin.com/in/renarasecchim/)
