@@ -1,7 +1,6 @@
 import { ReactComponent as Link } from "../assets/icons/link.svg"
 import { ReactComponent as Github } from "../assets/icons/github.svg"
-
-
+import { StackIcon } from 'github-automated-repos/index';
 
 export function CardProjects({ Title, Text, Image, Site, GitHub, Tech }) {
  
@@ -14,7 +13,7 @@ export function CardProjects({ Title, Text, Image, Site, GitHub, Tech }) {
             md:inline pb-2"
             >Projeto de destaque</h3>
             <h2 className="pb-2 text-purple-700 font-regular text-xl">{Title}</h2>
-            <p className="hidden lg:block lg:text-lg">
+            <p className="lg:block lg:text-lg">
               {Text}
             </p>
 
@@ -32,12 +31,13 @@ export function CardProjects({ Title, Text, Image, Site, GitHub, Tech }) {
 
           </div>
 
-          <div className=" lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] flex justify-center">
+          <div className="lg:flex lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] flex justify-center hidden">
             <img src={Image} />
           </div>
 
         </div>
         {/* list links mobile */}
+        
         <ul className="lg:hidden">
           <span className="text-gray-500 hidden lg:inline">{Tech}</span>
 
@@ -45,7 +45,7 @@ export function CardProjects({ Title, Text, Image, Site, GitHub, Tech }) {
             <a href={GitHub} className="pr-2">
               <Github width={24} height={24} fill="#3B3F45" />
             </a>
-            <a href={Site} className="pr-2" >
+            <a href={Site} target="_blank" className="pr-2" >
               <Link width={24} fill="#3B3F45" />
             </a>
           </div>
