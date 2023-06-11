@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-
 export function getReposPinned() {
   const [reposPinned, setReposPinned] = useState([])
   const [loading, setIsLoading] = useState(true)
@@ -11,7 +10,6 @@ export function getReposPinned() {
      .then(res => {setReposPinned(res.data)})
       .finally(() => setIsLoading(false))
   }, [])
-
 
   return {
     reposPinned, setReposPinned

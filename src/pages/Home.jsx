@@ -1,4 +1,5 @@
 import  emailJS from "@emailjs/browser"
+import { useState } from "react"
 
 import { ReactComponent as ImgEmphasissds } from "../assets/imgs/img- emphasissds.svg"
 import WomenWeb from "../assets/imgs/womenWeb.png"
@@ -10,29 +11,11 @@ import { CardOuthersProjects } from "../components/CardOtherProjects"
 import { TitleSection } from "../components/TitleSection"
 
 import { getRepos, getReposPinned } from '../hooks/useFetch'
-import { useState } from "react"
+ import { language, frameworksLibrary, UxAndUi } from '../dataBase/languague'
 
 export function Home() {
   const { reposPinned, setReposPinned } = getReposPinned()
   const { repos, setRepos } = getRepos()
-
-  const post = [
-    { id: Math.random(), title: 'HTML', percent: 60 },
-    { id: Math.random(), title: 'CSS', percent: 50 },
-    { id: Math.random(), title: 'JavaScript', percent: 40 },
-  ]
-
-  const frameworksLibrary = [
-    { id: Math.random(), title: 'React', percent: 35 },
-    { id: Math.random(), title: 'Tailwind css', percent: 25 },
-    { id: Math.random(), title: 'Git & GitHub', percent: 40 },
-    { id: Math.random(), title: 'Style Component', percent: 25 },
-  ]
-
-  const UxAndUi = [
-    { id: Math.random(), title: 'Figma', percent: 80 },
-    { id: Math.random(), title: 'AdobeXd', percent: 75 },
-  ]
 
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
@@ -41,7 +24,7 @@ export function Home() {
   function sendEmail(e){
     e.preventDefault()
     if(name === ""|| email==="" || message=== ""){
-      alert("preencha os campos")
+      alert("Preencha os campos")
       return
     }
 
@@ -53,7 +36,6 @@ export function Home() {
     
     emailJS.send("service_qe0y1mq","template_i3cr15t",templateParams, "UiwZKI13oo8oASXPi")
     .then((response)=>{
-      console.log("email enviado", response.status, response.text)
       setEmail("")
       setName("")
       setMessage("")
@@ -118,7 +100,7 @@ export function Home() {
         {/*Skills */}
         <section id="Skills">
           <TitleSection title="Skills" />
-          <CardSkill title="Programming Languages" post={post} />
+          <CardSkill title="Programming Languages" post={language} />
           <CardSkill title="Frameworks & Library & Tools" post={frameworksLibrary} />
           <CardSkill title="UX / UI " post={UxAndUi} />
         </section>
@@ -129,19 +111,19 @@ export function Home() {
 
           {reposPinned.map(((repos, index) =>
             <CardProjects
-              key={index}
-              Title={repos.repo}
-              Text={repos.description}
-              Image={repos.image}
-              Tech={repos.language}
-              GitHub={repos.link}
-              Site={repos.website}
+            key={index}
+            Title={repos.repo}
+            Text={repos.description}
+            Image={repos.image}
+            Tech={repos.language}
+            GitHub={repos.link}
+            Site={repos.website}
             />))
           }
 
         </section>
         {/* other projects */}
-        <section className="">
+        <section>
           <h2 className="text-center text-purple-700 font-bold text-xl">Outros projetos</h2>
           <div className="flex gap-2 flex-col justify-center lg:justify-start lg:gap-6  lg:flex-row md:flex-wrap ">
 
