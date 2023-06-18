@@ -118,6 +118,7 @@ export function Home() {
             Tech={repos.language}
             GitHub={repos.link}
             Site={repos.website}
+            
             />))
           }
 
@@ -135,6 +136,7 @@ export function Home() {
                 Content={reposOther.description}
                 Tech={reposOther.language}
                 Site={reposOther.homepage}
+                Stacks = {reposOther.topics}
               />))
             }
               
