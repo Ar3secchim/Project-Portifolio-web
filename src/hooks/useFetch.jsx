@@ -5,12 +5,30 @@ export function getReposPinned() {
   const [reposPinned, setReposPinned] = useState([])
   const [loading, setIsLoading] = useState(true)
 
+  function dataReposGithub(data, keyWordDeploy) {
+      let dataFilter = [];
+
+      dataFilter = data.filter((item) => item.topics.includes(keyWordDeploy));
+       dataFilter.map((item) => ({
+          id: item.id,
+          name: item.name,
+          git: item.html_url,
+          description: item.description,
+          topics: item.topics,
+          homepage: item.homepage,
+      }));
+
+    console.log(dataFilter)
+    return  dataFilter
+  }
+
+
   useEffect(() => {
-    axios.get("https://gh-pinned-repos.egoist.dev/?username=Ar3secchim")
-     .then(res => {setReposPinned(res.data)})
+    axios.get("https://api.github.com/users/Ar3secchim/repos")
+    .then(res => dataReposGithub(res.data, 'pinned'))
+    .then(repos =>{setReposPinned(repos)})
       .finally(() => setIsLoading(false))
   }, [])
-
   return {
     reposPinned, setReposPinned
   }
@@ -25,7 +43,6 @@ export function getRepos() {
       .then(res => {setRepos(res.data)})
       .finally(() => setIsLoading(false))
   }, [])
-
 
   return {
     repos, loading, setRepos

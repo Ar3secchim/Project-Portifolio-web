@@ -109,16 +109,15 @@ export function Home() {
         <section id="projects" className="overflow-x-auto ">
           <TitleSection title="Projetos realizados" />
 
-          {reposPinned.map(((repos, index) =>
+          {reposPinned.map(((repos) =>
             <CardProjects
-            key={index}
-            Title={repos.repo}
+            key={repos.id}
+            Title={repos.name}
             Text={repos.description}
-            Image={repos.image}
-            Tech={repos.language}
-            GitHub={repos.link}
-            Site={repos.website}
-            
+            Image={repos.Image}
+            Site={repos.homepage}
+            Github={repos.git}
+            Tech={repos.topics}
             />))
           }
 
