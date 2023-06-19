@@ -31,7 +31,7 @@ export function CardProjects({ Title, Text, Image, Site, GitHub, Tech }) {
 
           </div>
 
-          <div className="lg:flex lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] flex justify-center hidden">
+          <div className="lg:flex lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] hidden justify-center ">
             <img src={Image} />
           </div>
 
