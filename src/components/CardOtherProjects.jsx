@@ -1,8 +1,9 @@
 import { ReactComponent as Link } from "../assets/icons/link.svg"
 import { ReactComponent as Branch } from "../assets/icons/branch.svg"
+
 import { StackIcon } from 'github-automated-repos/index';
 
-export function CardOuthersProjects ({Title, Content, Tech, Github, Site, Stacks}) {
+export function CardOuthersProjects ({Title, Content, Github, Site, Stacks}) {
   const site = `https://${Site}`
   
   return(
@@ -18,7 +19,7 @@ export function CardOuthersProjects ({Title, Content, Tech, Github, Site, Stacks
         <p>{Content}</p>
       </div>
 
-      <span className= "text-xs text-purple-700 font-thin">{Tech}</span>
+  
       <span className="flex gap-3 mt-2 justify-start justify-items-start">
         {Stacks.map((icon) => {
                   return (

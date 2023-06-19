@@ -11,7 +11,7 @@ import { CardOuthersProjects } from "../components/CardOtherProjects"
 import { TitleSection } from "../components/TitleSection"
 
 import { getRepos, getReposPinned } from '../hooks/useFetch'
- import { language, frameworksLibrary, UxAndUi } from '../dataBase/languague'
+ import { language, frameworksLibrary, UxAndUi } from '../dataBase/dataBase'
 
 export function Home() {
   const { reposPinned, setReposPinned } = getReposPinned()
@@ -109,16 +109,15 @@ export function Home() {
         <section id="projects" className="overflow-x-auto ">
           <TitleSection title="Projetos realizados" />
 
-          {reposPinned.map(((repos, index) =>
+          {reposPinned.map(((repos) =>
             <CardProjects
-            key={index}
-            Title={repos.repo}
-            Text={repos.description}
-            Image={repos.image}
-            Tech={repos.language}
-            GitHub={repos.link}
-            Site={repos.website}
-            
+              key={repos.id}
+              Title={repos.name}
+              Text={repos.description}
+              Site={repos.homepage}
+              GitHub={repos.html_url}
+              Stacks={repos.topics}
+              Image={`https://opengraph.githubassets.com/1/Ar3secchim/${repos.name}`}
             />))
           }
 
@@ -128,13 +127,12 @@ export function Home() {
           <h2 className="text-center text-purple-700 font-bold text-xl">Outros projetos</h2>
           <div className="flex gap-2 flex-col justify-center lg:justify-start lg:gap-6  lg:flex-row md:flex-wrap ">
 
-            {repos.map(((reposOther, index) =>
+            {repos.map(((reposOther) =>
               <CardOuthersProjects
-                key={index}
+                key={reposOther.id}
                 Github={reposOther.html_url}
                 Title={reposOther.name}
                 Content={reposOther.description}
-                Tech={reposOther.language}
                 Site={reposOther.homepage}
                 Stacks = {reposOther.topics}
               />))
