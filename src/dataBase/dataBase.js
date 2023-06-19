@@ -19,4 +19,9 @@ const UxAndUi = [
   { id: Math.random(), title: 'AdobeXd', percent: 65 },
 ]
 
-export  {language, frameworksLibrary, UxAndUi}
+const images = [
+  "https://github.com/Ar3secchim/project-77-days/assets/82913620/d0979d6e-410a-4d4a-96cf-2f1f955910df",
+  
+]
+
+export  {language, frameworksLibrary, UxAndUi,images }

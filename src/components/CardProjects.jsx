@@ -1,9 +1,10 @@
 import { ReactComponent as Link } from "../assets/icons/link.svg"
 import { ReactComponent as Github } from "../assets/icons/github.svg"
+
 import { StackIcon } from 'github-automated-repos/index';
 
-export function CardProjects({ Title, Text, Image, Site, GitHub, Tech }) {
- 
+export function CardProjects({ Title, Text, Site, GitHub, Stacks,Image }) {
+  
     return (
       <div className="py-4">
         <div className=" lg:flex lg:items-center lg:relative overflow-hidden lg:py-8">
@@ -18,12 +19,17 @@ export function CardProjects({ Title, Text, Image, Site, GitHub, Tech }) {
             </p>
 
             <div className="hidden md:hidden lg:flex lg:pt-4 lg:flex-col" >
-              <span className="text-white font-regular hidden lg:inline lg:w-fit lg:p-1 lg:rounded-md lg:bg-purple-300">{Tech}</span>
+              <span className="flex gap-3 mt-2 justify-start justify-items-start">
+                {Stacks.map((icon) => {
+                  return (<StackIcon key={icon} iconItem={icon} />)
+                })}
+              </span>
+
               <div className="lg:flex lg:pt-3 ">
-                <a href={GitHub} className="pr-2">
+                <a href={GitHub} target="_blank" className="pr-2">
                   <Github width={24} height={24} fill="#3B3F45" />
                 </a>
-                <a href={Site} className="pr-2" >
+                <a href={Site} target="_blank" className="pr-2" >
                   <Link width={24} fill="#3B3F45" />
                 </a>
               </div>
@@ -31,18 +37,23 @@ export function CardProjects({ Title, Text, Image, Site, GitHub, Tech }) {
 
           </div>
 
-          <div className="lg:flex lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] hidden justify-center ">
+          <div className="lg:flex lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] flex justify-center ">
             <img src={Image} />
           </div>
 
         </div>
+  
         {/* list links mobile */}
         
         <ul className="lg:hidden">
-          <span className="text-gray-500 hidden lg:inline">{Tech}</span>
+          <span className="flex gap-3 mt-2 justify-start justify-items-start">
+            {Stacks.map((icon) => {
+              return (<StackIcon key={icon} iconItem={icon} />)
+            })}
+          </span>
 
           <div className="flex mt-2 justify-end">
-            <a href={GitHub} className="pr-2">
+            <a href={GitHub} target="_blank" className="pr-2">
               <Github width={24} height={24} fill="#3B3F45" />
             </a>
             <a href={Site} target="_blank" className="pr-2" >
