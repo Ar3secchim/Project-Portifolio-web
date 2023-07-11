@@ -5,26 +5,26 @@ import { StackIcon } from 'github-automated-repos/index'
 
 export function CardProjects({ Title, Text, Site, GitHub, Stacks, Image }) {
   return (
-    <div className="py-4">
-      <div className=" lg:flex lg:items-center lg:relative overflow-hidden lg:py-8">
-        <div className="lg:flex lg:flex-col  lg:absolute lg:w-4/6 lg:bg-gray-100/90 lg:shadow-lg lg:shadow-purple-700/25 lg:rounded-xl lg:p-6 lg:z-10">
+    <div className="lg:py-4">
+      <div className="lg:h-full lg:flex lg:items-center lg:relative overflow-hidden lg:py-8">
+        <div className="lg:flex lg:flex-col lg:absolute lg:w-4/6  bg-gray-100/90 shadow-lg:shadow-purple-700/25 rounded-xl p-6 lg:z-10">
           <h3
             className="hidden text-base text-gray-500
-            md:inline pb-2"
+            lg:inline pb-2"
           >
             Projeto de destaque
           </h3>
-          <h2 className="pb-2 text-purple-700 font-regular text-xl">{Title}</h2>
+          <h2 className="pb-2 text-purple-700 font-regular text-lg">{Title}</h2>
           <p className="lg:block lg:text-lg">{Text}</p>
 
-          <div className="hidden md:hidden lg:flex lg:pt-4 lg:flex-col">
-            <span className="flex gap-3 mt-2 justify-start justify-items-start">
+          <div className="flex flex-row justify-between lg:pt-4 lg:flex-col">
+            <span className="flex gap-2 mt-2 justify-start justify-items-start">
               {Stacks.map((icon) => {
                 return <StackIcon key={icon} iconItem={icon} />
               })}
             </span>
 
-            <div className="lg:flex lg:pt-3 ">
+            <div className="md:flex lg:flex lg:pt-3 ">
               <a
                 href={GitHub}
                 target="_blank"
@@ -40,13 +40,13 @@ export function CardProjects({ Title, Text, Site, GitHub, Stacks, Image }) {
           </div>
         </div>
 
-        <div className="lg:flex lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] flex justify-center ">
+        <div className="lg:flex md:hidden sm:hidden lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] flex justify-center ">
           <img src={Image} alt="imagem do" />
         </div>
       </div>
 
       {/* list links mobile */}
-
+      {/* 
       <ul className="lg:hidden">
         <span className="flex gap-3 mt-2 justify-start justify-items-start">
           {Stacks.map((icon) => {
@@ -62,7 +62,7 @@ export function CardProjects({ Title, Text, Site, GitHub, Stacks, Image }) {
             <Link width={24} fill="#3B3F45" />
           </a>
         </div>
-      </ul>
+      </ul> */}
     </div>
   )
 }

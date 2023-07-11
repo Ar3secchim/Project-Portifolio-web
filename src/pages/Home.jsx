@@ -62,7 +62,7 @@ export function Home() {
           <div className="text-center pt-4 ">
             <h3 className="text-lg">Hellou,</h3>
             <h1 className="effect text-[28px]">
-              Eu sou a
+              Eu sou a <span> </span>
               <strong className=" text-purple-700 underline decoration-purple-200">
                 Renara Secchim
               </strong>
@@ -101,9 +101,16 @@ export function Home() {
           <div className="lg:flex lg:items-center">
             <div className="flex-1">
               <p className="text-justify lg:text-lg">
-                Sou Renara Secchim, tenho 26 anos e sou formada em Arquitetura e
-                urbanismo porém iniciando minha transição de carreira. Estudo
-                programação e desenvolvo projetos há mais de 1 anos. Sou uma
+                Sou a Renara, tenho 26 anos,sou o tipo de pessoa que sempre está
+                seu modo apreendiz ligado, sou brincalhona e alto astral e aonde
+                chego contágio o lugar com alegria. Mãe de gato além de ser uma
+                atleta híbrida em construção. Sou um arquiteta que se encontrou
+                na área de tecnologia, por causa de uma decepção na área de
+                arquitetura. Sempre quis ajudar o máximo de pessoas com a minhas
+                soluções, porém a arquitetura me trouxe um decepção imensa além
+                de me deixar muito perdida no meu propósito. Hoje eu reconheço
+                quem sou, o que eu quero, pois a tecnologia me proporcionou esse
+                autoconhecimento, além de me fazer sentir realizada. Sou uma
                 apaixonada na área de tecnologia, onde atualmente realizo muitos
                 curso da área para aumentar o meu conhecimento. Me considero um
                 pessoa dedicada, adaptativa e que não tem medo de tirar dúvidas
@@ -120,7 +127,11 @@ export function Home() {
               </p>
             </div>
 
-            <img className="flex-1" src={WomenWeb} nvm />
+            <img
+              className="flex-1 w-4"
+              alt="Ilustração de uma menina sentada com o notebook em cima das pernas"
+              src={WomenWeb}
+            />
           </div>
         </section>
 
