@@ -1,17 +1,20 @@
-import { ReactComponent as Link } from "../assets/icons/link.svg"
-import { ReactComponent as Branch } from "../assets/icons/branch.svg"
+import { ReactComponent as Branch } from '../assets/icons/branch.svg'
+import { ReactComponent as Link } from '../assets/icons/link.svg'
 
-import { StackIcon } from 'github-automated-repos/index';
+import { StackIcon } from 'github-automated-repos/index'
 
-export function CardOuthersProjects ({Title, Content, Github, Site, Stacks}) {
+export function CardOuthersProjects({ Title, Content, Github, Site, Stacks }) {
   const site = `https://${Site}`
-  
-  return(
+
+  return (
     <div className="w-80 my-2 p-4 bg-gray-100 shadow-lg shadow-purple-700/25 rounded-xl lg:inline lg:max-w-sm">
       <ul className="flex justify-between">
-        <a href={Github} target="blank"><Branch width={28} stroke ="#34014E" /></a>
-        <a href={site}
-         target="blank"> <Link width={24} fill="#34014E"/></a>
+        <a href={Github} target="blank">
+          <Branch width={28} stroke="#34014E" />
+        </a>
+        <a href={site} target="blank">
+          <Link width={24} fill="#34014E" />
+        </a>
       </ul>
 
       <div className="py-2">
@@ -19,14 +22,10 @@ export function CardOuthersProjects ({Title, Content, Github, Site, Stacks}) {
         <p>{Content}</p>
       </div>
 
-  
       <span className="flex gap-3 mt-2 justify-start justify-items-start">
         {Stacks.map((icon) => {
-                  return (
-                    <StackIcon key={icon} iconItem={icon} />
-                  )
-                })}
-
+          return <StackIcon key={icon} iconItem={icon} />
+        })}
       </span>
     </div>
   )
