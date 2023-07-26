@@ -1,5 +1,5 @@
 export default function filterReposGithub(data, keyWordDeploy) {
-  let dataFilter = [];
+  let dataFilter = []
 
   dataFilter = data.filter((item) => item.topics.includes(keyWordDeploy))
   dataFilter.map((item) => ({
@@ -9,8 +9,8 @@ export default function filterReposGithub(data, keyWordDeploy) {
     description: item.description,
     topics: item.topics,
     homepage: item.homepage,
-  }));
-  
+  }))
+
   console.log(dataFilter)
-  return  dataFilter
+  return dataFilter
 }

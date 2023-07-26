@@ -4,10 +4,10 @@ import { ReactComponent as Link } from '../assets/icons/link.svg'
 import { StackIcon } from 'github-automated-repos/index'
 
 export function CardOuthersProjects({ Title, Content, Github, Site, Stacks }) {
-  const site = `https://${Site}`
+  const site = `${Site}`
 
   return (
-    <div className="w-80 my-2 p-4 bg-gray-100 shadow-lg shadow-purple-700/25 rounded-xl lg:inline lg:max-w-sm">
+    <div className="w-80 h-72 my-2 p-4 bg-gray-100 shadow-lg shadow-purple-700/25 rounded-xl lg:inline lg:max-w-sm">
       <ul className="flex justify-between">
         <a href={Github} target="blank">
           <Branch width={28} stroke="#34014E" />
@@ -17,16 +17,16 @@ export function CardOuthersProjects({ Title, Content, Github, Site, Stacks }) {
         </a>
       </ul>
 
-      <div className="py-2">
-        <h3 className="text-purple-700 font-bold pb-2">{Title}</h3>
-        <p>{Content}</p>
-      </div>
+      <h3 className="text-purple-700 font-bold ">{Title}</h3>
 
-      <span className="flex gap-3 mt-2 justify-start justify-items-start">
-        {Stacks.map((icon) => {
-          return <StackIcon key={icon} iconItem={icon} />
-        })}
-      </span>
+      <div className="py-2 h-48 flex flex-col justify-between">
+        <p>{Content}</p>
+        <span className="flex gap-2">
+          {Stacks.map((icon) => {
+            return <StackIcon key={icon} iconItem={icon} />
+          })}
+        </span>
+      </div>
     </div>
   )
 }

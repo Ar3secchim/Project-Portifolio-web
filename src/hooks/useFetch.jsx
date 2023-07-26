@@ -1,19 +1,23 @@
-import axios from "axios"
-import { useState, useEffect } from "react"
-import filterReposGithub  from "./dataReposGithub" 
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import filterReposGithub from './dataReposGithub'
 
 export function getReposPinned() {
   const [reposPinned, setReposPinned] = useState([])
   const [loading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    axios.get("https://api.github.com/users/Ar3secchim/repos")
-    .then(res => filterReposGithub(res.data, 'pinned'))
-    .then(repos =>{setReposPinned(repos)})
+    axios
+      .get('https://api.github.com/users/Ar3secchim/repos')
+      .then((res) => filterReposGithub(res.data, 'pinned'))
+      .then((repos) => {
+        setReposPinned(repos)
+      })
       .finally(() => setIsLoading(false))
   }, [])
   return {
-    reposPinned, setReposPinned
+    reposPinned,
+    setReposPinned,
   }
 }
 
@@ -22,12 +26,19 @@ export function getRepos() {
   const [loading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    axios.get("https://api.github.com/users/Ar3secchim/repos?sort=created&per_page=6")
-      .then(res => {setRepos(res.data)})
+    axios
+      .get(
+        'https://api.github.com/users/Ar3secchim/repos?sort=create&per_page=7',
+      )
+      .then((res) => {
+        setRepos(res.data)
+      })
       .finally(() => setIsLoading(false))
   }, [])
 
   return {
-    repos, loading, setRepos
+    repos,
+    loading,
+    setRepos,
   }
 }
