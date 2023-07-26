@@ -9,7 +9,7 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <div className="w-full flex justify-between py-4 px-10 fixed backdrop-blur-2xl z-50">
+    <div className="w-full flex justify-between py-4 fixed backdrop-blur-2xl z-50 xl:px-40 lg:px-40 px-10">
       <a href="/">
         <Logo width={50} className="" />
       </a>
@@ -37,7 +37,7 @@ export function NavBar() {
               <CloseBar />
             </div>
 
-            <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] text-xl ">
+            <ul className="min-h-[250px] text-xl ">
               <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
                 <a onClick={() => setIsNavOpen(false)} href="#About">
                   Sobre mim

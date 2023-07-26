@@ -57,12 +57,9 @@ export function Home() {
   return (
     <>
       <NavBar />
-      <main
-        id="home"
-        className=" mx-auto px-10 py-20 xl:px-82 lg:px-32 md:px-32"
-      >
+      <main id="home" className="mx-auto px-10 py-20 xl:mx-40 lg:mx-24 md:mx-8">
         <section className="flex flex-col gap-8 items-center justify-around lg:flex-row-reverse">
-          <ImgEmphasissds width={380} className="xl:flex-2 lg:flex-1" />
+          <ImgEmphasissds width={380} className=" lg:flex-2" />
           <div className="text-center pt-4 lg:flex-1 lg:flex lg:flex-col lg:items-center">
             <h3 className="text-lg">Hellou,</h3>
             <h1 className="effect text-[28px]">
@@ -137,7 +134,7 @@ export function Home() {
         </section>
 
         {/* Skills */}
-        <section id="Skills">
+        <section className=" flex flex-col gap-2">
           <TitleSection title="Skills" />
           <CardSkill title="Programming Languages" post={language} />
           <CardSkill
@@ -165,9 +162,7 @@ export function Home() {
         </section>
         {/* other projects */}
         <section>
-          <h2 className="text-center text-purple-700 font-bold text-xl">
-            Outros projetos
-          </h2>
+          <TitleSection title="Outros projetos" />
           <div className="flex gap-2 flex-col justify-center lg:justify-start lg:gap-6 lg:flex-row md:flex-wrap md:itens-center">
             {repos.map((reposOther) => (
               <CardOuthersProjects
