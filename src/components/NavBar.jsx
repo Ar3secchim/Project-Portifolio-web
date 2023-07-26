@@ -9,29 +9,29 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <div className="container flex items-center justify-between md:mx-auto py-4">
+    <div className="w-full flex justify-between py-4 px-10 fixed backdrop-blur-2xl z-50">
       <a href="/">
-        <Logo width={50} />
+        <Logo width={50} className="" />
       </a>
 
       <div>
-        <section className="MOBILE-MENU flex lg:hidden sm:hidden ">
+        <section className="flex lg:hidden sm:hidden ">
           <div
-            className="HAMBURGER-ICON space-y-2"
+            className="space-y-2"
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
           >
-            <span className="block h-0.5 w-8 animate-pulse bg-purple-700"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-purple-700"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-purple-700"></span>
+            <span className="block h-1 w-8 animate-pulse bg-purple-700"></span>
+            <span className="block h-1 w-8 animate-pulse bg-purple-700"></span>
+            <span className="block h-1 w-8 animate-pulse bg-purple-700"></span>
           </div>
 
           <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
-            <div className="absolute top-5 left-0 px-4 py-4 ">
+            <div className="absolute top-5 left-0 px-10 py-1 ">
               <Logo width={50} />
             </div>
             {/* toggle class based on isNavOpen state */}
             <div
-              className="CROSS-ICON absolute top-0 right-0 px-8 py-8"
+              className="absolute top-0 right-0 px-11 py-4"
               onClick={() => setIsNavOpen(false)} // change isNavOpen state to false to close the menu
             >
               <CloseBar />
@@ -71,7 +71,7 @@ export function NavBar() {
       </div>
 
       <nav
-        className="DESKTOP-MENU hidden md:flex lg:flex  justify-between text-purple-700 text-lg  font-regular
+        className=" hidden md:flex lg:flex  justify-between text-purple-700 text-lg  font-regular
       "
       >
         <ul className="flex gap-6 items-center">

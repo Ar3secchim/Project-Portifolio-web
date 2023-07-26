@@ -57,40 +57,42 @@ export function Home() {
   return (
     <>
       <NavBar />
-      <main id="home" className="container mx-auto ">
-        <section className=" flex flex-col gap-8 items-center">
-          <div className="text-center pt-4 ">
+      <main
+        id="home"
+        className=" mx-auto px-10 py-20 xl:px-82 lg:px-32 md:px-32"
+      >
+        <section className="flex flex-col gap-8 items-center justify-around lg:flex-row-reverse">
+          <ImgEmphasissds width={380} className="xl:flex-2 lg:flex-1" />
+          <div className="text-center pt-4 lg:flex-1 lg:flex lg:flex-col lg:items-center">
             <h3 className="text-lg">Hellou,</h3>
             <h1 className="effect text-[28px]">
               Eu sou a <span> </span>
               <strong className=" text-purple-700 underline decoration-purple-200">
-                Renara Secchim
+                Renara Secchim !
               </strong>
             </h1>
-          </div>
 
-          <ImgEmphasissds width={380} />
-
-          <div>
-            <a
-              href="https://www.linkedin.com/in/renarasecchim/"
-              target="_blank"
-              className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
+            <div className="mt-8">
+              <a
+                href="https://www.linkedin.com/in/renarasecchim/"
+                target="_blank"
+                className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
               rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700  mr-4 font-regular"
-              rel="noreferrer"
-            >
-              LINKEDIN
-            </a>
+                rel="noreferrer"
+              >
+                LINKEDIN
+              </a>
 
-            <a
-              href="https://github.com/Ar3secchim"
-              target="_blank"
-              className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
+              <a
+                href="https://github.com/Ar3secchim"
+                target="_blank"
+                className=" bg-gray-100  shadow-lg shadow-purple-700/30 text-lg text-purple-700
             rounded-lg px-6 py-2 hover:bg-violet-300 hover:text-purple-700 font-regular"
-              rel="noreferrer"
-            >
-              GITHUB
-            </a>
+                rel="noreferrer"
+              >
+                GITHUB
+              </a>
+            </div>
           </div>
         </section>
 
@@ -100,25 +102,24 @@ export function Home() {
 
           <div className="lg:flex lg:items-center">
             <div className="flex-1">
-              <p className="text-justify lg:text-lg">
-                Sou a Renara, tenho 26 anos,sou o tipo de pessoa que sempre está
-                seu modo apreendiz ligado, sou brincalhona e alto astral e aonde
-                chego contágio o lugar com alegria. Mãe de gato além de ser uma
-                atleta híbrida em construção. Sou um arquiteta que se encontrou
-                na área de tecnologia, por causa de uma decepção na área de
-                arquitetura. Sempre quis ajudar o máximo de pessoas com a minhas
-                soluções, porém a arquitetura me trouxe um decepção imensa além
-                de me deixar muito perdida no meu propósito. Hoje eu reconheço
-                quem sou, o que eu quero, pois a tecnologia me proporcionou esse
-                autoconhecimento, além de me fazer sentir realizada. Sou uma
-                apaixonada na área de tecnologia, onde atualmente realizo muitos
-                curso da área para aumentar o meu conhecimento. Me considero um
-                pessoa dedicada, adaptativa e que não tem medo de tirar dúvidas
-                quando necessário.
+              <p className="text-justify  lg:text-base xl:text-lg">
+                Sou a Renara, tenho 26 anos, sou o tipo de pessoa que sempre
+                está seu modo aprendiz ligado, sou brincalhona e alto astral e
+                aonde chego contágio o lugar com alegria. Sou um arquiteta que
+                se encontrou na área de tecnologia, por causa de uma decepção na
+                área de arquitetura. Sempre quis ajudar o máximo de pessoas com
+                a minhas soluções, porém a arquitetura me trouxe um decepção
+                imensa além de me deixar muito perdida no meu propósito. Hoje eu
+                reconheço quem sou, o que eu quero, pois a tecnologia me
+                proporcionou esse autoconhecimento, além de me fazer sentir
+                realizada. Sou uma apaixonada na área de tecnologia, onde
+                atualmente realizo muitos curso da área para aumentar o meu
+                conhecimento. Me considero um pessoa dedicada, adaptativa e que
+                não tem medo de tirar dúvidas quando necessário.
               </p>
               <div className="h-4"></div>
 
-              <p className="text-justify lg:text-lg">
+              <p className="text-justify lg:text-base xl:text-lg">
                 Estou buscando minha primeira oportunidade no mercado de
                 trabalho que seja desafiadora na qual eu possa está sempre
                 buscando a evolução na área, e que eu possa aplicar novos
@@ -128,7 +129,7 @@ export function Home() {
             </div>
 
             <img
-              className="flex-1 w-4"
+              className="hidden w-4 lg:flex lg:w-80 xl:flex-1 md:hidden"
               alt="Ilustração de uma menina sentada com o notebook em cima das pernas"
               src={WomenWeb}
             />
@@ -167,14 +168,14 @@ export function Home() {
           <h2 className="text-center text-purple-700 font-bold text-xl">
             Outros projetos
           </h2>
-          <div className="flex gap-2 flex-col justify-center lg:justify-start lg:gap-6  lg:flex-row md:flex-wrap ">
+          <div className="flex gap-2 flex-col justify-center lg:justify-start lg:gap-6 lg:flex-row md:flex-wrap md:itens-center">
             {repos.map((reposOther) => (
               <CardOuthersProjects
                 key={reposOther.id}
                 Github={reposOther.html_url}
                 Title={reposOther.name}
                 Content={reposOther.description}
-                Site={reposOther.homepage}
+                Site={reposOther.html_url}
                 Stacks={reposOther.topics}
               />
             ))}

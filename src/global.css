@@ -10,9 +10,6 @@
 html{
   font-family: 'Inter', sans-serif;
 }
-body{
-  padding: 0rem 8rem
-}
 
 /* Firefox */
 * {
@@ -59,14 +56,13 @@ body{
 .effect{
   white-space: nowrap;
   overflow: hidden;
-  width: 25em;
+  width: 25rem;
   animation: type 4s steps(60, end);
 }
 
 p:nth-child(2){
   animation: type2 8s steps(60, end);
 }
-
 
 @keyframes type{
   from { width: 0; }
