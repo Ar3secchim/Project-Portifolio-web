@@ -11,6 +11,5 @@ export default function filterReposGithub(data, keyWordDeploy) {
     homepage: item.homepage,
   }))
 
-  console.log(dataFilter)
   return dataFilter
 }
