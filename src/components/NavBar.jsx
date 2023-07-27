@@ -9,7 +9,7 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <div className="w-full flex justify-between py-4 fixed backdrop-blur-2xl z-50 xl:px-40 lg:px-40 px-10">
+    <div className="container mx-auto flex justify-between py-4 fixed backdrop-blur-2xl px-8 z-50 w-full ">
       <a href="/">
         <Logo width={50} className="" />
       </a>
@@ -37,18 +37,20 @@ export function NavBar() {
               <CloseBar />
             </div>
 
-            <ul className="min-h-[250px] text-xl ">
-              <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
+            <ul className="min-h-[250px] text-xl flex flex-col items-center gap-10">
+              <li className=" text-purple-700 underline  decoration-purple-200  font-regular">
                 <a onClick={() => setIsNavOpen(false)} href="#About">
                   Sobre mim
                 </a>
               </li>
 
-              <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
-                <a href="#projects">Projetos</a>
+              <li className=" text-purple-700 underline  decoration-purple-200 font-regular">
+                <a onClick={() => setIsNavOpen(false)} href="#projects">
+                  Projetos
+                </a>
               </li>
 
-              <li className=" text-purple-700 border-b border-purple-300 my-8 font-regular">
+              <li className=" text-purple-700 underline  decoration-purple-200 font-regular">
                 <a onClick={() => setIsNavOpen(false)} href="#Contact">
                   Contato
                 </a>

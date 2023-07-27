@@ -57,14 +57,17 @@ export function Home() {
   return (
     <>
       <NavBar />
-      <main id="home" className="mx-auto px-10 py-20 xl:mx-40 lg:mx-24 md:mx-8">
-        <section className="flex flex-col gap-8 items-center justify-around lg:flex-row-reverse">
-          <ImgEmphasissds width={380} className=" lg:flex-2" />
+      <main
+        id="home"
+        className="container mx-auto px-8 overflow-x-hidden lg:px-20 pt-20"
+      >
+        <section className="flex flex-col gap-8 items-center justify-around lg:flex-row">
+          <ImgEmphasissds width={320} className="lg:flex-2" />
           <div className="text-center pt-4 lg:flex-1 lg:flex lg:flex-col lg:items-center">
-            <h3 className="text-lg">Hellou,</h3>
-            <h1 className="effect text-[28px]">
+            <h3 className="text-xl">Hellou,</h3>
+            <h1 className="text-xl effect text-[28px]">
               Eu sou a <span> </span>
-              <strong className=" text-purple-700 underline decoration-purple-200">
+              <strong className="text-xl lg:text-lg text-purple-700 underline decoration-purple-200">
                 Renara Secchim !
               </strong>
             </h1>
@@ -94,7 +97,7 @@ export function Home() {
         </section>
 
         {/* About  */}
-        <section id="About">
+        <section id="About" className="mt-4">
           <TitleSection title="Sobre mim" />
 
           <div className="lg:flex lg:items-center">
@@ -163,7 +166,7 @@ export function Home() {
         {/* other projects */}
         <section>
           <TitleSection title="Outros projetos" />
-          <div className="flex gap-2 flex-col justify-center lg:justify-start lg:gap-6 lg:flex-row md:flex-wrap md:itens-center">
+          <div className="flex gap-6 flex-wrap">
             {repos.map((reposOther) => (
               <CardOuthersProjects
                 key={reposOther.id}
@@ -189,7 +192,7 @@ export function Home() {
           </p>
 
           <form
-            className="flex flex-col items-center lg:w-full"
+            className="flex flex-col items-center lg:w-full mb-4"
             onSubmit={sendEmail}
           >
             <input
@@ -227,7 +230,7 @@ export function Home() {
         </section>
       </main>
 
-      <footer className="h-12 flex justify-center items-center">
+      <footer className="mt-4 h-12 flex justify-center items-center">
         <p className="text-center text-sm text-gray-500">
           Designed and built by Renara Secchim
         </p>
