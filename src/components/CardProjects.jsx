@@ -6,8 +6,10 @@ import { StackIcon } from 'github-automated-repos/index'
 export function CardProjects({ Title, Text, Site, GitHub, Stacks, Image }) {
   return (
     <div className="py-4">
-      <div className=" lg:flex lg:items-center lg:my-10 overflow-hidden lg:py-8 xl:py-0">
-        <div className="p-4 lg:flex lg:flex-col lg:absolute lg:w-3/6 bg-gray-100/90 shadow-lg:shadow-purple-700/25 rounded-xl lg:p-6 lg:z-10">
+      <div className=" md:flex md:items-center md:my-10 lg:flex lg:items-center lg:my-20 overflow-hidden xl:my-8">
+        <div className="p-4 bg-gray-100/90 shadow-purple-700/25 rounded-xl 
+        md:mx-4 md:flex md:flex-col md:absolute md:w-3/6  md:z-10
+        lg:flex lg:flex-col lg:absolute lg:w-3/6 lg:p-6 lg:z-10 shadow-lg lg:py-8 lg:mx-4">
           <h3
             className="hidden text-base text-gray-500
             lg:inline pb-2"
@@ -40,7 +42,7 @@ export function CardProjects({ Title, Text, Site, GitHub, Stacks, Image }) {
           </div>
         </div>
 
-        <div className="lg:flex md:hidden sm:hidden lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] hidden">
+        <div className=" md:flex md:relative md:-right-2/4 md:w-6/12 md:blur-[1px]  lg:flex lg:relative lg:-right-2/4 lg:w-6/12 lg:blur-[1px] hidden">
           <img src={Image} alt="imagem do projeto" />
         </div>
       </div>

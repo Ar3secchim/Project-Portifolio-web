@@ -58,7 +58,7 @@ export function Home() {
     <>
       <NavBar />
       <main
-        id="home"
+        id="Home"
         className="container mx-auto px-8 overflow-x-hidden lg:px-20 pt-20"
       >
         <section className="flex flex-col gap-8 items-center justify-around lg:flex-row">

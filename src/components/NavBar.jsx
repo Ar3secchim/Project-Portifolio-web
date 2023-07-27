@@ -9,7 +9,7 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <div className="container mx-auto flex justify-between py-4 fixed backdrop-blur-2xl px-8 z-50 w-full ">
+    <div className="w-full flex justify-between py-4 fixed backdrop-blur-2xl px-8 z-50">
       <a href="/">
         <Logo width={50} className="" />
       </a>
@@ -73,15 +73,14 @@ export function NavBar() {
       </div>
 
       <nav
-        className=" hidden md:flex lg:flex  justify-between text-purple-700 text-lg  font-regular
-      "
+        className=" hidden md:flex lg:flex  justify-between text-purple-700 text-lg  font-regular"
       >
         <ul className="flex gap-6 items-center">
           <li
             className="hover:text-purple-300 hover:underline underline-offset-8
           font-regular"
           >
-            <a href="home"> Home </a>
+            <a href="#Home"> Home </a>
           </li>
 
           <li
