@@ -5,9 +5,9 @@ import { StackIcon } from 'github-automated-repos/index'
 
 export function CardOuthersProjects({ Title, Content, Github, Site, Stacks }) {
   const site = `${Site}`
-
+  // container w-70 h-[100%] my-2 p-4 bg-gray-100 shadow-lg shadow-purple-700/25 rounded-xl lg:inline lg:max-w-sm
   return (
-    <div className="w-80 h-[100%] my-2 p-4 bg-gray-100 shadow-lg shadow-purple-700/25 rounded-xl lg:inline lg:max-w-sm">
+    <div className="w-full my-2 p-4 shadow-lg shadow-purple-700/25 rounded-xl lg:w-64 md:w-72">
       <ul className="flex justify-between">
         <a href={Github} target="blank">
           <Branch width={28} stroke="#34014E" />

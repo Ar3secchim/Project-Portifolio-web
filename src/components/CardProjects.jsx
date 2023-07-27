@@ -6,7 +6,7 @@ import { StackIcon } from 'github-automated-repos/index'
 export function CardProjects({ Title, Text, Site, GitHub, Stacks, Image }) {
   return (
     <div className="py-4">
-      <div className=" lg:flex lg:items-center lg:my-10 overflow-hidden lg:py-14 xl:py-0">
+      <div className=" lg:flex lg:items-center lg:my-10 overflow-hidden lg:py-8 xl:py-0">
         <div className="p-4 lg:flex lg:flex-col lg:absolute lg:w-3/6 bg-gray-100/90 shadow-lg:shadow-purple-700/25 rounded-xl lg:p-6 lg:z-10">
           <h3
             className="hidden text-base text-gray-500
@@ -17,14 +17,14 @@ export function CardProjects({ Title, Text, Site, GitHub, Stacks, Image }) {
           <h2 className="pb-2 text-purple-700 font-regular text-lg">{Title}</h2>
           <p className="lg:block lg:text-lg">{Text}</p>
 
-          <div className="flex  justify-between lg:pt-4 lg:flex-col">
+          <div className="flex  justify-between lg:pt-4 lg:flex-col lg:gap-2 py-2">
             <span className="flex gap-2 mt-2">
               {Stacks.map((icon) => {
                 return <StackIcon key={icon} iconItem={icon} />
               })}
             </span>
 
-            <div className="flex gap-2 md:flex lg:flex lg:pt-3 ">
+            <div className="flex items-center gap-2 md:flex ">
               <a
                 href={GitHub}
                 target="_blank"
