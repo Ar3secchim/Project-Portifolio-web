@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --primary:  rgba(59, 63, 69, 0.1);
+  --primary:  rgb(20, 20, 20);
   --secondary: rgba(102, 62, 119, 0.3);
 }
 
 html{
-  font-family: 'Inter', sans-serif;
+  font-family: 'Gruppo', sans-serif;
+  background-color: var(--primary);
+  color: white;
 }
 
 /* Firefox */
@@ -23,14 +27,13 @@ html{
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--primary);
+  background-color: var(--primary);
   border-radius: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--secondary);
   border-radius: 14px;
-
 }
 
 .hideMenuNav {
