@@ -11,7 +11,7 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <div className="w-full flex justify-between my-6 fixed px-20 z-50">
+    <div className="px-60 lg:px-20 md:px-8 w-screen bg-gray-300 bg-opacity-10 burn fixed flex justify-between py-4 z-50">
       <a href="/">
         <h1 className="text-xl">RENARA SECCHIM</h1>
       </a>

@@ -2,6 +2,15 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    container: {
+      padding: {
+        DEFAUT: '2rem',
+        sm: '4rem',
+        lg: '8rem',
+        xl: '16rem',
+        '2xl': '18rem',
+      },
+    },
     fontSize: {
       xs: ['12px', '16px'],
       sm: ['14px', '18px'],
@@ -29,6 +38,10 @@ module.exports = {
           500: '#3B3F45',
         },
       },
+      backgroundImage:{
+        'home': '#000000',
+        'about': 'url("./assets/imgs/photoBgExtent.png")',
+      }
     },
   },
   plugins: [
