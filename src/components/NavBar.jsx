@@ -4,6 +4,7 @@ import { ReactComponent as CloseBar } from '../assets/icons/closeBar.svg'
 
 import { BiLogoLinkedin, BiLogoGithub } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import { Container } from './Container';
 
 export function NavBar() {
   const urlDownloaded =
@@ -12,7 +13,7 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <div className="px-60 lg:px-20 md:px-8 w-screen bg-gray-300 bg-opacity-10 burn fixed flex justify-between py-4 z-50">
+    <Container ClassName="h-auto w-screen p-0 bg-gray-300 bg-opacity-10 burn fixed flex justify-between py-4 z-50">
       <a href="/">
         <h1 className="text-xl">RENARA SECCHIM</h1>
       </a>
@@ -65,6 +66,6 @@ export function NavBar() {
           </li>
         </ul>
       </nav>
-    </div>
+    </Container>
   )
 }
