@@ -1,7 +1,7 @@
 {
   "name": "project-portifolio-web",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -25,6 +25,7 @@
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@vercel/node": "^3.0.6",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.2.0",
