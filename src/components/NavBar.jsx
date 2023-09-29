@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { ReactComponent as CloseBar } from '../assets/icons/closeBar.svg'
 
 import { BiLogoLinkedin, BiLogoGithub } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 export function NavBar() {
   const urlDownloaded =
@@ -36,11 +37,11 @@ export function NavBar() {
           <li
             className="hover:hover:underline-offset-4 hover:underline"
           >
-            <a href="#Contact"> Contato </a>
+            <Link to="contact">Contato </Link>
           </li>
 
           <li>
-            <a href="" target="_blank">
+            <a href="https://github.com/Ar3secchim" target="_blank">
               <BiLogoGithub size={"30px"}/>
             </a>
           </li>
@@ -51,7 +52,7 @@ export function NavBar() {
             </a>
           </li>
 
-          {/* <li>
+          <li>
             <a
               href={urlDownloaded}
               target="_blank"
@@ -61,7 +62,7 @@ export function NavBar() {
               {' '}
               Resume{' '}
             </a>
-          </li> */}
+          </li>
         </ul>
       </nav>
     </div>
