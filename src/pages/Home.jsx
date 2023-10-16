@@ -37,11 +37,11 @@ export function Home() {
         </div>
       </Container>
 
-     <Container id="About" ClassName="flex-col">
+     <Container id="About" ClassName="flex-col bg-zinc-950">
         <div>
-          <h1 className="font-thin text-4xl py-96 md:py-80">Less to worry about...</h1>
+          <h1 className="font-thin text-4xl py-96 md:py-72">Less to worry about...</h1>
         </div>
-        <p className='py-6 text-xl'>Quem sou eu</p>
+        <p className='py-4 text-xl'>Quem sou eu</p>
       </Container>
 
       <Container  ClassName="bg-about bg-no-repeat bg-cover flex-col justify-center gap-16 font-bold text-2xl text-center">
@@ -57,7 +57,7 @@ export function Home() {
       </Container>
 
       <Container id="projets" ClassName="bg-[#5A877D] items-center">
-        <img className='absolute -z-1 right-0 w-4/6' src={project77Vector}/>
+        <img className='absolute -z-1 right-0 w-3/6' src={project77Vector}/>
         <PageProject
           Title="Project 77"
           Status="Em produção"
@@ -70,14 +70,14 @@ export function Home() {
           </div>
 
           <div className='py-4'>
-            <span className='mr-8'>Data</span>
-            <span>Jul 2023 - current</span>
+            <span className='mr-8 text-xl'>Data</span>
+            <span className='text-xl'>Jul 2023 - current</span>
           </div>
         </PageProject>
       </Container>
 
         <Container ClassName="bg-[#CECECE] items-center text-black">
-          <img className='absolute -z-1 right-0 w-4/6' src={vectorTasksList}/>
+          <img className='absolute -z-1 right-0 w-3/6' src={vectorTasksList}/>
           <PageProject
             Title="Task List"
             Status="Live"
@@ -90,16 +90,16 @@ export function Home() {
             </div>
 
             <div className='py-4'>
-              <span className='mr-8'>Data</span>
-              <span>May 2023 - Jul 2023</span>
+              <span className='mr-8 text-xl'>Data</span>
+              <span className='text-xl'>May 2023 - Jul 2023</span>
             </div>
           </PageProject>
         </Container>
 
         <Container id="projets" ClassName="bg-[#262626] items-center">
-          <img className='absolute -z-1 right-0 w-4/6' src={VectorApi}/>
+          <img className='absolute -z-1 right-0 w-3/6' src={VectorApi}/>
           <PageProject
-            Title="Api Ecomerce "
+            Title="Api Ecomerce"
             Status="Em produção"
             image={apiEcommerce}
           >
@@ -110,14 +110,14 @@ export function Home() {
             </div>
 
             <div className='py-4'>
-              <span className='mr-6'>Data</span>
-              <span>Aug 2023 - current</span>
+              <span className='mr-6 text-xl'>Data</span>
+              <span className='text-xl'>Aug 2023 - current</span>
             </div>
           </PageProject>
         </Container>
 
         <Container ClassName="bg-[#A88629] items-center">
-          <img className='absolute -z-1 right-0 w-3/4' src={diamomVector}/>
+          <img className='absolute -z-1 right-0 w-5/12' src={diamomVector}/>
         <PageProject
             Title="Marina Semijoias"
             Status="Live"
@@ -130,8 +130,8 @@ export function Home() {
             </div>
 
             <div className='py-4'>
-              <span className='mr-8'>Data</span>
-              <span>Jul 2022 - Aug 2023</span>
+              <span className='mr-8 text-xl'>Data</span>
+              <span className='text-xl'>Jul 2022 - Aug 2023</span>
             </div>
           </PageProject>
         </Container>
