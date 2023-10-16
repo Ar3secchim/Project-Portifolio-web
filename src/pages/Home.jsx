@@ -37,8 +37,8 @@ export function Home() {
         </div>
       </Container>
 
-     <Container id="About" ClassName="flex-col bg-zinc-950">
-        <div>
+     <Container  ClassName="flex-col bg-zinc-950">
+        <div id="#about">
           <h1 className="font-thin text-4xl py-96 md:py-72">Less to worry about...</h1>
         </div>
         <p className='py-4 text-xl'>Quem sou eu</p>
@@ -62,6 +62,8 @@ export function Home() {
           Title="Project 77"
           Status="Em produção"
           image={project77}
+          urlProject="https://github.com/Ar3secchim/project-77-days"
+          urlWebsite="https://project-77-days-pwa.vercel.app/"
         >
           <div className="flex gap-2">
             <Flags Icon={true} Title="Front End"/>
@@ -82,6 +84,8 @@ export function Home() {
             Title="Task List"
             Status="Live"
             image={taksList}
+            urlProject="https://github.com/Ar3secchim/tasks-list-react"
+            urlWebsite="https://tasks-list-gilt.vercel.app/"
           >
             <div className="flex gap-2">
               <Flags ClassName="border-black" Icon={true} Title="Front End"/>
@@ -102,6 +106,8 @@ export function Home() {
             Title="Api Ecomerce"
             Status="Em produção"
             image={apiEcommerce}
+            urlProject="https://github.com/Ar3secchim/crud-Ecommerce-App"
+            urlWebsite="https://github.com/Ar3secchim/crud-Ecommerce-App"
           >
             <div className="flex gap-2">
               <Flags Icon={true} Title="Back End"/>
@@ -122,6 +128,8 @@ export function Home() {
             Title="Marina Semijoias"
             Status="Live"
             image={marianaSemiJoias}
+            urlProject="https://github.com/Ar3secchim/site_marinaSemijoias"
+            urlWebsite="https://marinasemijoias.vercel.app/"
           >
             <div className="flex gap-2">
               <Flags Icon={true} Title="Front End"/>
@@ -134,7 +142,7 @@ export function Home() {
               <span className='text-xl'>Jul 2022 - Aug 2023</span>
             </div>
           </PageProject>
-        </Container>
+        </Container>''
 
 
         <Container ClassName="items-center justify-center">

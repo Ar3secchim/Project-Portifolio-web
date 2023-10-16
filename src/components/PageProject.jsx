@@ -2,7 +2,7 @@ import { BiSolidRightArrowAlt } from "react-icons/bi";
 import { Flags } from "./Flags";
 import { TitleSection } from "./TitleSection";
 
-export function PageProject({children, Title, Status, ClassName, image}){
+export function PageProject({children, Title, Status, ClassName, image, urlProject, urlWebsite}){
   return(
     <div className="flex w-screen justify-between items-center font-Gru">
         <div className="flex flex-col">
@@ -12,8 +12,8 @@ export function PageProject({children, Title, Status, ClassName, image}){
           {children}
 
           <div className="flex flex-col">
-            <a href="#" className="flex items-center gap-1 underline underline-offset-4"> Saber Mais <BiSolidRightArrowAlt/></a>
-            <a href="#" className="flex items-center gap-1 underline underline-offset-4"> WebSite <BiSolidRightArrowAlt/></a>
+            <a href={urlProject} target="_blank" className="flex items-center gap-1 underline underline-offset-4"> Saber Mais <BiSolidRightArrowAlt/></a>
+            <a href={urlWebsite} target="_blank" className="flex items-center gap-1 underline underline-offset-4"> WebSite <BiSolidRightArrowAlt/></a>
           </div>
         </div>
 
