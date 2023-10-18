@@ -4,6 +4,7 @@ import { NavBar } from "./components/NavBar"
 import { Home } from "./pages/Home"
 import { Contact } from "./pages/Contact"
 import { Projects } from "./pages/Projects"
+import { About } from "./pages/About"
 
 function AppRouter() {
 	return (
@@ -14,6 +15,7 @@ function AppRouter() {
 					<Route path="/">
 						<Route index element={<Home />} />
 						<Route path="/contact" element={<Contact />} />
+						<Route path="/about" element={<About />} />
 						<Route path="/projects" element={<Projects />} />
 					</Route>
 
