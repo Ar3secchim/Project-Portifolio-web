@@ -15,7 +15,7 @@ export function CardProject({Img, Title, Data, Discription, children}){
           </div>
         </div>
 
-        <div className="flex-1 gap-2 ml-20">
+        <div className="flex-1 gap-2 ml-20 mt-4">
           <p className="text-lg pb-2">{Discription}</p>
           {children}
         </div>
