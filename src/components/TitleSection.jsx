@@ -1,10 +1,11 @@
-export function TitleSection({ title }) {
+import { twMerge } from "tailwind-merge"
+
+export function TitleSection({ title, ClassName }) {
   return (
-    <div className="py-6 ">
-      <h1 className="uppercase text-xl font-regular text-purple-700">
+    <div className="py-4 ">
+      <h1 className={twMerge(`uppercase text-2xl font-regular ${ClassName}`)}>
         {title}
       </h1>
-      <div className="border-purple-500 border-b-2"> </div>
     </div>
   )
 }

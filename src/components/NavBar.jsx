@@ -1,107 +1,56 @@
 import { useState } from 'react'
+
 import { ReactComponent as CloseBar } from '../assets/icons/closeBar.svg'
-import { ReactComponent as Logo } from '../assets/icons/logo.svg'
+
+import { BiLogoLinkedin, BiLogoGithub } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+import { Container } from './Container';
 
 export function NavBar() {
   const urlDownloaded =
-    'https://drive.google.com/file/d/1jNllLICD4YHlo8E6cRNy7mBvc-uB9NSE/view?usp=share_link'
+    'https://drive.google.com/file/d/1CCTLX4Mp3P6qzGPn7hXzmdgLVdAUd9io/view?usp=share_link'
 
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <div className="w-full flex justify-between py-4 fixed backdrop-blur-2xl px-8 z-50">
+    <Container ClassName="h-auto w-screen p-0 bg-gray-300 bg-opacity-10 burn fixed flex justify-between py-4 z-50">
       <a href="/">
-        <Logo width={50} className="" />
+        <h1 className="text-xl">RENARA SECCHIM</h1>
       </a>
 
-      <div>
-        <section className="flex lg:hidden sm:hidden ">
-          <div
-            className="space-y-2"
-            onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
-          >
-            <span className="block h-1 w-8 animate-pulse bg-purple-700"></span>
-            <span className="block h-1 w-8 animate-pulse bg-purple-700"></span>
-            <span className="block h-1 w-8 animate-pulse bg-purple-700"></span>
-          </div>
-
-          <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
-            <div className="absolute top-5 left-0 px-10 py-1 ">
-              <Logo width={50} />
-            </div>
-            {/* toggle class based on isNavOpen state */}
-            <div
-              className="absolute top-0 right-0 px-11 py-4"
-              onClick={() => setIsNavOpen(false)} // change isNavOpen state to false to close the menu
-            >
-              <CloseBar />
-            </div>
-
-            <ul className="min-h-[250px] text-xl flex flex-col items-center gap-10">
-              <li className=" text-purple-700 underline  decoration-purple-200  font-regular">
-                <a onClick={() => setIsNavOpen(false)} href="#About">
-                  Sobre mim
-                </a>
-              </li>
-
-              <li className=" text-purple-700 underline  decoration-purple-200 font-regular">
-                <a onClick={() => setIsNavOpen(false)} href="#projects">
-                  Projetos
-                </a>
-              </li>
-
-              <li className=" text-purple-700 underline  decoration-purple-200 font-regular">
-                <a onClick={() => setIsNavOpen(false)} href="#Contact">
-                  Contato
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href={urlDownloaded}
-                  target="_blank"
-                  className="border-2 border-purple-500[0.4]   text-purple-700 rounded px-4 py-2 hover:bg-violet-100 font-regular my-8"
-                  rel="noreferrer"
-                >
-                  {' '}
-                  Resume{' '}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
-      </div>
-
       <nav
-        className=" hidden md:flex lg:flex  justify-between text-purple-700 text-lg  font-regular"
+        className=" hidden md:flex lg:flex  justify-between text-lg"
       >
         <ul className="flex gap-6 items-center">
+
           <li
-            className="hover:text-purple-300 hover:underline underline-offset-8
-          font-regular"
+            className="hover:underline-offset-4 hover:underline"
           >
-            <a href="#Home"> Home </a>
+            <Link to="about">Sobre mim </Link>
           </li>
 
           <li
-            className="hover:text-purple-300 hover:underline underline-offset-8
-          font-regular"
+            className="hover:hover:underline-offset-4 hover:underline"
           >
-            <a href="#About"> Sobre mim </a>
+            <Link to="projects"> Projetos </Link>
           </li>
 
           <li
-            className="hover:text-purple-300 hover:underline underline-offset-8
-          font-regular"
+            className="hover:hover:underline-offset-4 hover:underline"
           >
-            <a href="#projects"> Projetos </a>
+            <Link to="contact">Contato </Link>
           </li>
 
-          <li
-            className="hover:text-purple-300 hover:underline underline-offset-8
-          font-regular"
-          >
-            <a href="#Contact"> Contato </a>
+          <li>
+            <a href="https://github.com/Ar3secchim" target="_blank">
+              <BiLogoGithub size={"30px"}/>
+            </a>
+          </li>
+
+          <li>
+            <a  href="https://www.linkedin.com/in/renarasecchim/" target="_blank">
+              <BiLogoLinkedin size={"30px"} /> 
+            </a>
           </li>
 
           <li>
@@ -117,6 +66,6 @@ export function NavBar() {
           </li>
         </ul>
       </nav>
-    </div>
+    </Container>
   )
 }

@@ -25,10 +25,14 @@ module.exports = {
           700: '#34014E',
         },
         gray: {
-          300: '#EFEAEA',
+          300: '#262626',
           500: '#3B3F45',
         },
       },
+      backgroundImage:{
+        'home': '#000000',
+        'about': 'url("./assets/imgs/photoBgExtent.png")',
+      }
     },
   },
   plugins: [

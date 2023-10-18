@@ -1,7 +1,7 @@
 {
   "name": "project-portifolio-web",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,17 +10,22 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
+    "@iconscout/react-unicons": "^2.0.2",
     "axios": "^1.2.2",
     "get-pinned-repos": "^0.0.2",
     "github-automated-repos": "^1.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "react-router-dom": "^6.16.0",
+    "tailwind-merge": "^1.14.0",
     "vite-plugin-svgr": "^2.2.2"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@vercel/node": "^3.0.6",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.2.0",
