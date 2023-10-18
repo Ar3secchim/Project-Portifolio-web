@@ -26,13 +26,13 @@ export function NavBar() {
           <li
             className="hover:underline-offset-4 hover:underline"
           >
-            <a href="#About"> Sobre mim </a>
+            <Link to="about">Sobre mim </Link>
           </li>
 
           <li
             className="hover:hover:underline-offset-4 hover:underline"
           >
-            <a href="#projects"> Projetos </a>
+            <Link to="projects"> Projetos </Link>
           </li>
 
           <li

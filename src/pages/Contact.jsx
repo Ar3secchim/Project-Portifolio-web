@@ -15,7 +15,7 @@ export function Contact(){
                GitHub
             </a>
 
-            <a href="https://github.com/Ar3secchim" target="_blank" 
+            <a href="https://www.linkedin.com/in/renarasecchim/" target="_blank" 
               className="flex gap-2 w-max font-regular text-center text-xl border rounded-lg border-gray-300 px-6 py-1">
              Linkedin
             </a>

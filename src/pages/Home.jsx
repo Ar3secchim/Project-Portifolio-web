@@ -2,7 +2,6 @@ import { NavBar } from '../components/NavBar'
 import { PageProject } from '../components/PageProject'
 import { Flags } from "../components/Flags";
 import { Button } from '../components/Button';
-import { Contact } from './Contact';
 import { Container } from '../components/Container';
 
 import photoProfile from '../assets/imgs/prhotoProfileO.png'
