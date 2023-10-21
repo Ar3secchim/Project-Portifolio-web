@@ -19,7 +19,6 @@ html{
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) var(--primary);
-  overscroll-behavior-x: none;
 }
 
 /* Chrome, Edge, and Safari */
