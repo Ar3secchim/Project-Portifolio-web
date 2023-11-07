@@ -14,13 +14,13 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <Container ClassName="h-auto w-screen p-6 bg-gray-300 bg-opacity-10 burn fixed flex justify-between py-4 z-50">
+    <Container ClassName="w-screen h-auto p-8 bg-gray-300 bg-opacity-30 burn fixed flex justify-between z-50">
       <a href="/">
         <h1 className=" hidden text-xl hover:underline-offset-4 hover:underline md:hidden sm:hidden lg:flex">RENARA SECCHIM</h1>
         <Logo className="absolute -top-[390px] left-12 px-0 py-0 w-14 lg:hidden"/>
       </a>
       
-      <nav className=" hidden md:flex lg:flex  justify-between text-lg">
+      <nav className="hidden md:flex lg:flex justify-between text-lg z-50">
         <ul className="flex gap-6 items-center">
           <li className="hover:underline-offset-4 hover:underline">
             <Link to="about">Sobre mim </Link>
@@ -60,7 +60,7 @@ export function NavBar() {
         </ul>
       </nav> 
      
-      <nav className="flex lg:hidden md:hidden ">
+      <nav className="flex lg:hidden md:hidden z-100">
         <div
           className="space-y-2 absolute top-0 right-0 px-11 py-4"
           onClick={() => setIsNavOpen((prev) => !prev)} 

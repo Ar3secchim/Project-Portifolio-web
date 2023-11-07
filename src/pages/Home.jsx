@@ -1,4 +1,3 @@
-import { NavBar } from '../components/NavBar'
 import { PageProject } from '../components/PageProject'
 import { Flags } from "../components/Flags";
 import { Button } from '../components/Button';
@@ -18,19 +17,16 @@ import nameVector from '../assets/imgs/nameVector.png'
 export function Home() {
   return (
     <div>
-      {/* <span className="w-0.5 h-screen bg-gray-300 absolute -mx-[4px]"> </span> */}
-
-      <Container id="Home" className="items-center bg-black bg-fixed">
-        <div  className='lg:flex-1 lg:text-3xl md:text-2xl'>
+      <Container id="Home" ClassName="bg-black bg-fixed flex-col-reverse lg:flex-row">
+        <div  className='lg:flex-1 lg:text-3xl md:text-2xl text-xl'>
           <h1>Hey!!</h1>
           <h1>Eu sou renarasecchim</h1>
           <h1> Development fullstack</h1>
         </div>
 
-        <div className='lg:w-80 md:w-64 flex-2 flex justify-center transition ease-in-out delay-200 hover:-translate-y-5 hover:-translate-x-2 hover:scale-1 duration-500' >
-
+        <div ClassName='lg:flex-2 transition ease-in-out delay-200 hover:-translate-y-5 hover:-translate-x-2 hover:scale-1 duration-500' >
           <img 
-            className='filter grayscale-0 hover:grayscale transition-all duration-300 ease-in-out' 
+            className='w-10/12 filter grayscale-0 hover:grayscale transition-all duration-300 ease-in-out' 
             src={photoProfile}
           />
         </div>
@@ -38,12 +34,12 @@ export function Home() {
 
      <Container  ClassName="flex-col bg-zinc-950">
         <div id="#about">
-          <h1 className="font-thin text-4xl py-96 md:py-72">Less to worry about...</h1>
+          <h1 className="font-thin text-xl py-40 lg:text-4xl lg:py-96 md:py-72">Less to worry about...</h1>
         </div>
         <p className='py-4 text-xl'>Quem sou eu</p>
       </Container>
 
-      <Container  ClassName="bg-about bg-no-repeat bg-cover flex-col justify-center gap-16 font-bold text-2xl text-center">
+      <Container  ClassName="bg-about bg-no-repeat bg-cover text-xl flex-col justify-center gap-6  lg:gap-16 lg:font-bold lg:text-2xl text-center">
         <p>Como iniciante na área da tecnologia, sou movido por uma fome insaciável de explorar o imenso mundo da tecnologia. </p>
         <p>
           O meu objetivo é propor, de forma criativa e acessível, soluções para resolver problemas das pessoas. É claro que esta viagem
@@ -55,8 +51,8 @@ export function Home() {
         </p>
       </Container>
 
-      <Container id="projets" ClassName="bg-[#5A877D] items-center">
-        <img className='absolute -z-1 right-0 w-3/6' src={project77Vector}/>
+      <Container id="projets" ClassName="bg-[#5A877D]">
+        <img className='hidden lg:flex lg:absolute lg:-z-1 lg:right-0 lg:w-3/6' src={project77Vector}/>
         <PageProject
           Title="Project 77"
           Status="Em produção"
@@ -78,7 +74,7 @@ export function Home() {
       </Container>
 
         <Container ClassName="bg-[#CECECE] items-center text-black">
-          <img className='absolute -z-1 right-0 w-3/6' src={vectorTasksList}/>
+          <img className='hidden lg:flex lg:absolute lg:-z-1 lg:right-0 lg:w-3/6' src={vectorTasksList}/>
           <PageProject
             Title="Task List"
             Status="Live"
@@ -100,7 +96,7 @@ export function Home() {
         </Container>
 
         <Container id="projets" ClassName="bg-[#262626] items-center">
-          <img className='absolute -z-1 right-0 w-3/6' src={VectorApi}/>
+          <img className='hidden lg:flex lg:absolute lg:-z-1 lg:right-0 lg:w-3/6' src={VectorApi}/>
           <PageProject
             Title="Api Ecomerce"
             Status="Em produção"
@@ -122,7 +118,7 @@ export function Home() {
         </Container>
 
         <Container ClassName="bg-[#A88629] items-center">
-          <img className='absolute -z-1 right-0 w-5/12' src={diamomVector}/>
+          <img className=' hidden lg:flex lg:absolute lg:-z-1 lg:right-0 lg:w-5/12' src={diamomVector}/>
         <PageProject
             Title="Marina Semijoias"
             Status="Live"
@@ -144,12 +140,12 @@ export function Home() {
         </Container>''
 
 
-        <Container ClassName="items-center justify-center">
-          <h1 className="font-bold text-4xl">Quer mais de</h1>
-          <img  src={nameVector} />
+        <Container ClassName="flex-col text-center">
+          <h1 className=" text-2xl font-bold lg:text-4xl">Quer mais de</h1>
+          <img  className="w-10/12 lg:w-1/3" src={nameVector} />
         </Container>
 
-        <Container  id="about2" ClassName="bg-[#262626] flex-col justify-center gap-16 font-thim text-[36px] text-center">
+        <Container  id="about2" ClassName="bg-[#262626] flex-col text-lg gap-6 lg:gap-16 lg:text-[36px] text-center">
           <p>O trabalho de excelência resulta do equilíbrio.</p>
           <p>Se quer um criativo talentoso que desenvolve soluções poderosas de forma sustentável, criativa e funcional.</p>
 
