@@ -11,7 +11,7 @@ import mentorCycle from '../assets/imgs/mentorCyle.png'
 export function Projects(){
   return(
     <Container ClassName="text-center flex-col overscroll-auto h-full">
-      <TitleSection ClassName="text-3xl py-24" title="Conquistas excepcionais não se materializam de repente."/>
+      <TitleSection ClassName="text-xl lg:text-3xl py-24" title="Conquistas excepcionais não se materializam de repente."/>
       
       <section className="flex flex-col gap-24">
         <CardProject

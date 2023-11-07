@@ -11,12 +11,12 @@ export function About(){
   return(
     <Container ClassName="text-center flex-col h-full">
       <section>
-        <TitleSection ClassName="text-3xl py-24" title="Learner mode on"/>
+        <TitleSection ClassName="text-xl lg:text-3xl py-24" title="Learner mode on"/>
 
-        <div className="flex gap-8 items-center">
-          <img className="w-1/2" src={aboutProcess} />
+        <div className="flex flex-col lg:flex-row gap-8 items-center">
+          <img className="lg:w-1/2" src={aboutProcess} />
 
-          <p className="text-2xl">
+          <p className="text-xl lg:text-2xl">
               "Renara é um ethos. Significa paixão, cuidado, disciplina, compreensão e responsabilidade."
           </p>
         </div>
@@ -24,10 +24,10 @@ export function About(){
       </section>
 
       <section>
-         <TitleSection ClassName="text-3xl mt-8" title="Meus pilares"/>
+         <TitleSection ClassName="lg:text-3xl my-8" title="Meus pilares"/>
 
-         <div className="grid grid-cols-3 gap-12">
-          <div className="flex flex-col justify-center  gap-2 text-center">
+         <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12">
+          <div className="flex flex-col justify-center gap-4 text-center">
             <img className="" src={knonwledge} />
             <p>Ninguém sabe tudo. Sempre em buscar de conhecimento.</p>
           </div>
