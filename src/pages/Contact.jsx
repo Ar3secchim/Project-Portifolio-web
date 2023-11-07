@@ -1,4 +1,5 @@
 import { Container } from "../components/Container";
+import apiEcommerce from '../assets/imgs/apiEcommerce.png'
 
 export function Contact(){
   return(
@@ -7,7 +8,7 @@ export function Contact(){
         <h1 className="text-[72px]">Bring your idea to life</h1>
 
         <div className="flex items-center">
-          <img className='relative -left-6 -bottom-16' src="src/assets/imgs/apiEcommerce.png"/>
+          <img className='relative -left-6 -bottom-16' src={apiEcommerce}/>
 
           <div className="flex flex-col gap-4">
             <a href="https://github.com/Ar3secchim" target="_blank" 
