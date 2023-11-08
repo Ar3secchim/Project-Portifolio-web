@@ -3,7 +3,7 @@ import { TitleSection } from "../components/TitleSection";
 export function CardProject({Img, Title, Data, Discription, children}){
   return(
     <div className="flex flex-col items-center ">
-      <img className="w-3/4" src={Img}/>
+      <img className="lg:w-3/4" src={Img}/>
 
       <div className="flex flex-col lg:flex-row text-start lg:justify-items-center lg:px-16 lg:mt-8">
         <div className="flex-0 lg:ml-6">

@@ -2,9 +2,11 @@ import { Container } from "../components/Container";
 import { Flags } from "../components/Flags";
 import { CardProject } from "../components/CardProject";
 import { TitleSection } from "../components/TitleSection";
+import { BiSolidRightArrowAlt } from "react-icons/bi";
 
 import Project77 from "../assets/imgs/project77.png";
 import taksList from '../assets/imgs/taksList.png'
+import buyForeignCurrency from '../assets/imgs/buyForeignCurrency.jpg'
 import apiEcommerce from '../assets/imgs/apiEcommerce.png'
 import mentorCycle from '../assets/imgs/mentorCyle.png'
 
@@ -20,6 +22,7 @@ export function Projects(){
           Data="Mar 2023 - current"
           Discription="O Mentor Cycle é um projeto open-source cujo objetivo é conectar pessoas na área de T.I que estão aprendendo, com profissionais com experiência de mercado, fazendo o match entre aprendiz e mentor."
         >
+           <a href="https://github.com/Ar3secchim//mentor-cycle-fe" target="_blank" className="flex items-center gap-1 underline-offset-4 pb-3"> Saber Mais <BiSolidRightArrowAlt/></a>
           <Flags Icon={true} Title="OpenSource"/>
           <Flags Icon={true} Title="Front End"/>
           <Flags Icon={true} Title="TypeScript"/>
@@ -31,6 +34,7 @@ export function Projects(){
           Data="Jul 2023 - current"
           Discription="Um app que faz o acompanhamento de restramento de tasks (hábitos) realizados durante 77 dias."
         >
+           <a href="https://github.com/Ar3secchim/project-77-days" target="_blank" className="flex items-center gap-1  pb-3"> Saber Mais <BiSolidRightArrowAlt/></a>
           <Flags Icon={true} Title="Front End"/>
           <Flags Icon={true} Title="mobile"/>
           <Flags Icon={true} Title="design web"/>
@@ -42,9 +46,22 @@ export function Projects(){
           Data="Aug 2023 - current"
           Discription="Este repositório contém o código-fonte de um projeto de aplicativo de comércio eletrônico simples que demonstra operações CRUD (Create, Read, Update, Delete) em relação a produtos, pedidos e clientes."
         >
-         <Flags Icon={true} Title="Back End"/>
+           <a href="https://github.com/Ar3secchim/crud-Ecommerce-App" target="_blank" className="flex items-center gap-1 pb-3"> Saber Mais <BiSolidRightArrowAlt/></a>
+          <Flags Icon={true} Title="Spring Boot"/>
           <Flags Icon={true} Title="Java"/>
           <Flags Icon={true} Title="mysql"/>
+        </CardProject>
+
+        <CardProject
+          Img ={buyForeignCurrency}
+          Title="Buy Foreign Currency"
+          Data="Oct 2023 - current"
+          Discription="Este projeto Java tem o objetivo de permitir que os usuários realizem ordens de compra de moedas estrangeiras de forma eficiente e conveniente, consumindo a API externa https://docs.awesomeapi.com.br/api-de-moedas para obter as taxas de câmbio. O sistema será composto por um back-end Java que lida com a lógica de negócios, integração com a API externa e armazenamento de dados."
+        >
+           <a href="https://github.com/Ar3secchim//buy-foreign-currency" target="_blank" className="flex items-center gap-1pb-3"> Saber Mais <BiSolidRightArrowAlt/></a>
+          <Flags Icon={true} Title="Spring Boot"/>
+          <Flags Icon={true} Title="Java"/>
+          <Flags Icon={true} Title="H2Dialect"/>
         </CardProject>
         
         <CardProject
@@ -53,11 +70,11 @@ export function Projects(){
           Data="May 2023 - Jul 2023"
           Discription="Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
         >
+           <a href="https://github.com/Ar3secchim/tasks-list-react" target="_blank" className="flex items-center gap-1pb-3"> Saber Mais <BiSolidRightArrowAlt/></a>
           <Flags Icon={true} Title="Front End"/>
           <Flags Icon={true} Title="mobile"/>
           <Flags Icon={true} Title="design web"/>
         </CardProject>
-
 
       </section>
     </Container>
