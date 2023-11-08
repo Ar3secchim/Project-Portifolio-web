@@ -18,7 +18,7 @@ export function Home() {
   return (
     <div>
       <Container id="Home" ClassName="bg-black bg-fixed flex-col-reverse lg:flex-row">
-        <div  className='lg:flex-1 lg:text-3xl md:text-2xl text-xl'>
+        <div  className='lg:flex-1 lg:text-3xl md:text-2xl text-2xl'>
           <h1>Hey!!</h1>
           <h1>Eu sou renarasecchim</h1>
           <h1> Development fullstack</h1>
@@ -34,7 +34,7 @@ export function Home() {
 
      <Container  ClassName="flex-col bg-zinc-950">
         <div id="#about">
-          <h1 className="font-thin text-xl py-40 lg:text-4xl lg:py-96 md:py-72">Less to worry about...</h1>
+          <h1 className="font-thin text-2xl py-72 lg:text-4xl lg:py-96 md:py-72">Less to worry about...</h1>
         </div>
         <p className='py-4 text-xl'>Quem sou eu</p>
       </Container>

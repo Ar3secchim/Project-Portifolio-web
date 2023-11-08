@@ -14,10 +14,10 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <Container ClassName="w-screen h-auto p-8 bg-gray-300 bg-opacity-30 burn fixed flex justify-between z-50">
+    <Container ClassName="w-screen h-auto p-8 bg-gray-300 bg-opacity-60 burn fixed flex justify-between z-50">
       <a href="/">
         <h1 className=" hidden text-xl hover:underline-offset-4 hover:underline md:hidden sm:hidden lg:flex">RENARA SECCHIM</h1>
-        <Logo className="absolute -top-[390px] left-12 px-0 py-0 w-14 lg:hidden"/>
+        <Logo className="absolute -top-[390px]  w-14 lg:hidden"/>
       </a>
       
       <nav className="hidden md:flex lg:flex justify-between text-lg z-50">
@@ -62,7 +62,7 @@ export function NavBar() {
      
       <nav className="flex lg:hidden md:hidden z-100">
         <div
-          className="space-y-2 absolute top-0 right-0 px-11 py-4"
+          className="space-y-2 absolute top-0 right-0 px-8 py-3"
           onClick={() => setIsNavOpen((prev) => !prev)} 
         >
           <span className="block h-1 w-8 bg-white"></span>
@@ -71,12 +71,12 @@ export function NavBar() {
         </div>
 
         <div className={isNavOpen ? 'showMenuNav bg-gray-300' : 'hideMenuNav'}>
-          <a href="/" className="absolute -top-[390px] left-12 px-0 py-0 ">
+          <a href="/" className="absolute -top-[390px] left-8 ">
               <Logo className="w-14"/>
           </a>
     
           <div
-            className="absolute top-0 right-0 px-11 py-4"
+            className="absolute top-0 right-0 px-8 py-2"
             onClick={() => setIsNavOpen(false)}
           >
              <CloseBar />
