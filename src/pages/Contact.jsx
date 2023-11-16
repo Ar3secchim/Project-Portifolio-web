@@ -1,11 +1,11 @@
-import { Container } from "../components/Container";
+import  Container  from "../components/Container";
 import apiEcommerce from '../assets/imgs/apiEcommerce.png'
 
 export function Contact(){
   return(
       <Container ClassName="bg-[#141414] flex-col">
         <p className="lg:mt-10 text-2xl">Let's create</p>
-        <h1 className="text-xl lg:text-[72px]">Bring your idea to life</h1>
+        <h1 className="text-xl lg:text-[72px] leading-relaxed">Bring your idea to life</h1>
 
         <div className="flex items-center">
           <img className='hidden md:flex lg:relative lg:-left-6 lg:-bottom-16' src={apiEcommerce}/>
