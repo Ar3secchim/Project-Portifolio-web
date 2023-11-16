@@ -1,34 +1,22 @@
 # Project 
-Apresentação do meu site pessoal para expor os projetos desenvolvido consumido a Api do GitHub
+Apresentação do meu site pessoal para expor os projetos pessoais desenvolvido.
 
 &nbsp;
 ## Screenshot
 
-  [Screencast from 14-03-2023 15:45:54.webm](https://user-images.githubusercontent.com/82913620/225107264-e820d4b7-9b3f-4080-8144-b2b963887ecc.webm)
-
+https://github.com/Ar3secchim/Project-Portifolio-web/assets/82913620/fad08a5b-681f-4603-99c9-653842e164f7
 
 &nbsp;
 ## Funcionalidades
 
-- Api rest GitHub
-
 - JavaScript- para interações e efeitos
-
-&nbsp;
-## Funcionalidades em produção
-
-- Mode Dark
 
 &nbsp;
 ## Stack utilizada
 
-- **Front-end:** React, CSS 3
+- **Front-end:** React
 
-- **Libary:** Style-components
-
-&nbsp;
-## Maiores desafios
-- Consumo da Api
+- **Libary:** Tailwind css
 
 &nbsp;
 ## Feedback
