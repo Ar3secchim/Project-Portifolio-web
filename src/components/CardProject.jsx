@@ -3,10 +3,10 @@ import { BiSolidRightArrowAlt } from "react-icons/bi";
 
 export function CardProject({Img, Title, Data, Discription, Href, children}){
   return(
-    <div className="flex flex-col items-center p-6 rounded-2xl border-gray-300 border-2">
+    <div className="flex flex-col items-center p-4 rounded-2xl border-gray-300 border-2 transition hover:scale-105">
       <img className="lg:w-3/4" src={Img}/>
 
-      <div className="flex flex-col lg:flex-row text-start lg:justify-items-center lg:px-16 lg:mt-8">
+      <div className="flex flex-col lg:flex-row text-start lg:justify-items-center lg:items-center lg:px- lg:mt-4">
         <div className="flex-0 lg:ml-6">
           <TitleSection title={Title} ClassName="text-xl lg:py-0"/>
 
@@ -17,8 +17,8 @@ export function CardProject({Img, Title, Data, Discription, Href, children}){
           </div>
         </div>
 
-        <div className="flex-1 gap-2 lg:ml-20 items-center ">
-          <p className=" text-base pt-2 pb-6">{Discription}</p>
+        <div className="flex-1 gap-2 lg:m-4 items-center ">
+          <p className=" text-base pt-2 pb-6 flex">{Discription}</p>
           {children}
         </div>
       </div>

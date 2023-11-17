@@ -17,7 +17,7 @@ export function Projects(){
 
         <TitleSection ClassName="text-xl lg:text-3xl py-24" title="Conquistas excepcionais não se materializam de repente."/>
         
-        <section className="flex flex-col gap-16">
+        <section className="md:grid md:grid-cols-2 flex flex-col gap-8">
           <CardProject
             Img ={mentorCycle}
             Title="Mentor Cycle"
@@ -25,7 +25,7 @@ export function Projects(){
             Discription="O Mentor Cycle é um projeto open-source cujo objetivo é conectar pessoas na área de T.I que estão aprendendo, com profissionais com experiência de mercado, fazendo o match entre aprendiz e mentor."
             Href="https://github.com/Ar3secchim//mentor-cycle-fe"
           >
-            <Flags Icon={true} Title="OpenSource"/>
+
             <Flags Icon={true} Title="Front End"/>
             <Flags Icon={true} Title="TypeScript"/>
           </CardProject>
@@ -39,7 +39,6 @@ export function Projects(){
           >
             <Flags Icon={true} Title="Front End"/>
             <Flags Icon={true} Title="mobile"/>
-            <Flags Icon={true} Title="design web"/>
           </CardProject>
 
           <CardProject
@@ -50,7 +49,6 @@ export function Projects(){
             Href="https://github.com/Ar3secchim/crud-Ecommerce-App"
           >
             <Flags Icon={true} Title="Spring Boot"/>
-            <Flags Icon={true} Title="Java"/>
             <Flags Icon={true} Title="mysql"/>
           </CardProject>
 
@@ -63,8 +61,7 @@ export function Projects(){
           >
           
             <Flags Icon={true} Title="Spring Boot"/>
-            <Flags Icon={true} Title="Java"/>
-            <Flags Icon={true} Title="H2Dialect"/>
+            <Flags Icon={true} Title="Api"/>
           </CardProject>
           
           <CardProject
@@ -75,8 +72,7 @@ export function Projects(){
             Href="https://github.com/Ar3secchim/tasks-list-react"
           >
             <Flags Icon={true} Title="Front End"/>
-            <Flags Icon={true} Title="mobile"/>
-            <Flags Icon={true} Title="design web"/>
+            <Flags Icon={true} Title="JavaScript"/>
           </CardProject>
 
         </section>

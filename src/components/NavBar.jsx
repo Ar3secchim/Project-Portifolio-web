@@ -15,7 +15,7 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <Container ClassName="w-screen py-4 h-auto bg-black bg-opacity-80 burn fixed z-50">
+    <Container ClassName="w-screen py-2 h-auto bg-black bg-opacity-80 burn fixed z-50">
       <ContainerRoot ClassName="flex justify-between overflow-hidden">
         <a href="/">  
           <h1 className="lg:hidden font-regular text-2xl hover:underline-offset-4 hover:underline sm:flex">RS</h1>
