@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { BiLogoLinkedin, BiLogoGithub } from 'react-icons/bi';
 import { ReactComponent as CloseBar } from '../assets/icons/closeBar.svg'
-import { ReactComponent as Logo } from '../assets/icons/logo_swg.svg'
+import logo  from '../assets/imgs/logo2.png'
 
 import { Link } from 'react-router-dom';
 import Container from './Container';
@@ -20,7 +20,7 @@ export function NavBar() {
         <a href="/">  
           <h1 className="lg:hidden font-regular text-2xl hover:underline-offset-4 hover:underline sm:flex">RS</h1>
           <span className='lg:flex hidden gap-2 items-center'>
-            <Logo className="h-14" />
+            <img className="w-9 m-2" src={logo} />
             <h1 className="font-regular text-xl hover:underline-offset-4 hover:underline ">Renara Secchim</h1> 
           </span>
         </a>
