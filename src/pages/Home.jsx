@@ -19,15 +19,15 @@ export function Home() {
   return (
     <div>
       <Container id="Home" ClassName="bg-black bg-fixed">
-        <ContainerRoot ClassName="flex  flex-col-reverse lg:flex-row lg:items-center lg:justify-center gap-4">
-          <div  className='text-2xl xl:text-4xl'>
+        <ContainerRoot ClassName="flex-col-reverse sm:justify-center lg:flex-row items-center lg:justify-between">
+          <div  className='text-2xl lg:text-3xl xl:text-4xl'>
             <h1>Hey, I'm Renara Secchim</h1>
             <h1>Development Fullstack</h1>
           </div>
 
           <div ClassName='transition ease-in-out delay-200 hover:-translate-y-5 hover:-translate-x-2 hover:scale-1 duration-500' >
             <img 
-              className='w-10/12 xl:w-full filter grayscale-0 hover:grayscale transition-all duration-300 ease-in-out' 
+              className='w-10/12 xl:w-full lg:w-full filter grayscale-0 hover:grayscale transition-all duration-300 ease-in-out' 
               src={photoProfile}
             />
           </div>
@@ -35,7 +35,7 @@ export function Home() {
       </Container>
 
      <Container  ClassName=" bg-zinc-950">
-        <ContainerRoot ClassName="flex-col">
+        <ContainerRoot ClassName="flex-col justify-center items-center">
           <div id="#about">
             <h1 className="font-thin text-2xl py-72 lg:text-4xl lg:py-82 md:py-52">Less to worry about...</h1>
           </div>
@@ -44,7 +44,7 @@ export function Home() {
       </Container>
 
       <Container ClassName="bg-about bg-no-repeat bg-cover ">
-        <ContainerRoot ClassName="flex-col lg:gap-8 lg:font-thin lg:text-2xl text-xl justify-center gap-6 ">
+        <ContainerRoot ClassName="flex-col text-center lg:gap-8 lg:font-thin lg:text-2xl text-xl justify-center gap-6 ">
           <p>Como iniciante na área da tecnologia, sou movido por uma fome insaciável de explorar o imenso mundo da tecnologia. </p>
           <p>
             O meu objetivo é propor, de forma criativa e acessível, soluções para resolver problemas das pessoas. É claro que esta viagem
@@ -58,7 +58,7 @@ export function Home() {
       </Container>
 
       <Container id="projets" ClassName="bg-[#5A877D]">
-        <ContainerRoot>
+        <ContainerRoot ClassName="items-center">
           <img className='hidden lg:flex lg:absolute lg:-z-1 lg:right-0 lg:w-3/6' src={project77Vector}/>
           <PageProject
             Title="Project 77"
@@ -83,7 +83,7 @@ export function Home() {
 
       <Container ClassName="bg-[#CECECE] items-center text-black">
         <ContainerRoot>
-          <img className='hidden lg:flex lg:absolute lg:-z-1 lg:right-0 lg:w-3/6' src={vectorTasksList}/>
+          <img className='hidden lg:flex lg:absolute lg:-z-1 lg:right-0 lg:w-4/6' src={vectorTasksList}/>
           <PageProject
             Title="Task List"
             Status="Live"
@@ -154,16 +154,16 @@ export function Home() {
         </Container>
 
         <Container ClassName="text-center">
-          <ContainerRoot ClassName="flex-col">
-            <h1 className="text-2xl font-regular lg:text-4xl xl:text-[72px]">Quer mais de</h1>
-            <img  className="w-10/12 " src={nameVector} />
+          <ContainerRoot ClassName="flex-col justify-center items-center">
+            <h1 className="text-2xl font-regular lg:text-4xl mb-2 xl:text-[72px]">Quer mais de</h1>
+            <img  className="w-2/5 " src={nameVector} />
           </ContainerRoot>
         </Container>
 
-        <Container  id="about2" ClassName="bg-[#262626] flex-col text-lg gap-6 lg:gap-16 lg:text-[36px] text-center">
-          <ContainerRoot ClassName="flex-col gap-8">
+        <Container  id="about2" ClassName="bg-[#262626] lg:text-[36px]">
+          <ContainerRoot ClassName="flex-col gap-8 justify-center items-center">
             <p>O trabalho de excelência resulta do equilíbrio.</p>
-            <p className="leading-snug">Se quer um criativo talentoso que desenvolve soluções poderosas de forma sustentável, criativa e funcional.</p>
+            <p className="leading-snug text-center">Se quer um criativo talentoso que desenvolve soluções poderosas de forma sustentável, criativa e funcional.</p>
 
             <Button Route="contact">Entre em contato</Button>
           </ContainerRoot>
