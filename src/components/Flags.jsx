@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 export function Flags({Title, Icon, ClassName}){
 
   return(
-    <span className={twMerge(`border rounded-lg w-max border-white ${ClassName}`)}>
+    <span className={twMerge(`border-2 hover:bg-gray-300 rounded-lg w-max m-1 ${ClassName}`)}>
       {Icon ? 
         <span className="text-base flex flex-row justify-center items-center mx-[8px] my-[3px]"> 
           <BiCircle size={10} className="mr-2"/> 

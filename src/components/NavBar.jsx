@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { BiLogoLinkedin, BiLogoGithub } from 'react-icons/bi';
 import { ReactComponent as CloseBar } from '../assets/icons/closeBar.svg'
-import { ReactComponent as Logo } from '../assets/icons/logo.svg'
+import logo  from '../assets/imgs/logo2.png'
 
 import { Link } from 'react-router-dom';
 import Container from './Container';
@@ -15,10 +15,14 @@ export function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false) // initiate isNavOpen state with false
 
   return (
-    <Container ClassName="w-screen py-4 h-auto bg-black bg-opacity-80 burn fixed z-50">
-      <ContainerRoot ClassName="flex justify-items-end gap-60 md:gap-80 xl:gap-[600px] overflow-hidden">
+    <Container ClassName="w-screen py-2 h-auto bg-black bg-opacity-80 burn fixed z-50">
+      <ContainerRoot ClassName="flex justify-between overflow-hidden">
         <a href="/">  
-          <h1 className="font-regular text-2xl hover:underline-offset-4 hover:underline lg:flex">RS</h1>
+          <h1 className="lg:hidden font-regular text-2xl hover:underline-offset-4 hover:underline sm:flex">RS</h1>
+          <span className='lg:flex hidden gap-2 items-center'>
+            <img className="w-9 m-2" src={logo} />
+            <h1 className="font-regular text-xl hover:underline-offset-4 hover:underline ">Renara Secchim</h1> 
+          </span>
         </a>
         
         <nav className="hidden md:flex lg:flex justify-between font-regular  text-base z-50">
@@ -48,6 +52,7 @@ export function NavBar() {
             </li>
           </ul>
         </nav> 
+        </ContainerRoot>
       
         <nav className="lg:hidden md:hidden z-100">
           <div
@@ -117,7 +122,6 @@ export function NavBar() {
               </ul>
           </div>
         </nav>
-      </ContainerRoot>
     </Container>
   )
 }

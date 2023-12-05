@@ -17,7 +17,7 @@ export function Projects(){
 
         <TitleSection ClassName="text-xl lg:text-3xl py-24" title="Conquistas excepcionais não se materializam de repente."/>
         
-        <section className="flex flex-col gap-16">
+        <section className="md:grid md:grid-cols-2 flex flex-col gap-8">
           <CardProject
             Img ={mentorCycle}
             Title="Mentor Cycle"
@@ -84,7 +84,6 @@ export function Projects(){
           >
             <Flags Icon={false} Title="Front End"/>
             <Flags Icon={false} Title="mobile"/>
-            <Flags Icon={false} Title="design web"/>
           </CardProject>
 
         </section>

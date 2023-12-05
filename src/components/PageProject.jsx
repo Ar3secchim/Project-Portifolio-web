@@ -6,7 +6,7 @@ export function PageProject({children, Title, Status, ClassName, image, urlProje
   return(
     <div className="flex flex-col-reverse gap-10 lg:gap-0 lg:flex-row w-screen justify-between items-center">
         <div className="flex flex-col">
-          <Flags ClassName={ClassName} Icon={false} Title={Status}/>
+          <Flags ClassName={ClassName} Icon={true} Title={Status}/>
           <TitleSection  title={Title}/>
 
           {children}
