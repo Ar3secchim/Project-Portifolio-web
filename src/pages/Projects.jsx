@@ -25,9 +25,11 @@ export function Projects(){
             Discription="O Mentor Cycle é um projeto open-source cujo objetivo é conectar pessoas na área de T.I que estão aprendendo, com profissionais com experiência de mercado, fazendo o match entre aprendiz e mentor."
             Href="https://github.com/Ar3secchim//mentor-cycle-fe"
           >
-            <Flags Icon={true} Title="OpenSource"/>
-            <Flags Icon={true} Title="Front End"/>
-            <Flags Icon={true} Title="TypeScript"/>
+            <div className="flex gap-2">
+              <Flags Icon={false} Title="OpenSource"/>
+              <Flags Icon={false} Title="Front End"/>
+              <Flags Icon={false} Title="TypeScript"/>
+            </div>
           </CardProject>
 
           <CardProject
@@ -37,9 +39,11 @@ export function Projects(){
             Discription="Um app que faz o acompanhamento de restramento de tasks (hábitos) realizados durante 77 dias."
             Href="https://github.com/Ar3secchim/project-77-days"
           >
-            <Flags Icon={true} Title="Front End"/>
-            <Flags Icon={true} Title="mobile"/>
-            <Flags Icon={true} Title="design web"/>
+            <div className="flex gap-2">
+              <Flags Icon={false} Title="Front End"/>
+              <Flags Icon={false} Title="mobile"/>
+              <Flags Icon={false} Title="design web"/>
+            </div>
           </CardProject>
 
           <CardProject
@@ -49,9 +53,11 @@ export function Projects(){
             Discription="Este repositório contém o código-fonte de um projeto de aplicativo de comércio eletrônico simples que demonstra operações CRUD (Create, Read, Update, Delete) em relação a produtos, pedidos e clientes."
             Href="https://github.com/Ar3secchim/crud-Ecommerce-App"
           >
-            <Flags Icon={true} Title="Spring Boot"/>
-            <Flags Icon={true} Title="Java"/>
-            <Flags Icon={true} Title="mysql"/>
+            <div className="flex gap-2">
+              <Flags Icon={false} Title="Spring Boot"/>
+              <Flags Icon={false} Title="Java"/>
+              <Flags Icon={false} Title="mysql"/>
+            </div>
           </CardProject>
 
           <CardProject
@@ -62,9 +68,11 @@ export function Projects(){
             Href="https://github.com/Ar3secchim//buy-foreign-currency"
           >
           
-            <Flags Icon={true} Title="Spring Boot"/>
-            <Flags Icon={true} Title="Java"/>
-            <Flags Icon={true} Title="H2Dialect"/>
+            <div className="flex gap-2">
+              <Flags Icon={false} Title="Spring Boot"/>
+              <Flags Icon={false} Title="Java"/>
+              <Flags Icon={false} Title="H2Dialect"/>
+            </div>
           </CardProject>
           
           <CardProject
@@ -74,9 +82,9 @@ export function Projects(){
             Discription="Um app que lista as tarefas a serem feitas no dia, podendo assim recarregar a página as tasks ainda vão está listada. Desenvolvido no Curso input da CodarMe - Bruno Bertolini."
             Href="https://github.com/Ar3secchim/tasks-list-react"
           >
-            <Flags Icon={true} Title="Front End"/>
-            <Flags Icon={true} Title="mobile"/>
-            <Flags Icon={true} Title="design web"/>
+            <Flags Icon={false} Title="Front End"/>
+            <Flags Icon={false} Title="mobile"/>
+            <Flags Icon={false} Title="design web"/>
           </CardProject>
 
         </section>

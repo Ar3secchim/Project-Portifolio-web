@@ -37,22 +37,21 @@ export function Home() {
      <Container  ClassName=" bg-zinc-950">
         <ContainerRoot ClassName="flex-col">
           <div id="#about">
-            <h1 className="font-thin text-2xl py-72 lg:text-4xl lg:py-82 md:py-52">Less to worry about...</h1>
+            <h1 className="font-thin text-2xl py-64 lg:text-4xl lg:py-82 md:py-52">Less to worry about...</h1>
           </div>
           <p className='py-4 text-xl'>Quem sou eu</p>
         </ContainerRoot>
       </Container>
 
       <Container ClassName="bg-about bg-no-repeat bg-cover ">
-        <ContainerRoot ClassName="flex-col lg:gap-8 lg:font-thin lg:text-2xl text-xl justify-center gap-6 ">
-          <p>Como iniciante na área da tecnologia, sou movido por uma fome insaciável de explorar o imenso mundo da tecnologia. </p>
+        <ContainerRoot ClassName="flex-col lg:gap-8 lg:font-thin lg:text-2xl text-lg justify-center gap-6 text-center">
+          <p>Como iniciante na área da tecnologia, sou movido por uma fome insaciável de resolver problemas através da tecnologia. </p>
           <p>
-            O meu objetivo é propor, de forma criativa e acessível, soluções para resolver problemas das pessoas. É claro que esta viagem
-            vai para além do crescimento profissional e da transição de carreira;
+            O meu objetivo é propor, de forma criativa e acessível, soluções para resolver problemas das pessoas.
           </p>
           <p>
-            Trata-se de realizar um sonho antigo que me levou a migrar para a área da tecnologia.
-            É por isso que os meus olhos brilham de entusiasmo e estou constantemente motivado.
+            Esse objetivo tem por trás e realizar um sonho antigo que me levou a migrar para a área da tecnologia, que é mostrar para as pessoas que a tecnologia veio para
+            facilitar nossas vidas. É por esse motivo que os meus olhos brilham de entusiasmo e me mantém constantemente motivada.
           </p>
         </ContainerRoot>
       </Container>
@@ -66,16 +65,17 @@ export function Home() {
             image={project77}
             urlProject="https://github.com/Ar3secchim/project-77-days"
             urlWebsite="https://project-77-days-pwa.vercel.app/"
+           
           >
             <div className="flex gap-2">
-              <Flags Icon={true} Title="Front End"/>
-              <Flags Icon={true} Title="mobile"/>
-              <Flags Icon={true} Title="design web"/>
+              <Flags Icon={false} Title="Front End"/>
+              <Flags Icon={false} Title="mobile"/>
+              <Flags Icon={false} Title="design web"/>
             </div>
 
             <div className='py-4'>
-              <span className='mr-8 text-xl'>Data</span>
-              <span className='text-xl'>Jul 2023 - current</span>
+              <span className='mr-6 text-xl'>Data</span>
+              <span className='text-lg'>Jul 2023 - current</span>
             </div>
           </PageProject>
         </ContainerRoot>
@@ -90,16 +90,17 @@ export function Home() {
             image={taksList}
             urlProject="https://github.com/Ar3secchim/tasks-list-react"
             urlWebsite="https://tasks-list-gilt.vercel.app/"
+            ClassName="border-black"
           >
             <div className="flex gap-2">
-              <Flags ClassName="border-black" Icon={true} Title="Front End"/>
-              <Flags ClassName="border-black" Icon={true} Title="mobile"/>
-              <Flags ClassName="border-black" Icon={true} Title="design web"/>
+              <Flags ClassName="border-black" Icon={false} Title="Front End"/>
+              <Flags ClassName="border-black" Icon={false} Title="mobile"/>
+              <Flags ClassName="border-black" Icon={false} Title="design web"/>
             </div>
 
             <div className='py-4'>
-              <span className='mr-8 text-xl'>Data</span>
-              <span className='text-xl'>May 2023 - Jul 2023</span>
+              <span className='mr-4 text-lg'>Data</span>
+              <span className='text-lg'>May 2023 - Jul 2023</span>
             </div>
           </PageProject>
         </ContainerRoot>
@@ -116,14 +117,14 @@ export function Home() {
               urlWebsite="https://github.com/Ar3secchim/crud-Ecommerce-App"
             >
               <div className="flex gap-2">
-                <Flags Icon={true} Title="Back End"/>
-                <Flags Icon={true} Title="Java"/>
-                <Flags Icon={true} Title="mysql"/>
+                <Flags Icon={false} Title="Back End" />
+                <Flags Icon={false} Title="Java"/>
+                <Flags Icon={false} Title="mysql"/>
               </div>
 
               <div className='py-4'>
-                <span className='mr-6 text-xl'>Data</span>
-                <span className='text-xl'>Aug 2023 - current</span>
+                <span className='mr-4 text-lg'>Data</span>
+                <span className='text-lg'>Aug 2023 - current</span>
               </div>
             </PageProject>
           </ContainerRoot>
@@ -140,14 +141,14 @@ export function Home() {
                 urlWebsite="https://marinasemijoias.vercel.app/"
               >
               <div className="flex gap-2">
-                <Flags Icon={true} Title="Front End"/>
-                <Flags Icon={true} Title="mobile"/>
-                <Flags Icon={true} Title="design web"/>
+                <Flags Icon={false} Title="Front End" />
+                <Flags Icon={false} Title="mobile"/>
+                <Flags Icon={false} Title="design web"/>
               </div>
 
               <div className='py-4'>
-                <span className='mr-8 text-xl'>Data</span>
-                <span className='text-xl'>Jul 2022 - Aug 2023</span>
+                <span className='mr-4 text-lg'>Data</span>
+                <span className='text-lg'>Jul 2022 - Aug 2023</span>
               </div>
             </PageProject>
           </ContainerRoot>
@@ -160,7 +161,7 @@ export function Home() {
           </ContainerRoot>
         </Container>
 
-        <Container  id="about2" ClassName="bg-[#262626] flex-col text-lg gap-6 lg:gap-16 lg:text-[36px] text-center">
+        <Container  id="about2" ClassName="bg-[#262626] flex-col text-lg gap-6 lg:gap-16 lg:text-[36px] text-center font-thin">
           <ContainerRoot ClassName="flex-col gap-8">
             <p>O trabalho de excelência resulta do equilíbrio.</p>
             <p className="leading-snug">Se quer um criativo talentoso que desenvolve soluções poderosas de forma sustentável, criativa e funcional.</p>
