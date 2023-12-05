@@ -11,8 +11,8 @@ export function CardProject({Img, Title, Data, Discription, Href, children}){
           <TitleSection title={Title} ClassName="text-xl lg:py-0"/>
 
           <div>
-            <span className='pr-4 text-lg'>Data</span>
-            <span className='text-lg'>{Data}</span>
+            <p className='pr-4 text-lg'>Data</p>
+            <p className='text-sm lg:text-base'>{Data}</p>
             <a href={Href} target="_blank" className="flex underline underline-offset-4 items-center gap-1 pt-3"> Saber Mais <BiSolidRightArrowAlt/></a>
           </div>
         </div>

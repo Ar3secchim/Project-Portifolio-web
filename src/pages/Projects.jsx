@@ -84,7 +84,6 @@ export function Projects(){
           >
             <Flags Icon={false} Title="Front End"/>
             <Flags Icon={false} Title="mobile"/>
-            <Flags Icon={false} Title="design web"/>
           </CardProject>
 
         </section>
