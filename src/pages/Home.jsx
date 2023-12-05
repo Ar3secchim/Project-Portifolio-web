@@ -161,8 +161,8 @@ export function Home() {
           </ContainerRoot>
         </Container>
 
-        <Container  id="about2" ClassName="bg-[#262626] flex-col text-lg gap-6 lg:gap-16 lg:text-[36px] text-center font-thin">
-          <ContainerRoot ClassName="flex-col gap-8">
+        <Container  id="about2" ClassName="bg-[#262626] lg:text-[36px]">
+          <ContainerRoot ClassName="flex-col gap-8 justify-center items-center">
             <p>O trabalho de excelência resulta do equilíbrio.</p>
             <p className="leading-snug text-center">Se quer um criativo talentoso que desenvolve soluções poderosas de forma sustentável, criativa e funcional.</p>
 
