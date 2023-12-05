@@ -2,6 +2,8 @@ import  Container  from "../components/Container";
 import apiEcommerce from '../assets/imgs/apiEcommerce.png'
 
 export function Contact(){
+  const urlDownloaded =
+  'https://drive.google.com/file/d/1CCTLX4Mp3P6qzGPn7hXzmdgLVdAUd9io/view?usp=share_link'
   return(
       <Container ClassName="bg-[#141414] flex-col justify-center items-center">
         <p className="lg:mt-10 text-2xl">Let's create</p>
@@ -19,6 +21,16 @@ export function Contact(){
             <a href="https://www.linkedin.com/in/renarasecchim/" target="_blank" 
               className="flex gap-2 w-max font-regular text-center text-xl border rounded-lg hover:bg-gray-300 border-gray-300 px-6 py-1">
              Linkedin
+            </a>
+
+            <a
+              href={urlDownloaded}
+              target="_blank"
+              className="flex gap-2 w-max font-regular text-center text-xl border rounded-lg border-gray-300 px-6 py-1"
+              rel="noreferrer"
+            >
+              {' '}
+              Resume{' '}
             </a>
             <p className="font-regular text-center lg:text-xl">renarasecchim@gmail.com</p>
           </div>

@@ -11,9 +11,9 @@ export function PageProject({children, Title, Status, ClassName, image, urlProje
 
           {children}
 
-          <div className="flex flex-col">
-            <a href={urlProject} target="_blank" className="flex items-center gap-1 underline underline-offset-4 "> Saber Mais <BiSolidRightArrowAlt/></a>
-            <a href={urlWebsite} target="_blank" className="flex items-center gap-1 underline underline-offset-4"> WebSite <BiSolidRightArrowAlt/></a>
+          <div className="flex flex-col gap-2">
+            <a href={urlProject} target="_blank" className="flex items-center gap-1 text-lg underline underline-offset-4"> Saber Mais <BiSolidRightArrowAlt/></a>
+            <a href={urlWebsite} target="_blank" className="flex items-center gap-1 text-lg underline underline-offset-4"> WebSite <BiSolidRightArrowAlt/></a>
           </div>
         </div>
 

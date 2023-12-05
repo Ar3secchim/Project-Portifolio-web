@@ -50,18 +50,6 @@ export function NavBar() {
                 <BiLogoLinkedin size={"30px"} /> 
               </a>
             </li>
-
-            {/* <li>
-              <a
-                href={urlDownloaded}
-                target="_blank"
-                className="border-2 border-purple-500[0.4]  rounded px-2 hover:bg-gray-300 font-regular"
-                rel="noreferrer"
-                >
-                {' '}
-                Resume{' '}
-                </a>
-              </li> */}
           </ul>
         </nav> 
         </ContainerRoot>
