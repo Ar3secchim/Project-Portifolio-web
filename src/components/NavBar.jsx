@@ -21,7 +21,7 @@ export function NavBar() {
           <h1 className="lg:hidden font-regular text-2xl hover:underline-offset-4 hover:underline sm:flex">RS</h1>
           <span className='lg:flex hidden gap-2 items-center'>
             <img className="w-9 m-2" src={logo} />
-            <h1 className="font-regular text-xl hover:underline-offset-4 hover:underline ">Renara Secchim</h1> 
+            <h1 className="font-regular text-xl hover:underline-offset-4 hover:underline">Renara.dev</h1> 
           </span>
         </a>
         
