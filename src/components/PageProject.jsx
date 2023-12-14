@@ -6,14 +6,14 @@ export function PageProject({children, Title, Status, ClassName, image, urlProje
   return(
     <div className="flex flex-col-reverse gap-10 lg:gap-0 lg:flex-row w-screen justify-between items-center">
         <div className="flex flex-col">
-          <Flags ClassName={ClassName} Icon={false} Title={Status}/>
+          <Flags ClassName={ClassName} Icon={true} Title={Status}/>
           <TitleSection  title={Title}/>
 
           {children}
 
-          <div className="flex flex-col">
-            <a href={urlProject} target="_blank" className="flex items-center gap-1 underline underline-offset-4"> Saber Mais <BiSolidRightArrowAlt/></a>
-            <a href={urlWebsite} target="_blank" className="flex items-center gap-1 underline underline-offset-4"> WebSite <BiSolidRightArrowAlt/></a>
+          <div className="flex flex-col gap-2">
+            <a href={urlProject} target="_blank" className="flex items-center gap-1 text-lg underline underline-offset-4"> Saber Mais <BiSolidRightArrowAlt/></a>
+            <a href={urlWebsite} target="_blank" className="flex items-center gap-1 text-lg underline underline-offset-4"> WebSite <BiSolidRightArrowAlt/></a>
           </div>
         </div>
 
