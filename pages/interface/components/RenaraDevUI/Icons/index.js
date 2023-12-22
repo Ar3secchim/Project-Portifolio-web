@@ -1,1 +1,4 @@
-import { GoChevronDown } from "react-icons/go";
+export { default as 
+  GoChevronDown,
+  GoArrowUpRight 
+} from "react-icons/go";

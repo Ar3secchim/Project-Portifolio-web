@@ -1,9 +1,5 @@
-import "./globals.css";
+import "../styles/globals.css";
 
-function App() {
-  return (
-    <h1 className=" ">Oi</h1>
-  );
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
-
-export default App;
