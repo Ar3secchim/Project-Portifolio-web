@@ -7,4 +7,5 @@ html{
   background-color:#141414;
   color: white;
   font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
 }
