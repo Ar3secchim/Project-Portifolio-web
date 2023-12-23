@@ -1,7 +1,7 @@
 import Image from "next/image";
-import PerfilImg from "./interface/components/RenaraDevUI/Icons/iconsSvg/perfil.png";
+import PerfilImg from "./interface/RenaraDevUI/Icons/iconsSvg/perfil.png";
 import DefaultLayout from "./interface/components/DefaultLayout";
-import Card from "./interface/components/Card";
+import Card from "./interface/components/Card/CardTitle";
 import { Button } from "./interface/components/Button";
 import { PiArrowUpRightBold } from "react-icons/pi";
 import { MdOutlinePostAdd } from "react-icons/md";
@@ -10,7 +10,7 @@ export default function MyApp() {
   return (
     <DefaultLayout>
       <section className="flex items-center gap-6 mx-14 mt-20 mb-12 ">
-        <div className="flex-1">
+        <div>
           <Image src={PerfilImg} />
         </div>
 
@@ -36,13 +36,13 @@ export default function MyApp() {
           </div>
         </div>
       </section>
-
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
         <Card Route="/project" Title="Projetos" />
         <Card Route="/blog" Title="Blog" />
         <Card Route="/about" Title="Minha história" />
         <Card Route="/techs" Title="Tecnologias" />
-      </section>
+      </div>
     </DefaultLayout>
   );
 }

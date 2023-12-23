@@ -1,6 +1,6 @@
 import Image from "next/image";
 import DefaultLayout from "../interface/components/DefaultLayout";
-import PerfilImg from "../interface/components/RenaraDevUI/Icons/iconsSvg/perfil.png";
+import PerfilImg from "../interface/RenaraDevUI/Icons/iconsSvg/perfil.png";
 import { FaArrowRight } from "react-icons/fa6";
 import Link from "next/link";
 
