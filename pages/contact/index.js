@@ -5,8 +5,8 @@ export default function Contact(){
   return(
     <DefaultLayout>
       <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
-          <FaAngleRight size={20} /> Contact
-        </h1>
+        <FaAngleRight size={20} /> Contact
+      </h1>
     </DefaultLayout>
   )
 }

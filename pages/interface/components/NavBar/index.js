@@ -1,27 +1,73 @@
 import Link from "next/link";
+import { TbLayoutNavbarExpand, TbLayoutNavbarCollapse } from "react-icons/tb";
+import { useState } from "react";
 
 function NavBar() {
+  const [nav, setNav] = useState(false);
+
+  const links = [
+    {
+      id: 1,
+      link: "about",
+      name: "Sobre",
+    },
+    {
+      id: 2,
+      link: "project",
+      name: "Projeto",
+    },
+    {
+      id: 3,
+      link: "contact",
+      name: "Contato",
+    },
+  ];
+
   return (
-    <nav className="flex py-6 justify-between gap-20">
-      <a href="/">
-        <h1 className="font-semibold text-2xl">renara.dev</h1>
-      </a>
-
-      <div className="sm:hidden relative z-10 max-w-max flex-1 items-center justify-center">
-        <ul className="flex gap-2 items-center font-extrabold group flex-1 list-none justify-center space-x-1">
-          <li className="inline-flex h-10 w-max items-center justify-center rounded-md px-2 py-2 text-sm transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none font-bold">
-            <Link href="/about"> Sobre</Link>
-          </li>
-
-          <li className="inline-flex h-10 w-max items-center justify-center rounded-md px-2 py-2 text-sm transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none font-bold">
-            <Link href="/project"> Projetos </Link>
-          </li>
-
-          <li className="inline-flex h-10 w-max items-center justify-center rounded-md px-2 py-2 text-sm transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none font-bold">
-            <Link href="/contact">Contato </Link>
-          </li>
-        </ul>
+    <nav className="flex py-6 justify-between gap-20 flex-0 h-20 nav transition-all">
+      <div className="z-20">
+        <a
+          className="z-20 link-underline link-underline-black"
+          href="/"
+          rel="noreferrer"
+        >
+          <h1 className="z-20 font-semibold text-2xl">renara.dev</h1>
+        </a>
       </div>
+
+      <ul className="hidden md:flex gap-2">
+        {links.map(({ id, link, name }) => (
+          <li
+            key={id}
+            className="inline-flex h-10 w-max items-center justify-center rounded-md px-2 py-2 text-sm transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none font-bold nav-links cursor-pointer capitalize  hover:scale-105 duration-200 link-underline"
+          >
+            <Link href={link}>{name}</Link>
+          </li>
+        ))}
+      </ul>
+
+      <div
+        onClick={() => setNav(!nav)}
+        className="cursor-pointer z-20 pr-4 md:hidden"
+      >
+        {nav ? (
+          <TbLayoutNavbarCollapse size={35} />
+        ) : (
+          <TbLayoutNavbarExpand size={35} />
+        )}
+      </div>
+
+      {nav && (
+        <ul className="z-10 flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-[#141414]">
+          {links.map(({ id, link, name }) => (
+            <li key={id} className="px-4 cursor-pointer py-6 text-2xl">
+              <Link onClick={() => setNav(!nav)} href={link}>
+                {name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 }

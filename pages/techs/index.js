@@ -24,7 +24,7 @@ export default function Techs() {
   return (
     <DefaultLayout>
       <section>
-        <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
+        <h1 className="my-6 inline-flex items-center gap-2 font-bold text-3xl">
           <FaAngleRight size={20} /> Techs
         </h1>
 
@@ -34,7 +34,7 @@ export default function Techs() {
           dominio.
         </p>
 
-        <div className="grid grid-cols-2 ">
+        <div className="grid lg:grid-cols-2 grid-cols-1">
           <div className="grid">
             <div>
               <div className="my-4">

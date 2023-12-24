@@ -4,7 +4,7 @@ import { FaAngleRight } from "react-icons/fa6";
 export default function Reading() {
   return (
     <DefaultLayout>
-      <section className="my-12">
+      <section className="my-6">
         <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
           <FaAngleRight size={20} /> Reading
         </h1>

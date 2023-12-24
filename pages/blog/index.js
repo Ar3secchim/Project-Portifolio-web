@@ -4,7 +4,7 @@ import { FaAngleRight } from "react-icons/fa6";
 export default function Blog(){
   return (
     <DefaultLayout >
-      <section className="my-12 h-[600px]">
+      <section className="my-6 lg:h-[600px] h-[500px] ">
         <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
           <FaAngleRight size={20} /> Blog
         </h1>
