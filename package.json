@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
+    "build": "next build",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint:check": "prettier --check .",

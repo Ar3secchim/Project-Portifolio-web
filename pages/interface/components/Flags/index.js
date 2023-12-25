@@ -1,6 +1,6 @@
 import { BiCircle } from "react-icons/bi";
 
-export function Flags({ Title, Icon }) {
+export default function Flags({ Title, Icon }) {
   return (
     <span
       className={`border-1 bg-gradient-to-b from-[#4e0670bb] via-[#9224579a] to-[#ff5e004b] rounded-full w-max m-1 px-[2px] py-[2px]`}

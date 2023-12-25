@@ -6,11 +6,11 @@ export default function Reading() {
     <DefaultLayout>
       <section className="my-6">
         <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
-          <FaAngleRight size={20} /> Reading
+          <FaAngleRight size={20} /> Lendo
         </h1>
 
         <p className="text-[#575757] text-xl mt-4">
-          O que eu sei e minhas opniões são fortemente influenciados pelos
+          O que eu sei e minhas opniões foram influenciadas pelos
           livros que estão abaixo.
         </p>
 

@@ -1,7 +1,7 @@
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 
-function DefaultLayout({ children }) {
+export default function DefaultLayout({ children }) {
   return (
     <div className="mx-auto max-w-5xl px-6">
       <NavBar />
@@ -10,5 +10,3 @@ function DefaultLayout({ children }) {
     </div>
   );
 }
-
-export default DefaultLayout;

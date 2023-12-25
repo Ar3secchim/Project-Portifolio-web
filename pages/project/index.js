@@ -4,7 +4,7 @@ import Project77 from "../interface/RenaraDevUI/Icons/iconsSvg/77Days.png";
 import TasksList from "../interface/RenaraDevUI/Icons/iconsSvg/taskList.png";
 import ApiEcomerce from "../interface/RenaraDevUI/Icons/iconsSvg/ApiEcomerce.png";
 import MarinaSite from "../interface/RenaraDevUI/Icons/iconsSvg/marianaSite.png";
-import { Flags } from "../interface/components/Flags";
+import Flags from "../interface/components/Flags";
 
 export default function Project() {
   return (
@@ -26,7 +26,7 @@ export default function Project() {
         <CardProject
           Data="July - 2023"
           Name="Api E-commerce "
-          Discription="Este é um projeto de um aplicativo de comércio eletrônico que demonstra operações CRUD."
+          Discription="Projeto de um aplicativo de comércio eletrônico que demonstra operações CRUD."
           Href="http://"
           Img={ApiEcomerce}
         >

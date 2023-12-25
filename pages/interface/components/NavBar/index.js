@@ -2,7 +2,7 @@ import Link from "next/link";
 import { TbLayoutNavbarExpand, TbLayoutNavbarCollapse } from "react-icons/tb";
 import { useState } from "react";
 
-function NavBar() {
+export default function NavBar() {
   const [nav, setNav] = useState(false);
 
   const links = [
@@ -71,5 +71,3 @@ function NavBar() {
     </nav>
   );
 }
-
-export default NavBar;

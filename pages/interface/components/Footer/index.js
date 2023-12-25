@@ -1,4 +1,4 @@
-import { Button } from "../Button";
+import Button  from "../Button";
 import { PiNavigationArrowBold } from "react-icons/pi";
 
 import Image from "next/image";

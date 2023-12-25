@@ -1,18 +1,13 @@
-import DefaultLayout from "../interface/components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
+import DefaultLayout from "../interface/components/DefaultLayout";
 
 export default function Manual() {
   return (
     <DefaultLayout>
       <section>
         <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
-          <FaAngleRight size={20} /> Manual de Renara
+          <FaAngleRight size={20} /> Soft Skills
         </h1>
-
-        <p className="text-[#575757] text-xl mt-4">
-          Esta é uma cartilha sobre tudo de Renara. Ele captura mais sobre mim e
-          como me comporto em determinadas situações.
-        </p>
 
         <ul className="my-8 flex flex-col gap-1 font-thin">
           <h2 className="mb-4 text-xl font-semibold">Visão Geral</h2>
@@ -32,18 +27,20 @@ export default function Manual() {
 
         <ul className="my-8 flex flex-col gap-1 font-thin">
           <h2 className="mb-4 text-xl font-semibold">Pontos Fortes</h2>
-
           <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Organização:
+            <FaAngleRight /> Organizada
           </li>
           <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Gosto de rotina:
+            <FaAngleRight /> Gosto de rotina
           </li>
           <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Sou muito positiva e alto astral:
+            <FaAngleRight /> Sou muito positiva e alto astral
           </li>
           <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Tenho modo aprendiz ligado:
+            <FaAngleRight /> Tenho modo aprendiz sempre ligado
+          </li>
+          <li className="inline-flex gap-1 items-center mx-2">
+            <FaAngleRight /> Perseverante
           </li>
         </ul>
 
@@ -51,7 +48,7 @@ export default function Manual() {
           <h2 className="mb-4 text-xl font-semibold">Fraquezas</h2>
 
           <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Não saber dizer não as pessoas:
+            <FaAngleRight /> Não saber dizer não as pessoas
           </li>
           <li className="inline-flex gap-1 items-center mx-2">
             <FaAngleRight /> Quero as coisas para ontem:
