@@ -1,4 +1,4 @@
-import DefaultLayout from "../interface/components/DefaultLayout";
+import DefaultLayout from "../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
 
 export default function Contact(){

@@ -1,37 +1,35 @@
-import CardTech from "../interface/components/Card/CardTech";
-import DefaultLayout from "../interface/components/DefaultLayout";
+import CardTech from "../components/Card/CardTech";
+import DefaultLayout from "../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
 
-import Docker from "../interface/RenaraDevUI/Icons/iconsSvg/docker.svg";
-import NodeJs from "../interface/RenaraDevUI/Icons/iconsSvg/nodeJs.svg";
-import Java from "../interface/RenaraDevUI/Icons/iconsSvg/java.svg";
-import Rabbitmq from "../interface/RenaraDevUI/Icons/iconsSvg/rabbitmq.svg";
-import Github from "../interface/RenaraDevUI/Icons/iconsSvg/github.svg";
-import Figma from "../interface/RenaraDevUI/Icons/iconsSvg/figma.svg";
-import Express from "../interface/RenaraDevUI/Icons/iconsSvg/express.svg";
-import Nextjs from "../interface/RenaraDevUI/Icons/iconsSvg/nextjs.svg";
-import Javascript from "../interface/RenaraDevUI/Icons/iconsSvg/javascript.svg";
-import Css from "../interface/RenaraDevUI/Icons/iconsSvg/css.svg";
-import Html from "../interface/RenaraDevUI/Icons/iconsSvg/html.svg";
-import Tailwind from "../interface/RenaraDevUI/Icons/iconsSvg/tailwindcss.svg";
-import Junit from "../interface/RenaraDevUI/Icons/iconsSvg/Junit.svg";
-import Spring from "../interface/RenaraDevUI/Icons/iconsSvg/spring.svg";
-import MySql from "../interface/RenaraDevUI/Icons/iconsSvg/mysql.svg";
-import Redis from "../interface/RenaraDevUI/Icons/iconsSvg/redis.svg";
-import Jest from "../interface/RenaraDevUI/Icons/iconsSvg/jest.svg";
+import Docker from "../../public/docker.svg";
+import NodeJs from "../../public/nodeJs.svg";
+import Java from "../../public/java.svg";
+import Rabbitmq from "../../public/rabbitmq.svg";
+import Github from "../../public/github.svg";
+import Figma from "../../public/figma.svg";
+import Express from "../../public/express.svg";
+import Nextjs from "../../public/nextjs.svg";
+import Javascript from "../../public/javascript.svg";
+import Css from "../../public/css.svg";
+import Html from "../../public/html.svg";
+import Tailwind from "../../public/tailwindcss.svg";
+import Junit from "../../public/Junit.svg";
+import Spring from "../../public/spring.svg";
+import MySql from "../../public/mysql.svg";
+import Redis from "../../public/redis.svg";
+import Jest from "../../public/jest.svg";
 
 export default function Techs() {
   return (
     <DefaultLayout>
       <section>
         <h1 className="my-6 inline-flex items-center gap-2 font-bold text-3xl">
-          <FaAngleRight size={20} /> Techs
+          <FaAngleRight size={20} /> Hard skills
         </h1>
 
         <p className="text-[#575757] text-xl mt-4">
-          Todas as tecnologias, ferramentas e softwares que ultilizo no momento
-          e as que estou estudando no momento de uma mais focada para adquirir
-          dominio.
+          Tecnologias, ferramentas e softwares que utilizo:
         </p>
 
         <div className="grid lg:grid-cols-2 grid-cols-1">

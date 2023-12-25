@@ -1,23 +1,33 @@
 import { FaAngleRight } from "react-icons/fa6";
-import DefaultLayout from "../interface/components/DefaultLayout";
+import DefaultLayout from "../components/DefaultLayout";
+import Link from "next/link";
 
 export default function Manual() {
   return (
     <DefaultLayout>
-      <section>
+      <section className="tracking-wider ">
         <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
           <FaAngleRight size={20} /> Soft Skills
         </h1>
 
         <ul className="my-8 flex flex-col gap-1 font-thin">
-          <h2 className="mb-4 text-xl font-semibold">Visão Geral</h2>
+          <h2 className="mb-4 text-xl font-semibold">Teste 16 personalities</h2>
 
-          <li className="inline-flex items-start gap-2 mx-2">
+          <li className="flex items-start gap-2 mx-2">
             <FaAngleRight className="mt-1" />
-            INTJ-A Myers-Briggs: “Os protagonistas estão inspirando otimistas,
-            prontamente agindo para fazer o que acham certo. Esses tipos
-            calorosos e francos adoram ajudar os outros e têm a energia criativa
-            para alcançar seus objetivos.”
+            <div>
+              <Link
+                href="/reading"
+                className="inline-flex rounded-md px-1  transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none
+              underline decoration-[#652380] underline-offset-4 "
+              >
+                INTJ-A Myers-Briggs:
+              </Link>
+              “Os protagonistas estão inspirando otimistas, prontamente agindo
+              para fazer o que acham certo. Esses tipos calorosos e francos
+              adoram ajudar os outros e têm a energia criativa para alcançar
+              seus objetivos.”
+            </div>
           </li>
           <li className="inline-flex gap-1 items-center mx-2">
             <FaAngleRight /> Extrovetida, intuitiva, sentimental, julgadora e
@@ -25,7 +35,7 @@ export default function Manual() {
           </li>
         </ul>
 
-        <ul className="my-8 flex flex-col gap-1 font-thin">
+        <ul className="my-8 flex flex-col gap-1 font-thin ">
           <h2 className="mb-4 text-xl font-semibold">Pontos Fortes</h2>
           <li className="inline-flex gap-1 items-center mx-2">
             <FaAngleRight /> Organizada
@@ -51,7 +61,8 @@ export default function Manual() {
             <FaAngleRight /> Não saber dizer não as pessoas
           </li>
           <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Quero as coisas para ontem:
+            <FaAngleRight />
+            Quero as coisas para ontem
           </li>
         </ul>
 
@@ -60,51 +71,64 @@ export default function Manual() {
 
           <li className=" gap-1 mx-2 inline-flex">
             <FaAngleRight className="mt-1" />
-            Modo Aprendiz ligado: Toda pessoa, independente da sua idade, classe
-            social ou nivel de educação tem algo a ensinar indepedente do
-            assunto: seja sobre a vida, relacionamento, carreira...
+            <div>
+              <span className="font-semibold">
+                {" "}
+                Modo aprendiz sempre ligado:
+              </span>
+              toda pessoa, independente da sua idade, classe social ou nivel de
+              educação tem algo a ensinar indepedente do assunto. Seja sobre a
+              vida, relacionamento, carreira...
+            </div>
           </li>
 
           <li className="inline-flex gap-1  mx-2">
             <FaAngleRight className="mt-1" />
-            Viés para o apredizado: Começar é a melhor maneira de começar a
-            progredir e começar a aprender.
+            <div>
+              <span className="font-semibold"> Viés para o apredizado:</span>{" "}
+              “Feito é melhor que perfeito”. Até mesmo um erro é uma
+              oportunidade de aprendizado.
+            </div>
           </li>
 
           <li className="inline-flex gap-1  mx-2">
             <FaAngleRight className="mt-1" />
-            Mentalidade de crescimento: Estou constantemente me desafiando a
-            melhorar. Quando fico muito confortável, minha felicidade sofrem.
+            <div>
+              <span className="font-semibold">
+                {" "}
+                Mentalidade de crescimento:
+              </span>{" "}
+              Estou constantemente me desafiando a melhorar. A idéia é ser 1%
+              melhor todo dia. (aperfeiçoamento contínuo)
+            </div>
           </li>
 
           <li className="inline-flex gap-1  mx-2">
             <FaAngleRight className="mt-1" />
-            Mantenha a simplicidade: Às vezes temos que ir para o mato, mas não
-            deveria ser o padrão. Se não for o foco, mantenha a simplicidade.
+            <div>
+              <span className="font-semibold"> Mantenha a simplicidade:</span>{" "}
+              tornar as coisas simples, seja no pessoal ou no profissional.
+            </div>
           </li>
 
           <li className="inline-flex gap-1  mx-2">
             <FaAngleRight className="mt-1" />
-            Aprendizagem em público: Fico mais feliz quando compartilho coisas
-            que acho úteis. Ensinar alguém de alguma forma sempre é a melhor
-            maneira de está sempre aprendendo.
+            <div>
+              <span className="font-semibold">
+                {" "}
+                Compartilhar aprendizados:{" "}
+              </span>
+              fico feliz ao ensinar para alguém algo de que tenho conhecimento.
+              Acredito que essa é a melhor maneira de estar sempre aprendendo.
+            </div>
           </li>
           <li className="inline-flex gap-1  mx-2">
             <FaAngleRight className="mt-1" />
-            Saúde: Não tem porque apenas ter uma mente brilhande se você não tem
-            estruturas fisicas forte o suficiente para suporta e desenvolver uma
-            mente forte.
-          </li>
-        </ul>
-
-        <ul className="my-8 flex flex-col gap-1 font-thin">
-          <h2 className="mb-4 text-xl font-semibold">Livros Favoritos</h2>
-
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> 12 Regras para uma vida
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Maestria
+            <div>
+              <span className="font-semibold"> Saúde:</span> é básico cuidar da
+              saúde física, emocional e espiritual para ter um alto desempenho
+              no âmbito profissional e pessoal.
+            </div>
           </li>
         </ul>
 

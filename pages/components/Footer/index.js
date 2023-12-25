@@ -2,9 +2,9 @@ import Button  from "../Button";
 import { PiNavigationArrowBold } from "react-icons/pi";
 
 import Image from "next/image";
-import Insta from "../../RenaraDevUI/Icons/iconsSvg/insta.svg";
-import Github from "../../RenaraDevUI/Icons/iconsSvg/gitHub.svg";
-import Linkdln from "../../RenaraDevUI/Icons/iconsSvg/linkdln.svg";
+import Insta from "../../../public/insta.svg";
+import Github from "../../../public/gitHub.svg";
+import Linkdln from "../../../public/linkdln.svg";
 import Link from "next/link";
 
 export default function Footer() {
@@ -22,13 +22,13 @@ export default function Footer() {
       </Button>
 
       <div className="flex gap-3">
-        <Link href="/">
+        <Link href="https://www.instagram.com/rsecchim/">
           <Image priority src={Insta} alt="icons instagram" />
         </Link>
-        <Link href="/">
+        <Link href=" https://github.com/Ar3secchim">
           <Image priority src={Github} alt="icons Github" />
         </Link>
-        <Link href="/">
+        <Link href="https://www.linkedin.com/in/renarasecchim/">
           <Image priority src={Linkdln} alt="icons Linkdln" />
         </Link>
       </div>

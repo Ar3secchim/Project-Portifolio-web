@@ -1,8 +1,8 @@
 import Image from "next/image";
-import PerfilImg from "./interface/RenaraDevUI/Icons/iconsSvg/perfil.png";
-import DefaultLayout from "./interface/components/DefaultLayout";
-import Card from "./interface/components/Card/CardTitle";
-import Button  from "./interface/components/Button";
+import PerfilImg from "./components/RenaraDevUI/Icons/iconsSvg/perfil.png";
+import DefaultLayout from "./components/DefaultLayout";
+import Card from "./components/Card/CardTitle";
+import Button  from "./components/Button";
 import { PiArrowUpRightBold } from "react-icons/pi";
 import { MdOutlinePostAdd } from "react-icons/md";
 

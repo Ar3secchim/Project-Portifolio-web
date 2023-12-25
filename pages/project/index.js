@@ -1,10 +1,10 @@
-import CardProject from "../interface/components/Card/CardProject";
-import DefaultLayout from "../interface/components/DefaultLayout";
-import Project77 from "../interface/RenaraDevUI/Icons/iconsSvg/77Days.png";
-import TasksList from "../interface/RenaraDevUI/Icons/iconsSvg/taskList.png";
-import ApiEcomerce from "../interface/RenaraDevUI/Icons/iconsSvg/ApiEcomerce.png";
-import MarinaSite from "../interface/RenaraDevUI/Icons/iconsSvg/marianaSite.png";
-import Flags from "../interface/components/Flags";
+import CardProject from "../components/Card/CardProject";
+import DefaultLayout from "../components/DefaultLayout";
+import Project77 from "../components/RenaraDevUI/Icons/iconsSvg/77Days.png";
+import TasksList from "../components/RenaraDevUI/Icons/iconsSvg/taskList.png";
+import ApiEcomerce from "../components/RenaraDevUI/Icons/iconsSvg/ApiEcomerce.png";
+import MarinaSite from "../components/RenaraDevUI/Icons/iconsSvg/marianaSite.png";
+import Flags from "../components/Flags";
 
 export default function Project() {
   return (
