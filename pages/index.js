@@ -16,11 +16,11 @@ export default function MyApp() {
 
         <div className="flex-1 items-start mt-8 mb-12">
           <h1 className="font-semibold text-4xl mb-1">
-            Hey, I’m Renara Secchim
+            Oi! Eu sou Renara Secchim
           </h1>
-          <h1 className="font-semibold text-4xl mb-10">FullSatck Developer</h1>
-          <h3 className="font-regular text-[#575757] text-2xl mb-10">
-            Dando vida à ideias.
+          <h1 className="font-semibold text-4xl mb-10">FullStack Developer</h1>
+          <h3 className="font-regular text-[#575757] text-xl mb-10">
+            Apaixonada por tecnologia e nas possibilidades que podemos criar através dela.
           </h3>
 
           <div className="flex gap-5">

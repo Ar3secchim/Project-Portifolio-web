@@ -51,14 +51,7 @@ export default function Manual() {
           <h2 className="mb-4 text-xl font-semibold">Fraquezas</h2>
 
           <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Ser inflexivel:
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Eu guardo as coisas muito para mim:
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Quando eu vou criticar algo ou opinar em algo acabo
-            sendo passiva agressiva :
+            <FaAngleRight /> Não saber dizer não as pessoas:
           </li>
           <li className="inline-flex gap-1 items-center mx-2">
             <FaAngleRight /> Quero as coisas para ontem:

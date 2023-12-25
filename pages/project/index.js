@@ -13,7 +13,7 @@ export default function Project() {
         <CardProject
           Data="2023 - current"
           Name="Project 77 Days"
-          Discription="Um app que faz o acompanhamento de restramento de tasks (hábitos) realizados durante 77 dias."
+          Discription="Um app que faz o rastramento de tasks (hábitos). Mostra ao usuário um dashboard das tasks e a porcetagem da execução daquelas tarefas."
           Href="http://"
           Img={Project77}
         >
@@ -26,7 +26,7 @@ export default function Project() {
         <CardProject
           Data="July - 2023"
           Name="Api E-commerce "
-          Discription="Este é um projeto de exemplo de um aplicativo de comércio eletrônico que demonstra operações CRUD."
+          Discription="Este é um projeto de um aplicativo de comércio eletrônico que demonstra operações CRUD."
           Href="http://"
           Img={ApiEcomerce}
         >
@@ -39,7 +39,7 @@ export default function Project() {
         <CardProject
           Data="July - 2022"
           Name="Task List "
-          Discription="Um app  com objetivo de aplicar conhecimentos de React usando hooks e desenvolvimento do design com styled-components."
+          Discription="Aplicativo destinado para o usuário anotar as tarefas pendentes."
           Href="http://"
           Img={TasksList}
         >
@@ -51,7 +51,7 @@ export default function Project() {
         <CardProject
           Data="Jan - 2022"
           Name="Site Marina Jóias"
-          Discription="Uma landing page desenvolvida para captação de revendedoras de joias. "
+          Discription="Uma landing page desenvolvida para captação de revendedoras de jóias."
           Href="http://"
           Img={MarinaSite}
         >
