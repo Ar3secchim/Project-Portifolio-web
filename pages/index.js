@@ -30,7 +30,7 @@ export default function MyApp() {
               <PiArrowUpRightBold />
             </Button>
 
-            <Button Route="/">
+            <Button Route="/blog">
               Posts
               <MdOutlinePostAdd size={20} />
             </Button>
@@ -42,7 +42,7 @@ export default function MyApp() {
         <Card Route="/project" Title="Projetos" />
         <Card Route="/blog" Title="Blog" />
         <Card Route="/about" Title="Minha história" />
-        <Card Route="/techs" Title="Tecnologias" />
+        <Card Route="/techs" Title="Hard Skills" />
       </div>
     </DefaultLayout>
   );

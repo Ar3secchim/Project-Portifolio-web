@@ -25,7 +25,7 @@ export default function Footer() {
         <Link href="https://www.instagram.com/rsecchim/">
           <Image priority src={Insta} alt="icons instagram" />
         </Link>
-        <Link href=" https://github.com/Ar3secchim">
+        <Link href="https://github.com/Ar3secchim">
           <Image priority src={Github} alt="icons Github" />
         </Link>
         <Link href="https://www.linkedin.com/in/renarasecchim/">
