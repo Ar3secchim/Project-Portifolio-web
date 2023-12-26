@@ -12,7 +12,7 @@ export default function Contact(){
         <FaAngleRight size={20} /> Contato
       </h1>
 
-      <div className="flex items-center my-24">
+      <div className="flex items-center justify-center my-24">
         <Image
           className="hidden md:flex lg:w-2/4"
           src={ApiEcomerce}

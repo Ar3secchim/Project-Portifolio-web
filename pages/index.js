@@ -9,8 +9,8 @@ import { MdOutlinePostAdd } from "react-icons/md";
 export default function MyApp() {
   return (
     <DefaultLayout>
-      <section className="flex items-center gap-6 mx-14 mt-20 mb-12 ">
-        <div>
+      <section className="flex items-center gap-6 md:mx-14 md:mt-20 md:mb-12 ">
+        <div className="hidden md:flex">
           <Image src={PerfilImg} />
         </div>
 

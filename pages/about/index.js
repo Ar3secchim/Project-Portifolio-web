@@ -7,13 +7,13 @@ import Code from "../../public/codeTwo.png";
 import Book from "../../public/codeThree.png";
 import Read from "../../public/codeFive.png";
 import Healf from "../../public/codeFour.png";
-import Programming from "../../public/codeOne.png";
+
 
 export default function About() {
   return (
     <DefaultLayout>
       <section className="flex mt-4 mb-20 gap-4">
-        <div className="flex-1 grid gap-4 grid-cols-2">
+        <div className="flex-1 md:grid gap-4 grid-cols-2 hidden ">
           <Image
             src={Code}
             className=" rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"

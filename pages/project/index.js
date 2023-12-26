@@ -4,6 +4,7 @@ import Project77 from "../components/RenaraDevUI/Icons/iconsSvg/77Days.png";
 import TasksList from "../components/RenaraDevUI/Icons/iconsSvg/taskList.png";
 import ApiEcomerce from "../components/RenaraDevUI/Icons/iconsSvg/ApiEcomerce.png";
 import MarinaSite from "../components/RenaraDevUI/Icons/iconsSvg/marianaSite.png";
+import CupBet from "../components/RenaraDevUI/Icons/iconsSvg/cupBet.png";
 import Flags from "../components/Flags";
 
 export default function Project() {
@@ -14,7 +15,7 @@ export default function Project() {
           Data="2023 - current"
           Name="Project 77 Days"
           Discription="Um app que faz o rastramento de tasks (hábitos). Mostra ao usuário um dashboard das tasks e a porcetagem da execução daquelas tarefas."
-          Href="http://"
+          Href="https://github.com/Project77days"
           Img={Project77}
         >
           <Flags Title="mobile" />
@@ -24,10 +25,10 @@ export default function Project() {
         </CardProject>
 
         <CardProject
-          Data="July - 2023"
+          Data="Jul - 2023"
           Name="Api E-commerce "
           Discription="Projeto de um aplicativo de comércio eletrônico que demonstra operações CRUD."
-          Href="http://"
+          Href="https://github.com/Ar3secchim/crud-Ecommerce-App"
           Img={ApiEcomerce}
         >
           <Flags Title="java" />
@@ -37,10 +38,10 @@ export default function Project() {
         </CardProject>
 
         <CardProject
-          Data="July - 2022"
+          Data="Jul - 2022"
           Name="Task List "
           Discription="Aplicativo destinado para o usuário anotar as tarefas pendentes."
-          Href="http://"
+          Href="https://github.com/Ar3secchim/tasks-list-react"
           Img={TasksList}
         >
           <Flags Title="react" />
@@ -49,15 +50,27 @@ export default function Project() {
         </CardProject>
 
         <CardProject
-          Data="Jan - 2022"
+          Data="Nov - 2021"
           Name="Site Marina Jóias"
           Discription="Uma landing page desenvolvida para captação de revendedoras de jóias."
-          Href="http://"
+          Href="https://github.com/Ar3secchim/site_marinaSemijoias"
           Img={MarinaSite}
         >
           <Flags Title="css" />
           <Flags Title="web design" />
           <Flags Title="html" />
+        </CardProject>
+
+        <CardProject 
+          Data="Jan - 2022"
+          Name="CupBet"
+          Discription="Aplicação para realizar aposta de copa do mundo"
+          Href="https://github.com/Ar3secchim/challenge-fullStack-CupBet-web"
+          Img={CupBet}
+        >
+          <Flags Title="node" />
+          <Flags Title="react" />
+          <Flags Title="jwt" />
         </CardProject>
       </section>
     </DefaultLayout>
