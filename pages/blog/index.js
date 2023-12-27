@@ -29,7 +29,7 @@ export default function Blog(){
         </article>
       </section> */}
 
-      <div className="flex items-center justify-between gap-2 my-16 flex-col md:flex-row">
+      <div className="flex items-center justify-between gap-2  flex-col md:flex-row">
         <div className="flex-1">
           <h1 className="md:inline-flex items-center font-bold text-4xl md:text-8xl">
             Oopss... 
