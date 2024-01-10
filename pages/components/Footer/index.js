@@ -14,7 +14,7 @@ export default function Footer() {
         Conquistas excepcionais não se materializam sozinhas!
       </h3>
 
-      <Button Route="/">
+      <Button Route="/contact" Blank={false}>
         Mande uma mensagem
         <span className="rotate-90">
           <PiNavigationArrowBold size={20} />

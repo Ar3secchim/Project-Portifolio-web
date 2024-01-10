@@ -9,7 +9,7 @@ import { MdOutlinePostAdd } from "react-icons/md";
 export default function MyApp() {
   return (
     <DefaultLayout>
-      <section className="flex items-center gap-6 md:mx-14 md:my-8">
+      <section className="flex items-center gap-6 md:mx-14 md:my-8 lg:my-24">
         <div className="hidden md:flex">
           <Image src={PerfilImg} />
         </div>
@@ -25,12 +25,12 @@ export default function MyApp() {
           </h3>
 
           <div className="flex gap-5">
-            <Button Route="/contact">
+            <Button Route="/contact" Blank={false}>
               Contato
               <PiArrowUpRightBold />
             </Button>
 
-            <Button Route="/blog">
+            <Button Route="/blog" Blank={false}>
               Posts
               <MdOutlinePostAdd size={20} />
             </Button>
@@ -38,7 +38,7 @@ export default function MyApp() {
         </div>
       </section>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 lg:my-14">
         <Card Route="/project" Title="Projetos" />
         <Card Route="/blog" Title="Blog" />
         <Card Route="/about" Title="Minha história" />
