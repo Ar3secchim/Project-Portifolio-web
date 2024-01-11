@@ -1,26 +1,72 @@
-import { getPost } from "@/app/_services/notion";
+import getPosts, { getPostForSlug } from "../../api/v1/blog/getPost";
 import ReactMarkdown from "react-markdown";
+import DefaultLayout from "../../components/DefaultLayout";
+import { FaAngleRight } from "react-icons/fa6";
 
-export default async function BlogPost({
-  params,
-}) {
-  const post = await getPost(params.slug);
+export const getStaticProps = async (context) => {
+  const { params } = context;
+  const post = await getPostForSlug(params.slug);
 
+  return {
+    props: {
+      post,
+    },
+  };
+};
+
+export default function BlogPost({ post }) {
   return (
-    <div className="w-full bg-slate-800 min-h-screen">
-      <div className="m-auto max-w-2xl bg-slate-700 p-6 min-h-screen">
-        <h1 className="text-4xl py-6">{post.title}</h1>
+    <DefaultLayout>
+      <h1 className="text-3xl pt-4 pb-2 ">{post.title}</h1>
+      <div className="inline-flex  pb-4 items-center text-[#575757] text-base gap-1">
+        <span>{post.publishAt}</span>
+        <span>
+          <FaAngleRight />
+        </span>
 
-        <ReactMarkdown
-          components={{
-            h2: ({ node, ...props }) => (
-              <h2 className="text-2xl text-blue-700" {...props} />
-            ),
-          }}
-        >
-          {post.content}
-        </ReactMarkdown>
+        <span>5min</span>
+
+        <span>
+          <FaAngleRight />
+        </span>
+
+        {post.tags.map((tag) => (
+          <span
+            key={tag}
+            className="text-sm text-[#575757] border border-[#575757] px-[8px] rounded-full"
+          >
+            {tag}
+          </span>
+        ))}
       </div>
-    </div>
+
+      <ReactMarkdown
+        components={{
+          h2: ({ node, ...props }) => (
+            <h2 className="text-2xl text-white" {...props} />
+          ),
+        }}
+      >
+        {post.content}
+      </ReactMarkdown>
+    </DefaultLayout>
   );
 }
+
+export const  getStaticPaths = async () => {
+  const posts = await getPosts();
+
+  const paths = posts.map((post) => { 
+    return  {
+      params: {
+        slug: `${post.slug}`,
+      },
+    }
+  });
+
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
