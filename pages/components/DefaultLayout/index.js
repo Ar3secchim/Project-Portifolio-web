@@ -1,6 +1,5 @@
 import Footer from "../Footer";
 import NavBar from "../NavBar";
-import Favicon from "../../../public/favicon.ico";
 
 export default function DefaultLayout({ children }) {
   return (

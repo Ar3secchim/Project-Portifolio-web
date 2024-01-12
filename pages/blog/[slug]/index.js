@@ -53,20 +53,19 @@ export default function BlogPost({ post }) {
   );
 }
 
-export const  getStaticPaths = async () => {
+export const getStaticPaths = async () => {
   const posts = await getPosts();
 
-  const paths = posts.map((post) => { 
-    return  {
+  const paths = posts.map((post) => {
+    return {
       params: {
         slug: `${post.slug}`,
       },
-    }
+    };
   });
 
   return {
     paths,
     fallback: true,
   };
-}
-
+};

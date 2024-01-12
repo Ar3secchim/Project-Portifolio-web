@@ -4,6 +4,7 @@ import { FaAngleRight } from "react-icons/fa6";
 
 import getPosts from "../api/v1/blog/getPost";
 import DefaultLayout from "../components/DefaultLayout";
+import CardPost from "../components/Card/CardPost"
 
 export const getStaticProps = async () => {
   const posts = await getPosts();
@@ -28,40 +29,9 @@ export default function Blog({posts}) {
         afins.
       </p>
 
-      <section className="my-6">
+      <section className="my-6 h-[50vh]">
         {posts.map((post) => (
-          <div key={post.id} className="mb-6">
-            <h1 className=" flex font-bold text-xl mb-1">
-              <Link
-                className=" hover:text-purple-800"
-                href={`/blog/${post.slug}`}
-              >
-                {post.title}
-              </Link>
-            </h1>
-
-            <div className="inline-flex items-center mx-2 text-[#575757] text-sm gap-1">
-              <span>{post.publishAt}</span>
-              <span>
-                <FaAngleRight />
-              </span>
-
-              <span>5min</span>
-
-              <span>
-                <FaAngleRight />
-              </span>
-
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-sm text-[#575757] border border-[#575757] px-[8px] rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+          <CardPost Post={post} />
         ))}
       </section>
     </DefaultLayout>
