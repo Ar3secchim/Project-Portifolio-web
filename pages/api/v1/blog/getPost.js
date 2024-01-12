@@ -14,7 +14,7 @@ export default async function getPosts() {
       },
     },
   });
-  
+
   return response.results.map((post) => {
     return {
       id: post.properties.ID.unique_id.number,
@@ -43,10 +43,13 @@ export async function getPostForSlug(slug) {
   const post = response.results[0].properties;
   const pageId = response.results[0].id;
 
-  const n2m = new NotionToMarkdown({ notionClient: notion });
+  const n2m = new NotionToMarkdown({
+    notionClient: notion,
+  });
+
   const mdblocks = await n2m.pageToMarkdown(pageId);
   const mdString = n2m.toMarkdownString(mdblocks);
-
+  console.log(mdString.parent);
   return {
     tags: post.tags.multi_select.map((tags) => tags.name),
     publishAt: post.publishAt.date.start,

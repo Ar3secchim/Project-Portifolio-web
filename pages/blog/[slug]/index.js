@@ -1,18 +1,9 @@
 import getPosts, { getPostForSlug } from "../../api/v1/blog/getPost";
+
 import ReactMarkdown from "react-markdown";
+import BlockCode from "../../components/BlockCode";
 import DefaultLayout from "../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
-
-export const getStaticProps = async (context) => {
-  const { params } = context;
-  const post = await getPostForSlug(params.slug);
-
-  return {
-    props: {
-      post,
-    },
-  };
-};
 
 export default function BlogPost({ post }) {
   return (
@@ -41,10 +32,10 @@ export default function BlogPost({ post }) {
       </div>
 
       <ReactMarkdown
+        className="prose prose-invert prose-pre:bg-transparent min-w-full pb-4"
         components={{
-          h2: ({ node, ...props }) => (
-            <h2 className="text-2xl text-white" {...props} />
-          ),
+          code: ({ ...props }) => <BlockCode {...props} />,
+          a: ({...props}) => <a target="_blank" {...props} /> ,
         }}
       >
         {post.content}
@@ -52,6 +43,18 @@ export default function BlogPost({ post }) {
     </DefaultLayout>
   );
 }
+
+export const getStaticProps = async (context) => {
+  const { params } = context;
+  const post = await getPostForSlug(params.slug);
+
+  return {
+    props: {
+      post,
+    },
+  };
+};
+
 
 export const getStaticPaths = async () => {
   const posts = await getPosts();
