@@ -5,7 +5,7 @@ import BlockCode from "../../components/BlockCode";
 import DefaultLayout from "../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const { params } = context;
   const post = await getPostForSlug(params.slug);
 
@@ -16,22 +16,6 @@ export const getStaticProps = async (context) => {
   };
 };
 
-export const getStaticPaths = async () => {
-  const posts = await getPosts();
-
-  const paths = posts.map((post) => {
-    return {
-      params: {
-        slug: `${post.slug}`,
-      },
-    };
-  });
-
-  return {
-    paths,
-    fallback: true,
-  };
-};
 
 export default function BlogPost({ post }) {
   return (
