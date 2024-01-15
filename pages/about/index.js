@@ -3,11 +3,11 @@ import Link from "next/link";
 
 import { FaArrowRight } from "react-icons/fa6";
 import DefaultLayout from "../components/DefaultLayout";
+
 import Code from "../../public/codeTwo.png";
 import Book from "../../public/codeThree.png";
 import Read from "../../public/codeFive.png";
 import Healf from "../../public/codeFour.png";
-
 
 export default function About() {
   return (
