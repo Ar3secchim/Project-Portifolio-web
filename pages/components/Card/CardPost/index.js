@@ -3,7 +3,7 @@ import { FaAngleRight } from "react-icons/fa6";
 
 export default function CardPost({Post}){
   return (
-    <div key={Post.id} className="mb-6">
+    <div  className="mb-6">
       <h1 className=" flex font-bold text-xl mb-1">
         <Link className=" hover:text-purple-800" href={`/blog/${Post.slug}`}>
           {Post.title}
@@ -16,7 +16,7 @@ export default function CardPost({Post}){
           <FaAngleRight />
         </span>
 
-        <span>5min</span>
+        <span>{Post.time + " min"}</span>
 
         <span>
           <FaAngleRight />

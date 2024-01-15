@@ -22,6 +22,7 @@ export default async function getPosts() {
       slug: post.properties.slug.rich_text[0].plain_text,
       tags: post.properties.tags.multi_select.map((tags) => tags.name),
       publishAt: post.properties.publishAt.date.start,
+      time: post.properties.timeread.number
     };
   });
 }
@@ -49,12 +50,13 @@ export async function getPostForSlug(slug) {
 
   const mdblocks = await n2m.pageToMarkdown(pageId);
   const mdString = n2m.toMarkdownString(mdblocks);
-  console.log(mdString.parent);
+
   return {
     tags: post.tags.multi_select.map((tags) => tags.name),
     publishAt: post.publishAt.date.start,
     slug: post.slug.rich_text[0].plain_text,
     title: post.title.title[0].plain_text,
     content: mdString.parent,
+    time: post.timeread.number,
   };
 }

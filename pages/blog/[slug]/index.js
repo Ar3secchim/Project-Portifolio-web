@@ -8,14 +8,14 @@ import { FaAngleRight } from "react-icons/fa6";
 export default function BlogPost({ post }) {
   return (
     <DefaultLayout>
-      <h1 className="text-3xl pt-4 pb-2 ">{post.title}</h1>
-      <div className="inline-flex  pb-4 items-center text-[#575757] text-base gap-1">
+      <h1 className="text-2xl pt-4 pb-2 ">{post.title}</h1>
+      <div className="inline-flex pb-6 items-center text-[#575757] text-base gap-1">
         <span>{post.publishAt}</span>
         <span>
           <FaAngleRight />
         </span>
 
-        <span>5min</span>
+        <span>{post.time} min</span>
 
         <span>
           <FaAngleRight />
