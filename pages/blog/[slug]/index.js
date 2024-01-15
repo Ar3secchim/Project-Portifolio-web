@@ -7,7 +7,7 @@ import { FaAngleRight } from "react-icons/fa6";
 
 export const getServerSideProps = async (context) => {
   const { params } = context;
-  const post = await getPostForSlug(params.slug);
+  const post = await getPostForSlug(params);
 
   return {
     props: {
