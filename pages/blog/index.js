@@ -5,7 +5,7 @@ import { FaAngleRight } from "react-icons/fa6";
 import getPosts from "../api/v1/blog/getPost";
 import DefaultLayout from "../components/DefaultLayout";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const posts = await getPosts();
 
   return {
@@ -30,7 +30,7 @@ export default function Blog({posts}) {
 
       <section className="my-6 h-[50vh]">
         {posts.map((post) => (
-          <div className="mb-6">
+          <div className="mb-6" key={post.id}>
             <h1 className=" flex font-bold text-xl mb-1">
               <Link
                 className=" hover:text-purple-800"
