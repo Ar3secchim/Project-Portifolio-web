@@ -5,35 +5,51 @@ import BlockCode from "../../components/BlockCode";
 import DefaultLayout from "../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const { params } = context;
-  const post = await getPostForSlug(params);
+  const post = await getPostForSlug(params.slug);
 
   return {
     props: {
-      post,
+      Post: post,
     },
   };
 };
 
+export const getStaticPaths = async () => {
+  const posts = await getPosts();
 
-export default function BlogPost({ post }) {
+  const paths = posts.map((post) => {
+    return {
+      params: {
+        slug: `${post.slug}`,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export default function BlogPost({ Post }) {
   return (
     <DefaultLayout>
-      <h1 className="text-2xl pt-4 pb-2 ">{post.title}</h1>
+      <h1 className="text-2xl pt-4 pb-2 ">{Post.title}</h1>
       <div className="inline-flex pb-6 items-center text-[#575757] text-base gap-1">
-        <span>{post.publishAt}</span>
+        <span>{Post.publishAt}</span>
         <span>
           <FaAngleRight />
         </span>
 
-        <span>{post.time} min</span>
+        <span>{Post.time} min</span>
 
         <span>
           <FaAngleRight />
         </span>
 
-        {post.tags.map((tag) => (
+        {Post.tags.map((tag) => (
           <span
             key={tag}
             className="text-sm text-[#575757] border border-[#575757] px-[8px] rounded-full"
@@ -50,7 +66,7 @@ export default function BlogPost({ post }) {
           a: ({...props}) => <a target="_blank" {...props} /> ,
         }}
       >
-        {post.content}
+        {Post.content}
       </ReactMarkdown>
     </DefaultLayout>
   );
