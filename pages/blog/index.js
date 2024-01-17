@@ -5,7 +5,7 @@ import { FaAngleRight } from "react-icons/fa6";
 import getPosts from "../api/v1/blog/getPost";
 import DefaultLayout from "../components/DefaultLayout";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const posts = await getPosts();
 
   return {
