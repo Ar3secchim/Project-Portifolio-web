@@ -1,6 +1,15 @@
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "../../../components/ui/navigation-menu";
 import Link from "next/link";
 import { TbLayoutNavbarExpand, TbLayoutNavbarCollapse } from "react-icons/tb";
 import { useState } from "react";
+import MenuBar from "@/components/NavMenu";
 
 export default function NavBar() {
   const [nav, setNav] = useState(false);
@@ -36,14 +45,7 @@ export default function NavBar() {
       </div>
 
       <ul className="hidden md:flex gap-2">
-        {links.map(({ id, link, name }) => (
-          <li
-            key={id}
-            className="inline-flex h-10 w-max items-center justify-center rounded-md px-2 py-2 text-sm transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none font-bold nav-links cursor-pointer capitalize  hover:scale-105 duration-200 link-underline"
-          >
-            <Link href={link}>{name}</Link>
-          </li>
-        ))}
+        <MenuBar />
       </ul>
 
       <div
