@@ -34,7 +34,7 @@ export default function Contact() {
         </div>
 
         <Image
-          className="hidden md:flex lg:w-1/2 pb-6 px-4 bg-[#262626] bg-opacity-40 border-2 rounded-2xl border-zinc-800"
+          className="hidden md:flex lg:w-1/2 pb-6 px-4  border-input bg-background shadow-sm hover:bg-accent hover:scale-105 transform transition-transform duration-700 ease-in-out  border rounded-md border-zinc-900"
           src={Avatar}
         />
       </div>

@@ -64,7 +64,7 @@ export const getStaticPaths = async () => {
       params: {
         slug: `${post.slug}`,
       },
-    };
+    };  
   });
 
   return {

@@ -20,6 +20,7 @@ export default function Footer() {
           variant="outline"
           size="icon"
           route="https://www.instagram.com/rsecchim/"
+          blank={true}
         >
           <IoLogoInstagram size={24} />
         </Button>
@@ -28,6 +29,7 @@ export default function Footer() {
           variant="outline"
           size="icon"
           route="https://github.com/Ar3secchim"
+          blank={true}
         >
           <IoLogoGithub size={24} />
         </Button>
@@ -36,6 +38,7 @@ export default function Footer() {
           variant="outline"
           size="icon"
           route="https://www.linkedin.com/in/renarasecchim/"
+          blank={true}
         >
           <IoLogoLinkedin size={24} />
         </Button>
@@ -44,6 +47,7 @@ export default function Footer() {
           variant="outline"
           size="icon"
           route="https://twitter.com/renaradev"
+          blank={true}
         >
           <BsTwitterX size={22} />
         </Button>
