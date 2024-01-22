@@ -1,8 +1,8 @@
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "../../components/DefaultLayout";
 import Image from "next/image";
 import { FaAngleRight } from "react-icons/fa6";
-import Avatar from "../../public/avatar.svg";
-import Button from "../components/Button";
+import Avatar from "@/public/Svgs/avatar.svg";
+import Button from "@/components/Button";
 import { PiArrowUpRightBold } from "react-icons/pi";
 
 export default function Contact() {
@@ -14,22 +14,23 @@ export default function Contact() {
 
       <div className="flex items-center justify-center my-24 gap-6">
         <div className="flex-1 flex flex-col  gap-4 mt-10">
-          <Button Route="https://github.com/Ar3secchim" Blank={true}>
+          <Button
+            route="https://github.com/Ar3secchim"
+            variant="outline"
+            blank={true}
+          >
             GitHub
             <PiArrowUpRightBold />
           </Button>
 
           <Button
-            Route="https://www.linkedin.com/in/renarasecchim/"
-            Blank={true}
+            variant="outline"
+            route="https://www.linkedin.com/in/renarasecchim/"
+            blank={true}
           >
             Linkedin
             <PiArrowUpRightBold />
           </Button>
-
-          <p className="font-regular lg:text-xl">
-            renarasecchim@gmail.com
-          </p>
         </div>
 
         <Image

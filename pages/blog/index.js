@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa6";
 
 import getPosts from "../api/v1/blog/getPost";
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "../../components/DefaultLayout";
 
 export const getStaticProps = async () => {
   const posts = await getPosts();
@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function Blog({posts}) {
+export default function Blog({ posts }) {
   return (
     <DefaultLayout>
       <h1 className="inline-flex items-center gap-2 font-bold text-3xl">

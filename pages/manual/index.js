@@ -1,5 +1,5 @@
 import { FaAngleRight } from "react-icons/fa6";
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "../../components/DefaultLayout";
 import Link from "next/link";
 
 export default function Manual() {

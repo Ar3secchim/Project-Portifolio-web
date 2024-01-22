@@ -1,8 +1,8 @@
 import getPosts, { getPostForSlug } from "../../api/v1/blog/getPost";
 
 import ReactMarkdown from "react-markdown";
-import BlockCode from "../../components/BlockCode";
-import DefaultLayout from "../../components/DefaultLayout";
+import BlockCode from "../../../components/BlockCode";
+import DefaultLayout from "../../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
 
 export default function BlogPost({ post }) {
@@ -35,7 +35,7 @@ export default function BlogPost({ post }) {
         className="prose prose-invert prose-pre:bg-transparent min-w-full pb-4"
         components={{
           code: ({ ...props }) => <BlockCode {...props} />,
-          a: ({...props}) => <a target="_blank" {...props} /> ,
+          a: ({ ...props }) => <a target="_blank" {...props} />,
         }}
       >
         {post.content}
