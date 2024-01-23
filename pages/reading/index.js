@@ -1,18 +1,17 @@
 import DefaultLayout from "../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
-import { getBooks } from "../api/v1/books/getBooks";
 import { Badge } from "@/components/ui/badge";
+
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import { getBooks } from "../api/v1/books/getBooks";
 
 export const getStaticProps = async () => {
-  const post = new getBooks();
-  const books = await post.getAllBooks();
-
+  const books = await new getBooks().execute();
   return {
     props: {
       books,
@@ -29,12 +28,11 @@ export default function Reading({ books }) {
         </h1>
 
         <p className="text-[#575757] text-xl mt-4">
-          O que eu sei e minhas opniões foram influenciadas pelos livros que
-          estão abaixo.
+          Algunas livros que me ajudaram a adquirir conhecimentos.
         </p>
 
         <section className="my-8 flex flex-col gap-1 font-thin">
-          <div className="grid lg:grid-cols-4 gap-4 ">
+          <div className="grid lg:grid-cols-4 gap-6 ">
             {books.map((book) => (
               <Card
                 key={book.id}
@@ -44,11 +42,11 @@ export default function Reading({ books }) {
                   {book.title}
                 </CardHeader>
 
-                <CardContent className="p-2 text-sm">
-                  <div className="tracking-wider"> Autor: {book.autor} </div>
+                <CardContent className="p-2 text-sm items-center flex flex-col">
+                  <img src={book.media} width={146} height={146} /> 
                 </CardContent>
 
-                <CardFooter className="p-2 flex-col gap-2 items-start">
+                <CardFooter className="p-2 flex-col gap-2 items-center">
                   <Badge className="text-xs" variant="secondary">
                     Nota: {book.nota}
                   </Badge>

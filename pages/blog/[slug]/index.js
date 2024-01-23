@@ -2,7 +2,8 @@ import ReactMarkdown from "react-markdown";
 import BlockCode from "../../../components/BlockCode";
 import DefaultLayout from "../../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
-import { getPost } from "@/pages/api/v1/blog/getPost";
+import { getAllPosts } from "@/pages/api/v1/blog/getAllPosts";
+import { getPostForSlug } from "@/pages/api/v1/blog/getPostForSlug";
 
 export default function BlogPost({ post }) {
   return (
@@ -45,10 +46,8 @@ export default function BlogPost({ post }) {
 
 export const getStaticProps = async (context) => {
   const { params } = context;
+  const post = await new getPostForSlug().execute(params.slug);
 
-  const posts = new getPost();
-  const post = await posts.getPostForSlug(params.slug);
-  
   return {
     props: {
       post,
@@ -58,8 +57,7 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  const post = new getPost();
-  const posts = await post.getAllPost();
+  const posts = await new getAllPosts().execute();
 
   const paths = posts.map((post) => {
     return {
