@@ -1,15 +1,14 @@
-import getPosts, { getPostForSlug } from "../../api/v1/blog/getPost";
-
 import ReactMarkdown from "react-markdown";
 import BlockCode from "../../../components/BlockCode";
 import DefaultLayout from "../../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
+import { getPost } from "@/pages/api/v1/blog/getPost";
 
 export default function BlogPost({ post }) {
   return (
     <DefaultLayout>
       <h1 className="text-2xl pt-4 pb-2 ">{post.title}</h1>
-      <div className="inline-flex pb-6 items-center text-[#575757] text-base gap-1">
+      <div className=" font-bold inline-flex pb-6 items-center text-[#575757] text-base gap-1">
         <span>{post.publishAt}</span>
         <span>
           <FaAngleRight />
@@ -20,7 +19,7 @@ export default function BlogPost({ post }) {
         <span>
           <FaAngleRight />
         </span>
-
+       
         {post.tags.map((tag) => (
           <span
             key={tag}
@@ -46,8 +45,10 @@ export default function BlogPost({ post }) {
 
 export const getStaticProps = async (context) => {
   const { params } = context;
-  const post = await getPostForSlug(params.slug);
 
+  const posts = new getPost();
+  const post = await posts.getPostForSlug(params.slug);
+  
   return {
     props: {
       post,
@@ -57,7 +58,8 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  const posts = await getPosts();
+  const post = new getPost();
+  const posts = await post.getAllPost();
 
   const paths = posts.map((post) => {
     return {

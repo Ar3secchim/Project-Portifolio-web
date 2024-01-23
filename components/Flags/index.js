@@ -5,7 +5,7 @@ export default function Flags({ title, icon }) {
   return (
     <>
       {icon ? (
-        <Badge variant="outline">
+        <Badge>
           <BiCircle size={10} className="mr-2" /> {title}
         </Badge>
       ) : (

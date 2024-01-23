@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa6";
 
-import getPosts from "../api/v1/blog/getPost";
 import DefaultLayout from "../../components/DefaultLayout";
+import { getPost } from "../api/v1/blog/getPost";
 
 export const getStaticProps = async () => {
-  const posts = await getPosts();
-
+  const post =  new getPost();
+  const posts = await post.getAllPost();
   return {
     props: {
       posts,
@@ -40,7 +40,7 @@ export default function Blog({ posts }) {
               </Link>
             </h1>
 
-            <div className="inline-flex items-center mx-2 text-[#575757] text-sm gap-1">
+            <div className="inline-flex font-bold items-center mx-2 text-[#575757] text-sm gap-1">
               <span>{post.publishAt}</span>
               <span>
                 <FaAngleRight />
