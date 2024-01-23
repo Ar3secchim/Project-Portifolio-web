@@ -16,7 +16,6 @@ export default function Footer() {
 
       <div className=" flex content-center justify-center items-center gap-3">
         <Button
-          className="px-2"
           variant="outline"
           size="icon"
           route="https://www.instagram.com/rsecchim/"
@@ -49,7 +48,7 @@ export default function Footer() {
           route="https://twitter.com/renaradev"
           blank={true}
         >
-          <BsTwitterX size={22} />
+          <BsTwitterX size={20} />
         </Button>
       </div>
     </div>

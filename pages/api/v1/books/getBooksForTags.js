@@ -1,4 +1,4 @@
-import notion from "@/infra/Client";
+import notion from "@/infra/NotionClient";
 
 export class getBooksForTags{
   constructor() {}

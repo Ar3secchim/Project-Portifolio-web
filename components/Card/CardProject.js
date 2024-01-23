@@ -8,10 +8,18 @@ import {
   CardTitle,
 } from "../ui/card";
 import Flags from "../Flags";
-import Button from "../Button";
+import { Button } from "../ui/button";
 import { FaAngleRight } from "react-icons/fa6";
+import Link from "next/link";
 
-export default function CardProject({data, name, discription, url, image, flags}) {
+export default function CardProject({
+  data,
+  name,
+  discription,
+  url,
+  image,
+  flags,
+}) {
   return (
     <Card className=" border-0 p-6 hover:scale-105 transform transition-all duration-1000 ease-in-out hover:bg-zinc-900">
       <div className="flex justify-center">
@@ -30,8 +38,8 @@ export default function CardProject({data, name, discription, url, image, flags}
 
       <CardContent>
         <CardDescription>{discription}</CardDescription>
-        <Button route={url} variant="link" blank={true} className="px-0">
-          Saiba mais
+        <Button variant="link" className="p-0">
+          <Link target="_blank" href={url}>Saiba mais</Link>
           <FaAngleRight />
         </Button>
       </CardContent>

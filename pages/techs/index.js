@@ -23,7 +23,7 @@ export default function Techs() {
   return (
     <DefaultLayout>
       <section>
-        <h1 className="my-6 inline-flex items-center gap-2 font-bold text-3xl">
+        <h1 className="my-6 inline-flex items-center gap-2 font-bold md:text-2xl lg:text-3xl">
           <FaAngleRight size={20} /> Hard skills
         </h1>
 

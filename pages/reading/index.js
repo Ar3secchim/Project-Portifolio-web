@@ -23,16 +23,16 @@ export default function Reading({ books }) {
   return (
     <DefaultLayout>
       <section className="my-6">
-        <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
+        <h1 className="inline-flex items-center gap-2 font-bold text-2xl lg:text-3xl">
           <FaAngleRight size={20} /> Lendo
         </h1>
 
-        <p className="text-[#575757] text-xl mt-4">
-          Algunas livros que me ajudaram a adquirir conhecimentos.
+        <p className="text-[#575757] text-lg lg:text-xl mt-4">
+          Algums livros que me ajudaram a adquirir conhecimentos.
         </p>
 
         <section className="my-8 flex flex-col gap-1 font-thin">
-          <div className="grid lg:grid-cols-4 gap-6 ">
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
             {books.map((book) => (
               <Card
                 key={book.id}
@@ -43,7 +43,7 @@ export default function Reading({ books }) {
                 </CardHeader>
 
                 <CardContent className="p-2 text-sm items-center flex flex-col">
-                  <img src={book.media} width={146} height={146} /> 
+                  <img src={book.media} width={146} height={146} />
                 </CardContent>
 
                 <CardFooter className="p-2 flex-col gap-2 items-center">

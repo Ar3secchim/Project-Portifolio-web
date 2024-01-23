@@ -4,18 +4,36 @@ import { useState } from "react";
 import MenuBar from "@/components/NavMenu";
 
 export default function NavBar() {
-  const [nav, setNav] = useState(false);
-
+  const [nav, setNav] = useState(false); 
   const links = [
     {
       id: 1,
       link: "about",
       name: "Sobre",
+      links: [
+        {
+          link: "about",
+          name: "Sobre mim",
+        },
+        {
+          link: "tech",
+          name: "Stacks",
+        },
+        {
+          link: "reading",
+          name: "Leitura",
+        },
+      ],
     },
     {
       id: 2,
       link: "project",
       name: "Projeto",
+    },
+    {
+      id: 3,
+      link: "blog",
+      name: "Blog",
     },
     {
       id: 3,

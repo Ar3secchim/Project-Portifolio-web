@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import PerfilImg from "@/public/Imgs/perfil.png";
 import CardTitle from "@/components/Card/CardTitle";
 import DefaultLayout from "@/components/DefaultLayout";

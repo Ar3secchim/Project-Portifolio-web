@@ -32,7 +32,7 @@ export default function About() {
           />
         </div>
 
-        <div className="flex flex-col gap-6 flex-1 font-thin text-justify tracking-wide ">
+        <div className="flex flex-col gap-6 flex-1 font-medium text-justify tracking-wide ">
           <p>Oi! 👋 </p>
 
           <p>
