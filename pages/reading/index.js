@@ -16,6 +16,7 @@ export const getStaticProps = async () => {
     props: {
       books,
     },
+    revalidate: 3600,
   };
 };
 

@@ -26,7 +26,6 @@ export class getBooks {
 
     const books = response.results;
     return books.map((book) => {
-     
       return {
         id: book.properties.ID.unique_id.number,
         title: book.properties.title.title[0].plain_text,
