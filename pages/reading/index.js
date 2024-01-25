@@ -9,9 +9,11 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { getBooks } from "../api/v1/books/getBooks";
+import getS3Object from "../api/v1/books/getImagemBooks";
 
 export const getStaticProps = async () => {
-  const books = await new getBooks().execute();
+  const books = await new getBooks().execute()
+
   return {
     props: {
       books,

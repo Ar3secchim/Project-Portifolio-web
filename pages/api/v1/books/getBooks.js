@@ -1,4 +1,5 @@
 import notion from "@/infra/NotionClient";
+import getS3Object from "./getImagemBooks";
 
 export class getBooks {
   constructor() {}
@@ -23,6 +24,9 @@ export class getBooks {
         ],
       },
     });
+    
+    const data = await getS3Object();
+    console.log(data);
 
     const books = response.results;
     return books.map((book) => {
@@ -33,7 +37,7 @@ export class getBooks {
         tags: book.properties.tags.select.name,
         color: book.properties.tags.select.color,
         nota: book.properties.nota.select.name,
-        media: book.properties.media.files[0].file.url,
+        media: data,
       };
     });
   }
