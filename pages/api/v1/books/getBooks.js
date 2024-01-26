@@ -5,7 +5,7 @@ export class getBooks {
   constructor() {}
 
   async execute() {
-    const response = await notion.databases.query({
+    const { results } = await notion.databases.query({
       database_id: "f8c50c2538ce4284aef0afd4752a639d",
       sorts: [
         {
@@ -24,21 +24,24 @@ export class getBooks {
         ],
       },
     });
-    
-    const data = await getS3Object();
-    console.log(data);
 
-    const books = response.results;
-    return books.map(async (book) => {
-      return {
-        id: book.properties.ID.unique_id.number,
-        title: book.properties.title.title[0].plain_text,
-        autor: book.properties.autor.rich_text[0].plain_text,
-        tags: book.properties.tags.select.name,
-        color: book.properties.tags.select.color,
-        nota: book.properties.nota.select.name,
-        media: await getS3Object(book.properties.title.title[0].plain_text),
-      };
-    });
+    const ArrayBook = await Promise.all(
+      results.map(async (book) => {
+        const media = await getS3Object(
+          book.properties.media.rich_text[0].plain_text,
+        );
+        return {
+          id: book.properties.ID.unique_id.number,
+          title: book.properties.title.title[0].plain_text,
+          autor: book.properties.autor.rich_text[0].plain_text,
+          tags: book.properties.tags.select.name,
+          color: book.properties.tags.select.color,
+          nota: book.properties.nota.select.name,
+          media: media,
+        };
+      }),
+    );
+
+    return ArrayBook;
   }
 }
