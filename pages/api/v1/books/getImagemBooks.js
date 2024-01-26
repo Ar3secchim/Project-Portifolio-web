@@ -1,5 +1,5 @@
 import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { fileURLToPath } from "url";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const s3 = new S3Client({
   region: "us-east-1",
@@ -9,18 +9,14 @@ const s3 = new S3Client({
   },
 });
 
-const getS3Object = async () => {
+const getS3Object = async (keyObject) => {
   const command = new GetObjectCommand({
     Bucket: process.env.S3_BUCKET,
-    Key: "81eT2pjx4jL._SL1500_.jpg",
+    Key: keyObject,
   });
 
   try {
-    const response = await s3.send(command);
-    s3.getSignedUrl("putObject", params, function (err, url) {
-      console.log("The URL is", url);
-    });
-    //const str = response.Body.transformToWebStream();
+    const url = await getSignedUrl(s3, command);
     return url;
   } catch (err) {
     console.error(err);

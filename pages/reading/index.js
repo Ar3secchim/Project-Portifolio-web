@@ -13,12 +13,10 @@ import getS3Object from "../api/v1/books/getImagemBooks";
 
 export const getStaticProps = async () => {
   const books = await new getBooks().execute()
-
   return {
     props: {
       books,
     },
-    revalidate: 3600,
   };
 };
 

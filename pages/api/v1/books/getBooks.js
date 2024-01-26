@@ -29,7 +29,7 @@ export class getBooks {
     console.log(data);
 
     const books = response.results;
-    return books.map((book) => {
+    return books.map(async (book) => {
       return {
         id: book.properties.ID.unique_id.number,
         title: book.properties.title.title[0].plain_text,
@@ -37,7 +37,7 @@ export class getBooks {
         tags: book.properties.tags.select.name,
         color: book.properties.tags.select.color,
         nota: book.properties.nota.select.name,
-        media: data,
+        media: await getS3Object(book.properties.title.title[0].plain_text),
       };
     });
   }
