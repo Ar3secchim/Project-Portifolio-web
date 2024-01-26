@@ -1,15 +1,16 @@
 import Image from "next/image";
-import PerfilImg from "./components/RenaraDevUI/Icons/iconsSvg/perfil.png";
-import DefaultLayout from "./components/DefaultLayout";
-import Card from "./components/Card/CardTitle";
-import Button  from "./components/Button";
+import PerfilImg from "@/public/Imgs/perfil.png";
+import CardTitle from "@/components/Card/CardTitle";
+import DefaultLayout from "@/components/DefaultLayout";
+import Button from "@/components/Button";
+
 import { PiArrowUpRightBold } from "react-icons/pi";
 import { MdOutlinePostAdd } from "react-icons/md";
 
 export default function MyApp() {
   return (
     <DefaultLayout>
-      <section className="flex items-center gap-6 md:mx-14 md:my-8 lg:my-24">
+      <section className="flex flex-row items-center gap-6 md:mx-14 md:my-8 lg:my-24">
         <div className="hidden md:flex">
           <Image src={PerfilImg} />
         </div>
@@ -25,12 +26,12 @@ export default function MyApp() {
           </h3>
 
           <div className="flex gap-5">
-            <Button Route="/contact" Blank={false}>
+            <Button route="/contact" blank={false}>
               Contato
               <PiArrowUpRightBold />
             </Button>
 
-            <Button Route="/blog" Blank={false}>
+            <Button route="/blog" blank={false}>
               Posts
               <MdOutlinePostAdd size={20} />
             </Button>
@@ -39,10 +40,10 @@ export default function MyApp() {
       </section>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 lg:my-14">
-        <Card Route="/project" Title="Projetos" />
-        <Card Route="/blog" Title="Blog" />
-        <Card Route="/about" Title="Minha história" />
-        <Card Route="/techs" Title="Hard Skills" />
+        <CardTitle title="Projetos" href="/project" />
+        <CardTitle title="Minha história" href="/about" />
+        <CardTitle title="Hard Skills" href="/techs" />
+        <CardTitle title="Blog" href="/blog" />
       </div>
     </DefaultLayout>
   );

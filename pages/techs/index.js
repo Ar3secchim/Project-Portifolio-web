@@ -1,30 +1,29 @@
-import CardTech from "../components/Card/CardTech";
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "../../components/DefaultLayout";
+import CardTech from "@/components/Card/CardTech";
 import { FaAngleRight } from "react-icons/fa6";
-
-import Docker from "../../public/docker.svg";
-import NodeJs from "../../public/nodeJs.svg";
-import Java from "../../public/java.svg";
-import Rabbitmq from "../../public/rabbitmq.svg";
-import Github from "../../public/github.svg";
-import Figma from "../../public/figma.svg";
-import Express from "../../public/express.svg";
-import Nextjs from "../../public/nextjs.svg";
-import Javascript from "../../public/javascript.svg";
-import Css from "../../public/css.svg";
-import Html from "../../public/html.svg";
-import Tailwind from "../../public/tailwindcss.svg";
-import Junit from "../../public/Junit.svg";
-import Spring from "../../public/spring.svg";
-import MySql from "../../public/mysql.svg";
-import Redis from "../../public/redis.svg";
-import Jest from "../../public/jest.svg";
+import { IoLogoGithub } from "react-icons/io";
+import { IoLogoDocker } from "react-icons/io5";
+import { FaFigma } from "react-icons/fa6";
+import { SiRabbitmq } from "react-icons/si";
+import { FaNodeJs } from "react-icons/fa6";
+import { LiaJava } from "react-icons/lia";
+import { IoLogoJavascript } from "react-icons/io5";
+import { TfiHtml5 } from "react-icons/tfi";
+import { FaCss3Alt } from "react-icons/fa";
+import { SiMysql } from "react-icons/si";
+import { SiRedis } from "react-icons/si";
+import { SiExpress } from "react-icons/si";
+import { TbBrandNextjs } from "react-icons/tb";
+import { SiTailwindcss } from "react-icons/si";
+import { SiSpring } from "react-icons/si";
+import { SiJunit5 } from "react-icons/si";
+import { SiJest } from "react-icons/si";
 
 export default function Techs() {
   return (
     <DefaultLayout>
       <section>
-        <h1 className="my-6 inline-flex items-center gap-2 font-bold text-3xl">
+        <h1 className="my-6 inline-flex items-center gap-2 font-bold md:text-2xl lg:text-3xl">
           <FaAngleRight size={20} /> Hard skills
         </h1>
 
@@ -32,15 +31,21 @@ export default function Techs() {
           Tecnologias, ferramentas e softwares que utilizo:
         </p>
 
-        <div className="grid lg:grid-cols-2 grid-cols-1">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
           <div className="grid">
             <div>
               <div className="my-4">
                 <h1 className="font-bold text-lg">Back End</h1>
               </div>
               <div className="flex flex-wrap gap-3">
-                <CardTech Icon={NodeJs} Xp="4" />
-                <CardTech Icon={Java} Xp="12" />
+                <CardTech>
+                  <FaNodeJs size={40} />
+                  NodeJs
+                </CardTech>
+                <CardTech>
+                  <LiaJava size={48} />
+                  Java
+                </CardTech>
               </div>
             </div>
 
@@ -49,23 +54,44 @@ export default function Techs() {
                 <h1 className="font-bold text-lg">Ferramentas</h1>
               </div>
               <div className="flex flex-wrap gap-3">
-                <CardTech Icon={Docker} Xp="4" />
-                <CardTech Icon={Rabbitmq} Xp="4" />
-                <CardTech Icon={Figma} Xp="10" />
-                <CardTech Icon={Github} Xp="12" />
+                <CardTech>
+                  <IoLogoGithub size={40} />
+                  GitHub
+                </CardTech>
+                <CardTech>
+                  <IoLogoDocker size={40} />
+                  Docker
+                </CardTech>
+                <CardTech>
+                  <FaFigma size={40} />
+                  Figma
+                </CardTech>
+                <CardTech>
+                  <SiRabbitmq size={40} />
+                  Rabbitmq
+                </CardTech>
               </div>
             </div>
           </div>
 
           <div>
             <div>
-              <div className="my-4">
+              <div className="my-4 ">
                 <h1 className="font-bold text-lg">Front End</h1>
               </div>
               <div className="flex flex-wrap gap-3">
-                <CardTech Icon={Javascript} Xp="40" />
-                <CardTech Icon={Html} Xp="40" />
-                <CardTech Icon={Css} Xp="40" />
+                <CardTech>
+                  <IoLogoJavascript size={40} />
+                  Javascript
+                </CardTech>
+                <CardTech>
+                  <TfiHtml5 size={40} />
+                  Html5
+                </CardTech>
+                <CardTech>
+                  <FaCss3Alt size={40} />
+                  Css3
+                </CardTech>
               </div>
             </div>
             <div>
@@ -73,8 +99,14 @@ export default function Techs() {
                 <h1 className="font-bold text-lg">Banco de Dados</h1>
               </div>
               <div className="flex flex-wrap gap-3">
-                <CardTech Icon={MySql} Xp="40" />
-                <CardTech Icon={Redis} Xp="40" />
+                <CardTech>
+                  <SiMysql size={48} />
+                  Mysql
+                </CardTech>
+                <CardTech>
+                  <SiRedis size={40} />
+                  Redis
+                </CardTech>
               </div>
             </div>
           </div>
@@ -85,13 +117,30 @@ export default function Techs() {
             <h1 className="font-bold text-lg">Frameworks</h1>
           </div>
           <div className="flex flex-wrap gap-3">
-            <CardTech Icon={Express} Xp="40" />
-            <CardTech Icon={Nextjs} Xp="40" />
-            <CardTech Icon={Tailwind} Xp="40" />
-            <CardTech Icon={Spring} Xp="40" />
-            <CardTech Icon={Junit} Xp="40" />
-            <CardTech Icon={Docker} Xp="40" />
-            <CardTech Icon={Jest} Xp="40" />
+            <CardTech>
+              <SiExpress size={40} />
+              Express
+            </CardTech>
+            <CardTech>
+              <TbBrandNextjs size={40} />
+              Nextjs
+            </CardTech>
+            <CardTech>
+              <SiTailwindcss size={40} />
+              Tailwindcss
+            </CardTech>
+            <CardTech>
+              <SiSpring size={40} />
+              Spring Boot
+            </CardTech>
+            <CardTech>
+              <SiJunit5 size={40} />
+              Junit5
+            </CardTech>
+            <CardTech>
+              <SiJest size={40} />
+              Jest
+            </CardTech>
           </div>
         </div>
       </section>

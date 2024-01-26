@@ -1,76 +1,65 @@
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
+import { Badge } from "@/components/ui/badge";
 
-export default function Reading() {
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { getBooks } from "../api/v1/books/getBooks";
+import getS3Object from "../api/v1/books/getImagemBooks";
+
+export const getStaticProps = async () => {
+  const books = await new getBooks().execute()
+  return {
+    props: {
+      books,
+    },
+  };
+};
+
+export default function Reading({ books }) {
   return (
     <DefaultLayout>
       <section className="my-6">
-        <h1 className="inline-flex items-center gap-2 font-bold text-3xl">
+        <h1 className="inline-flex items-center gap-2 font-bold text-2xl lg:text-3xl">
           <FaAngleRight size={20} /> Lendo
         </h1>
 
-        <p className="text-[#575757] text-xl mt-4">
-          O que eu sei e minhas opniões foram influenciadas pelos livros que
-          estão abaixo.
+        <p className="text-[#575757] text-lg lg:text-xl mt-4">
+          Algums livros que me ajudaram a adquirir conhecimentos.
         </p>
 
-        <ul className="my-8 flex flex-col gap-1 font-thin">
-          <h2 className="mb-4 text-xl font-semibold">Desenvolvimento</h2>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Hábitos Atômicos
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Porquê nós dormimos
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Nação Dopamina
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Comece pelo o porquê
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> 8 Passos para alta perfomace
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Comporta-se
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Maestria
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Essencialismo
-          </li>
-        </ul>
+        <section className="my-8 flex flex-col gap-1 font-thin">
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
+            {books.map((book) => (
+              <Card
+                key={book.id}
+                className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between"
+              >
+                <CardHeader className="font-bold text-lg p-2 text-center">
+                  {book.title}
+                </CardHeader>
 
-        <ul className="my-8 flex flex-col gap-1 font-thin">
-          <h2 className="mb-4 text-xl font-semibold">Programação</h2>
+                <CardContent className="p-2 text-sm items-center flex flex-col">
+                  <img src={book.media} width={146} height={146} />
+                </CardContent>
 
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Código limpo
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Não me faça pensar
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Entendendo algoritmos
-          </li>
-        </ul>
+                <CardFooter className="p-2 flex-col gap-2 items-center">
+                  <Badge className="text-xs" variant="secondary">
+                    Nota: {book.nota}
+                  </Badge>
 
-        <ul className="my-8 flex flex-col gap-1 font-thin">
-          <h2 className="mb-4 text-xl font-semibold">Financeiro</h2>
-
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight />
-            Psicologia Financeira
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight /> Pai rico pai pobre
-          </li>
-          <li className="inline-flex gap-1 items-center mx-2">
-            <FaAngleRight />
-            Os segredos da mente milionária
-          </li>
-        </ul>
+                  <Badge className="text-xs" variant="outline">
+                    {book.tags}
+                  </Badge>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </section>
       </section>
     </DefaultLayout>
   );
