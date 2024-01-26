@@ -1,10 +1,24 @@
-import Link from "next/link";
-import { TbLayoutNavbarExpand, TbLayoutNavbarCollapse } from "react-icons/tb";
-import { useState } from "react";
+import {
+  TbLayoutSidebarRightExpandFilled,
+  TbLayoutSidebarRightCollapseFilled,
+} from "react-icons/tb";
+
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
 import MenuBar from "@/components/NavMenu";
+import { Button } from "@/components/ui/button";
+import LinksMedia from "@/components/LinksMedia";
+import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export default function NavBar() {
-  const [nav, setNav] = useState(false); 
   const links = [
     {
       id: 1,
@@ -58,28 +72,48 @@ export default function NavBar() {
         <MenuBar />
       </ul>
 
-      <div
-        onClick={() => setNav(!nav)}
-        className="cursor-pointer z-20 pr-4 md:hidden"
-      >
-        {nav ? (
-          <TbLayoutNavbarCollapse size={35} />
-        ) : (
-          <TbLayoutNavbarExpand size={35} />
-        )}
-      </div>
+      <div className="cursor-pointer md:hidden">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="icon">
+              <TbLayoutSidebarRightExpandFilled size={32} />
+            </Button>
+          </SheetTrigger>
 
-      {nav && (
-        <ul className="z-10 flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-[#141414]">
-          {links.map(({ id, link, name }) => (
-            <li key={id} className="px-4 cursor-pointer py-6 text-2xl">
-              <Link onClick={() => setNav(!nav)} href={link}>
-                {name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+          <SheetContent className="py-6">
+            <SheetHeader className="flex items-end">
+              <SheetClose>
+                <TbLayoutSidebarRightCollapseFilled size={32} />
+              </SheetClose>
+            </SheetHeader>
+            <div className="grid py-4">
+              <h3 className="font-bold text-xl">
+                Sobre
+                <Separator className="mt-2" />
+              </h3>
+              <Button variant="link" className="inline text-base" asChild>
+                <Link className="pr-4 font-light" href="/about">
+                  Sobre mim
+                </Link>
+              </Button>
+              <Button variant="link" className="inline text-base" asChild>
+                <Link className="pr-4 font-light" href="/reading">
+                  Lendo
+                </Link>
+              </Button>
+              <Button variant="link" className="inline text-base" asChild>
+                <Link className="pr-4 font-light" href="/techs">
+                  Stacks
+                </Link>
+              </Button>
+            </div>
+
+            <SheetFooter>
+              <LinksMedia />
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
+      </div>
     </nav>
   );
 }
