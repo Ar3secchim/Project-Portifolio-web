@@ -30,7 +30,7 @@ export default function Project() {
       data: "Jul - 2022",
       name: "Task List ",
       discription:
-        "plicativo destinado para o usuário anotar as tarefas pendentes.",
+        "Aplicativo destinado para o usuário anotar as tarefas pendentes.",
       url: "https://github.com/Ar3secchim/tasks-list-react",
       image: [TasksList],
       flags: ["mobile", "react", "style component"],
