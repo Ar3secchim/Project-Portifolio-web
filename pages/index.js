@@ -16,10 +16,12 @@ export default function MyApp() {
         </div>
 
         <div className="flex-1 items-start mt-8">
-          <h1 className="font-semibold text-4xl mb-1">
+          <h1 className="font-semibold text-2xl md:text-4xl  mb-1">
             Oi! Eu sou Renara Secchim
           </h1>
-          <h1 className="font-semibold text-4xl mb-10">FullStack Developer</h1>
+          <h1 className="font-semibold text-2xl md:text-4xl mb-10">
+            Developer
+          </h1>
           <h3 className="font-regular text-[#575757] text-xl mb-10">
             Apaixonada por tecnologia e nas possibilidades que podemos criar
             através dela.
