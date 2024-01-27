@@ -19,18 +19,18 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 
 export default function NavBar() {
-  const links = [
+  const optionsMenu = [
     {
       id: 1,
-      link: "about",
       name: "Sobre",
-      links: [
+      url: "project",
+      subOptions: [
         {
           link: "about",
           name: "Sobre mim",
         },
         {
-          link: "tech",
+          link: "techs",
           name: "Stacks",
         },
         {
@@ -41,18 +41,21 @@ export default function NavBar() {
     },
     {
       id: 2,
-      link: "project",
+      url: "project",
       name: "Projeto",
+      subOptions: [],
     },
     {
       id: 3,
-      link: "blog",
+      url: "blog",
       name: "Blog",
+      subOptions: [],
     },
     {
       id: 3,
-      link: "contact",
+      url: "contact",
       name: "Contato",
+      subOptions: [],
     },
   ];
 
@@ -80,32 +83,36 @@ export default function NavBar() {
             </Button>
           </SheetTrigger>
 
-          <SheetContent className="py-6">
-            <SheetHeader className="flex items-end">
-              <SheetClose>
-                <TbLayoutSidebarRightCollapseFilled size={32} />
-              </SheetClose>
-            </SheetHeader>
-            <div className="grid py-4">
-              <h3 className="font-bold text-xl">
-                Sobre
-                <Separator className="mt-2" />
-              </h3>
-              <Button variant="link" className="inline text-base" asChild>
-                <Link className="pr-4 font-light" href="/about">
-                  Sobre mim
-                </Link>
-              </Button>
-              <Button variant="link" className="inline text-base" asChild>
-                <Link className="pr-4 font-light" href="/reading">
-                  Lendo
-                </Link>
-              </Button>
-              <Button variant="link" className="inline text-base" asChild>
-                <Link className="pr-4 font-light" href="/techs">
-                  Stacks
-                </Link>
-              </Button>
+          <SheetContent className="py-6 justify-between flex flex-col rounded-lg">
+            <div>
+              <SheetHeader className="flex items-end ">
+                <SheetClose>
+                  <TbLayoutSidebarRightCollapseFilled size={32} />
+                </SheetClose>
+              </SheetHeader>
+
+              {optionsMenu.map((option) => (
+                <div className="grid py-2" key={option.id}>
+                  <h3 className="font-bold text-xl pt-2">
+                    <Link href={option.url} key={option.id}>
+                      {option.name}
+                    </Link>
+                    <Separator className="mt-2" />
+                  </h3>
+                  {option.subOptions.map((subOption) => (
+                    <Button
+                      key={subOption.id}
+                      variant="link"
+                      className="inline text-base"
+                      asChild
+                    >
+                      <Link className="pr-4 font-thin" href={subOption.link}>
+                        {subOption.name}
+                      </Link>
+                    </Button>
+                  ))}
+                </div>
+              ))}
             </div>
 
             <SheetFooter>
