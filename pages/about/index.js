@@ -13,22 +13,22 @@ export default function About() {
   return (
     <DefaultLayout>
       <section className="flex mt-4 mb-10 gap-4">
-        <div className="flex-1 md:grid gap-4 grid-cols-2 hidden ">
+        <div className="flex-1 lg:grid md:flex md:items-center md:justify-center gap-4 lg:grid-cols-2 hidden ">
           <Image
             src={Code}
-            className=" rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
+            className="md:w-5/6 lg:w-full rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
           />
           <Image
             src={Healf}
-            className="rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
+            className="md:hidden lg:flex rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
           />
           <Image
             src={Read}
-            className="rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
+            className="md:hidden lg:flex rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
           />
           <Image
             src={Book}
-            className="rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out grayscale "
+            className=" md:hidden lg:flex rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out grayscale "
           />
         </div>
 

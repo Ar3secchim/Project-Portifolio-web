@@ -24,9 +24,10 @@ export default function Blog({ posts }) {
       </h1>
 
       <p className="text-[#575757] lg:text-xl mt-4">
-        Aqui escrevo minha opiniões de determinados assuntos, insights da vida,
-        pensamentos aléatorios e filosoficos sobre vida, carreira, tecnologias e
-        afins.
+        Meu pedaço na internet!! Nesta página, compartilho pensamentos e
+        reflexões sobre a vida, carreira, tecnologias e outros temas que me
+        inspiram. Espero que minhas ideias te motivem a questionar, explorar e
+        encontrar seu próprio caminho.
       </p>
 
       <section className="my-6 h-[50vh]">

@@ -32,7 +32,7 @@ export default function BlogPost({ post }) {
       </div>
 
       <ReactMarkdown
-        className="prose prose-invert prose-pre:bg-transparent min-w-full pb-4"
+        className="prose prose-invert prose-pre:bg-transparent min-w-full pb-4 text-lg font-medium"
         components={{
           code: ({ ...props }) => <BlockCode {...props} />,
           a: ({ ...props }) => <a target="_blank" {...props} />,
