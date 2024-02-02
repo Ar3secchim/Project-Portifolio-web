@@ -27,9 +27,8 @@ export class getBooks {
 
     const ArrayBook = await Promise.all(
       results.map(async (book) => {
-        const media = await getS3Object(
-          book.properties.media.rich_text[0].plain_text,
-        );
+        const key = book.properties.media.url;
+        const media = await getS3Object(key);
         return {
           id: book.properties.ID.unique_id.number,
           title: book.properties.title.title[0].plain_text,
