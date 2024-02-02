@@ -4,7 +4,9 @@ Apresentação do meu site pessoal para expor os projetos pessoais desenvolvido.
 &nbsp;
 ## Screenshot
 
-https://github.com/Ar3secchim/Project-Portifolio-web/assets/82913620/fad08a5b-681f-4603-99c9-653842e164f7
+
+https://github.com/Ar3secchim/Project-Portifolio-web/assets/82913620/e489373d-b879-4833-8e18-1dcf356dad5b
+
 
 &nbsp;
 ## Funcionalidades
@@ -14,7 +16,7 @@ https://github.com/Ar3secchim/Project-Portifolio-web/assets/82913620/fad08a5b-68
 &nbsp;
 ## Stack utilizada
 
-- **Front-end:** React
+- **Front-end:** React, NextJs
 
 - **Libary:** Tailwind css
 

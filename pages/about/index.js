@@ -2,37 +2,37 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FaArrowRight } from "react-icons/fa6";
-import DefaultLayout from "../components/DefaultLayout";
-import Code from "../../public/codeTwo.png";
-import Book from "../../public/codeThree.png";
-import Read from "../../public/codeFive.png";
-import Healf from "../../public/codeFour.png";
+import DefaultLayout from "../../components/DefaultLayout";
 
+import Code from "@/public/Imgs/codeTwo.png";
+import Book from "@/public/Imgs/codeThree.png";
+import Read from "@/public/Imgs/codeFive.png";
+import Healf from "@/public/Imgs/codeFour.png";
 
 export default function About() {
   return (
     <DefaultLayout>
-      <section className="flex mt-4 mb-20 gap-4">
-        <div className="flex-1 md:grid gap-4 grid-cols-2 hidden ">
+      <section className="flex mt-4 mb-10 gap-4">
+        <div className="flex-1 lg:grid md:flex md:items-center md:justify-center gap-4 lg:grid-cols-2 hidden ">
           <Image
             src={Code}
-            className=" rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
+            className="md:w-5/6 lg:w-full rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
           />
           <Image
             src={Healf}
-            className="rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
+            className="md:hidden lg:flex rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
           />
           <Image
             src={Read}
-            className="rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
+            className="md:hidden lg:flex rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out"
           />
           <Image
             src={Book}
-            className="rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out grayscale "
+            className=" md:hidden lg:flex rounded-2xl shadow-sm hover:scale-105 transform transition-all duration-500 ease-in-out grayscale "
           />
         </div>
 
-        <div className="flex flex-col gap-6 flex-1 font-extralight text-justify tracking-wide ">
+        <div className="flex flex-col gap-6 flex-1 font-medium text-justify tracking-wide ">
           <p>Oi! 👋 </p>
 
           <p>
@@ -66,21 +66,22 @@ export default function About() {
           <p>
             Dedico também o meu tempo
             <Link
+              variant="link"
               href="/reading"
-              className="inline-flex rounded-md px-1  transition-colors hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none
-              underline decoration-[#652380] underline-offset-4 "
+              className="inline-flex rounded-sm px-1 transition-colors hover:bg-zinc-900
+              focus:outline-none underline decoration-[#652380] underline-offset-4"
             >
               lendo,
             </Link>
             <Link
-              className="inline-flex rounded-md px-1 transition-colors hover:bg-zinc-800 hover:text-zinc-100 
+              className="inline-flex rounded-sm px-1 transition-colors hover:bg-zinc-900
               focus:outline-none underline decoration-[#652380] underline-offset-4"
               href="/techs"
             >
               estudando,
             </Link>
             <Link
-              className="inline-flex rounded-md px-1 transition-colors hover:bg-zinc-800 hover:text-zinc-100 
+              className="inline-flex rounded-sm px-1 transition-colors hover:bg-zinc-900
               focus:outline-none underline decoration-[#652380] underline-offset-4"
               href="/blog"
             >
@@ -97,8 +98,8 @@ export default function About() {
           <span>
             <Link
               href="/manual"
-              className="inline-flex items-center gap-2 font-bold rounded-md px-1  transition-colors hover:bg-zinc-800 hover:text-zinc-100 
-            focus:outline-none underline underline-offset-4 decoration-[#652380]"
+              className="inline-flex items-center gap-2 font-bold rounded-sm px-1 transition-colors hover:bg-zinc-900
+              focus:outline-none underline decoration-[#652380] underline-offset-4"
             >
               Mais sobre mim <FaArrowRight />
             </Link>
