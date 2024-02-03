@@ -13,7 +13,7 @@ export default function Project() {
       name: "Api E-commerce",
       discription:
         "Um app que faz o rastramento de tasks (hábitos). Mostra ao usuário um dashboard das tasks e a porcetagem da execução daquelas tarefas.",
-      url: "https://github.com/Project77days",
+      url: "https://github.com/Ar3secchim/crud-Ecommerce-App",
       image: [ApiEcomerce],
       flags: ["java", "rabbitmq", "mysql", "jUnit"],
     },
@@ -22,7 +22,7 @@ export default function Project() {
       name: "Project 77 Days",
       discription:
         "Projeto de um aplicativo de comércio eletrônico que demonstra operações CRUD.",
-      url: "https://github.com/Ar3secchim/crud-Ecommerce-App",
+      url: "https://github.com/Project77days",
       image: [Project77],
       flags: ["mobile", "nextJs", "pwa", "jest"],
     },
