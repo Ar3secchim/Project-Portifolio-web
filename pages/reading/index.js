@@ -1,3 +1,4 @@
+"use client";
 import DefaultLayout from "../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
 import { Badge } from "@/components/ui/badge";

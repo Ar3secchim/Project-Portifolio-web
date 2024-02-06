@@ -1,14 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa6";
 
 import DefaultLayout from "../../components/DefaultLayout";
 import { getAllPosts } from "../api/v1/blog/getAllPosts";
 
-
 export const getStaticProps = async () => {
   const posts = await new getAllPosts().execute();
-
   return {
     props: {
       posts,
