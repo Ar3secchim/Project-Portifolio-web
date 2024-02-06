@@ -1,3 +1,4 @@
+"use client";
 import DefaultLayout from "../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
 import { Badge } from "@/components/ui/badge";
@@ -9,10 +10,9 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { getBooks } from "../api/v1/books/getBooks";
-import getS3Object from "../api/v1/books/getImagemBooks";
 
-export const getStaticProps = async () => {
-  const books = await new getBooks().execute()
+export const getServerSideProps = async () => {
+  const books = await new getBooks().execute();
   return {
     props: {
       books,
