@@ -2,7 +2,6 @@
 import DefaultLayout from "../../components/DefaultLayout";
 import { FaAngleRight } from "react-icons/fa6";
 import { Badge } from "@/components/ui/badge";
-
 import {
   Card,
   CardContent,
@@ -10,16 +9,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { getBooks } from "../api/v1/books/getBooks";
-import getS3Object from "../api/v1/books/getImagemBooks";
 
-export const getStaticProps = async () => {
-  const books = await new getBooks().execute()
-  return {
-    props: {
-      books,
-    },
-  };
-};
 
 export default function Reading({ books }) {
   return (
@@ -35,7 +25,7 @@ export default function Reading({ books }) {
 
         <section className="my-8 flex flex-col gap-1 font-thin">
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
-            {books.map((book) => (
+            {books.map((book) => (  
               <Card
                 key={book.id}
                 className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between"
@@ -65,3 +55,12 @@ export default function Reading({ books }) {
     </DefaultLayout>
   );
 }
+
+export const getServerSideProps = async () => {
+  const books = await new getBooks().execute();
+  return {
+    props: {
+      books,
+    },
+  };
+};
