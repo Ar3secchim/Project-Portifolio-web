@@ -27,7 +27,6 @@ export default function Reading({ books }) {
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
             {books.map((book) => (  
               <Card
-                key={book.id}
                 className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between"
               >
                 <CardHeader className="font-bold text-lg p-2 text-center">
@@ -56,11 +55,12 @@ export default function Reading({ books }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const books = await new getBooks().execute();
   return {
     props: {
       books,
     },
+    revalidate: 3600,
   };
 };
