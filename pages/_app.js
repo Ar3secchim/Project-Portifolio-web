@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { Manrope } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from '@vercel/analytics/react';
 
 const manrope = Manrope({
   weight: ["400", "200", "700", "800"],
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }) {
     <main className={manrope.className}>
       <Component {...pageProps} />
       <SpeedInsights />
+      <Analytics />
     </main>
   );
 }
