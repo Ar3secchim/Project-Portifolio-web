@@ -71,9 +71,9 @@ export default function NavBar() {
         </a>
       </div>
 
-      <ul className="hidden md:flex gap-2">
+      <div className="hidden md:flex gap-2">
         <MenuBar />
-      </ul>
+      </div>
 
       <div className="cursor-pointer md:hidden">
         <Sheet>

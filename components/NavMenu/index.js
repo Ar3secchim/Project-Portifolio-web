@@ -15,18 +15,21 @@ import ListItem from "../ListItem";
 export default function MenuBar() {
   const about = [
     {
+      id: 1,
       title: "Sobre Mim",
       href: "/about",
       description:
         "Conheça mais sobre mim, minhas softs skills e um pouco sobre minha personalidade",
     },
     {
+      id: 2,
       title: "Leitura",
       href: "/reading",
       description:
         "O que eu sei e minhas opniões são formadar pelos os livros que leio",
     },
     {
+      id: 3,
       title: "Stacks",
       href: "/techs",
       description:
@@ -44,13 +47,15 @@ export default function MenuBar() {
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-3 p-4">
               {about.map((about) => (
-                <ListItem
-                  key={about.href}
-                  title={about.title}
-                  href={about.href}
-                >
-                  {about.description}
-                </ListItem>
+                <li  key={about.id}>
+                  <ListItem
+                    key={about.id}
+                    title={about.title}
+                    href={about.href}
+                  >
+                    {about.description}
+                  </ListItem>
+                </li>
               ))}
             </ul>
           </NavigationMenuContent>
