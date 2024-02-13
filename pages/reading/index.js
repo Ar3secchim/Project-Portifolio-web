@@ -40,7 +40,7 @@ export default function Reading({ books, error }) {
         <section className="my-8 flex flex-col gap-1 font-thin">
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
             {loading ? (
-              <div className=" flex gap-6">
+              <div className=" flex gap-6 md:grid-cols-3 lg:grid-cols-4">
                 <div className="flex flex-col space-y-3 ">
                   <Skeleton className="h-[125px] w-[250px] rounded-xl" />
                   <div className="space-y-2">
