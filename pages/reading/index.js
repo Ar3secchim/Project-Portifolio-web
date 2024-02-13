@@ -38,7 +38,7 @@ export default function Reading({ books, error }) {
 
         <section className="my-8 flex flex-col gap-1 font-thin">
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
-            {!loading ? (
+            {loading ? (
               <Skeleton />
             ) : (
               books.map((book) => (
