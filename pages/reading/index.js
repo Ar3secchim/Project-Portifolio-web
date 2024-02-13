@@ -1,5 +1,5 @@
-"use client";
 import DefaultLayout from "../../components/DefaultLayout";
+import Custom500 from "../500";
 import { FaAngleRight } from "react-icons/fa6";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -9,9 +9,23 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { getBooks } from "../api/v1/books/getBooks";
-import Custom500 from "../500";
+import { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Reading({ books, error }) {
+  const skeletonArray = new Array();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (books) {
+      setLoading(false);
+    }
+  }, [books]);
+
+  if (error) {
+    return <Custom500 />;
+  }
+
   return (
     <DefaultLayout>
       <section className="my-6">
@@ -25,7 +39,38 @@ export default function Reading({ books, error }) {
 
         <section className="my-8 flex flex-col gap-1 font-thin">
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
-            {!error ? (
+            {loading ? (
+              <div className=" flex gap-6">
+                <div className="flex flex-col space-y-3 ">
+                  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[250px]" />
+                    <Skeleton className="h-4 w-[200px]" />
+                  </div>
+                </div>
+                <div className="flex flex-col space-y-3">
+                  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[250px]" />
+                    <Skeleton className="h-4 w-[200px]" />
+                  </div>
+                </div>
+                <div className="flex flex-col space-y-3">
+                  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[250px]" />
+                    <Skeleton className="h-4 w-[200px]" />
+                  </div>
+                </div>
+                <div className="flex flex-col space-y-3">
+                  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[250px]" />
+                    <Skeleton className="h-4 w-[200px]" />
+                  </div>
+                </div>
+              </div>
+            ) : (
               books.map((book) => (
                 <Card className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between">
                   <CardHeader className="font-bold text-lg p-2 text-center">
@@ -47,8 +92,6 @@ export default function Reading({ books, error }) {
                   </CardFooter>
                 </Card>
               ))
-            ) : (
-              <Custom500 />
             )}
           </div>
         </section>
@@ -64,6 +107,7 @@ export const getServerSideProps = async ({ res, req }) => {
       "public, s-maxage=10, stale-while-revalidate=60",
     );
     const books = await new getBooks().execute();
+
     return {
       props: {
         books: books,
@@ -72,7 +116,7 @@ export const getServerSideProps = async ({ res, req }) => {
   } catch (error) {
     return {
       props: {
-        error: "Error fetching books",
+        error,
       },
     };
   }
