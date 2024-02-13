@@ -1,5 +1,5 @@
 import notion from "@/infra/NotionClient";
-import getS3Object from "./getImagemBooks";
+import getImagemBooks from "./getImagemBooks";
 
 export class getBooks {
   constructor() {}
@@ -28,7 +28,7 @@ export class getBooks {
     const ArrayBook = await Promise.all(
       results.map(async (book) => {
         const key = book.properties.media.url;
-        const media = await getS3Object(key);
+        const media = await getImagemBooks(key);
         return {
           id: book.properties.ID.unique_id.number,
           title: book.properties.title.title[0].plain_text,

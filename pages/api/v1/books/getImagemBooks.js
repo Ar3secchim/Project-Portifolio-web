@@ -9,7 +9,7 @@ const s3 = new S3Client({
   },
 });
 
-const getS3Object = async (keyObject) => {
+const getImagemBooks = async (keyObject) => {
   const command = new GetObjectCommand({
     Bucket: process.env.S3_BUCKET,
     Key: keyObject,
@@ -23,4 +23,4 @@ const getS3Object = async (keyObject) => {
   }
 };
 
-export default getS3Object;
+export default getImagemBooks;
