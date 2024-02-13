@@ -38,31 +38,29 @@ export default function Reading({ books, error }) {
 
         <section className="my-8 flex flex-col gap-1 font-thin">
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
-            {loading ? (
-              <Skeleton />
-            ) : (
-              books.map((book) => (
-                <Card className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between">
-                  <CardHeader className="font-bold text-lg p-2 text-center">
-                    {book.title}
-                  </CardHeader>
+            {loading
+              ? [...Array(8)].map((_, index) => <Skeleton key={index} />)
+              : books.map((book) => (
+                  <Card className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between">
+                    <CardHeader className="font-bold text-lg p-2 text-center">
+                      {book.title}
+                    </CardHeader>
 
-                  <CardContent className="p-2 text-sm items-center flex flex-col">
-                    <img src={book.media} width={146} height={146} />
-                  </CardContent>
+                    <CardContent className="p-2 text-sm items-center flex flex-col">
+                      <img src={book.media} width={146} height={146} />
+                    </CardContent>
 
-                  <CardFooter className="p-2 flex-col gap-2 items-center">
-                    <Badge className="text-xs" variant="secondary">
-                      Nota: {book.nota}
-                    </Badge>
+                    <CardFooter className="p-2 flex-col gap-2 items-center">
+                      <Badge className="text-xs" variant="secondary">
+                        Nota: {book.nota}
+                      </Badge>
 
-                    <Badge className="text-xs" variant="outline">
-                      {book.tags}
-                    </Badge>
-                  </CardFooter>
-                </Card>
-              ))
-            )}
+                      <Badge className="text-xs" variant="outline">
+                        {book.tags}
+                      </Badge>
+                    </CardFooter>
+                  </Card>
+                ))}
           </div>
         </section>
       </section>
