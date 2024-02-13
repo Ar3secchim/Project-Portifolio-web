@@ -10,10 +10,9 @@ import {
 } from "@/components/ui/card";
 import { getBooks } from "../api/v1/books/getBooks";
 import { useEffect, useState } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import Skeleton from "@/components/Skeleton";
 
 export default function Reading({ books, error }) {
-  const skeletonArray = new Array();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -39,37 +38,8 @@ export default function Reading({ books, error }) {
 
         <section className="my-8 flex flex-col gap-1 font-thin">
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
-            {loading ? (
-              <div className=" flex gap-6 md:grid-cols-3 lg:grid-cols-4">
-                <div className="flex flex-col space-y-3 ">
-                  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-4 w-[200px]" />
-                  </div>
-                </div>
-                <div className="flex flex-col space-y-3">
-                  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-4 w-[200px]" />
-                  </div>
-                </div>
-                <div className="flex flex-col space-y-3">
-                  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-4 w-[200px]" />
-                  </div>
-                </div>
-                <div className="flex flex-col space-y-3">
-                  <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-4 w-[200px]" />
-                  </div>
-                </div>
-              </div>
+            {!loading ? (
+              <Skeleton />
             ) : (
               books.map((book) => (
                 <Card className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between">
