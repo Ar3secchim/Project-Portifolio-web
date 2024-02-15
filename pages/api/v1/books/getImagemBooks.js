@@ -1,23 +1,16 @@
-import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import AwsClientS3 from "@/infra/AwsClient";
+import { GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-const s3 = new S3Client({
-  region: "us-east-1",
-  credentials: {
-    accessKeyId: process.env.S3_ACCESS_KEY,
-    secretAccessKey: process.env.S3_ACCESS_SECRET,
-  },
-});
-
 const getImagemBooks = async (keyObject) => {
-  const command = new GetObjectCommand({
+  const GetObjectS3 = new GetObjectCommand({
     Bucket: process.env.S3_BUCKET,
     Key: keyObject,
   });
 
   try {
-    const url = await getSignedUrl(s3, command);
-    return url;
+    const urlImagem = await getSignedUrl(AwsClientS3, GetObjectS3);
+    return urlImagem;
   } catch (err) {
     console.error(err);
   }
