@@ -1,9 +1,9 @@
-import DefaultLayout from "../../components/DefaultLayout";
+import Button from "@/components/Button";
+import Avatar from "@/public/Svgs/avatar.svg";
 import Image from "next/image";
 import { FaAngleRight } from "react-icons/fa6";
-import Avatar from "@/public/Svgs/avatar.svg";
-import Button from "@/components/Button";
 import { PiArrowUpRightBold } from "react-icons/pi";
+import DefaultLayout from "../../components/DefaultLayout";
 
 export default function Contact() {
   return (

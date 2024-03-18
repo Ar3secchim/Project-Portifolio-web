@@ -1,9 +1,9 @@
+import { getAllPosts } from "@/pages/api/v1/blog/getAllPosts";
+import { getPostForSlug } from "@/pages/api/v1/blog/getPostForSlug";
+import { FaAngleRight } from "react-icons/fa6";
 import ReactMarkdown from "react-markdown";
 import BlockCode from "../../../components/BlockCode";
 import DefaultLayout from "../../../components/DefaultLayout";
-import { FaAngleRight } from "react-icons/fa6";
-import { getAllPosts } from "@/pages/api/v1/blog/getAllPosts";
-import { getPostForSlug } from "@/pages/api/v1/blog/getPostForSlug";
 
 export default function BlogPost({ post }) {
   return (

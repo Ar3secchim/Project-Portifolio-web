@@ -1,10 +1,10 @@
 import CardProject from "@/components/Card/CardProject";
 import DefaultLayout from "@/components/DefaultLayout";
 import Project77 from "@/public/Imgs/77Days.png";
-import TasksList from "@/public/Imgs/taskList.png";
 import ApiEcomerce from "@/public/Imgs/ApiEcomerce.png";
-import MarinaSite from "@/public/Imgs/marianaSite.png";
 import CupBet from "@/public/Imgs/cupBet.png";
+import MarinaSite from "@/public/Imgs/marianaSite.png";
+import TasksList from "@/public/Imgs/taskList.png";
 
 export default function Project() {
   const projects = [

@@ -1,7 +1,7 @@
+import { Card } from "@/components/ui/card";
+import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa6";
 import DefaultLayout from "../../components/DefaultLayout";
-import Link from "next/link";
-import { Card } from "@/components/ui/card";
 
 export default function Manual() {
   return (
