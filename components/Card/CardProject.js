@@ -39,7 +39,9 @@ export default function CardProject({
       <CardContent>
         <CardDescription>{discription}</CardDescription>
         <Button variant="link" className="p-0 font-bold ">
-          <Link target="_blank" href={url}>Saiba mais</Link>
+          <Link target="_blank" href={url}>
+            Saiba mais
+          </Link>
           <FaAngleRight />
         </Button>
       </CardContent>

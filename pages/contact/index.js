@@ -3,7 +3,7 @@ import Avatar from "@/public/Svgs/avatar.svg";
 import Image from "next/image";
 import { FaAngleRight } from "react-icons/fa6";
 import { PiArrowUpRightBold } from "react-icons/pi";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultLayout from "@/components/DefaultLayout";
 
 export default function Contact() {
   return (
@@ -28,7 +28,7 @@ export default function Contact() {
             route="https://www.linkedin.com/in/renarasecchim/"
             blank={true}
           >
-            Linkedin  
+            Linkedin
             <PiArrowUpRightBold />
           </Button>
         </div>

@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa6";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultLayout from "@/components/DefaultLayout";
 
 export default function Manual() {
   return (
@@ -115,9 +115,7 @@ export default function Manual() {
           <li className="inline-flex gap-1  mx-2">
             <FaAngleRight className="mt-1" />
             <div>
-              <span className="font-semibold">
-                Compartilhar aprendizados:
-              </span>
+              <span className="font-semibold">Compartilhar aprendizados:</span>
               fico feliz ao ensinar para alguém algo de que tenho conhecimento.
               Acredito que essa é a melhor maneira de estar sempre aprendendo.
             </div>

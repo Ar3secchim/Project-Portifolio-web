@@ -1,7 +1,7 @@
 import { Button as ButtonUi } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Button({ children, route, blank, variant, size}) {
+export default function Button({ children, route, blank, variant, size }) {
   return (
     <ButtonUi
       variant={variant}

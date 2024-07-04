@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultLayout from "@/components/DefaultLayout";
 import Custom500 from "../500";
 import { getBooks } from "../api/v1/books/getBooks";
 

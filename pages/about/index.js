@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FaArrowRight } from "react-icons/fa6";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultLayout from "@/components/DefaultLayout";
 
 import Code from "@/public/Imgs/codeTwo.png";
 import Book from "@/public/Imgs/codeThree.png";

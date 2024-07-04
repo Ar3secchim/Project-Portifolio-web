@@ -1,5 +1,5 @@
 import { FaRegCopyright } from "react-icons/fa6";
-import LinksMedia from "../LinksMedia";
+import LinksMedia from "./LinksMedia";
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
       </div>
 
       <div className=" flex content-center justify-center items-center gap-3">
-       <LinksMedia />
+        <LinksMedia />
       </div>
     </div>
   );

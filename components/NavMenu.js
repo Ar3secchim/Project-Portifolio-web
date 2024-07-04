@@ -9,8 +9,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "../ui/navigation-menu";
-import ListItem from "../ListItem";
+} from "./ui/navigation-menu";
+import ListItem from "./ListItem";
 
 export default function MenuBar() {
   const about = [
@@ -47,7 +47,7 @@ export default function MenuBar() {
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-3 p-4">
               {about.map((about) => (
-                <li  key={about.id}>
+                <li key={about.id}>
                   <ListItem
                     key={about.id}
                     title={about.title}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa6";
 
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultLayout from "@/components/DefaultLayout";
 import { getAllPosts } from "../api/v1/blog/getAllPosts";
 
 export const getStaticProps = async () => {

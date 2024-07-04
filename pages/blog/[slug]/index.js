@@ -2,8 +2,8 @@ import { getAllPosts } from "@/pages/api/v1/blog/getAllPosts";
 import { getPostForSlug } from "@/pages/api/v1/blog/getPostForSlug";
 import { FaAngleRight } from "react-icons/fa6";
 import ReactMarkdown from "react-markdown";
-import BlockCode from "../../../components/BlockCode";
-import DefaultLayout from "../../../components/DefaultLayout";
+import BlockCode from "@/components/BlockCode";
+import DefaultLayout from "@/components/DefaultLayout";
 
 export default function BlogPost({ post }) {
   return (
@@ -20,7 +20,7 @@ export default function BlogPost({ post }) {
         <span>
           <FaAngleRight />
         </span>
-       
+
         {post.tags.map((tag) => (
           <span
             key={tag}
@@ -64,7 +64,7 @@ export const getStaticPaths = async () => {
       params: {
         slug: `${post.slug}`,
       },
-    };  
+    };
   });
 
   return {

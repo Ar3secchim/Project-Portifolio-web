@@ -1,4 +1,4 @@
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultLayout from "@/components/DefaultLayout";
 import CardTech from "@/components/Card/CardTech";
 import { FaAngleRight } from "react-icons/fa6";
 import { IoLogoGithub } from "react-icons/io";

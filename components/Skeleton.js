@@ -1,4 +1,4 @@
-import { Skeleton as SkeletonUI } from "../ui/skeleton";
+import { Skeleton as SkeletonUI } from "./ui/skeleton";
 
 export default function Skeleton() {
   return (
