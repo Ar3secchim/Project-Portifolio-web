@@ -6,7 +6,7 @@ export class getBooks {
 
   async execute() {
     const { results } = await notion.databases.query({
-      database_id: "f8c50c2538ce4284aef0afd4752a639d",
+      database_id: process.env.DATA_BASE_NOTION,
       sorts: [
         {
           property: "nota",

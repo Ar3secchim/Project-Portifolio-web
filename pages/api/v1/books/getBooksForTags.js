@@ -5,7 +5,7 @@ export class getBooksForTags{
 
   async execute(tags) {
     const response = await notion.databases.query({
-      database_id: "f8c50c2538ce4284aef0afd4752a639d",
+      database_id: process.env.DATA_BASE_NOTION,
       filter: {
         and: [
           {

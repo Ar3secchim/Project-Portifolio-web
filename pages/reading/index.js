@@ -12,19 +12,17 @@ import DefaultLayout from "@/components/DefaultLayout";
 import Custom500 from "../500";
 import { getBooks } from "../api/v1/books/getBooks";
 
-export default function Reading({ books, error }) {
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (books) {
-      setLoading(false);
-    }
-  }, []);
+export const getStaticProps = async () => {
+  const books = await new getBooks().execute();
+  return {
+    props: {
+      books: books,
+    },
+  };
+};
 
-  if (error) {
-    return <Custom500 />;
-  }
-
+export default function Reading({ books }) {
   return (
     <DefaultLayout>
       <section className="my-6">
@@ -38,10 +36,9 @@ export default function Reading({ books, error }) {
 
         <section className="my-8 flex flex-col gap-1 font-thin">
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 ">
-            {loading
-              ? [...Array(8)].map((item, index) => <Skeleton key={index} />)
-              : books.map((book) => (
-                  <Card className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between">
+         
+              {books.map((book, index) => (
+                  <Card key={index} className="hover:scale-105 transform transition-all duration-500 ease-in-out hover:bg-zinc-900 border-zinc-900 flex flex-col justify-between">
                     <CardHeader className="font-bold text-lg p-2 text-center">
                       {book.title}
                     </CardHeader>
@@ -68,24 +65,3 @@ export default function Reading({ books, error }) {
   );
 }
 
-export const getServerSideProps = async ({ res, req }) => {
-  try {
-    res.setHeader(
-      "Cache-Control",
-      "public, s-maxage=10, stale-while-revalidate=60",
-    );
-    const books = await new getBooks().execute();
-
-    return {
-      props: {
-        books: books,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        error,
-      },
-    };
-  }
-};
