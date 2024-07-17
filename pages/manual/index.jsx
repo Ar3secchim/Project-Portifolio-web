@@ -1,7 +1,8 @@
-import { Card } from "@/components/ui/card";
-import Link from "next/link";
-import { FaAngleRight } from "react-icons/fa6";
-import DefaultLayout from "@/components/DefaultLayout";
+import Link from 'next/link';
+import { FaAngleRight } from 'react-icons/fa6';
+
+import DefaultLayout from '@/components/DefaultLayout';
+import { Card } from '@/components/ui/card';
 
 export default function Manual() {
   return (
@@ -89,7 +90,7 @@ export default function Manual() {
           <li className="inline-flex gap-1  mx-2">
             <FaAngleRight className="mt-1" />
             <div>
-              <span className="font-semibold"> Viés para o apredizado:</span>{" "}
+              <span className="font-semibold"> Viés para o apredizado:</span>{' '}
               “Feito é melhor que perfeito”. Até mesmo um erro é uma
               oportunidade de aprendizado.
             </div>
@@ -107,7 +108,7 @@ export default function Manual() {
           <li className="inline-flex gap-1  mx-2">
             <FaAngleRight className="mt-1" />
             <div>
-              <span className="font-semibold"> Mantenha a simplicidade:</span>{" "}
+              <span className="font-semibold"> Mantenha a simplicidade:</span>{' '}
               tornar as coisas simples, seja no pessoal ou no profissional.
             </div>
           </li>

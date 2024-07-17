@@ -1,4 +1,9 @@
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaAngleRight } from 'react-icons/fa6';
+
+import Flags from '../Flags';
+import { Button } from '../ui/button';
 import {
   Card,
   CardContent,
@@ -6,11 +11,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card";
-import Flags from "../Flags";
-import { Button } from "../ui/button";
-import { FaAngleRight } from "react-icons/fa6";
-import Link from "next/link";
+} from '../ui/card';
 
 export default function CardProject({
   data,

@@ -1,6 +1,6 @@
-import notion from "@/infra/NotionClient";
+import notion from '@/infra/NotionClient';
 
-export class getBooksForTags{
+export class getBooksForTags {
   constructor() {}
 
   async execute(tags) {
@@ -9,22 +9,22 @@ export class getBooksForTags{
       filter: {
         and: [
           {
-            property: "tags",
+            property: 'tags',
             select: {
               equals: tags,
             },
           },
           {
-            property: "status",
+            property: 'status',
             status: {
-              does_not_equal: "Not started",
+              does_not_equal: 'Not started',
             },
           },
         ],
         sorts: [
           {
-            property: "nota",
-            direction: "descending",
+            property: 'nota',
+            direction: 'descending',
           },
         ],
       },
@@ -32,16 +32,14 @@ export class getBooksForTags{
 
     const books = response.results;
 
-    return books.map((book) => {
-      return {
-        id: book.properties.ID.unique_id.number,
-        title: book.properties.title.title[0].plain_text,
-        autor: book.properties.autor.rich_text[0].plain_text,
-        tags: book.properties.tags.select.name,
-        color: book.properties.tags.select.color,
-        publishAt: book.properties.publishAt.date.start,
-        nota: book.properties.nota.select.name,
-      };
-    });
+    return books.map((book) => ({
+      id: book.properties.ID.unique_id.number,
+      title: book.properties.title.title[0].plain_text,
+      autor: book.properties.autor.rich_text[0].plain_text,
+      tags: book.properties.tags.select.name,
+      color: book.properties.tags.select.color,
+      publishAt: book.properties.publishAt.date.start,
+      nota: book.properties.nota.select.name,
+    }));
   }
 }

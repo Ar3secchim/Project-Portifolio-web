@@ -1,11 +1,11 @@
-import Image from "next/image";
-import PerfilImg from "@/public/Imgs/perfil.png";
-import CardTitle from "@/components/Card/CardTitle";
-import DefaultLayout from "@/components/DefaultLayout";
-import Button from "@/components/Button";
+import Image from 'next/image';
+import { MdOutlinePostAdd } from 'react-icons/md';
+import { PiArrowUpRightBold } from 'react-icons/pi';
 
-import { PiArrowUpRightBold } from "react-icons/pi";
-import { MdOutlinePostAdd } from "react-icons/md";
+import Button from '@/components/Button';
+import CardTitle from '@/components/Card/CardTitle';
+import DefaultLayout from '@/components/DefaultLayout';
+import PerfilImg from '@/public/Imgs/perfil.png';
 
 export default function MyApp() {
   return (

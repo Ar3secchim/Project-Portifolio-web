@@ -1,6 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
+import Link from 'next/link';
+
+import ListItem from './ListItem';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,31 +11,30 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "./ui/navigation-menu";
-import ListItem from "./ListItem";
+} from './ui/navigation-menu';
 
 export default function MenuBar() {
   const about = [
     {
       id: 1,
-      title: "Sobre Mim",
-      href: "/about",
+      title: 'Sobre Mim',
+      href: '/about',
       description:
-        "Conheça mais sobre mim, minhas softs skills e um pouco sobre minha personalidade",
+        'Conheça mais sobre mim, minhas softs skills e um pouco sobre minha personalidade',
     },
     {
       id: 2,
-      title: "Leitura",
-      href: "/reading",
+      title: 'Leitura',
+      href: '/reading',
       description:
-        "O que eu sei e minhas opniões são formadar pelos os livros que leio",
+        'O que eu sei e minhas opniões são formadar pelos os livros que leio',
     },
     {
       id: 3,
-      title: "Stacks",
-      href: "/techs",
+      title: 'Stacks',
+      href: '/techs',
       description:
-        "Tecnologias, ferramentas e softwares que utilizo no dia a dia de desenvolvimento",
+        'Tecnologias, ferramentas e softwares que utilizo no dia a dia de desenvolvimento',
     },
   ];
 

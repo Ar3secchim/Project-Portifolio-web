@@ -1,6 +1,7 @@
-import { Alert, AlertTitle } from "@/components/ui/alert";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
-import DefaultLayout from "@/components/DefaultLayout";
+import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
+
+import DefaultLayout from '@/components/DefaultLayout';
+import { Alert, AlertTitle } from '@/components/ui/alert';
 
 export default function Custom404() {
   return (

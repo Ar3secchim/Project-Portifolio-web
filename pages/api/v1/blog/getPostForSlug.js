@@ -1,14 +1,15 @@
-import notion from "@/infra/NotionClient";
-import { NotionToMarkdown } from "notion-to-md";
+import { NotionToMarkdown } from 'notion-to-md';
+
+import notion from '@/infra/NotionClient';
 
 export class getPostForSlug {
   constructor() {}
-  
+
   async execute(slug) {
     const response = await notion.databases.query({
-      database_id: "00ae27edf7d144ba9886c85b63c51c2e",
+      database_id: '00ae27edf7d144ba9886c85b63c51c2e',
       filter: {
-        property: "slug",
+        property: 'slug',
         rich_text: {
           contains: slug,
         },

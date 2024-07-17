@@ -1,6 +1,7 @@
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { RocketIcon } from "@radix-ui/react-icons";
-import DefaultLayout from "@/components/DefaultLayout";
+import { RocketIcon } from '@radix-ui/react-icons';
+
+import DefaultLayout from '@/components/DefaultLayout';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export default function Custom500() {
   return (

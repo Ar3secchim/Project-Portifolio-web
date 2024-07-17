@@ -1,5 +1,6 @@
-import { BiCircle } from "react-icons/bi";
-import { Badge } from "@/components/ui/badge";
+import { BiCircle } from 'react-icons/bi';
+
+import { Badge } from '@/components/ui/badge';
 
 export default function Flags({ title, icon }) {
   return (

@@ -1,5 +1,6 @@
-import { Button as ButtonUi } from "@/components/ui/button";
-import Link from "next/link";
+import Link from 'next/link';
+
+import { Button as ButtonUi } from '@/components/ui/button';
 
 export default function Button({ children, route, blank, variant, size }) {
   return (
@@ -12,7 +13,7 @@ export default function Button({ children, route, blank, variant, size }) {
       <Link
         className="flex items-center gap-2"
         href={route}
-        target={blank ? "_blank" : ""}
+        target={blank ? '_blank' : ''}
       >
         {children}
       </Link>

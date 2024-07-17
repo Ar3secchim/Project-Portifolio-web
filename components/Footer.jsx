@@ -1,5 +1,6 @@
-import { FaRegCopyright } from "react-icons/fa6";
-import LinksMedia from "./LinksMedia";
+import { FaRegCopyright } from 'react-icons/fa6';
+
+import LinksMedia from './LinksMedia';
 
 export default function Footer() {
   return (

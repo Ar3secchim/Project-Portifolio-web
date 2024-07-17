@@ -1,8 +1,9 @@
-import Link from "next/link";
-import { FaAngleRight } from "react-icons/fa6";
+import Link from 'next/link';
+import { FaAngleRight } from 'react-icons/fa6';
 
-import DefaultLayout from "@/components/DefaultLayout";
-import { getAllPosts } from "../api/v1/blog/getAllPosts";
+import { getAllPosts } from '../api/v1/blog/getAllPosts';
+
+import DefaultLayout from '@/components/DefaultLayout';
 
 export const getStaticProps = async () => {
   const posts = await new getAllPosts().execute();
@@ -45,7 +46,7 @@ export default function Blog({ posts }) {
                 <FaAngleRight />
               </span>
 
-              <span>{post.time + " min"}</span>
+              <span>{`${post.time} min`}</span>
 
               <span>
                 <FaAngleRight />

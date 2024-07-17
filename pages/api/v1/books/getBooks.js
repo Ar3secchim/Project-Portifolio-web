@@ -1,5 +1,6 @@
-import notion from "@/infra/NotionClient";
-import getImagemBooks from "./getImagemBooks";
+import getImagemBooks from './getImagemBooks';
+
+import notion from '@/infra/NotionClient';
 
 export class getBooks {
   constructor() {}
@@ -9,16 +10,16 @@ export class getBooks {
       database_id: process.env.DATA_BASE_NOTION,
       sorts: [
         {
-          property: "nota",
-          direction: "descending",
+          property: 'nota',
+          direction: 'descending',
         },
       ],
       filter: {
         and: [
           {
-            property: "status",
+            property: 'status',
             status: {
-              does_not_equal: "Not started",
+              does_not_equal: 'Not started',
             },
           },
         ],
@@ -36,7 +37,7 @@ export class getBooks {
           tags: book.properties.tags.select.name,
           color: book.properties.tags.select.color,
           nota: book.properties.nota.select.name,
-          media: media,
+          media,
         };
       }),
     );

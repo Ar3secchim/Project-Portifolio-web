@@ -1,9 +1,8 @@
-import { Card } from "@/components/ui/card";
-import  {CardTitle as CardTitleUi} from "@/components/ui/card";
+import Link from 'next/link';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { RxSlash } from 'react-icons/rx';
 
-import Link from "next/link";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { RxSlash } from "react-icons/rx";
+import { Card, CardTitle as CardTitleUi } from '@/components/ui/card';
 
 export default function CardTitle({ title, href }) {
   return (

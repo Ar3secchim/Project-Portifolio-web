@@ -1,8 +1,13 @@
+import Link from 'next/link';
 import {
   TbLayoutSidebarRightExpandFilled,
   TbLayoutSidebarRightCollapseFilled,
-} from "react-icons/tb";
+} from 'react-icons/tb';
 
+import LinksMedia from '@/components/LinksMedia';
+import MenuBar from '@/components/NavMenu';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 import {
   Sheet,
   SheetClose,
@@ -10,51 +15,45 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTrigger,
-} from "@/components/ui/sheet";
-
-import MenuBar from "@/components/NavMenu";
-import { Button } from "@/components/ui/button";
-import LinksMedia from "@/components/LinksMedia";
-import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
+} from '@/components/ui/sheet';
 
 export default function NavBar() {
   const optionsMenu = [
     {
       id: 1,
-      name: "Sobre",
-      url: "project",
+      name: 'Sobre',
+      url: 'project',
       subOptions: [
         {
-          link: "about",
-          name: "Sobre mim",
+          link: 'about',
+          name: 'Sobre mim',
         },
         {
-          link: "techs",
-          name: "Stacks",
+          link: 'techs',
+          name: 'Stacks',
         },
         {
-          link: "reading",
-          name: "Leitura",
+          link: 'reading',
+          name: 'Leitura',
         },
       ],
     },
     {
       id: 2,
-      url: "project",
-      name: "Projeto",
+      url: 'project',
+      name: 'Projeto',
       subOptions: [],
     },
     {
       id: 3,
-      url: "blog",
-      name: "Blog",
+      url: 'blog',
+      name: 'Blog',
       subOptions: [],
     },
     {
       id: 3,
-      url: "contact",
-      name: "Contato",
+      url: 'contact',
+      name: 'Contato',
       subOptions: [],
     },
   ];

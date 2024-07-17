@@ -1,23 +1,26 @@
-import DefaultLayout from "@/components/DefaultLayout";
-import CardTech from "@/components/Card/CardTech";
-import { FaAngleRight } from "react-icons/fa6";
-import { IoLogoGithub } from "react-icons/io";
-import { IoLogoDocker } from "react-icons/io5";
-import { FaFigma } from "react-icons/fa6";
-import { SiRabbitmq } from "react-icons/si";
-import { FaNodeJs } from "react-icons/fa6";
-import { LiaJava } from "react-icons/lia";
-import { IoLogoJavascript } from "react-icons/io5";
-import { TfiHtml5 } from "react-icons/tfi";
-import { FaCss3Alt } from "react-icons/fa";
-import { SiMysql } from "react-icons/si";
-import { SiRedis } from "react-icons/si";
-import { SiExpress } from "react-icons/si";
-import { TbBrandNextjs } from "react-icons/tb";
-import { SiTailwindcss } from "react-icons/si";
-import { SiSpring } from "react-icons/si";
-import { SiJunit5 } from "react-icons/si";
-import { SiJest } from "react-icons/si";
+import { TfiHtml5 } from 'react-icons/tfi';
+import { FaCss3Alt } from 'react-icons/fa';
+import { FaNodeJs } from 'react-icons/fa6';
+import { FaFigma } from 'react-icons/fa6';
+import { FaAngleRight } from 'react-icons/fa6';
+import { IoLogoGithub } from 'react-icons/io';
+import { IoLogoJavascript } from 'react-icons/io5';
+import { IoLogoDocker } from 'react-icons/io5';
+import { LiaJava } from 'react-icons/lia';
+import {
+  SiRabbitmq,
+  SiMysql,
+  SiRedis,
+  SiExpress,
+  SiTailwindcss,
+  SiSpring,
+  SiJunit5,
+  SiJest,
+} from 'react-icons/si';
+import { TbBrandNextjs } from 'react-icons/tb';
+
+import CardTech from '@/components/Card/CardTech';
+import DefaultLayout from '@/components/DefaultLayout';
 
 export default function Techs() {
   return (
