@@ -12,17 +12,17 @@ export default function Project() {
       data: '2023 - current',
       name: 'Api E-commerce',
       discription:
-        'Um app que faz o rastramento de tasks (hábitos). Mostra ao usuário um dashboard das tasks e a porcetagem da execução daquelas tarefas.',
+        'Projeto de um aplicativo de comércio eletrônico que demonstra operações CRUD.',
       url: 'https://github.com/Ar3secchim/crud-Ecommerce-App',
       image: [ApiEcomerce],
       flags: ['java', 'rabbitmq', 'mysql', 'jUnit'],
     },
     {
       data: 'Jul - 2023',
-      name: 'Project 77 Days',
+      name: 'Light Life',
       discription:
-        'Projeto de um aplicativo de comércio eletrônico que demonstra operações CRUD.',
-      url: 'https://github.com/Project77days',
+        'Um app que faz o rastramento de tasks (hábitos). Mostra ao usuário um dashboard das tasks e a porcetagem da execução daquelas tarefas.',
+      url: 'https://github.com/Ar3secchim/light-life-web',
       image: [Project77],
       flags: ['mobile', 'nextJs', 'pwa', 'jest'],
     },

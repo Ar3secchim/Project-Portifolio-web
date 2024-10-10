@@ -1,7 +1,7 @@
-import '../styles/globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Manrope } from 'next/font/google';
+import '../styles/globals.css';
 
 const manrope = Manrope({
   weight: ['400', '200', '700', '800'],
