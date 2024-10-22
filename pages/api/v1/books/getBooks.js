@@ -1,5 +1,3 @@
-import getImagemBooks from './getImagemBooks';
-
 import notion from '@/infra/NotionClient';
 
 export class getBooks {
@@ -7,7 +5,7 @@ export class getBooks {
 
   async execute() {
     const { results } = await notion.databases.query({
-      database_id: process.env.DATA_BASE_NOTION,
+      database_id: 'f8c50c2538ce4284aef0afd4752a639d',
       sorts: [
         {
           property: 'nota',
@@ -28,8 +26,8 @@ export class getBooks {
 
     const ArrayBook = await Promise.all(
       results.map(async (book) => {
-        const key = book.properties.media.url;
-        const media = await getImagemBooks(key);
+        //const key = book.properties.media.url;
+        //const media = await getImagemBooks(key);
         return {
           id: book.properties.ID.unique_id.number,
           title: book.properties.title.title[0].plain_text,
@@ -37,7 +35,7 @@ export class getBooks {
           tags: book.properties.tags.select.name,
           color: book.properties.tags.select.color,
           nota: book.properties.nota.select.name,
-          media,
+          media: book.properties.media.files[0].name,
         };
       }),
     );

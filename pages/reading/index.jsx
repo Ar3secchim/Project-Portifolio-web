@@ -1,5 +1,5 @@
+'use';
 import { FaAngleRight } from 'react-icons/fa6';
-
 import { getBooks } from '../api/v1/books/getBooks';
 
 import DefaultLayout from '@/components/DefaultLayout';
