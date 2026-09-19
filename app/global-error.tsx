@@ -13,10 +13,14 @@ export default function GlobalError({
           <p className="eyebrow">500 / SYSTEM ERROR</p>
           <h1>O sistema encontrou uma falha.</h1>
           <p>
-            A recuperação também faz parte da engenharia. Tente carregar a página
-            novamente.
+            A recuperação também faz parte da engenharia. Tente carregar a
+            página novamente.
           </p>
-          <button className="button button-primary" onClick={reset} type="button">
+          <button
+            className="button button-primary"
+            onClick={reset}
+            type="button"
+          >
             Tentar novamente
           </button>
         </main>

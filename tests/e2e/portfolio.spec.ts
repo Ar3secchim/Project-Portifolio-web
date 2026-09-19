@@ -9,7 +9,15 @@ test('loads both locales and keeps the route while switching', async ({
     'Homelab',
   );
 
-  await page.getByRole('button', { name: 'Switch to English' }).click();
+  const localeSwitcher = page.getByRole('button', {
+    name: 'Switch to English',
+  });
+
+  if (!(await localeSwitcher.isVisible())) {
+    await page.getByRole('button', { name: 'Menu' }).click();
+  }
+
+  await localeSwitcher.click();
   await expect(page).toHaveURL(/\/en\/cases\/homelab$/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'learning systems',
