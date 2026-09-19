@@ -1,0 +1,71 @@
+export const meta = {
+  slug: 'plan-finance',
+  locale: 'pt',
+  kind: 'personal',
+  eyebrow: 'DADOS / AGENTE',
+  title: 'Plan-finance: transformar dados financeiros em perguntas úteis',
+  summary:
+    'Um dashboard pessoal que organiza transações e explora uma interface conversacional para explicar o mês sem esconder as fontes da resposta.',
+  problem:
+    'Planilhas registram números, mas exigem esforço para responder perguntas recorrentes e tornam difícil acompanhar a origem de cada conclusão.',
+  decisions: [
+    {
+      title: 'Consultas determinísticas antes do texto',
+      rationale:
+        'O modelo explica resultados calculados pela aplicação em vez de inventar valores.',
+      tradeoff:
+        'Cada tipo de pergunta precisa de ferramentas e contratos explícitos.',
+    },
+    {
+      title: 'Dados estruturados como fonte de verdade',
+      rationale: 'Categorias, períodos e lançamentos continuam auditáveis.',
+      tradeoff: 'A ingestão e a normalização precisam ser cuidadosas.',
+    },
+    {
+      title: 'Separar demo de dados pessoais',
+      rationale:
+        'O portfólio pode demonstrar o fluxo sem publicar informações financeiras.',
+      tradeoff: 'A demonstração não representa o estado real da aplicação.',
+    },
+  ],
+  outcomes: [
+    'Perguntas traduzidas em operações rastreáveis.',
+    'Respostas ligadas ao período e às categorias consultadas.',
+    'Cenário público seguro com dados simulados.',
+  ],
+  technologies: [
+    'TypeScript',
+    'React',
+    'PostgreSQL',
+    'LLM',
+    'Tool Use',
+    'Data Visualization',
+    'Docker',
+  ],
+  knowledgeNodeIds: ['agents', 'data-modeling', 'privacy', 'ux'],
+  confidentiality:
+    'Todos os valores apresentados no portfólio são simulados e não correspondem a finanças pessoais.',
+  featured: true,
+};
+
+## Contexto
+
+O projeto começou como uma tentativa de reduzir o tempo gasto conciliando categorias e reconstruindo as mesmas análises todo mês. A interface conversacional surgiu depois do modelo de dados — não antes dele.
+
+## Restrições
+
+- Uma resposta precisa ser explicável a partir de lançamentos e agregações.
+- O agente não pode executar operações fora do conjunto de ferramentas autorizado.
+- Dados reais não podem aparecer em logs, exemplos ou capturas públicas.
+
+## Arquitetura
+
+O fluxo é dividido em ingestão, normalização, persistência, ferramentas de consulta e apresentação. A camada de agente escolhe uma ferramenta tipada; a aplicação valida parâmetros, executa a consulta e devolve um resultado estruturado para ser explicado.
+
+## O que não funcionou
+
+Pedir ao modelo que interpretasse dados brutos diretamente produzia respostas difíceis de verificar. A solução foi reduzir o papel do modelo: cálculos e filtros ficam no código; o modelo organiza a explicação.
+
+## Aprendizado principal
+
+Um agente útil não é aquele que tem acesso a tudo. É aquele que opera dentro de **limites claros e observáveis**.

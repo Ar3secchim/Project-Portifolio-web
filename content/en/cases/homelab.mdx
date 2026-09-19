@@ -1,0 +1,77 @@
+export const meta = {
+  slug: 'homelab',
+  locale: 'en',
+  kind: 'personal',
+  eyebrow: 'INFRASTRUCTURE / LAB',
+  title: 'Homelab: learning systems by operating a complete environment',
+  summary:
+    'A personal environment for studying infrastructure, automation, and observability without presenting a polished diagram as fake production.',
+  problem:
+    'Isolated courses teach tools, but rarely show how networking, compute, storage, delivery, and observability affect one another during operations.',
+  decisions: [
+    {
+      title: 'Separate by responsibility',
+      rationale:
+        'Networking, compute, storage, and services have different change and failure cycles.',
+      tradeoff: 'More components to document and maintain.',
+    },
+    {
+      title: 'Automate repeatable changes',
+      rationale:
+        'Reproducible configuration reduces drift and turns recovery into a procedure.',
+      tradeoff: 'The initial investment is higher than a manual change.',
+    },
+    {
+      title: 'Observe before optimizing',
+      rationale:
+        'Metrics and logs distinguish perceived bottlenecks from actual behavior.',
+      tradeoff: 'Observability itself consumes lab resources.',
+    },
+  ],
+  outcomes: [
+    'Practical understanding of dependencies between layers.',
+    'A safe environment for rehearsing failures and recovery.',
+    'Runbooks and diagrams that capture decisions.',
+  ],
+  technologies: [
+    'Linux',
+    'Docker',
+    'Kubernetes',
+    'Proxmox',
+    'PostgreSQL',
+    'Prometheus',
+    'Grafana',
+    'CI/CD',
+  ],
+  knowledgeNodeIds: [
+    'architecture',
+    'observability',
+    'automation',
+    'networking',
+  ],
+  confidentiality:
+    'Conceptual topology; real addresses, credentials, and capacity are not published.',
+  featured: true,
+};
+
+## Context
+
+The homelab grew from a desire to understand the complete path of a system. Instead of studying each tool as an island, it makes it possible to follow what happens from network entry to persistence, deployment, and alerting.
+
+## Constraints
+
+- Hardware and power are limited.
+- The environment must remain understandable after weeks without changes.
+- Personal data, addresses, and secrets never appear in public documentation.
+
+## Architecture
+
+The architecture is organized into four layers: **networking**, **compute**, **storage**, and **platform services**. Each service declares its dependencies, recovery path, and minimum health signals. The goal is not to imitate an entire cloud, but to make distributed systems behavior visible at a scale I can operate.
+
+## What did not work
+
+Automating everything before understanding the flow increased complexity and made simple mistakes harder to locate. The approach changed: first document a manual path, then automate only repeatable and verifiable steps.
+
+## Main lesson
+
+Reliable infrastructure is not infrastructure that never fails. It makes clear **how to detect, contain, and recover** from failure.

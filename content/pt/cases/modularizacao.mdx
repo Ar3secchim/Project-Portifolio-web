@@ -1,0 +1,75 @@
+export const meta = {
+  slug: 'modularizacao',
+  locale: 'pt',
+  kind: 'professional',
+  eyebrow: 'BACKEND / CASE ANONIMIZADO',
+  title: 'Modularização: reduzir acoplamento sem parar o produto',
+  summary:
+    'Uma evolução incremental de backend orientada por limites de domínio, testes de arquitetura e compatibilidade.',
+  problem:
+    'Mudanças pequenas atravessavam muitas áreas do sistema, aumentando o risco de regressão e o tempo necessário para entender efeitos colaterais.',
+  decisions: [
+    {
+      title: 'Fronteiras antes de serviços',
+      rationale:
+        'Módulos bem definidos resolvem acoplamento sem antecipar a complexidade distribuída.',
+      tradeoff: 'O processo exige disciplina dentro do mesmo deploy.',
+    },
+    {
+      title: 'Migração por fatias verticais',
+      rationale: 'Cada fluxo pode ser validado e entregue isoladamente.',
+      tradeoff: 'Estruturas antigas e novas convivem temporariamente.',
+    },
+    {
+      title: 'Regras arquiteturais executáveis',
+      rationale:
+        'Testes impedem que dependências proibidas retornem silenciosamente.',
+      tradeoff: 'As regras precisam acompanhar exceções legítimas.',
+    },
+  ],
+  outcomes: [
+    'Responsabilidades mais claras entre módulos.',
+    'Mudanças localizadas e revisões mais objetivas.',
+    'Base preparada para evolução sem exigir uma reescrita total.',
+  ],
+  technologies: [
+    'Java',
+    'Spring Boot',
+    'Modular Architecture',
+    'JUnit',
+    'PostgreSQL',
+    'REST',
+    'CI/CD',
+  ],
+  knowledgeNodeIds: [
+    'architecture',
+    'modularity',
+    'testing',
+    'evolutionary-design',
+  ],
+  confidentiality:
+    'Nomes, regras de negócio e indicadores internos foram removidos ou descritos qualitativamente.',
+  featured: true,
+};
+
+## Contexto
+
+O sistema continuava entregando valor, mas o custo de mudança crescia. A proposta não foi reescrever: foi criar limites que permitissem evoluir o código existente com segurança.
+
+## Restrições
+
+- Contratos externos deveriam permanecer compatíveis.
+- O time precisava continuar entregando durante a refatoração.
+- A arquitetura nova deveria ser verificável, não apenas descrita em um documento.
+
+## Arquitetura
+
+Os módulos foram organizados por capacidade de negócio. Dependências apontam para contratos explícitos, e integrações entre módulos passam por interfaces conhecidas. Testes de arquitetura verificam limites junto com a suíte funcional.
+
+## O que não funcionou
+
+Mover arquivos para novos pacotes sem alterar dependências produziu apenas uma aparência modular. O progresso real começou quando ciclos de dependência foram medidos e quebrados fluxo por fluxo.
+
+## Aprendizado principal
+
+Modularização não é uma estrutura de pastas. É a capacidade de explicar **quem pode depender de quem e por quê**.

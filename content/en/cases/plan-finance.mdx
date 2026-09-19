@@ -1,0 +1,71 @@
+export const meta = {
+  slug: 'plan-finance',
+  locale: 'en',
+  kind: 'personal',
+  eyebrow: 'DATA / AGENT',
+  title: 'Plan-finance: turning financial data into useful questions',
+  summary:
+    'A personal dashboard that organizes transactions and explores a conversational interface for explaining a month without hiding the sources behind an answer.',
+  problem:
+    'Spreadsheets record numbers, but answering recurring questions still takes effort and the origin of each conclusion is difficult to track.',
+  decisions: [
+    {
+      title: 'Deterministic queries before prose',
+      rationale:
+        'The model explains results computed by the application instead of inventing values.',
+      tradeoff: 'Each question type needs explicit tools and contracts.',
+    },
+    {
+      title: 'Structured data as the source of truth',
+      rationale: 'Categories, periods, and transactions remain auditable.',
+      tradeoff: 'Ingestion and normalization require care.',
+    },
+    {
+      title: 'Separate demos from personal data',
+      rationale:
+        'The portfolio can demonstrate the flow without publishing financial information.',
+      tradeoff:
+        'The demo does not represent the real state of the application.',
+    },
+  ],
+  outcomes: [
+    'Questions translated into traceable operations.',
+    'Answers tied to the period and categories queried.',
+    'A safe public scenario using simulated data.',
+  ],
+  technologies: [
+    'TypeScript',
+    'React',
+    'PostgreSQL',
+    'LLM',
+    'Tool Use',
+    'Data Visualization',
+    'Docker',
+  ],
+  knowledgeNodeIds: ['agents', 'data-modeling', 'privacy', 'ux'],
+  confidentiality:
+    'Every value displayed in the portfolio is simulated and does not represent personal finances.',
+  featured: true,
+};
+
+## Context
+
+The project began as an attempt to reduce the time spent reconciling categories and rebuilding the same analysis every month. The conversational interface came after the data model, not before it.
+
+## Constraints
+
+- Every answer must be explainable from transactions and aggregations.
+- The agent cannot execute operations outside its authorized tool set.
+- Real data cannot appear in logs, examples, or public screenshots.
+
+## Architecture
+
+The flow is divided into ingestion, normalization, persistence, query tools, and presentation. The agent layer selects a typed tool; the application validates parameters, runs the query, and returns a structured result to be explained.
+
+## What did not work
+
+Asking the model to interpret raw data directly produced answers that were difficult to verify. The model’s role was reduced: calculations and filters stay in code; the model organizes the explanation.
+
+## Main lesson
+
+A useful agent is not one that can access everything. It operates within **clear and observable boundaries**.

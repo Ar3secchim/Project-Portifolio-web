@@ -1,4 +1,21 @@
+const withMDX = require('@next/mdx')();
+
 const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  async redirects() {
+    return [
+      { source: '/project', destination: '/pt/cases', permanent: true },
+      { source: '/techs', destination: '/pt/knowledge', permanent: true },
+      { source: '/about', destination: '/pt#about', permanent: true },
+      { source: '/contact', destination: '/pt#contact', permanent: true },
+      { source: '/blog', destination: '/pt/blog', permanent: true },
+      { source: '/reading', destination: '/pt#writing', permanent: true },
+      { source: '/manual', destination: '/pt#about', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
@@ -22,4 +39,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);

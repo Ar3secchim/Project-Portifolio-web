@@ -1,0 +1,75 @@
+export const meta = {
+  slug: 'modularizacao',
+  locale: 'en',
+  kind: 'professional',
+  eyebrow: 'BACKEND / ANONYMIZED CASE',
+  title: 'Modularization: reducing coupling without stopping the product',
+  summary:
+    'An incremental backend evolution guided by domain boundaries, architecture tests, and compatibility.',
+  problem:
+    'Small changes crossed many areas of the system, increasing regression risk and the time needed to understand side effects.',
+  decisions: [
+    {
+      title: 'Boundaries before services',
+      rationale:
+        'Well-defined modules address coupling without prematurely introducing distributed complexity.',
+      tradeoff: 'The approach still requires discipline within one deployment.',
+    },
+    {
+      title: 'Migrate in vertical slices',
+      rationale: 'Each flow can be validated and shipped independently.',
+      tradeoff: 'Old and new structures coexist temporarily.',
+    },
+    {
+      title: 'Executable architecture rules',
+      rationale:
+        'Tests prevent forbidden dependencies from silently returning.',
+      tradeoff: 'Rules must evolve with legitimate exceptions.',
+    },
+  ],
+  outcomes: [
+    'Clearer responsibilities between modules.',
+    'More localized changes and focused reviews.',
+    'A foundation for evolution without a full rewrite.',
+  ],
+  technologies: [
+    'Java',
+    'Spring Boot',
+    'Modular Architecture',
+    'JUnit',
+    'PostgreSQL',
+    'REST',
+    'CI/CD',
+  ],
+  knowledgeNodeIds: [
+    'architecture',
+    'modularity',
+    'testing',
+    'evolutionary-design',
+  ],
+  confidentiality:
+    'Names, business rules, and internal indicators were removed or described qualitatively.',
+  featured: true,
+};
+
+## Context
+
+The system kept delivering value, but the cost of change was growing. The proposal was not a rewrite: it was to create boundaries that allowed the existing code to evolve safely.
+
+## Constraints
+
+- External contracts had to remain compatible.
+- The team needed to keep shipping throughout the refactor.
+- The new architecture had to be verifiable, not merely documented.
+
+## Architecture
+
+Modules were organized around business capabilities. Dependencies point to explicit contracts, and integrations between modules pass through known interfaces. Architecture tests verify boundaries alongside the functional suite.
+
+## What did not work
+
+Moving files into new packages without changing dependencies only created the appearance of modularity. Real progress began when dependency cycles were measured and broken one flow at a time.
+
+## Main lesson
+
+Modularization is not a folder structure. It is the ability to explain **who may depend on whom and why**.
