@@ -1794,7 +1794,9 @@ button {
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
   align-items: center;
   gap: clamp(3rem, 8vw, 8rem);
-  padding-block: clamp(5rem, 9vw, 8rem);
+  min-height: 540px;
+  padding-block: clamp(5rem, 8vw, 7rem);
+  border-top: 1px solid var(--line);
   text-align: left;
 }
 .contact-section h2 {
@@ -1811,6 +1813,30 @@ button {
   margin: 1.5rem 0 0;
   color: var(--muted);
   line-height: 1.7;
+}
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 2rem;
+}
+.contact-actions a {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.contact-actions a:hover {
+  border-color: rgba(var(--accent-rgb), 0.5);
+  color: var(--accent);
 }
 .contact-links {
   display: grid;
@@ -1846,19 +1872,16 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 2rem 0 3rem;
+  padding: 2rem 0 3.5rem;
   border-top: 1px solid var(--line);
   color: var(--faint);
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
-.site-footer > div {
-  display: flex;
-  gap: 1rem;
-}
-.site-footer a:hover {
-  color: var(--accent);
+.site-footer time {
+  flex: 0 0 auto;
 }
 
 .back-link {
@@ -2373,6 +2396,7 @@ button {
   .contact-section {
     grid-template-columns: 1fr;
     gap: 3rem;
+    min-height: 0;
     text-align: left;
   }
   .contact-section h2,
@@ -2385,9 +2409,6 @@ button {
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
-  }
-  .site-footer > div {
-    flex-wrap: wrap;
   }
   .case-overview,
   .decision-grid {

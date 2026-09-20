@@ -323,13 +323,18 @@ export default async function HomePage({ params }: HomePageProps) {
 
       <section className="contact-section section-shell" id="contact">
         <div className="contact-intro">
-          <p className="eyebrow">{dictionary.contact.eyebrow}</p>
           <h2>
             {dictionary.contact.titleLead}{' '}
             <em>{dictionary.contact.titleAccent}</em>
             {dictionary.contact.titleSuffix}
           </h2>
           <p>{dictionary.contact.description}</p>
+          <div className="contact-actions">
+            <Link href={`/${locale}/blog`}>{dictionary.nav.writing} →</Link>
+            <Link href={`/${locale}/knowledge`}>
+              {dictionary.nav.knowledge} graph →
+            </Link>
+          </div>
         </div>
         <div className="contact-links">
           <a className="contact-link" href={`mailto:${siteConfig.email}`}>

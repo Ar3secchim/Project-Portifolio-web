@@ -40,7 +40,7 @@ export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
       </a>
       <Header locale={params.locale} dictionary={dictionary} />
       {children}
-      <Footer locale={params.locale} dictionary={dictionary} />
+      <Footer locale={params.locale} />
     </div>
   );
 }

@@ -218,7 +218,7 @@ const dictionaries = {
       titleAccent: 'conversar',
       titleSuffix: '?',
       description:
-        'Estou sempre aberta a trocar ideias sobre backend, dados, plataforma e problemas interessantes de engenharia.',
+        'Aberta a conversas sobre backend, dados, plataforma ou simplesmente sistemas interessantes.',
     },
     footer: 'Projetado e desenvolvido por Renara Secchim.',
   },
@@ -439,7 +439,7 @@ const dictionaries = {
       titleAccent: 'talk',
       titleSuffix: '?',
       description:
-        'I am always open to exchanging ideas about backend, data, platform, and interesting engineering problems.',
+        'Open to conversations about backend, data, platform, or simply interesting systems.',
     },
     footer: 'Designed and developed by Renara Secchim.',
   },

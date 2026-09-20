@@ -188,10 +188,6 @@ export const technologyGroups = [
     items: ['Prometheus', 'Grafana', 'Elastic Search'],
   },
   {
-    id: 'data',
-    items: ['Kafka', 'Airflow', 'Flink', 'dbt', 'DuckDB'],
-  },
-  {
     id: 'ai',
     items: ['LLM Tool Use', 'Claude API', 'OpenAI'],
   },
