@@ -260,7 +260,10 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
       </section>
 
-      <section className="section-shell section-block" id="knowledge">
+      <section
+        className="section-shell section-block mobile-secondary-section"
+        id="knowledge"
+      >
         <Reveal>
           <SectionHeading
             eyebrow={dictionary.knowledge.eyebrow}
@@ -283,7 +286,12 @@ export default async function HomePage({ params }: HomePageProps) {
         </Reveal>
       </section>
 
-      <section className="section-shell section-block" id="writing">
+      <section
+        className={`section-shell section-block writing-section${
+          posts.length ? '' : ' is-empty'
+        }`}
+        id="writing"
+      >
         <Reveal>
           <SectionHeading
             eyebrow={dictionary.writing.eyebrow}
