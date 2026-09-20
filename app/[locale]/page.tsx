@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { CaseCard } from '@/components/portfolio/CaseCard';
 import { FinanceDemo } from '@/components/portfolio/FinanceDemo';
+import { HeroClock } from '@/components/portfolio/HeroClock';
 import { HomelabMap } from '@/components/portfolio/HomelabMap';
 import { KnowledgeGraph } from '@/components/portfolio/KnowledgeGraph';
 import { Reveal } from '@/components/portfolio/Reveal';
@@ -11,7 +12,11 @@ import { SectionHeading } from '@/components/portfolio/SectionHeading';
 import { getAllPosts } from '@/lib/notion/posts';
 import { buildKnowledgeGraph, getCaseStudies } from '@/lib/portfolio/cases';
 import { getDictionary, isLocale } from '@/lib/portfolio/dictionaries';
-import { siteConfig } from '@/lib/portfolio/site';
+import {
+  buildHomelabLiveContent,
+  getHomelabSnapshot,
+} from '@/lib/portfolio/homelab-snapshot';
+import { siteConfig, technologyGroups } from '@/lib/portfolio/site';
 
 interface HomePageProps {
   params: { locale: string };
@@ -34,6 +39,10 @@ export default async function HomePage({ params }: HomePageProps) {
   const cases = getCaseStudies(locale);
   const graph = buildKnowledgeGraph(locale);
   const posts = (await getAllPosts()).slice(0, 3);
+  const snapshot = await getHomelabSnapshot();
+  const homelabLive = snapshot
+    ? buildHomelabLiveContent(snapshot, locale)
+    : null;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -49,53 +58,78 @@ export default async function HomePage({ params }: HomePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="hero section-shell">
-        <div className="hero-copy">
-          <p className="eyebrow hero-reveal delay-1">
-            {dictionary.hero.eyebrow}
-          </p>
-          <h1>
-            <span className="hero-reveal delay-2">
-              {dictionary.hero.titleStart}
-            </span>{' '}
-            <em className="hero-reveal delay-3">
-              {dictionary.hero.titleAccent}
-            </em>{' '}
-            <span className="hero-reveal delay-4">
-              {dictionary.hero.titleEnd}
-            </span>
-          </h1>
-          <p className="hero-description hero-reveal delay-5">
-            {dictionary.hero.description}
-          </p>
-          <div className="hero-actions hero-reveal delay-5">
-            <Link className="primary-button" href={`/${locale}/cases`}>
-              {dictionary.hero.primaryCta} <span aria-hidden="true">↗</span>
-            </Link>
-            <Link className="text-link" href={`/${locale}#about`}>
-              {dictionary.hero.secondaryCta} <span aria-hidden="true">↓</span>
-            </Link>
+      {/* hero + faixa somam exatamente uma viewport: a faixa encosta no rodapé
+          da primeira tela sem precisar de margem negativa sobre o hero. */}
+      <div className="hero-viewport">
+        <section className="hero section-shell">
+          <div className="hero-copy">
+            <div className="hero-reveal delay-1">
+              <HeroClock locale={locale} />
+            </div>
+            <h1>
+              {dictionary.hero.titleLines.map((line, index) => (
+                <span
+                  className={`hero-title-line hero-reveal delay-${index + 2}`}
+                  key={line}
+                >
+                  {index === 1 ? <em>{line}</em> : line}
+                </span>
+              ))}
+            </h1>
+            <p className="hero-description hero-reveal delay-5">
+              {dictionary.hero.description}
+            </p>
+            <div className="hero-actions hero-reveal delay-5">
+              <Link className="primary-button" href={`/${locale}/cases`}>
+                {dictionary.hero.primaryCta} <span aria-hidden="true">↗</span>
+              </Link>
+              <Link className="text-link" href={`/${locale}#about`}>
+                {dictionary.hero.secondaryCta} <span aria-hidden="true">↓</span>
+              </Link>
+            </div>
+          </div>
+          <aside className="hero-aside hero-reveal delay-5">
+            <div className="availability">
+              <span className="live-dot" />
+              {dictionary.hero.status}
+            </div>
+            <dl>
+              {dictionary.facts.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+          <div className="scroll-cue">
+            <span>{dictionary.hero.scrollCue}</span>
+            <i />
+          </div>
+        </section>
+
+        <div
+          className="system-status-bar"
+          aria-label={dictionary.hero.status}
+          role="region"
+          tabIndex={0}
+        >
+          <strong>
+            {homelabLive
+              ? homelabLive.statusLabel
+              : dictionary.snapshotUnavailable}
+          </strong>
+          <div>
+            {(homelabLive?.statusStrip ?? dictionary.statusStrip).map(
+              ([label, value]) => (
+                <span key={label}>
+                  <i aria-hidden="true" /> {label} <b>{value}</b>
+                </span>
+              ),
+            )}
           </div>
         </div>
-        <aside className="hero-aside hero-reveal delay-5">
-          <div className="availability">
-            <span className="live-dot" />
-            {dictionary.hero.status}
-          </div>
-          <dl>
-            {dictionary.facts.map(([label, value]) => (
-              <div key={label}>
-                <dt>{label}</dt>
-                <dd>{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </aside>
-        <div className="scroll-cue">
-          <span>SCROLL</span>
-          <i />
-        </div>
-      </section>
+      </div>
 
       <section className="section-shell section-block" id="about">
         <Reveal>
@@ -125,13 +159,26 @@ export default async function HomePage({ params }: HomePageProps) {
           <SectionHeading
             eyebrow={dictionary.homelab.eyebrow}
             title={dictionary.homelab.title}
+            titleAccent={dictionary.homelab.titleAccent}
             description={dictionary.homelab.description}
           />
         </Reveal>
         <Reveal delay={100}>
           <HomelabMap
             hint={dictionary.homelab.hint}
-            disclosure={dictionary.homelab.disclosure}
+            disclosure={
+              homelabLive?.disclosure ?? dictionary.homelab.disclosure
+            }
+            panelTitle={
+              homelabLive
+                ? 'SANITIZED LIVE TOPOLOGY'
+                : dictionary.homelab.panelTitle
+            }
+            servicesLabel={dictionary.homelab.servicesLabel}
+            stats={homelabLive?.stats ?? dictionary.homelab.stats}
+            topologyNodes={homelabLive?.topologyNodes}
+            topologyEdges={homelabLive?.topologyEdges}
+            topologyLegend={homelabLive?.topologyLegend}
           />
         </Reveal>
       </section>
@@ -141,11 +188,18 @@ export default async function HomePage({ params }: HomePageProps) {
           <SectionHeading
             eyebrow={dictionary.finance.eyebrow}
             title={dictionary.finance.title}
-            description={dictionary.finance.description}
+            titleAccent={dictionary.finance.titleAccent}
+            description={
+              <>
+                {dictionary.finance.descriptionLead}{' '}
+                <mark>{dictionary.finance.descriptionFlag}</mark>{' '}
+                {dictionary.finance.descriptionTail}
+              </>
+            }
           />
         </Reveal>
         <Reveal delay={100}>
-          <FinanceDemo dictionary={dictionary.finance} />
+          <FinanceDemo dictionary={dictionary.finance} locale={locale} />
         </Reveal>
       </section>
 
@@ -173,6 +227,36 @@ export default async function HomePage({ params }: HomePageProps) {
               />
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      <section className="section-shell section-block" id="stack">
+        <Reveal>
+          <SectionHeading
+            eyebrow={dictionary.stack.eyebrow}
+            title={dictionary.stack.title}
+            description={dictionary.stack.description}
+          />
+        </Reveal>
+        <div className="stack-grid">
+          {technologyGroups.map((group, index) => {
+            const groupLabel =
+              (dictionary.stack.groups as Record<string, string>)[group.id] ??
+              group.id;
+
+            return (
+              <Reveal key={group.id} delay={index * 70}>
+                <article className="stack-card">
+                  <h3>{groupLabel}</h3>
+                  <div className="tag-list">
+                    {group.items.map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -238,28 +322,37 @@ export default async function HomePage({ params }: HomePageProps) {
       </section>
 
       <section className="contact-section section-shell" id="contact">
-        <p className="eyebrow">{dictionary.contact.eyebrow}</p>
-        <h2>{dictionary.contact.title}</h2>
-        <p>{dictionary.contact.description}</p>
+        <div className="contact-intro">
+          <p className="eyebrow">{dictionary.contact.eyebrow}</p>
+          <h2>
+            {dictionary.contact.titleLead}{' '}
+            <em>{dictionary.contact.titleAccent}</em>
+            {dictionary.contact.titleSuffix}
+          </h2>
+          <p>{dictionary.contact.description}</p>
+        </div>
         <div className="contact-links">
-          <a className="primary-button" href={`mailto:${siteConfig.email}`}>
-            {dictionary.contact.email} ↗
+          <a className="contact-link" href={`mailto:${siteConfig.email}`}>
+            <span>Email</span>
+            <strong>{siteConfig.email}</strong>
           </a>
           <a
-            className="text-link"
+            className="contact-link"
             href={siteConfig.social.linkedin}
             target="_blank"
             rel="noreferrer"
           >
-            LinkedIn ↗
+            <span>LinkedIn</span>
+            <strong>/in/renarasecchim ↗</strong>
           </a>
           <a
-            className="text-link"
+            className="contact-link"
             href={siteConfig.social.github}
             target="_blank"
             rel="noreferrer"
           >
-            GitHub ↗
+            <span>GitHub</span>
+            <strong>@Ar3secchim ↗</strong>
           </a>
         </div>
       </section>

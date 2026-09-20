@@ -23,16 +23,17 @@ export function ScrollEffects() {
   useEffect(() => {
     const finePointer = window.matchMedia('(pointer: fine)').matches;
     if (!finePointer) return undefined;
+
+    const root = document.documentElement;
+
+    // Escreve a posição crua do cursor; a suavização é a transition CSS sobre
+    // --cursor-x/y (registradas com @property). Sem loop em JS, então o efeito
+    // não depende do rAF, que o navegador estrangula fora do primeiro plano.
     const move = (event: PointerEvent) => {
-      document.documentElement.style.setProperty(
-        '--cursor-x',
-        `${event.clientX}px`,
-      );
-      document.documentElement.style.setProperty(
-        '--cursor-y',
-        `${event.clientY}px`,
-      );
+      root.style.setProperty('--cursor-x', `${event.clientX}px`);
+      root.style.setProperty('--cursor-y', `${event.clientY}px`);
     };
+
     window.addEventListener('pointermove', move, { passive: true });
     return () => window.removeEventListener('pointermove', move);
   }, []);

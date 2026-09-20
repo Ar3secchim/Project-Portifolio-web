@@ -3,13 +3,16 @@ import type { ReactNode } from 'react';
 interface SectionHeadingProps {
   eyebrow: string;
   title: string;
-  description?: string;
+  /** Trecho destacado em itálico na cor de acento, logo após o título. */
+  titleAccent?: string;
+  description?: ReactNode;
   action?: ReactNode;
 }
 
 export function SectionHeading({
   eyebrow,
   title,
+  titleAccent,
   description,
   action,
 }: SectionHeadingProps) {
@@ -17,7 +20,10 @@ export function SectionHeading({
     <div className="section-heading">
       <div>
         <p className="eyebrow">{eyebrow}</p>
-        <h2>{title}</h2>
+        <h2>
+          {title}
+          {titleAccent ? <em> {titleAccent}</em> : null}
+        </h2>
         {description ? (
           <p className="section-description">{description}</p>
         ) : null}

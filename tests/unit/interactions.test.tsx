@@ -7,19 +7,22 @@ import { buildKnowledgeGraph } from '@/lib/portfolio/cases';
 import { getDictionary } from '@/lib/portfolio/dictionaries';
 
 describe('portfolio interactions', () => {
-  it('replays the finance demo without losing the disclosure', () => {
+  it('replays the agent demo without losing the fictional-data notice', () => {
     const dictionary = getDictionary('pt');
-    render(<FinanceDemo dictionary={dictionary.finance} />);
+    render(<FinanceDemo dictionary={dictionary.finance} locale="pt" />);
 
     fireEvent.click(
-      screen.getByRole('button', { name: dictionary.finance.replay }),
+      screen.getByRole('tab', { name: dictionary.finance.tabs.agent }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: new RegExp(dictionary.finance.replay, 'i'),
+      }),
     );
 
+    expect(screen.getByText(/dados fictícios/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/dados inteiramente simulados/i),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(dictionary.finance.agentMessage),
+      screen.getByText(dictionary.finance.chat.summary),
     ).toBeInTheDocument();
   });
 

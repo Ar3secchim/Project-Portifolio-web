@@ -6,26 +6,42 @@ const dictionaries = {
     skip: 'Pular para o conteúdo',
     nav: {
       home: 'Início',
-      cases: 'Cases',
+      homelab: 'Homelab',
+      cases: 'Projetos',
+      stack: 'Stack',
       knowledge: 'Knowledge',
       writing: 'Blog',
       contact: 'Contato',
     },
+    theme: {
+      label: 'Tema',
+      options: { system: 'Auto', light: 'Claro', dark: 'Escuro' },
+    },
     hero: {
       eyebrow: 'ENGENHARIA DE SOFTWARE / SISTEMAS',
-      titleStart: 'Eu transformo',
-      titleAccent: 'problemas complexos',
-      titleEnd: 'em sistemas compreensíveis.',
+      titleLines: ['Engenheira', 'de software', 'que entende', 'sistemas.'],
       description:
-        'Construo software pensando no caminho completo: contexto, restrições, operação e quem vai manter a solução depois.',
+        'Construo backends resilientes, pipelines de dados e infraestrutura pensando no caminho completo: contexto, restrições, operação e quem vai manter a solução depois.',
       primaryCta: 'Explorar cases',
       secondaryCta: 'Conhecer meu raciocínio',
-      status: 'DISPONÍVEL PARA CONVERSAS TÉCNICAS',
+      status: 'PORTFÓLIO / SISTEMAS DOCUMENTADOS',
+      scrollCue: 'SCROLL PARA EXPLORAR',
     },
     facts: [
-      ['BASE', 'Belém, PA'],
-      ['ATUAÇÃO', 'Engenharia de Software'],
+      ['LOCALIZAÇÃO', 'Belém, PA'],
+      ['FUNÇÃO ATUAL', 'Engenheira de Software'],
       ['FOCO', 'Backend · Dados · Plataforma'],
+      ['HOMELAB', 'Topologia documentada'],
+    ],
+    /** Números ilustrativos do homelab — não são telemetria ao vivo. */
+    liveStatus: 'LIVE STATUS',
+    snapshotUnavailable: 'SNAPSHOT INDISPONÍVEL',
+    statusStrip: [
+      ['k3s cluster', '3 nodes / 11 pods'],
+      ['plan-finance', 'modelo rodando'],
+      ['Gitea CI', '2 pipelines'],
+      ['Proxmox VE', '8 VMs / 6 LXC'],
+      ['Jellyfin', 'idle'],
     ],
     about: {
       eyebrow: 'COMO EU PENSO',
@@ -55,23 +71,88 @@ const dictionaries = {
       ],
     },
     homelab: {
-      eyebrow: 'SISTEMA / HOMELAB',
-      title: 'Um laboratório para aprender sistemas de verdade.',
+      eyebrow: 'INFRAESTRUTURA / HOMELAB',
+      title: 'Um datacenter',
+      titleAccent: 'em miniatura',
       description:
-        'Um ambiente pessoal para explorar rede, virtualização, orquestração, observabilidade e automação. A visualização descreve responsabilidades — não expõe endereços ou dados internos.',
+        'Meu ambiente de experimentação. Tudo que roda em produção no trabalho, eu entendo porque errei aqui primeiro.',
+      panelTitle: 'NETWORK TOPOLOGY',
+      servicesLabel: 'SERVIÇOS',
       hint: 'Selecione um nó para entender sua responsabilidade.',
-      disclosure: 'Topologia conceitual e sanitizada.',
+      disclosure: 'Topologia conceitual e sanitizada. Métricas ilustrativas.',
+      stats: [
+        ['CPU AVG', '14%', '8 cores disponíveis'],
+        ['RAM USADA', '18.4 GB', 'de 32 GB total'],
+        ['STORAGE', '7.2 TB', 'de 12 TB ZFS'],
+        ['SERVIÇOS', '23', 'em k3s + LXC'],
+      ],
     },
     finance: {
-      eyebrow: 'SISTEMA / PLAN-FINANCE',
-      title: 'Finanças explicadas como conversa, não planilha.',
-      description:
-        'Uma experiência de gestão financeira que organiza transações e usa um agente para transformar perguntas em consultas e respostas compreensíveis.',
+      eyebrow: 'PROJETO / PLAN-FINANCE',
+      title: 'Dashboard financeiro',
+      titleAccent: 'com LLM',
+      descriptionLead:
+        'Sistema pessoal de gestão financeira com bot no WhatsApp que envia análises de gastos por categoria, alerta estouros de orçamento e responde perguntas em linguagem natural. Dados',
+      descriptionFlag: 'fictícios',
+      descriptionTail: 'para demonstração.',
       demo: 'DEMONSTRAÇÃO',
-      replay: 'Repetir conversa',
-      userMessage: 'Onde meus gastos mais cresceram este mês?',
-      agentMessage:
-        'No cenário simulado, Compras e Lazer concentram o aumento. Juntas, elas representam R$ 620 acima do mês anterior. Eu começaria revisando compras recorrentes.',
+      replay: 'replay',
+      period: 'MAR — SET 2024 · DADOS FICTÍCIOS',
+      tabs: {
+        flow: 'Fluxo',
+        categories: 'Categorias',
+        agent: 'Agente',
+      },
+      metrics: [
+        ['RECEITA SET', 'R$ 12.400', '+26%', 'up'],
+        ['GASTOS SET', 'R$ 6.200', '+12%', 'down'],
+        ['SALDO SET', 'R$ 6.200', '+44%', 'up'],
+        ['TAXA POUPANÇA', '50%', '↑ tendência', 'neutral'],
+      ],
+      series: { income: 'Receita', expense: 'Gastos' },
+      categoryLabels: {
+        housing: 'Moradia',
+        infra: 'Infra',
+        food: 'Alimentação',
+        studies: 'Estudos',
+        leisure: 'Lazer',
+        health: 'Saúde',
+      },
+      insightLabel: 'INSIGHT DO MODELO',
+      insight:
+        '"Setembro foi seu melhor mês em 7 meses. A taxa de poupança subiu 8pp vs agosto, impulsionada por queda em gastos com lazer. Infra como percentual da receita caiu para 3.4% — abaixo da meta de 4%."',
+      chat: {
+        status: 'online',
+        breakdownTime: '20:07',
+        summary:
+          'Julho fechou com R$ 6.980 de renda e R$ 2.862 em gastos, deixando R$ 4.117 livres.',
+        alertLead: 'Mas',
+        alertCount: '5 categorias estouraram',
+        alertTail:
+          ': Compras (924 vs. orç. 500), Educação (494 vs. 300), Lazer (203 vs. 150), e mais duas em atenção.',
+        inputPlaceholder: 'Mensagem',
+      },
+      howLabel: 'COMO FUNCIONA',
+      how: [
+        'Você manda uma mensagem para o Porquinho no WhatsApp',
+        'O agente consulta o banco e filtra pelo período ou categoria',
+        'Claude gera a análise textual + gráfico de rosca por categoria',
+        'Resposta chega em segundos com insights acionáveis',
+      ],
+      examples: [
+        [
+          '"Quanto gastei com alimentação esse mês?"',
+          'R$ 206,43 — 7,2% da receita. Dentro do orçamento (250).',
+        ],
+        [
+          '"Quais categorias estouraram em julho?"',
+          '5 categorias: Compras, Educação, Lazer, Hobbies e Saúde.',
+        ],
+        [
+          '"Fechar resumo do mês"',
+          'Envia gráfico de rosca + texto analítico no chat.',
+        ],
+      ],
     },
     cases: {
       eyebrow: 'ESTUDOS DE CASO',
@@ -104,6 +185,20 @@ const dictionaries = {
       selected: 'Conexões de',
       instructions: 'Use Tab para navegar pelos nós e Enter para filtrar.',
     },
+    stack: {
+      eyebrow: 'INVENTÁRIO / STACK',
+      title: 'Ferramentas que uso para construir e operar sistemas.',
+      description:
+        'A lista ganha contexto nos cases: cada tecnologia aparece ligada a um problema, uma decisão ou um aprendizado.',
+      groups: {
+        languages: 'Linguagens',
+        backend: 'Backend',
+        platform: 'Infra & Cloud',
+        observability: 'Observabilidade',
+        data: 'Dados',
+        ai: 'IA & LLMs',
+      },
+    },
     writing: {
       eyebrow: 'ESCRITA / BLOG',
       title: 'O que estou organizando em palavras.',
@@ -119,10 +214,11 @@ const dictionaries = {
     },
     contact: {
       eyebrow: 'CONTATO',
-      title: 'Vamos conversar sobre sistemas?',
+      titleLead: 'Vamos',
+      titleAccent: 'conversar',
+      titleSuffix: '?',
       description:
         'Estou sempre aberta a trocar ideias sobre backend, dados, plataforma e problemas interessantes de engenharia.',
-      email: 'Enviar e-mail',
     },
     footer: 'Projetado e desenvolvido por Renara Secchim.',
   },
@@ -131,26 +227,42 @@ const dictionaries = {
     skip: 'Skip to content',
     nav: {
       home: 'Home',
+      homelab: 'Homelab',
       cases: 'Cases',
+      stack: 'Stack',
       knowledge: 'Knowledge',
       writing: 'Writing',
       contact: 'Contact',
     },
+    theme: {
+      label: 'Theme',
+      options: { system: 'Auto', light: 'Light', dark: 'Dark' },
+    },
     hero: {
       eyebrow: 'SOFTWARE ENGINEERING / SYSTEMS',
-      titleStart: 'I turn',
-      titleAccent: 'complex problems',
-      titleEnd: 'into understandable systems.',
+      titleLines: ['Software', 'engineer', 'who understands', 'systems.'],
       description:
-        'I build software while considering the whole path: context, constraints, operations, and the people who will maintain it later.',
+        'I build resilient backends, data pipelines, and infrastructure while considering the whole path: context, constraints, operations, and the people who will maintain it later.',
       primaryCta: 'Explore cases',
       secondaryCta: 'See how I think',
-      status: 'OPEN TO TECHNICAL CONVERSATIONS',
+      status: 'PORTFOLIO / DOCUMENTED SYSTEMS',
+      scrollCue: 'SCROLL TO EXPLORE',
     },
     facts: [
-      ['BASE', 'Belém, Brazil'],
-      ['ROLE', 'Software Engineering'],
+      ['LOCATION', 'Belém, Brazil'],
+      ['CURRENT ROLE', 'Software Engineer'],
       ['FOCUS', 'Backend · Data · Platform'],
+      ['HOMELAB', 'Documented topology'],
+    ],
+    /** Illustrative homelab numbers — not live telemetry. */
+    liveStatus: 'LIVE STATUS',
+    snapshotUnavailable: 'SNAPSHOT UNAVAILABLE',
+    statusStrip: [
+      ['k3s cluster', '3 nodes / 11 pods'],
+      ['plan-finance', 'model running'],
+      ['Gitea CI', '2 pipelines'],
+      ['Proxmox VE', '8 VMs / 6 LXC'],
+      ['Jellyfin', 'idle'],
     ],
     about: {
       eyebrow: 'HOW I THINK',
@@ -180,23 +292,88 @@ const dictionaries = {
       ],
     },
     homelab: {
-      eyebrow: 'SYSTEM / HOMELAB',
-      title: 'A lab for learning real systems.',
+      eyebrow: 'INFRASTRUCTURE / HOMELAB',
+      title: 'A datacenter',
+      titleAccent: 'in miniature',
       description:
-        'A personal environment for exploring networking, virtualization, orchestration, observability, and automation. The visualization describes responsibilities without exposing internal addresses or data.',
+        'My experimentation environment. Everything that runs in production at work, I understand because I broke it here first.',
+      panelTitle: 'NETWORK TOPOLOGY',
+      servicesLabel: 'SERVICES',
       hint: 'Select a node to understand its responsibility.',
-      disclosure: 'Conceptual, sanitized topology.',
+      disclosure: 'Conceptual, sanitized topology. Illustrative metrics.',
+      stats: [
+        ['CPU AVG', '14%', '8 cores available'],
+        ['RAM USED', '18.4 GB', 'of 32 GB total'],
+        ['STORAGE', '7.2 TB', 'of 12 TB ZFS'],
+        ['SERVICES', '23', 'on k3s + LXC'],
+      ],
     },
     finance: {
-      eyebrow: 'SYSTEM / PLAN-FINANCE',
-      title: 'Finances explained as a conversation, not a spreadsheet.',
-      description:
-        'A personal finance experience that organizes transactions and uses an agent to turn questions into queries and understandable answers.',
+      eyebrow: 'PROJECT / PLAN-FINANCE',
+      title: 'Financial dashboard',
+      titleAccent: 'with an LLM',
+      descriptionLead:
+        'A personal finance system with a WhatsApp bot that sends spending analyses by category, flags budget overruns, and answers questions in natural language. Data is',
+      descriptionFlag: 'fictional',
+      descriptionTail: 'for demonstration.',
       demo: 'DEMONSTRATION',
-      replay: 'Replay conversation',
-      userMessage: 'Where did my spending grow the most this month?',
-      agentMessage:
-        'In this simulated scenario, Shopping and Leisure account for most of the increase. Together, they are R$ 620 above last month. I would start by reviewing recurring purchases.',
+      replay: 'replay',
+      period: 'MAR — SEP 2024 · FICTIONAL DATA',
+      tabs: {
+        flow: 'Flow',
+        categories: 'Categories',
+        agent: 'Agent',
+      },
+      metrics: [
+        ['SEP INCOME', 'R$ 12,400', '+26%', 'up'],
+        ['SEP SPENDING', 'R$ 6,200', '+12%', 'down'],
+        ['SEP BALANCE', 'R$ 6,200', '+44%', 'up'],
+        ['SAVINGS RATE', '50%', '↑ trending', 'neutral'],
+      ],
+      series: { income: 'Income', expense: 'Spending' },
+      categoryLabels: {
+        housing: 'Housing',
+        infra: 'Infra',
+        food: 'Food',
+        studies: 'Studies',
+        leisure: 'Leisure',
+        health: 'Health',
+      },
+      insightLabel: 'MODEL INSIGHT',
+      insight:
+        '"September was your best month in 7. The savings rate rose 8pp versus August, driven by lower leisure spending. Infra as a share of income fell to 3.4% — below the 4% target."',
+      chat: {
+        status: 'online',
+        breakdownTime: '20:07',
+        summary:
+          'July closed with R$ 6,980 in income and R$ 2,862 in spending, leaving R$ 4,117 free.',
+        alertLead: 'But',
+        alertCount: '5 categories went over',
+        alertTail:
+          ': Shopping (924 vs. budget 500), Education (494 vs. 300), Leisure (203 vs. 150), plus two more to watch.',
+        inputPlaceholder: 'Message',
+      },
+      howLabel: 'HOW IT WORKS',
+      how: [
+        'You send a message to Porquinho on WhatsApp',
+        'The agent queries the database and filters by period or category',
+        'Claude generates the written analysis plus a donut chart by category',
+        'The answer arrives in seconds with actionable insights',
+      ],
+      examples: [
+        [
+          '"How much did I spend on food this month?"',
+          'R$ 206.43 — 7.2% of income. Within budget (250).',
+        ],
+        [
+          '"Which categories went over in July?"',
+          '5 categories: Shopping, Education, Leisure, Hobbies and Health.',
+        ],
+        [
+          '"Close out the month"',
+          'Sends a donut chart plus written analysis in the chat.',
+        ],
+      ],
     },
     cases: {
       eyebrow: 'CASE STUDIES',
@@ -229,6 +406,20 @@ const dictionaries = {
       selected: 'Connections for',
       instructions: 'Use Tab to navigate nodes and Enter to filter.',
     },
+    stack: {
+      eyebrow: 'INVENTORY / STACK',
+      title: 'Tools I use to build and operate systems.',
+      description:
+        'The list gains context in the cases: every technology is connected to a problem, a decision, or a lesson.',
+      groups: {
+        languages: 'Languages',
+        backend: 'Backend',
+        platform: 'Infra & Cloud',
+        observability: 'Observability',
+        data: 'Data',
+        ai: 'AI & LLMs',
+      },
+    },
     writing: {
       eyebrow: 'WRITING / BLOG',
       title: 'What I am organizing into words.',
@@ -244,10 +435,11 @@ const dictionaries = {
     },
     contact: {
       eyebrow: 'CONTACT',
-      title: 'Let’s talk about systems?',
+      titleLead: 'Let’s',
+      titleAccent: 'talk',
+      titleSuffix: '?',
       description:
         'I am always open to exchanging ideas about backend, data, platform, and interesting engineering problems.',
-      email: 'Send an email',
     },
     footer: 'Designed and developed by Renara Secchim.',
   },

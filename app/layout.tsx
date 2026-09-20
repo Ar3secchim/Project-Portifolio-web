@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
+import '@fontsource-variable/fraunces/full-italic.css';
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource-variable/jetbrains-mono/wght.css';
+
 import { ScrollEffects } from '@/components/portfolio/ScrollEffects';
 import { siteConfig } from '@/lib/portfolio/site';
 import '@/styles/globals.css';
@@ -22,11 +27,17 @@ export const metadata: Metadata = {
   },
 };
 
+const themeScript =
+  "(function(){try{var p=localStorage.getItem('theme')||'system';var d=p==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):p;document.documentElement.dataset.theme=d}catch(e){document.documentElement.dataset.theme='dark'}})()";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="pt" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <ScrollEffects />
         {children}

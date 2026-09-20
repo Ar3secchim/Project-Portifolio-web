@@ -48,19 +48,6 @@ export interface KnowledgeGraph {
   edges: KnowledgeEdge[];
 }
 
-export interface DemoMetric {
-  label: string;
-  value: string;
-  detail: string;
-}
-
-export interface DemoSnapshot {
-  id: string;
-  period: string;
-  disclosure: string;
-  metrics: DemoMetric[];
-}
-
 export interface BlogPostSummary {
   id: string;
   slug: string;

@@ -8,6 +8,7 @@ import { siteConfig } from '@/lib/portfolio/site';
 import type { Locale } from '@/lib/portfolio/types';
 
 import { LocaleSwitcher } from './LocaleSwitcher';
+import { ThemeToggle } from './ThemeToggle';
 
 interface HeaderProps {
   locale: Locale;
@@ -25,12 +26,15 @@ export function Header({ locale, dictionary }: HeaderProps) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = [
-    [`/${locale}`, dictionary.nav.home],
-    [`/${locale}/cases`, dictionary.nav.cases],
-    [`/${locale}/knowledge`, dictionary.nav.knowledge],
+  // O divisor separa âncoras desta página das páginas próprias.
+  const sectionLinks = [
+    [`/${locale}#homelab`, dictionary.nav.homelab],
+    [`/${locale}#cases`, dictionary.nav.cases],
+    [`/${locale}#stack`, dictionary.nav.stack],
+  ];
+  const pageLinks = [
     [`/${locale}/blog`, dictionary.nav.writing],
-    [`/${locale}#contact`, dictionary.nav.contact],
+    [`/${locale}/knowledge`, dictionary.nav.knowledge],
   ];
 
   return (
@@ -57,12 +61,22 @@ export function Header({ locale, dictionary }: HeaderProps) {
           id="primary-menu"
           className={`nav-links ${menuOpen ? 'is-open' : ''}`}
         >
-          {links.map(([href, label]) => (
+          {sectionLinks.map(([href, label]) => (
+            <Link key={href} href={href} onClick={() => setMenuOpen(false)}>
+              {label}
+            </Link>
+          ))}
+          <span className="nav-divider" aria-hidden="true" />
+          {pageLinks.map(([href, label]) => (
             <Link key={href} href={href} onClick={() => setMenuOpen(false)}>
               {label}
             </Link>
           ))}
           <LocaleSwitcher locale={locale} />
+          <ThemeToggle
+            labels={dictionary.theme.options}
+            description={dictionary.theme.label}
+          />
         </div>
       </nav>
     </header>
