@@ -1,0 +1,76 @@
+export const meta = {
+  slug: 'odontoflow',
+  locale: 'pt',
+  kind: 'personal',
+  eyebrow: 'SAAS / MULTI-TENANT',
+  title: 'OdontoFlow: um SaaS odontológico multi-tenant sem servidor',
+  summary:
+    'Prontuário, tratamentos, imagens e cobrança recorrente para clínicas odontológicas, construído inteiramente em serverless com isolamento real entre organizações.',
+  problem:
+    'Clínicas pequenas costumam usar planilhas ou sistemas genéricos de prontuário que não separam bem dados entre unidades e não tratam cobrança recorrente como parte do produto, e sim como um processo à parte.',
+  decisions: [
+    {
+      title: 'Isolamento por organização em todas as camadas',
+      rationale:
+        'Cada requisição carrega o contexto de organização resolvido na autenticação, e toda consulta ao banco é filtrada por esse contexto na camada de serviço — não só no controller.',
+      tradeoff:
+        'Cada novo recurso de domínio precisa lembrar de propagar esse filtro; não é automático.',
+    },
+    {
+      title: 'Gateway de pagamento como interface, não como SDK direto',
+      rationale:
+        'Uma interface interna abstrai o provedor de pagamento; o domínio conhece "cobrar assinatura" e "processar evento de pagamento", não a API específica do provedor.',
+      tradeoff:
+        'Mais uma camada de tradução entre eventos externos e o modelo interno de assinatura.',
+    },
+    {
+      title: 'Infraestrutura como código desde o primeiro ambiente',
+      rationale:
+        'Autenticação, armazenamento de arquivos e distribuição de conteúdo saem de módulos de infraestrutura como código reutilizados entre homologação e produção.',
+      tradeoff:
+        'Mudanças de infraestrutura exigem revisão de um plano antes de aplicar, não um clique direto em um painel.',
+    },
+  ],
+  outcomes: [
+    'Dados de organizações diferentes nunca se misturam, mesmo compartilhando a mesma infraestrutura.',
+    'Vencimento de assinatura é tratado por um job agendado, não por uma verificação manual.',
+    'Pipeline de integração contínua com lint, checagem de tipos e testes automatizados protege um domínio com bastante regra de negócio: planos de tratamento, anexos e cobrança.',
+  ],
+  technologies: [
+    'TypeScript',
+    'AWS Lambda',
+    'Serverless Framework',
+    'Prisma',
+    'PostgreSQL',
+    'AWS Cognito',
+    'Stripe',
+    'Terraform',
+    'Zod',
+  ],
+  knowledgeNodeIds: ['multi-tenancy', 'architecture', 'payments', 'iac'],
+  confidentiality:
+    'Projeto solo, código-fonte ainda privado; nenhum dado real de clínica ou paciente existiu — apenas dados fictícios de desenvolvimento.',
+  featured: true,
+};
+
+## Contexto
+
+O OdontoFlow nasceu como uma tentativa de desenhar, do zero, um SaaS B2B real: múltiplos clientes (clínicas), múltiplos usuários por cliente, cobrança recorrente e dados sensíveis de pacientes — tudo rodando em infraestrutura serverless.
+
+## Restrições
+
+- Duas organizações nunca podem enxergar dados uma da outra, mesmo em caso de erro de implementação em um endpoint novo.
+- Cobrança recorrente precisa sobreviver a falhas de entrega de evento do provedor de pagamento sem duplicar nem perder uma cobrança.
+- Ambientes de homologação e produção devem nascer da mesma definição de infraestrutura, não de passos manuais divergentes.
+
+## Arquitetura
+
+Cada função serverless passa por uma camada de middleware — autenticação, validação de schema, tratamento de erro — antes de chegar a um controller, que delega a um service. Services aplicam as regras de negócio e sempre recebem o contexto de organização já resolvido. Gateways de pagamento, armazenamento e e-mail isolam integrações externas atrás de interfaces internas.
+
+## O que não funcionou
+
+A primeira modelagem de assinatura tratava o provedor de pagamento como fonte de verdade e consultava a API dele a cada verificação de acesso — lento e frágil a instabilidades externas. A correção foi manter um estado de assinatura interno, atualizado por evento, usando o provedor externo só como gatilho.
+
+## Aprendizado principal
+
+Multi-tenancy não é uma coluna de organização na tabela. É uma regra que precisa estar presente — e testada — em todo caminho que toca dado sensível.

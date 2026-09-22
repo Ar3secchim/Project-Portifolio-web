@@ -1,0 +1,83 @@
+export const meta = {
+  slug: 'homelab-api',
+  locale: 'pt',
+  kind: 'personal',
+  eyebrow: 'SEGURANÇA / API PÚBLICA',
+  title: 'Uma API que só pode revelar o que já decidi que é seguro',
+  summary:
+    'Um serviço em Go que publica um retrato do meu cluster caseiro para a internet, desenhado para que um erro de programação não vire uma exposição de infraestrutura.',
+  problem:
+    'Eu queria mostrar dados reais do homelab neste portfólio, mas qualquer endpoint com acesso direto ao cluster é uma superfície de ataque nova — e "vou ter cuidado no código" não é uma estratégia de segurança.',
+  decisions: [
+    {
+      title: 'Publicação outbound-only, sem porta aberta',
+      rationale:
+        'Um CronJob roda dentro do cluster, gera um snapshot e o envia para um bucket público (Cloudflare R2). Não existe nenhuma porta de entrada exposta para o cluster.',
+      tradeoff:
+        'Os dados nunca são "tempo real": refletem o último snapshot publicado com sucesso.',
+    },
+    {
+      title: 'Curadoria e privilégio mínimo, não filtragem depois',
+      rationale:
+        'Nomes reais de recursos nunca são serializados, e contagens (nós, workloads) são inferidas em vez de lidas de uma API mais ampla — assim nem a permissão RBAC do job precisa ser mais larga do que o necessário.',
+      tradeoff:
+        'O snapshot publicado é deliberadamente menos detalhado do que o cluster realmente é.',
+    },
+    {
+      title: 'Validação que aborta em vez de publicar algo suspeito',
+      rationale:
+        'Todo documento passa por um schema fechado e um scanner de padrões de segredo e hostname antes do upload. Qualquer falha aborta o job e mantém o último snapshot bom no ar.',
+      tradeoff:
+        'Um bug na própria validação pode atrasar a atualização pública, em troca de nunca publicar algo incorreto.',
+    },
+  ],
+  outcomes: [
+    'Zero porta de entrada exposta para o cluster real, mesmo publicando dados sobre ele.',
+    'Um ambiente de desenvolvimento local totalmente separado, com dados falsos, elimina a necessidade de tocar no cluster real para testar o serviço.',
+    'O próprio portfólio consome esse snapshot para mostrar um status ao vivo honesto, sem números inventados.',
+  ],
+  technologies: [
+    'Go',
+    'Kubernetes',
+    'CronJob',
+    'Cloudflare R2',
+    'GitHub Actions',
+    'JSON Schema',
+  ],
+  knowledgeNodeIds: ['security', 'architecture', 'automation'],
+  confidentiality:
+    'Este serviço é público por desenho: nomes reais de recursos, endereços e capacidade de infraestrutura não fazem parte do contrato de dados publicado.',
+  featured: true,
+  links: [
+    {
+      label: 'Ver repositório (público)',
+      href: 'https://github.com/Ar3secchim/api-homelab-public',
+    },
+    {
+      label: 'Ver snapshot publicado',
+      href: 'https://api.renara.dev/snapshot.json?v=2',
+    },
+  ],
+};
+
+## Contexto
+
+Este serviço nasceu de uma pergunta simples: como mostrar que o homelab existe e funciona sem dar a qualquer visitante um caminho, direto ou indireto, até o cluster real.
+
+## Restrições
+
+- Nenhuma porta de entrada nova podia ser aberta no cluster para atender este caso de uso.
+- O que fosse publicado precisava ser seguro mesmo se o schema mudasse ou um campo novo fosse esquecido.
+- Testar o serviço não podia depender de rodar contra o cluster de produção do próprio homelab.
+
+## Arquitetura
+
+Um CronJob em Go roda periodicamente dentro do cluster, coleta contagens e status de sincronização do GitOps, monta um documento JSON versionado e o valida contra um schema fechado antes de publicar em um bucket. Um scanner de padrões (nomes de host, segredos) roda como última barreira antes do upload. Um servidor de desenvolvimento local, com dados totalmente fictícios, permite iterar no serviço sem tocar no cluster real.
+
+## O que não funcionou
+
+Uma primeira ideia era ler diretamente contagens de nós e workloads via uma API mais ampla do Kubernetes — mais simples de implementar, mas exigia uma permissão RBAC maior do que o necessário. A troca foi inferir esses números a partir de sinais mais restritos, aceitando mais código em troca de um escopo de permissão menor.
+
+## Aprendizado principal
+
+Segurança por design, aqui, significou uma coisa concreta: o serviço não consegue vazar o que nunca teve permissão para ler.

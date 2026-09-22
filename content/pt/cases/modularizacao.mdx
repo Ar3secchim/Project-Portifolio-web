@@ -1,0 +1,79 @@
+export const meta = {
+  slug: 'modularizacao',
+  locale: 'pt',
+  kind: 'professional',
+  eyebrow: 'BACKEND / CASE FICCIONALIZADO',
+  title: 'Arquitetura que se defende sozinha em code review',
+  summary:
+    'Cenário ficcionalizado (mesma fintech fictícia, Cobrix) sobre transformar regras de arquitetura em testes executáveis, para que dependências proibidas não voltem silenciosamente.',
+  problem:
+    'Um sistema em produção crescia por módulos de negócio, mas nada impedia, na prática, que um módulo importasse direto uma classe interna de outro — cada acoplamento novo só era percebido quando já tinha causado um efeito colateral em produção.',
+  decisions: [
+    {
+      title: 'Testes de arquitetura como parte da suíte, não documentação à parte',
+      rationale:
+        'Regras como "módulo de domínio não pode depender de infraestrutura" e "beans do Spring precisam ser imutáveis" viraram asserções automatizadas que quebram o build, não um diagrama em uma wiki que ninguém revisita.',
+      tradeoff:
+        'Escrever e manter essas regras é trabalho extra que não aparece como funcionalidade nova para o produto.',
+    },
+    {
+      title: 'Migração por fatia vertical, não big-bang',
+      rationale:
+        'Cada módulo foi migrado fluxo por fluxo, com a estrutura antiga e nova convivendo temporariamente, permitindo validar cada fatia isoladamente em produção.',
+      tradeoff:
+        'Durante a transição, existem dois jeitos de fazer a mesma coisa no código, o que exige disciplina de equipe para não confundir.',
+    },
+    {
+      title: 'Fronteiras de módulo antes de considerar microsserviços',
+      rationale:
+        'Resolver o acoplamento dentro do mesmo deploy comprovou o desenho de domínio antes de pagar o custo operacional de distribuir os módulos em serviços separados.',
+      tradeoff:
+        'A separação lógica não dá, por si só, os benefícios de escalar ou implantar módulos de forma independente.',
+    },
+  ],
+  outcomes: [
+    'Dependências proibidas entre módulos passaram a ser pegas no build, não em produção.',
+    'O tempo para entender o efeito colateral de uma mudança pequena caiu, porque as fronteiras entre módulos ficaram explícitas e verificadas.',
+    'A base ficou pronta para, se um dia fizer sentido, extrair um módulo específico como serviço separado — sem precisar redescobrir suas dependências reais primeiro.',
+  ],
+  technologies: [
+    'Java',
+    'Spring Boot',
+    'ArchUnit',
+    'Modular Architecture',
+    'JUnit',
+    'PostgreSQL',
+    'CI/CD',
+  ],
+  knowledgeNodeIds: [
+    'architecture',
+    'modularity',
+    'testing',
+    'evolutionary-design',
+  ],
+  confidentiality:
+    'Cenário, empresa (Cobrix) e regras de negócio são ficcionais; a estratégia de modularização e o uso de testes de arquitetura refletem experiência profissional real, generalizada para não identificar o empregador real.',
+  featured: true,
+};
+
+## Contexto
+
+No mesmo sistema de cobrança da Cobrix (nome fictício), o custo de mudar código pequeno vinha crescendo: uma alteração em um módulo continuava exigindo entender efeitos em outros três.
+
+## Restrições
+
+- Contratos externos (API pública, eventos publicados) precisavam continuar compatíveis durante toda a migração.
+- O time precisava seguir entregando funcionalidade nova durante a reestruturação — não havia uma pausa para refatorar.
+- A nova arquitetura precisava ser verificável automaticamente, não apenas descrita em um documento de decisão.
+
+## Arquitetura
+
+Os módulos foram organizados por capacidade de negócio (cobrança, disputas, relatórios), cada um com uma fronteira clara: dependências entre módulos só podem apontar para interfaces publicadas explicitamente, nunca para classes internas. Testes de arquitetura verificam essas fronteiras a cada build, junto com a suíte funcional.
+
+## O que não funcionou
+
+Mover arquivos para novos pacotes, sem mudar nenhuma dependência de import, deu uma aparência de modularização sem mudar nada de fato — os ciclos de dependência continuavam lá, só que escondidos atrás de nomes de pasta melhores. O progresso real começou quando os ciclos foram medidos e quebrados um fluxo de cada vez.
+
+## Aprendizado principal
+
+Modularização não é uma estrutura de pastas. É a capacidade de provar, com um teste, quem pode depender de quem — e por quê.

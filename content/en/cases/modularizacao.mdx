@@ -1,0 +1,79 @@
+export const meta = {
+  slug: 'modularizacao',
+  locale: 'en',
+  kind: 'professional',
+  eyebrow: 'BACKEND / FICTIONALIZED CASE',
+  title: 'Architecture that defends itself in code review',
+  summary:
+    'A fictionalized scenario (the same fictional fintech, Cobrix) about turning architecture rules into executable tests, so forbidden dependencies cannot silently come back.',
+  problem:
+    'A production system kept growing by business modules, but nothing actually stopped one module from importing another’s internal class directly — every new coupling was only noticed after it had already caused a side effect in production.',
+  decisions: [
+    {
+      title: 'Architecture tests as part of the suite, not separate documentation',
+      rationale:
+        'Rules like "the domain module cannot depend on infrastructure" and "Spring beans must be immutable" became automated assertions that break the build, not a diagram in a wiki nobody revisits.',
+      tradeoff:
+        'Writing and maintaining these rules is extra work that never shows up as a new feature for the product.',
+    },
+    {
+      title: 'Vertical-slice migration, not a big bang',
+      rationale:
+        'Each module was migrated flow by flow, with the old and new structures temporarily coexisting, so each slice could be validated in production on its own.',
+      tradeoff:
+        'During the transition, there are two ways to do the same thing in the code, which demands team discipline to avoid confusion.',
+    },
+    {
+      title: 'Module boundaries before considering microservices',
+      rationale:
+        'Solving the coupling within the same deployment validated the domain design before paying the operational cost of splitting modules into separate services.',
+      tradeoff:
+        'Logical separation alone does not deliver the benefits of scaling or deploying modules independently.',
+    },
+  ],
+  outcomes: [
+    'Forbidden dependencies between modules started getting caught at build time, not in production.',
+    'The time needed to understand a small change’s side effects dropped, because module boundaries became explicit and verified.',
+    'The codebase is now ready to extract a specific module as a separate service, if that ever makes sense, without first having to rediscover its real dependencies.',
+  ],
+  technologies: [
+    'Java',
+    'Spring Boot',
+    'ArchUnit',
+    'Modular Architecture',
+    'JUnit',
+    'PostgreSQL',
+    'CI/CD',
+  ],
+  knowledgeNodeIds: [
+    'architecture',
+    'modularity',
+    'testing',
+    'evolutionary-design',
+  ],
+  confidentiality:
+    'The scenario, the company (Cobrix), and the business rules are fictional; the modularization strategy and the use of architecture tests reflect real professional experience, generalized so it does not identify the real employer.',
+  featured: true,
+};
+
+## Context
+
+On the same Cobrix (fictional name) collections system, the cost of small code changes kept growing: a change in one module still required understanding effects on three others.
+
+## Constraints
+
+- External contracts (public API, published events) had to stay compatible through the entire migration.
+- The team needed to keep shipping new functionality during the restructuring — there was no pause dedicated to refactoring.
+- The new architecture had to be automatically verifiable, not just described in a decision document.
+
+## Architecture
+
+Modules were organized by business capability (collections, disputes, reporting), each with a clear boundary: dependencies between modules can only point to explicitly published interfaces, never internal classes. Architecture tests verify these boundaries on every build, alongside the functional suite.
+
+## What did not work
+
+Moving files into new packages without changing a single import gave the appearance of modularization without changing anything real — the dependency cycles were still there, just hidden behind nicer folder names. Real progress started when the cycles were measured and broken one flow at a time.
+
+## Main lesson
+
+Modularization is not a folder structure. It is the ability to prove, with a test, who can depend on whom — and why.

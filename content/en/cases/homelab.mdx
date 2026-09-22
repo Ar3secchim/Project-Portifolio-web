@@ -1,0 +1,80 @@
+export const meta = {
+  slug: 'homelab',
+  locale: 'en',
+  kind: 'personal',
+  eyebrow: 'INFRASTRUCTURE / GITOPS',
+  title: 'Homelab: infrastructure as code to learn by operating',
+  summary:
+    'A home Kubernetes cluster run like it was production: GitOps, secrets management, and observability organized by domain, not by accident.',
+  problem:
+    'I wanted to learn infrastructure by operating it, not just reading about it — but without GitOps and clear domain boundaries, every change became a risky, hard-to-reproduce manual step.',
+  decisions: [
+    {
+      title: 'GitOps with a self-managed ArgoCD',
+      rationale:
+        'ArgoCD itself is declared as an Application inside the repository it syncs, so a git push is the only path to change, including for the platform layer.',
+      tradeoff:
+        'The initial bootstrap — standing up the first ArgoCD — has to be manual, before GitOps exists.',
+    },
+    {
+      title: 'Applications organized by domain, not one single tree',
+      rationale:
+        'The root used to recurse the entire infrastructure folder, dumping RBAC, namespaces, and workloads into one flat tree. The fix was one Application per domain (platform, networking, observability, automation) with sync-waves.',
+      tradeoff:
+        'A new service using Helm or Kustomize needs its own Application — a documented exception.',
+    },
+    {
+      title: 'Secrets out of Git, synced by an operator',
+      rationale:
+        'Infisical holds the real secrets; an operator materializes them as native Kubernetes Secrets per namespace, so no sensitive value ever enters the repository.',
+      tradeoff:
+        'Infisical and its cache become a critical dependency of the very cluster it helps manage.',
+    },
+  ],
+  outcomes: [
+    'Any infrastructure change is reviewable as a pull request, not an SSH session.',
+    'Promoting a service from dev to prod follows a documented checklist, not whoever remembers what changed last.',
+    'An internal certificate authority and internal DNS remove the need to edit hosts files by hand for every new service.',
+  ],
+  technologies: [
+    'Kubernetes',
+    'ArgoCD',
+    'Traefik',
+    'cert-manager',
+    'Infisical',
+    'Docker',
+    'PostgreSQL',
+    'GitHub Actions',
+  ],
+  knowledgeNodeIds: [
+    'architecture',
+    'automation',
+    'networking',
+    'secrets-management',
+  ],
+  confidentiality:
+    'Real addresses, internal domains, and credentials are not published; the folder structure and GitOps flow described here are real.',
+  featured: true,
+};
+
+## Context
+
+The cluster runs on a single Ubuntu server with K3s, but it is operated with the same practices I would use in a larger environment: nothing is changed by hand, and every change goes through Git.
+
+## Constraints
+
+- Hardware is a single node — availability decisions are conceptual, not real redundancy.
+- The environment has to stay understandable after weeks without changes.
+- No real secret can ever end up versioned in the repository, not even by accident.
+
+## Architecture
+
+A root ArgoCD Application self-manages and syncs a set of child Applications, one per domain: platform (namespaces, RBAC, Infisical), networking (Traefik, cert-manager, internal DNS), observability, and automation. Sync-waves guarantee that namespaces and Infisical come up before anything that depends on them. Secrets live in Infisical and reach the cluster through an operator that materializes them as native Secrets, per namespace.
+
+## What did not work
+
+The first version let ArgoCD recurse the entire infrastructure folder as a single tree. It worked, but any dependency reading turned into one flat list — there was no way to tell what needed to come up before what. The fix was splitting by domain and using explicit sync-waves.
+
+## Main lesson
+
+GitOps is not just "apply YAML automatically." It is making sure order, domain boundaries, and secrets are part of the design — not a detail resolved during an incident.

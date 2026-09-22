@@ -1,0 +1,83 @@
+export const meta = {
+  slug: 'homelab-api',
+  locale: 'en',
+  kind: 'personal',
+  eyebrow: 'SECURITY / PUBLIC API',
+  title: 'An API that can only reveal what I already decided is safe',
+  summary:
+    'A Go service that publishes a snapshot of my home cluster to the internet, designed so a coding mistake can never turn into an infrastructure exposure.',
+  problem:
+    'I wanted to show real homelab data on this portfolio, but any endpoint with direct access to the cluster is a new attack surface — and "I’ll just be careful in the code" is not a security strategy.',
+  decisions: [
+    {
+      title: 'Outbound-only publishing, no open port',
+      rationale:
+        'A CronJob runs inside the cluster, builds a snapshot, and pushes it to a public bucket (Cloudflare R2). No inbound port is ever exposed on the cluster.',
+      tradeoff:
+        'The data is never "real-time": it reflects the last successfully published snapshot.',
+    },
+    {
+      title: 'Curation and least privilege, not filtering after the fact',
+      rationale:
+        'Real resource names are never serialized, and counts (nodes, workloads) are inferred rather than read from a broader API — so the job’s RBAC permission never needs to be wider than necessary.',
+      tradeoff:
+        'The published snapshot is deliberately less detailed than the cluster actually is.',
+    },
+    {
+      title: 'Validation that aborts instead of publishing something suspicious',
+      rationale:
+        'Every document is validated against a closed schema and a secret/hostname-pattern scanner before upload. Any failure aborts the job and keeps the last good snapshot live.',
+      tradeoff:
+        'A bug in validation itself can delay the public update, in exchange for never publishing something wrong.',
+    },
+  ],
+  outcomes: [
+    'Zero inbound exposure of the real cluster, even while publishing data about it.',
+    'A fully separate local dev server with fake data removes any need to touch the real cluster to test the service.',
+    'The portfolio itself consumes this snapshot to show an honest live status, with no invented numbers.',
+  ],
+  technologies: [
+    'Go',
+    'Kubernetes',
+    'CronJob',
+    'Cloudflare R2',
+    'GitHub Actions',
+    'JSON Schema',
+  ],
+  knowledgeNodeIds: ['security', 'architecture', 'automation'],
+  confidentiality:
+    'This service is public by design: real resource names, addresses, and infrastructure capacity are not part of the published data contract.',
+  featured: true,
+  links: [
+    {
+      label: 'View repository (public)',
+      href: 'https://github.com/Ar3secchim/api-homelab-public',
+    },
+    {
+      label: 'View published snapshot',
+      href: 'https://api.renara.dev/snapshot.json?v=2',
+    },
+  ],
+};
+
+## Context
+
+This service came from a simple question: how do I show that the homelab exists and works without giving any visitor a path, direct or indirect, into the real cluster.
+
+## Constraints
+
+- No new inbound port could be opened on the cluster to support this use case.
+- Whatever got published had to stay safe even if the schema changed or a new field was forgotten.
+- Testing the service could not depend on running against the homelab’s own production cluster.
+
+## Architecture
+
+A Go CronJob runs periodically inside the cluster, collects counts and GitOps sync status, assembles a versioned JSON document, and validates it against a closed schema before publishing to a bucket. A pattern scanner (hostnames, secrets) runs as a last gate before upload. A local dev server with fully fictional data lets the service be iterated on without ever touching the real cluster.
+
+## What did not work
+
+An early idea was reading node and workload counts directly from a broader Kubernetes API — simpler to implement, but it required a wider RBAC permission than necessary. The trade was inferring those numbers from more restricted signals, accepting more code in exchange for a smaller permission scope.
+
+## Main lesson
+
+Security by design here meant something concrete: the service cannot leak what it was never granted permission to read.

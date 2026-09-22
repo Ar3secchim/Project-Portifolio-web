@@ -1,0 +1,77 @@
+export const meta = {
+  slug: 'plan-finance',
+  locale: 'pt',
+  kind: 'personal',
+  eyebrow: 'FINANÇAS / AGENTE DE IA',
+  title: 'PlanFinance: um agente financeiro que explica o que calculou',
+  summary:
+    'Um app de finanças pessoais com um agente de IA que responde por WhatsApp usando tool-calling sobre dados reais do banco, não sobre texto solto — com arquitetura hexagonal validada em CI.',
+  problem:
+    'Reconstruir as mesmas perguntas financeiras todo mês em planilha consumia tempo. Conectar um LLM direto aos lançamentos brutos resolvia a preguiça, mas criava um risco novo: respostas numéricas que pareciam certas e não eram.',
+  decisions: [
+    {
+      title: 'Tool-calling sobre dados determinísticos',
+      rationale:
+        'O agente nunca calcula uma soma ou agregação sozinho: ele chama ferramentas tipadas que executam a consulta real no banco via Prisma e devolvem um resultado já correto. O papel do modelo é só explicar.',
+      tradeoff:
+        'Cada nova pergunta financeira exige desenhar e testar uma ferramenta nova, não apenas ajustar um prompt.',
+    },
+    {
+      title: 'Arquitetura hexagonal com checagem automática',
+      rationale:
+        'Camadas de domínio, aplicação, infraestrutura e apresentação são separadas, e um script de conformidade roda em CI para barrar imports proibidos — como domínio dependendo direto do Prisma.',
+      tradeoff:
+        'Mais interfaces e portas para operações que, em um CRUD simples, seriam triviais.',
+    },
+    {
+      title: 'WhatsApp como interface principal',
+      rationale:
+        'Em vez de um dashboard como ponto de entrada, o assistente responde perguntas via WhatsApp, o que forçou respostas curtas, auto-contidas e fáceis de verificar no próprio chat.',
+      tradeoff:
+        'WhatsApp não guarda estado de UI: o contexto da conversa precisa ser reconstruído a cada mensagem.',
+    },
+  ],
+  outcomes: [
+    'Perguntas em linguagem natural viram consultas rastreáveis, nunca respostas inventadas.',
+    'Falha na leitura de um extrato (PDF ou OFX) é tratada como erro de dado, não escondida atrás de uma resposta genérica do modelo.',
+    'Uma nova ferramenta de análise entra sem tocar a camada de infraestrutura, graças às fronteiras já testadas.',
+  ],
+  technologies: [
+    'TypeScript',
+    'React',
+    'Express',
+    'Prisma',
+    'PostgreSQL',
+    'Claude API',
+    'Tool Use',
+    'WhatsApp API',
+    'Docker',
+    'Kubernetes',
+  ],
+  knowledgeNodeIds: ['agents', 'data-modeling', 'architecture', 'reliability'],
+  confidentiality:
+    'Dados financeiros reais nunca aparecem em capturas, exemplos ou métricas públicas; a demonstração neste site usa números fictícios.',
+  featured: true,
+};
+
+## Contexto
+
+O PlanFinance começou como um jeito de parar de reconstruir as mesmas perguntas financeiras todo mês numa planilha. Evoluiu para um sistema com backend próprio, banco relacional e um agente de IA que responde perguntas em linguagem natural pelo WhatsApp — sem esconder de onde vem cada número.
+
+## Restrições
+
+- O agente não pode inventar valores: toda resposta numérica precisa vir de uma consulta real ao banco.
+- A camada de domínio (regras de categorização, cálculo de orçamento) não pode depender de Prisma, Express ou do SDK da Claude — só a infraestrutura conhece essas ferramentas.
+- Falhas de leitura de extrato (PDF, OFX) precisam ficar visíveis, nunca silenciosamente ignoradas.
+
+## Arquitetura
+
+O backend segue camadas de domínio, aplicação, infraestrutura e apresentação. Casos de uso orquestram ferramentas tipadas que o agente pode chamar; cada ferramenta busca dados via Prisma e devolve um resultado estruturado, nunca texto livre. Um script de conformidade arquitetural roda em CI e falha o build se o domínio importar algo de fora dele.
+
+## O que não funcionou
+
+A primeira versão deixava o modelo interpretar diretamente os lançamentos brutos para responder perguntas — funcionava até a pergunta ficar um pouco mais específica, e então o modelo "completava" números que não existiam. A correção foi mover todo cálculo para o código e reduzir o papel do modelo a explicar um resultado já certo.
+
+## Aprendizado principal
+
+Um agente de IA fica confiável quando tem **menos** liberdade, não mais. Definir exatamente quais ferramentas ele pode chamar — e nada além disso — foi o que tornou as respostas verificáveis.

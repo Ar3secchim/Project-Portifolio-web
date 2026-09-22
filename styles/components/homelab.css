@@ -1,0 +1,297 @@
+.homelab-shell,
+.finance-demo,
+.knowledge-shell {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(var(--surface-rgb), 0.86);
+  box-shadow: 0 32px 100px
+    rgba(var(--shadow-rgb), calc(0.3 * var(--shadow-strength)));
+  overflow: hidden;
+}
+/* Opaco: sem isso a grade do html atravessa o painel. */
+.homelab-shell {
+  background: var(--panel);
+}
+.window-bar {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.window-bar > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rose);
+}
+.window-bar > span:nth-child(2) {
+  background: var(--amber);
+}
+.window-bar > span:nth-child(3) {
+  background: var(--accent);
+}
+.window-bar small {
+  margin-left: 0.65rem;
+  color: var(--faint-2);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+}
+.homelab-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
+  gap: 1.5rem;
+}
+.topology {
+  position: relative;
+  min-height: 560px;
+  padding: 1rem;
+  background: var(--panel);
+}
+.topology.is-live {
+  min-height: 720px;
+}
+
+.topology-edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.topology-edge {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+  transition:
+    stroke 0.3s ease,
+    stroke-width 0.3s ease;
+}
+.topology-arrow {
+  fill: var(--line-strong);
+}
+.topology-arrow.is-active {
+  fill: var(--accent);
+}
+.topology-edge.is-active {
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 5;
+  animation: edge-flow 1s linear infinite;
+}
+@keyframes edge-flow {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+.topology-node {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  gap: 0.1rem 0.5rem;
+  width: 154px;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: rgba(var(--surface-rgb), 0.97);
+  color: var(--text);
+  text-align: left;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.topology-node:hover {
+  border-color: rgba(var(--accent-rgb), 0.5);
+}
+.topology-node.is-selected {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px rgba(var(--accent-rgb), 0.25),
+    0 0 28px rgba(var(--accent-rgb), 0.18);
+}
+.topology-node strong {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+.topology-node small,
+.topology-legend li {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.node-status {
+  grid-row: span 2;
+  align-self: center;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px currentColor;
+}
+.node-status.is-storage {
+  background: var(--rose);
+}
+.node-status.is-service {
+  background: var(--amber);
+}
+.node-status.is-network {
+  background: var(--cyan);
+}
+
+.topology-legend {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.topology-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.topology-legend .node-status {
+  grid-row: auto;
+}
+
+.homelab-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.node-detail {
+  padding: 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: rgba(var(--accent-rgb), 0.04);
+  box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.1);
+}
+.node-detail header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+.node-detail header strong {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+.node-detail header small {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.node-detail > p {
+  margin: 0.8rem 0 0;
+  color: var(--subtle);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+.detail-index {
+  margin: 1rem 0 0.5rem !important;
+  color: var(--faint) !important;
+  font-family: var(--font-mono);
+  font-size: 0.52rem !important;
+  letter-spacing: 0.12em;
+}
+.node-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.node-services span {
+  padding: 0.2rem 0.4rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 4px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+}
+
+.homelab-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0;
+}
+.homelab-stats > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(var(--surface-rgb), 0.86);
+}
+.homelab-stats dt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.homelab-stats dt small {
+  color: var(--dim);
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+.homelab-stats dd {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.mono-hint,
+.demo-disclosure {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+.homelab-rail .mono-hint,
+.homelab-rail .demo-disclosure {
+  margin: 0;
+  font-size: 0.54rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* O <mark> padrão vem com fundo amarelo; aqui é só destaque de cor. */
+.section-description mark {
+  background: none;
+  color: var(--amber);
+}

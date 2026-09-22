@@ -1,0 +1,94 @@
+html {
+  color-scheme: dark;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='light'] body {
+  font-weight: 400;
+}
+
+:root[data-theme='light'] .hero h1,
+:root[data-theme='light'] .section-heading h2,
+:root[data-theme='light'] .contact-section h2 {
+  font-weight: 360;
+  font-variation-settings:
+    'opsz' 144,
+    'SOFT' 0,
+    'WONK' 1,
+    'wght' 360;
+}
+
+@property --cursor-x {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 50vw;
+}
+@property --cursor-y {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 50vh;
+}
+html {
+  transition:
+    --cursor-x 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    --cursor-y 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--accent-rgb), 0.2);
+}
+
+body {
+  margin: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 350;
+  min-width: 320px;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}

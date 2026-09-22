@@ -1,0 +1,75 @@
+/* Tokens de cor. O tema escuro é o padrão e vive no :root; o claro sobrescreve
+   em [data-theme="light"]. O JS resolve a preferência (light | dark | system)
+   e escreve sempre o valor final no atributo, então o CSS só precisa de um
+   bloco de override — não há duplicação em prefers-color-scheme. */
+:root {
+  --bg: #060608;
+  --surface: #0a0a0e;
+  --surface-2: #0e0e12;
+  --surface-3: #141418;
+  --panel: #060608;
+  --surface-rgb: 10, 10, 14;
+  --line: rgba(255, 255, 255, 0.06);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --grid: rgba(255, 255, 255, 0.025);
+  --grid-strong: rgba(255, 255, 255, 0.01);
+  --text: #e2e2dc;
+  --text-soft: #c2c2bc;
+  --subtle: #a0a09a;
+  --muted: #85857f;
+  --faint: #6b6b65;
+  --faint-2: #5c5c57;
+  --dim: #4b4b46;
+  --accent: #00ff88;
+  --accent-rgb: 0, 255, 136;
+  --accent-soft: rgba(0, 255, 136, 0.08);
+  --on-accent: #021108;
+  --accent-tint: #15241c;
+  --accent-tint-2: #101612;
+  --shadow-rgb: 0, 0, 0;
+  --shadow-strength: 1;
+  --amber: #ffaa00;
+  --rose: #ff8fa3;
+  --rose-rgb: 255, 143, 163;
+  --cyan: #48dbe8;
+  --font-body: 'Inter Variable', Inter, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', Fraunces, Georgia, serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+  --max-width: 1152px;
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+/* No tema claro os tokens priorizam leitura: até os menores rótulos mono
+   mantêm contraste AA, enquanto o verde continua sendo a assinatura visual. */
+:root[data-theme='light'] {
+  --bg: #f5f5f0;
+  --surface: #ffffff;
+  --surface-2: #fafaf8;
+  --surface-3: #f0f0ec;
+  --panel: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --line: rgba(20, 48, 34, 0.11);
+  --line-strong: rgba(20, 48, 34, 0.24);
+  --grid: rgba(20, 48, 34, 0.045);
+  --grid-strong: rgba(20, 48, 34, 0.02);
+  --text: #171715;
+  --text-soft: #30302d;
+  --subtle: #4d4d48;
+  --muted: #5f5f5a;
+  --faint: #686862;
+  --faint-2: #6c6c66;
+  --dim: #70706a;
+  --accent: #007a43;
+  --accent-rgb: 0, 122, 67;
+  --accent-soft: rgba(0, 122, 67, 0.1);
+  --on-accent: #ffffff;
+  --accent-tint: #dcefe4;
+  --accent-tint-2: #eaf4ee;
+  --shadow-rgb: 20, 30, 24;
+  --shadow-strength: 0.42;
+  --amber: #9a6500;
+  --rose: #b3475f;
+  --rose-rgb: 179, 71, 95;
+  --cyan: #0f7d8c;
+}

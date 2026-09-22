@@ -1,0 +1,557 @@
+.finance-project {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.finance-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.finance-stack li {
+  padding: 0.28rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--subtle);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.06em;
+}
+
+.finance-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+.finance-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.finance-metric span {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.finance-metric strong {
+  font-family: var(--font-mono);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 500;
+}
+.finance-metric small {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+}
+.finance-metric small.is-up {
+  color: var(--accent);
+}
+.finance-metric small.is-down {
+  color: var(--rose);
+}
+.finance-metric small.is-neutral {
+  color: var(--faint);
+}
+
+.finance-demo {
+  padding: 1rem;
+}
+.demo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+.demo-period {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.demo-tabs {
+  display: flex;
+  gap: 0.45rem;
+}
+.demo-tabs button {
+  padding: 0.42rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.demo-tabs button[aria-selected='true'] {
+  border-color: rgba(var(--accent-rgb), 0.2);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.demo-panel {
+  min-height: 300px;
+  display: grid;
+  align-items: center;
+}
+
+/* ── aba Fluxo ── */
+.flow-chart {
+  position: relative;
+  margin: 0;
+}
+.flow-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.chart-gridline {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.chart-tick {
+  fill: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+.flow-area {
+  fill: url(#flow-fill);
+}
+.flow-fill-top {
+  stop-color: rgba(var(--accent-rgb), 0.22);
+}
+.flow-fill-bottom {
+  stop-color: rgba(var(--accent-rgb), 0);
+}
+.flow-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.flow-line.is-income {
+  stroke: var(--accent);
+}
+.flow-line.is-expense {
+  stroke: var(--rose);
+}
+.flow-area.is-expense {
+  fill: url(#flow-fill-expense);
+}
+.flow-fill-expense-top {
+  stop-color: rgba(var(--rose-rgb), 0.18);
+}
+.flow-fill-expense-bottom {
+  stop-color: rgba(var(--rose-rgb), 0);
+}
+
+/* ── hover do gráfico de fluxo ── */
+.flow-cursor line {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.flow-cursor circle {
+  stroke: var(--panel);
+  stroke-width: 2;
+}
+.flow-cursor circle.is-income {
+  fill: var(--accent);
+}
+.flow-cursor circle.is-expense {
+  fill: var(--rose);
+}
+.flow-tooltip {
+  position: absolute;
+  top: 18%;
+  z-index: 2;
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface-2);
+  box-shadow: 0 10px 30px
+    rgba(var(--shadow-rgb), calc(0.4 * var(--shadow-strength)));
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.flow-tooltip strong {
+  color: var(--text);
+  font-size: 0.6rem;
+  font-weight: 500;
+}
+.flow-tooltip span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--faint);
+}
+.flow-tooltip b {
+  color: var(--text);
+  font-weight: 500;
+}
+.flow-tooltip i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.flow-tooltip i.is-income {
+  background: var(--accent);
+}
+.flow-tooltip i.is-expense {
+  background: var(--rose);
+}
+
+/* ── aba Categorias ── */
+.category-chart {
+  position: relative;
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+}
+.category-row {
+  display: grid;
+  grid-template-columns: minmax(70px, 96px) 1fr;
+  align-items: center;
+  gap: 1rem;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+}
+.category-row span {
+  text-align: right;
+}
+/* A trilha só aparece na linha sob o ponteiro: mostra a escala cheia atrás da
+   barra sem poluir as outras linhas. */
+.category-row > div {
+  height: 20px;
+  border-radius: 2px;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+.category-row.is-active > div {
+  background: var(--line-strong);
+}
+.category-row i {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--accent);
+  transition: filter 0.15s ease;
+}
+.category-row.is-active i {
+  filter: brightness(1.35);
+}
+.category-row.is-active span {
+  color: var(--text);
+}
+
+.category-tooltip {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface-2);
+  box-shadow: 0 10px 30px
+    rgba(var(--shadow-rgb), calc(0.4 * var(--shadow-strength)));
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+.category-tooltip strong {
+  color: var(--text);
+  font-size: 0.6rem;
+  font-weight: 500;
+}
+.category-tooltip span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.category-tooltip i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.category-tooltip b {
+  color: var(--text);
+  font-weight: 500;
+}
+.category-axis {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: calc(minmax(70px, 96px) + 1rem);
+  padding-left: 96px;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--line);
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+}
+.category-axis span:not(:first-child) {
+  text-align: center;
+}
+.category-axis span:last-child {
+  text-align: right;
+}
+
+/* ── aba Agente ── */
+.agent-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+}
+.whatsapp-mock {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: #ece5dd;
+  overflow: hidden;
+}
+.whatsapp-mock header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.7rem;
+  background: #075e54;
+  color: #fff;
+}
+.whatsapp-mock header > div {
+  display: flex;
+  flex-direction: column;
+}
+.whatsapp-mock header strong {
+  font-size: 0.8rem;
+}
+.whatsapp-mock header small {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.6rem;
+}
+.whatsapp-mock header button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  cursor: pointer;
+}
+.agent-avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  font-size: 1rem;
+}
+.chat-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.8rem;
+}
+.chat-bubble {
+  position: relative;
+  max-width: 94%;
+  padding: 0.6rem 0.7rem 1.1rem;
+  border-radius: 8px;
+  background: #fff;
+  color: #111b21;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  animation: reveal-up 0.5s both;
+}
+.chat-bubble:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.chat-bubble p {
+  margin: 0 0 0.45rem;
+}
+.chat-bubble p:last-of-type {
+  margin-bottom: 0;
+}
+.chat-bubble mark {
+  background: none;
+  color: #c0392b;
+  font-weight: 600;
+}
+.chat-bubble time {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.45rem;
+  color: #667781;
+  font-size: 0.56rem;
+}
+.chat-breakdown {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+}
+.chat-breakdown > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.chat-breakdown dt {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #3b4a54;
+}
+.chat-breakdown dt i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8e44ad;
+}
+.chat-breakdown > div:nth-child(2) dt i {
+  background: #2980b9;
+}
+.chat-breakdown > div:nth-child(3) dt i {
+  background: #16a085;
+}
+.chat-breakdown > div:nth-child(4) dt i {
+  background: #27ae60;
+}
+.chat-breakdown > div:nth-child(5) dt i {
+  background: #e67e22;
+}
+.chat-breakdown > div:nth-child(6) dt i {
+  background: #d35400;
+}
+.chat-breakdown > div:nth-child(7) dt i {
+  background: #c0392b;
+}
+.chat-breakdown > div:nth-child(8) dt i {
+  background: #7f8c8d;
+}
+.chat-breakdown dd {
+  margin: 0;
+  font-weight: 600;
+}
+.whatsapp-mock footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem 0.7rem;
+}
+.whatsapp-mock footer span {
+  flex: 1;
+  padding: 0.45rem 0.7rem;
+  border-radius: 20px;
+  background: #fff;
+  color: #8696a0;
+  font-size: 0.7rem;
+}
+.whatsapp-mock footer i {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #128c7e;
+  font-size: 0.75rem;
+  font-style: normal;
+}
+
+.agent-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.agent-how {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 8px;
+  background: rgba(var(--accent-rgb), 0.04);
+}
+.agent-how h3,
+.model-insight h3 {
+  margin: 0 0 0.7rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+.agent-how ol {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.agent-how li {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  color: var(--subtle);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  counter-increment: step;
+}
+.agent-how li::before {
+  content: counter(step) '.';
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+}
+.agent-example {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.agent-example p:first-child {
+  margin: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+}
+.agent-example p:last-child {
+  margin: 0.35rem 0 0;
+  color: var(--subtle);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.model-insight {
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 8px;
+  background: rgba(var(--accent-rgb), 0.04);
+}
+.model-insight p {
+  margin: 0;
+  color: var(--subtle);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}

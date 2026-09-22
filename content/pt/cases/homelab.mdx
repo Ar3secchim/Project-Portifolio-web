@@ -1,0 +1,80 @@
+export const meta = {
+  slug: 'homelab',
+  locale: 'pt',
+  kind: 'personal',
+  eyebrow: 'INFRAESTRUTURA / GITOPS',
+  title: 'Homelab: infraestrutura como código para aprender operando',
+  summary:
+    'Um cluster Kubernetes caseiro operado como se fosse produção: GitOps, gestão de segredos e observabilidade organizados por domínio, não por acidente.',
+  problem:
+    'Eu queria aprender infraestrutura operando, não só lendo — mas sem GitOps e sem separação clara de domínios, qualquer mudança virava uma alteração manual arriscada e difícil de reproduzir.',
+  decisions: [
+    {
+      title: 'GitOps com ArgoCD auto-gerenciado',
+      rationale:
+        'O próprio ArgoCD é declarado como uma Application dentro do repositório que ele sincroniza, então git push é o único caminho de mudança, inclusive para a camada de plataforma.',
+      tradeoff:
+        'O bootstrap inicial — subir o primeiro ArgoCD — precisa ser manual, antes do GitOps existir.',
+    },
+    {
+      title: 'Applications organizadas por domínio, não uma árvore única',
+      rationale:
+        'A raiz antes recursava a pasta de infraestrutura inteira, jogando RBAC, namespaces e workloads numa árvore achatada. A correção foi criar uma Application por domínio (plataforma, rede, observabilidade, automação) com sync-waves.',
+      tradeoff:
+        'Um serviço novo com Helm ou Kustomize exige uma Application própria — uma exceção que precisa ficar documentada.',
+    },
+    {
+      title: 'Segredos fora do Git, sincronizados por um Operator',
+      rationale:
+        'O Infisical guarda os segredos reais; um Operator os materializa como Secrets nativos do Kubernetes por namespace, então nenhum valor sensível entra no repositório.',
+      tradeoff:
+        'O próprio Infisical e seu cache viram uma dependência crítica do cluster que ele ajuda a gerenciar.',
+    },
+  ],
+  outcomes: [
+    'Qualquer mudança de infraestrutura é revisável como um pull request, não uma sessão de SSH.',
+    'Promover um serviço de desenvolvimento para produção segue um checklist documentado, não a memória de quem mexeu da última vez.',
+    'Certificado interno e DNS interno eliminam a necessidade de editar hosts manualmente a cada novo serviço.',
+  ],
+  technologies: [
+    'Kubernetes',
+    'ArgoCD',
+    'Traefik',
+    'cert-manager',
+    'Infisical',
+    'Docker',
+    'PostgreSQL',
+    'GitHub Actions',
+  ],
+  knowledgeNodeIds: [
+    'architecture',
+    'automation',
+    'networking',
+    'secrets-management',
+  ],
+  confidentiality:
+    'Endereços, domínios internos e credenciais reais não são publicados; a estrutura de pastas e o fluxo de GitOps descritos aqui são reais.',
+  featured: true,
+};
+
+## Contexto
+
+O cluster roda em um único servidor com K3s, mas é operado com as mesmas práticas que eu usaria em um ambiente maior: nada é alterado à mão, e toda mudança passa pelo Git.
+
+## Restrições
+
+- Hardware é de um único nó — decisões de disponibilidade são conceituais, não redundância real.
+- O ambiente precisa continuar compreensível depois de semanas sem mudanças.
+- Nenhum segredo real pode ficar versionado no repositório, nem por engano.
+
+## Arquitetura
+
+Uma Application raiz do ArgoCD se auto-gerencia e sincroniza um conjunto de Applications-filhas, uma por domínio: plataforma (namespaces, RBAC, Infisical), rede (Traefik, cert-manager, DNS interno), observabilidade e automação. Sync-waves garantem que namespaces e o Infisical subam antes de qualquer serviço que dependa deles. Segredos vivem no Infisical e chegam ao cluster via um Operator que os materializa como Secrets nativos, por namespace.
+
+## O que não funcionou
+
+A primeira versão deixava o ArgoCD recursar a pasta de infraestrutura inteira como uma única árvore. Funcionava, mas qualquer leitura de dependência virava uma lista plana — não dava para saber o que precisava subir antes do quê. A solução foi dividir por domínio e usar sync-waves explícitas.
+
+## Aprendizado principal
+
+GitOps não é só "aplicar YAML automaticamente". É garantir que ordem, limites de domínio e segredos façam parte do design — não um detalhe resolvido na hora do incidente.
