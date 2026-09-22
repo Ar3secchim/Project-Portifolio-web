@@ -1,24 +1,36 @@
 import EnHomelab, {
   meta as enHomelabMeta,
 } from '@/content/en/cases/homelab.mdx';
+import EnHomelabApi, {
+  meta as enHomelabApiMeta,
+} from '@/content/en/cases/homelab-api.mdx';
 import EnModularization, {
   meta as enModularizationMeta,
 } from '@/content/en/cases/modularizacao.mdx';
-import EnPipeline, {
-  meta as enPipelineMeta,
-} from '@/content/en/cases/pipeline-ingestao.mdx';
+import EnCollectionsEngine, {
+  meta as enCollectionsEngineMeta,
+} from '@/content/en/cases/motor-cobranca.mdx';
+import EnOdontoFlow, {
+  meta as enOdontoFlowMeta,
+} from '@/content/en/cases/odontoflow.mdx';
 import EnPlanFinance, {
   meta as enPlanFinanceMeta,
 } from '@/content/en/cases/plan-finance.mdx';
 import PtHomelab, {
   meta as ptHomelabMeta,
 } from '@/content/pt/cases/homelab.mdx';
+import PtHomelabApi, {
+  meta as ptHomelabApiMeta,
+} from '@/content/pt/cases/homelab-api.mdx';
 import PtModularization, {
   meta as ptModularizationMeta,
 } from '@/content/pt/cases/modularizacao.mdx';
-import PtPipeline, {
-  meta as ptPipelineMeta,
-} from '@/content/pt/cases/pipeline-ingestao.mdx';
+import PtCollectionsEngine, {
+  meta as ptCollectionsEngineMeta,
+} from '@/content/pt/cases/motor-cobranca.mdx';
+import PtOdontoFlow, {
+  meta as ptOdontoFlowMeta,
+} from '@/content/pt/cases/odontoflow.mdx';
 import PtPlanFinance, {
   meta as ptPlanFinanceMeta,
 } from '@/content/pt/cases/plan-finance.mdx';
@@ -40,15 +52,19 @@ function toCase(
 
 const casesByLocale: Record<Locale, CaseStudy[]> = {
   pt: [
-    toCase(ptHomelabMeta, PtHomelab),
     toCase(ptPlanFinanceMeta, PtPlanFinance),
-    toCase(ptPipelineMeta, PtPipeline),
+    toCase(ptHomelabApiMeta, PtHomelabApi),
+    toCase(ptOdontoFlowMeta, PtOdontoFlow),
+    toCase(ptHomelabMeta, PtHomelab),
+    toCase(ptCollectionsEngineMeta, PtCollectionsEngine),
     toCase(ptModularizationMeta, PtModularization),
   ],
   en: [
-    toCase(enHomelabMeta, EnHomelab),
     toCase(enPlanFinanceMeta, EnPlanFinance),
-    toCase(enPipelineMeta, EnPipeline),
+    toCase(enHomelabApiMeta, EnHomelabApi),
+    toCase(enOdontoFlowMeta, EnOdontoFlow),
+    toCase(enHomelabMeta, EnHomelab),
+    toCase(enCollectionsEngineMeta, EnCollectionsEngine),
     toCase(enModularizationMeta, EnModularization),
   ],
 };

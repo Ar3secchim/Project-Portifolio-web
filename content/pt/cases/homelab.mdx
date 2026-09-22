@@ -2,74 +2,79 @@ export const meta = {
   slug: 'homelab',
   locale: 'pt',
   kind: 'personal',
-  eyebrow: 'INFRAESTRUTURA / LABORATÓRIO',
-  title: 'Homelab: aprender sistemas operando um ambiente completo',
+  eyebrow: 'INFRAESTRUTURA / GITOPS',
+  title: 'Homelab: infraestrutura como código para aprender operando',
   summary:
-    'Um ambiente pessoal para estudar infraestrutura, automação e observabilidade sem transformar um diagrama bonito em uma falsa produção.',
+    'Um cluster Kubernetes caseiro operado como se fosse produção: GitOps, gestão de segredos e observabilidade organizados por domínio, não por acidente.',
   problem:
-    'Cursos isolados ensinam ferramentas, mas raramente mostram como rede, compute, storage, entrega e observabilidade se afetam durante a operação.',
+    'Eu queria aprender infraestrutura operando, não só lendo — mas sem GitOps e sem separação clara de domínios, qualquer mudança virava uma alteração manual arriscada e difícil de reproduzir.',
   decisions: [
     {
-      title: 'Separar por responsabilidades',
+      title: 'GitOps com ArgoCD auto-gerenciado',
       rationale:
-        'Rede, compute, storage e serviços têm ciclos de mudança e falhas diferentes.',
-      tradeoff: 'Mais componentes para documentar e manter.',
+        'O próprio ArgoCD é declarado como uma Application dentro do repositório que ele sincroniza, então git push é o único caminho de mudança, inclusive para a camada de plataforma.',
+      tradeoff:
+        'O bootstrap inicial — subir o primeiro ArgoCD — precisa ser manual, antes do GitOps existir.',
     },
     {
-      title: 'Automatizar mudanças repetíveis',
+      title: 'Applications organizadas por domínio, não uma árvore única',
       rationale:
-        'Configuração reproduzível reduz drift e transforma recuperação em procedimento.',
-      tradeoff: 'O investimento inicial é maior que uma alteração manual.',
+        'A raiz antes recursava a pasta de infraestrutura inteira, jogando RBAC, namespaces e workloads numa árvore achatada. A correção foi criar uma Application por domínio (plataforma, rede, observabilidade, automação) com sync-waves.',
+      tradeoff:
+        'Um serviço novo com Helm ou Kustomize exige uma Application própria — uma exceção que precisa ficar documentada.',
     },
     {
-      title: 'Observar antes de otimizar',
+      title: 'Segredos fora do Git, sincronizados por um Operator',
       rationale:
-        'Métricas e logs ajudam a distinguir sensação de gargalo de comportamento real.',
-      tradeoff: 'A própria observabilidade consome recursos do laboratório.',
+        'O Infisical guarda os segredos reais; um Operator os materializa como Secrets nativos do Kubernetes por namespace, então nenhum valor sensível entra no repositório.',
+      tradeoff:
+        'O próprio Infisical e seu cache viram uma dependência crítica do cluster que ele ajuda a gerenciar.',
     },
   ],
   outcomes: [
-    'Visão prática das dependências entre camadas.',
-    'Ambiente seguro para ensaiar falhas e recuperação.',
-    'Runbooks e diagramas que acompanham as decisões.',
+    'Qualquer mudança de infraestrutura é revisável como um pull request, não uma sessão de SSH.',
+    'Promover um serviço de desenvolvimento para produção segue um checklist documentado, não a memória de quem mexeu da última vez.',
+    'Certificado interno e DNS interno eliminam a necessidade de editar hosts manualmente a cada novo serviço.',
   ],
   technologies: [
-    'Linux',
-    'Docker',
     'Kubernetes',
+    'ArgoCD',
+    'Traefik',
+    'cert-manager',
+    'Infisical',
+    'Docker',
     'PostgreSQL',
-    'Grafana',
-    'CI/CD',
+    'GitHub Actions',
   ],
   knowledgeNodeIds: [
     'architecture',
-    'observability',
     'automation',
     'networking',
+    'secrets-management',
   ],
   confidentiality:
-    'Topologia conceitual; endereços, credenciais e capacidades reais não são publicados.',
+    'Endereços, domínios internos e credenciais reais não são publicados; a estrutura de pastas e o fluxo de GitOps descritos aqui são reais.',
   featured: true,
 };
 
 ## Contexto
 
-O homelab nasceu da vontade de entender o caminho completo de um sistema. Em vez de estudar cada ferramenta como uma ilha, ele permite acompanhar o que acontece desde a entrada na rede até a persistência, o deploy e o alerta.
+O cluster roda em um único servidor com K3s, mas é operado com as mesmas práticas que eu usaria em um ambiente maior: nada é alterado à mão, e toda mudança passa pelo Git.
 
 ## Restrições
 
-- Hardware e energia são limitados.
-- O ambiente precisa continuar compreensível depois de semanas sem alterações.
-- Dados pessoais, endereços e segredos nunca fazem parte da documentação pública.
+- Hardware é de um único nó — decisões de disponibilidade são conceituais, não redundância real.
+- O ambiente precisa continuar compreensível depois de semanas sem mudanças.
+- Nenhum segredo real pode ficar versionado no repositório, nem por engano.
 
 ## Arquitetura
 
-A arquitetura é organizada em quatro camadas: **rede**, **compute**, **storage** e **serviços de plataforma**. Cada serviço declara dependências, forma de recuperação e sinais mínimos de saúde. O objetivo não é imitar uma nuvem inteira, mas tornar visível o comportamento de sistemas distribuídos em uma escala que eu consigo operar.
+Uma Application raiz do ArgoCD se auto-gerencia e sincroniza um conjunto de Applications-filhas, uma por domínio: plataforma (namespaces, RBAC, Infisical), rede (Traefik, cert-manager, DNS interno), observabilidade e automação. Sync-waves garantem que namespaces e o Infisical subam antes de qualquer serviço que dependa deles. Segredos vivem no Infisical e chegam ao cluster via um Operator que os materializa como Secrets nativos, por namespace.
 
 ## O que não funcionou
 
-Automatizar tudo antes de entender o fluxo aumentou a complexidade e tornou erros simples mais difíceis de localizar. A abordagem mudou: primeiro um caminho manual documentado, depois automação apenas das etapas repetíveis e verificáveis.
+A primeira versão deixava o ArgoCD recursar a pasta de infraestrutura inteira como uma única árvore. Funcionava, mas qualquer leitura de dependência virava uma lista plana — não dava para saber o que precisava subir antes do quê. A solução foi dividir por domínio e usar sync-waves explícitas.
 
 ## Aprendizado principal
 
-Infraestrutura confiável não é a que nunca falha. É a que deixa claro **como detectar, limitar e recuperar** uma falha.
+GitOps não é só "aplicar YAML automaticamente". É garantir que ordem, limites de domínio e segredos façam parte do design — não um detalhe resolvido na hora do incidente.

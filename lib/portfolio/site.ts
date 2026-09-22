@@ -159,11 +159,18 @@ export const homelabLegend = [
 export const technologyGroups = [
   {
     id: 'languages',
-    items: ['Java', 'TypeScript'],
+    items: ['Java', 'TypeScript', 'Go'],
   },
   {
     id: 'frameworks',
-    items: ['Spring Boot', 'React', 'Next.js', 'Angular', 'Express.js'],
+    items: [
+      'Spring Boot',
+      'React',
+      'Next.js',
+      'Angular',
+      'Express.js',
+      'Prisma',
+    ],
   },
   {
     id: 'databases',
@@ -171,11 +178,11 @@ export const technologyGroups = [
   },
   {
     id: 'platform',
-    items: ['Kubernetes', 'Docker', 'Terraform', 'AWS', 'Cloudflare'],
+    items: ['Kubernetes', 'Docker', 'Terraform', 'AWS', 'Cloudflare', 'ArgoCD'],
   },
   {
     id: 'observability',
-    items: ['Grafana', 'Elastic Search'],
+    items: ['Grafana'],
   },
   {
     id: 'ai',

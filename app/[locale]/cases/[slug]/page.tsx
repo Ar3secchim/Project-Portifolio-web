@@ -66,6 +66,21 @@ export default function CasePage({ params }: CasePageProps) {
           <strong>PRIVACY NOTE</strong>
           {caseStudy.confidentiality}
         </p>
+        {caseStudy.links && caseStudy.links.length > 0 && (
+          <div className="case-links">
+            {caseStudy.links.map((link) => (
+              <a
+                key={link.href}
+                className="text-link"
+                href={link.href}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {link.label} <span aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
+        )}
       </header>
 
       <section className="case-overview">

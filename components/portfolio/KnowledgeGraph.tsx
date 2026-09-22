@@ -33,7 +33,13 @@ export function KnowledgeGraph({
     return ids;
   }, [graph, selectedId]);
   const selected = graph.nodes.find((node) => node.id === selectedId);
-  const visibleNodes = compact ? graph.nodes.slice(0, 18) : graph.nodes;
+  const caseNodes = graph.nodes.filter((node) => node.category === 'case');
+  const technologyNodes = graph.nodes.filter(
+    (node) => node.category !== 'case',
+  );
+  const visibleNodes = compact
+    ? [...caseNodes, ...technologyNodes].slice(0, 18)
+    : graph.nodes;
 
   return (
     <div className={`knowledge-shell ${compact ? 'is-compact' : ''}`}>

@@ -1,0 +1,79 @@
+export const meta = {
+  slug: 'motor-cobranca',
+  locale: 'pt',
+  kind: 'professional',
+  eyebrow: 'FINTECH / CASE FICCIONALIZADO',
+  title: 'Um motor de prazos que explica por que decidiu o que decidiu',
+  summary:
+    'Cenário ficcionalizado (Cobrix, fintech fictícia) inspirado em experiência profissional real: um motor que calcula o prazo de cobrança de uma dívida quando múltiplos eventos concorrem entre si.',
+  problem:
+    'Uma dívida acumula um histórico de eventos — acordo, disputa, pagamento parcial, suspensão — e alguns desses eventos pausam o prazo de cobrança, outros o reiniciam, e às vezes dois eventos concorrentes se sobrepõem no tempo. Calcular "até quando dá para cobrar" deixou de ser uma soma simples de dias.',
+  decisions: [
+    {
+      title: 'Precedência explícita entre tipos de evento, não ordem de chegada',
+      rationale:
+        'Uma suspensão formal (disputa aberta) sempre prevalece sobre um simples reinício de prazo; a regra de precedência é um registro de decisão, não um `if` disperso pelo código.',
+      tradeoff:
+        'Adicionar um novo tipo de evento exige decidir sua precedência contra todos os existentes, não só implementá-lo isoladamente.',
+    },
+    {
+      title: 'Consolidação de intervalos sobrepostos',
+      rationale:
+        'Períodos de pausa que se sobrepõem ou são adjacentes são mesclados em intervalos únicos antes de estender o prazo final, tratando pausas ainda abertas de forma diferente das já encerradas.',
+      tradeoff:
+        'O algoritmo de consolidação exige testes de borda extensos — pausa que começa depois do prazo já calculado, pausas idênticas, e assim por diante.',
+    },
+    {
+      title: 'Motor de regras sem dependência de framework',
+      rationale:
+        'O núcleo de cálculo não importa nada do framework web nem do ORM: recebe uma lista de eventos e devolve uma data com uma trilha de auditoria de por que cada evento foi aplicado ou descartado. Testes de arquitetura quebram o build se essa regra for violada.',
+      tradeoff:
+        'Qualquer dado que o motor precise vem por parâmetro explícito; buscar algo "por conveniência" direto de um repositório fica proibido por design.',
+    },
+  ],
+  outcomes: [
+    'Cada data calculada vem com uma trilha auditável — quais eventos foram aplicados, quais foram descartados e por quê — reduzindo o tempo de investigar por que uma dívida específica tem aquele prazo.',
+    'Novas regras de negócio para um tipo de contrato diferente entram como uma nova implementação da mesma interface de estratégia, sem tocar no núcleo do motor.',
+    'Recalcular a base inteira (cenário ilustrativo: casas de milhões de registros) passou a rodar como um job resumível, cancelável com segurança no meio do processamento sem deixar dado inconsistente.',
+  ],
+  technologies: [
+    'Java',
+    'Spring Boot',
+    'Spring Batch',
+    'ArchUnit',
+    'PostgreSQL',
+    'Resilience4j',
+    'JUnit',
+  ],
+  knowledgeNodeIds: [
+    'rule-engines',
+    'architecture',
+    'batch-processing',
+    'resilience',
+  ],
+  confidentiality:
+    'Cenário, empresa (Cobrix) e domínio de negócio são ficcionais; a lógica de precedência de eventos, o algoritmo de consolidação e a arquitetura descritos refletem experiência profissional real, generalizada para não identificar o empregador ou o setor de atuação real.',
+  featured: true,
+};
+
+## Contexto
+
+A Cobrix (nome fictício) processa cobrança de dívidas B2B para outras empresas. Cada dívida carrega um histórico de eventos — acordo, disputa, pagamento parcial, suspensão — e o prazo de cobrança se estende ou não dependendo de como esses eventos interagem entre si.
+
+## Restrições
+
+- O prazo calculado precisa ter uma explicação auditável, não só um resultado.
+- Recalcular a base inteira não pode travar o banco de dados nem impedir consultas em produção durante o processamento.
+- Novas regras de negócio, por tipo de contrato, precisam poder ser adicionadas sem alterar o núcleo já testado.
+
+## Arquitetura
+
+O núcleo de cálculo é uma biblioteca sem dependência de Spring, JPA ou qualquer cliente HTTP — recebe eventos, aplica precedência e consolidação de intervalos, e devolve um resultado com o motivo de cada decisão. Ao redor dele, adaptadores (API REST, job em lote, camada de persistência) traduzem entre o mundo externo e esse núcleo. Um registro de estratégias seleciona a implementação de regra correta por tipo de contrato.
+
+## O que não funcionou
+
+A primeira versão tratava cada evento na ordem em que chegava, aplicando o mais recente por cima do anterior. Funcionava até dois eventos concorrentes — uma disputa aberta e um acordo assinado na mesma janela — produzirem prazos diferentes dependendo da ordem de importação dos dados: um bug silencioso e difícil de reproduzir. A correção foi parar de depender de ordem de chegada e modelar precedência explicitamente.
+
+## Aprendizado principal
+
+Em um motor de regras, a pergunta certa não é "qual evento venceu", mas "consigo provar por que ele venceu daqui a um ano, numa auditoria?".

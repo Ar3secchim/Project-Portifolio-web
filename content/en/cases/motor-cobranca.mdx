@@ -1,0 +1,79 @@
+export const meta = {
+  slug: 'motor-cobranca',
+  locale: 'en',
+  kind: 'professional',
+  eyebrow: 'FINTECH / FICTIONALIZED CASE',
+  title: 'A deadline engine that explains why it decided what it decided',
+  summary:
+    'A fictionalized scenario (Cobrix, a fictional fintech) inspired by real professional experience: an engine that computes a debt’s collection deadline when multiple events compete with each other.',
+  problem:
+    'A debt accumulates a history of events — settlement agreements, disputes, partial payments, suspensions — and some of those events pause the collection deadline, others restart it, and sometimes two competing events overlap in time. Computing "how long can we still collect" stopped being a simple sum of days.',
+  decisions: [
+    {
+      title: 'Explicit precedence between event types, not arrival order',
+      rationale:
+        'A formal suspension (an open dispute) always outranks a plain restart; the precedence rule is a recorded decision, not an `if` scattered across the code.',
+      tradeoff:
+        'Adding a new event type means deciding its precedence against every existing one, not just implementing it in isolation.',
+    },
+    {
+      title: 'Consolidating overlapping intervals',
+      rationale:
+        'Pause periods that overlap or are adjacent get merged into single intervals before extending the final deadline, handling still-open pauses differently from closed ones.',
+      tradeoff:
+        'The consolidation algorithm needs extensive edge-case tests — a pause starting after the already-computed deadline, identical pauses, and so on.',
+    },
+    {
+      title: 'A rule engine with zero framework dependency',
+      rationale:
+        'The calculation core imports nothing from the web framework or the ORM: it takes a list of events and returns a date with an audit trail of why each event was applied or discarded. Architecture tests break the build if this rule is violated.',
+      tradeoff:
+        'Any data the engine needs comes in as an explicit parameter; reaching into a repository "for convenience" is forbidden by design.',
+    },
+  ],
+  outcomes: [
+    'Every computed date ships with an auditable trail — which events were applied, which were discarded, and why — drastically cutting the time spent investigating why a given debt has that deadline.',
+    'New business rules for a different contract type ship as a new implementation of the same strategy interface, without touching the engine core.',
+    'Recalculating the entire base (illustrative scenario: millions of records) became a resumable job that can be safely cancelled mid-run without leaving inconsistent data.',
+  ],
+  technologies: [
+    'Java',
+    'Spring Boot',
+    'Spring Batch',
+    'ArchUnit',
+    'PostgreSQL',
+    'Resilience4j',
+    'JUnit',
+  ],
+  knowledgeNodeIds: [
+    'rule-engines',
+    'architecture',
+    'batch-processing',
+    'resilience',
+  ],
+  confidentiality:
+    'The scenario, the company (Cobrix), and the business domain are fictional; the event-precedence logic, the consolidation algorithm, and the architecture described reflect real professional experience, generalized so it does not identify the real employer or industry.',
+  featured: true,
+};
+
+## Context
+
+Cobrix (a fictional name) processes B2B debt collection on behalf of other companies. Each debt carries a history of events — settlement, dispute, partial payment, suspension — and the collection deadline extends or not depending on how those events interact.
+
+## Constraints
+
+- The computed deadline needs an auditable explanation, not just a result.
+- Recalculating the entire base cannot lock the database or block production queries during processing.
+- New business rules, per contract type, need to be addable without changing the already-tested core.
+
+## Architecture
+
+The calculation core is a library with no dependency on Spring, JPA, or any HTTP client — it takes events, applies precedence and interval consolidation, and returns a result with the reasoning behind each decision. Around it, adapters (REST API, batch job, persistence layer) translate between the outside world and that core. A strategy registry picks the correct rule implementation per contract type.
+
+## What did not work
+
+The first version processed each event in arrival order, layering the most recent on top of the previous one. It worked until two competing events — an open dispute and a signed settlement in the same window — produced different deadlines depending on data import order: a silent, hard-to-reproduce bug. The fix was to stop relying on arrival order and model precedence explicitly.
+
+## Main lesson
+
+In a rule engine, the right question is not "which event won," but "can I prove why it won, a year from now, in an audit?"

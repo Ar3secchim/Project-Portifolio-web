@@ -10,6 +10,11 @@ export interface CaseDecision {
   tradeoff: string;
 }
 
+export interface CaseLink {
+  label: string;
+  href: string;
+}
+
 export interface CaseStudyMeta {
   slug: string;
   locale: Locale;
@@ -24,6 +29,7 @@ export interface CaseStudyMeta {
   knowledgeNodeIds: string[];
   confidentiality: string;
   featured: boolean;
+  links?: CaseLink[];
 }
 
 export interface CaseStudy extends CaseStudyMeta {

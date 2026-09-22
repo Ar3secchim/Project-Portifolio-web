@@ -45,6 +45,12 @@
   font-size: 0.58rem;
   letter-spacing: 0.08em;
 }
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
 .case-overview {
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;

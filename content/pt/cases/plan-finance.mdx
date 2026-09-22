@@ -2,70 +2,76 @@ export const meta = {
   slug: 'plan-finance',
   locale: 'pt',
   kind: 'personal',
-  eyebrow: 'DADOS / AGENTE',
-  title: 'Plan-finance: transformar dados financeiros em perguntas úteis',
+  eyebrow: 'FINANÇAS / AGENTE DE IA',
+  title: 'PlanFinance: um agente financeiro que explica o que calculou',
   summary:
-    'Um dashboard pessoal que organiza transações e explora uma interface conversacional para explicar o mês sem esconder as fontes da resposta.',
+    'Um app de finanças pessoais com um agente de IA que responde por WhatsApp usando tool-calling sobre dados reais do banco, não sobre texto solto — com arquitetura hexagonal validada em CI.',
   problem:
-    'Planilhas registram números, mas exigem esforço para responder perguntas recorrentes e tornam difícil acompanhar a origem de cada conclusão.',
+    'Reconstruir as mesmas perguntas financeiras todo mês em planilha consumia tempo. Conectar um LLM direto aos lançamentos brutos resolvia a preguiça, mas criava um risco novo: respostas numéricas que pareciam certas e não eram.',
   decisions: [
     {
-      title: 'Consultas determinísticas antes do texto',
+      title: 'Tool-calling sobre dados determinísticos',
       rationale:
-        'O modelo explica resultados calculados pela aplicação em vez de inventar valores.',
+        'O agente nunca calcula uma soma ou agregação sozinho: ele chama ferramentas tipadas que executam a consulta real no banco via Prisma e devolvem um resultado já correto. O papel do modelo é só explicar.',
       tradeoff:
-        'Cada tipo de pergunta precisa de ferramentas e contratos explícitos.',
+        'Cada nova pergunta financeira exige desenhar e testar uma ferramenta nova, não apenas ajustar um prompt.',
     },
     {
-      title: 'Dados estruturados como fonte de verdade',
-      rationale: 'Categorias, períodos e lançamentos continuam auditáveis.',
-      tradeoff: 'A ingestão e a normalização precisam ser cuidadosas.',
-    },
-    {
-      title: 'Separar demo de dados pessoais',
+      title: 'Arquitetura hexagonal com checagem automática',
       rationale:
-        'O portfólio pode demonstrar o fluxo sem publicar informações financeiras.',
-      tradeoff: 'A demonstração não representa o estado real da aplicação.',
+        'Camadas de domínio, aplicação, infraestrutura e apresentação são separadas, e um script de conformidade roda em CI para barrar imports proibidos — como domínio dependendo direto do Prisma.',
+      tradeoff:
+        'Mais interfaces e portas para operações que, em um CRUD simples, seriam triviais.',
+    },
+    {
+      title: 'WhatsApp como interface principal',
+      rationale:
+        'Em vez de um dashboard como ponto de entrada, o assistente responde perguntas via WhatsApp, o que forçou respostas curtas, auto-contidas e fáceis de verificar no próprio chat.',
+      tradeoff:
+        'WhatsApp não guarda estado de UI: o contexto da conversa precisa ser reconstruído a cada mensagem.',
     },
   ],
   outcomes: [
-    'Perguntas traduzidas em operações rastreáveis.',
-    'Respostas ligadas ao período e às categorias consultadas.',
-    'Cenário público seguro com dados simulados.',
+    'Perguntas em linguagem natural viram consultas rastreáveis, nunca respostas inventadas.',
+    'Falha na leitura de um extrato (PDF ou OFX) é tratada como erro de dado, não escondida atrás de uma resposta genérica do modelo.',
+    'Uma nova ferramenta de análise entra sem tocar a camada de infraestrutura, graças às fronteiras já testadas.',
   ],
   technologies: [
     'TypeScript',
     'React',
+    'Express',
+    'Prisma',
     'PostgreSQL',
-    'LLM',
+    'Claude API',
     'Tool Use',
-    'Data Visualization',
+    'WhatsApp API',
     'Docker',
+    'Kubernetes',
   ],
-  knowledgeNodeIds: ['agents', 'data-modeling', 'privacy', 'ux'],
+  knowledgeNodeIds: ['agents', 'data-modeling', 'architecture', 'reliability'],
   confidentiality:
-    'Todos os valores apresentados no portfólio são simulados e não correspondem a finanças pessoais.',
+    'Dados financeiros reais nunca aparecem em capturas, exemplos ou métricas públicas; a demonstração neste site usa números fictícios.',
   featured: true,
 };
 
 ## Contexto
 
-O projeto começou como uma tentativa de reduzir o tempo gasto conciliando categorias e reconstruindo as mesmas análises todo mês. A interface conversacional surgiu depois do modelo de dados — não antes dele.
+O PlanFinance começou como um jeito de parar de reconstruir as mesmas perguntas financeiras todo mês numa planilha. Evoluiu para um sistema com backend próprio, banco relacional e um agente de IA que responde perguntas em linguagem natural pelo WhatsApp — sem esconder de onde vem cada número.
 
 ## Restrições
 
-- Uma resposta precisa ser explicável a partir de lançamentos e agregações.
-- O agente não pode executar operações fora do conjunto de ferramentas autorizado.
-- Dados reais não podem aparecer em logs, exemplos ou capturas públicas.
+- O agente não pode inventar valores: toda resposta numérica precisa vir de uma consulta real ao banco.
+- A camada de domínio (regras de categorização, cálculo de orçamento) não pode depender de Prisma, Express ou do SDK da Claude — só a infraestrutura conhece essas ferramentas.
+- Falhas de leitura de extrato (PDF, OFX) precisam ficar visíveis, nunca silenciosamente ignoradas.
 
 ## Arquitetura
 
-O fluxo é dividido em ingestão, normalização, persistência, ferramentas de consulta e apresentação. A camada de agente escolhe uma ferramenta tipada; a aplicação valida parâmetros, executa a consulta e devolve um resultado estruturado para ser explicado.
+O backend segue camadas de domínio, aplicação, infraestrutura e apresentação. Casos de uso orquestram ferramentas tipadas que o agente pode chamar; cada ferramenta busca dados via Prisma e devolve um resultado estruturado, nunca texto livre. Um script de conformidade arquitetural roda em CI e falha o build se o domínio importar algo de fora dele.
 
 ## O que não funcionou
 
-Pedir ao modelo que interpretasse dados brutos diretamente produzia respostas difíceis de verificar. A solução foi reduzir o papel do modelo: cálculos e filtros ficam no código; o modelo organiza a explicação.
+A primeira versão deixava o modelo interpretar diretamente os lançamentos brutos para responder perguntas — funcionava até a pergunta ficar um pouco mais específica, e então o modelo "completava" números que não existiam. A correção foi mover todo cálculo para o código e reduzir o papel do modelo a explicar um resultado já certo.
 
 ## Aprendizado principal
 
-Um agente útil não é aquele que tem acesso a tudo. É aquele que opera dentro de **limites claros e observáveis**.
+Um agente de IA fica confiável quando tem **menos** liberdade, não mais. Definir exatamente quais ferramentas ele pode chamar — e nada além disso — foi o que tornou as respostas verificáveis.

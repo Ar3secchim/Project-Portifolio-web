@@ -2,70 +2,76 @@ export const meta = {
   slug: 'plan-finance',
   locale: 'en',
   kind: 'personal',
-  eyebrow: 'DATA / AGENT',
-  title: 'Plan-finance: turning financial data into useful questions',
+  eyebrow: 'FINANCE / AI AGENT',
+  title: 'PlanFinance: a financial agent that explains what it computed',
   summary:
-    'A personal dashboard that organizes transactions and explores a conversational interface for explaining a month without hiding the sources behind an answer.',
+    'A personal finance app with an AI agent that answers over WhatsApp using tool-calling on real database data, not loose text — with a hexagonal architecture enforced in CI.',
   problem:
-    'Spreadsheets record numbers, but answering recurring questions still takes effort and the origin of each conclusion is difficult to track.',
+    'Rebuilding the same financial questions every month in a spreadsheet was wasted time. Wiring an LLM directly to raw transactions removed the tedium, but introduced a new risk: numeric answers that looked right and weren’t.',
   decisions: [
     {
-      title: 'Deterministic queries before prose',
+      title: 'Tool-calling over deterministic data',
       rationale:
-        'The model explains results computed by the application instead of inventing values.',
-      tradeoff: 'Each question type needs explicit tools and contracts.',
-    },
-    {
-      title: 'Structured data as the source of truth',
-      rationale: 'Categories, periods, and transactions remain auditable.',
-      tradeoff: 'Ingestion and normalization require care.',
-    },
-    {
-      title: 'Separate demos from personal data',
-      rationale:
-        'The portfolio can demonstrate the flow without publishing financial information.',
+        'The agent never computes a sum or aggregate on its own: it calls typed tools that run the real query against the database through Prisma and return an already-correct result. The model’s job is only to explain it.',
       tradeoff:
-        'The demo does not represent the real state of the application.',
+        'Every new financial question requires designing and testing a new tool, not just tweaking a prompt.',
+    },
+    {
+      title: 'Hexagonal architecture with an automated check',
+      rationale:
+        'Domain, application, infrastructure, and presentation layers are kept separate, and a conformance script runs in CI to block forbidden imports — like the domain depending directly on Prisma.',
+      tradeoff:
+        'More interfaces and ports for operations that, in a simple CRUD, would be trivial.',
+    },
+    {
+      title: 'WhatsApp as the primary interface',
+      rationale:
+        'Instead of a dashboard as the main entry point, the assistant answers questions over WhatsApp, which forced short, self-contained answers that are easy to verify right in the chat.',
+      tradeoff:
+        'WhatsApp holds no UI state: conversation context has to be rebuilt on every message.',
     },
   ],
   outcomes: [
-    'Questions translated into traceable operations.',
-    'Answers tied to the period and categories queried.',
-    'A safe public scenario using simulated data.',
+    'Natural-language questions become traceable queries, never invented answers.',
+    'A failed statement import (PDF or OFX) is treated as a data error, not hidden behind a generic model response.',
+    'A new analysis tool can be added without touching the infrastructure layer, thanks to already-tested boundaries.',
   ],
   technologies: [
     'TypeScript',
     'React',
+    'Express',
+    'Prisma',
     'PostgreSQL',
-    'LLM',
+    'Claude API',
     'Tool Use',
-    'Data Visualization',
+    'WhatsApp API',
     'Docker',
+    'Kubernetes',
   ],
-  knowledgeNodeIds: ['agents', 'data-modeling', 'privacy', 'ux'],
+  knowledgeNodeIds: ['agents', 'data-modeling', 'architecture', 'reliability'],
   confidentiality:
-    'Every value displayed in the portfolio is simulated and does not represent personal finances.',
+    'Real financial data never appears in screenshots, examples, or public metrics; the demo on this site uses fictional numbers.',
   featured: true,
 };
 
 ## Context
 
-The project began as an attempt to reduce the time spent reconciling categories and rebuilding the same analysis every month. The conversational interface came after the data model, not before it.
+PlanFinance started as a way to stop rebuilding the same financial questions every month in a spreadsheet. It grew into a system with its own backend, a relational database, and an AI agent that answers natural-language questions over WhatsApp — without hiding where each number comes from.
 
 ## Constraints
 
-- Every answer must be explainable from transactions and aggregations.
-- The agent cannot execute operations outside its authorized tool set.
-- Real data cannot appear in logs, examples, or public screenshots.
+- The agent cannot invent values: every numeric answer must come from a real database query.
+- The domain layer (categorization rules, budget calculations) cannot depend on Prisma, Express, or the Claude SDK — only infrastructure knows about those tools.
+- Statement-parsing failures (PDF, OFX) must stay visible, never silently swallowed.
 
 ## Architecture
 
-The flow is divided into ingestion, normalization, persistence, query tools, and presentation. The agent layer selects a typed tool; the application validates parameters, runs the query, and returns a structured result to be explained.
+The backend follows domain, application, infrastructure, and presentation layers. Use cases orchestrate typed tools the agent can call; each tool fetches data through Prisma and returns a structured result, never free text. An architecture-conformance script runs in CI and fails the build if the domain imports anything from outside it.
 
 ## What did not work
 
-Asking the model to interpret raw data directly produced answers that were difficult to verify. The model’s role was reduced: calculations and filters stay in code; the model organizes the explanation.
+The first version let the model interpret raw ledger entries directly to answer questions — it worked until a question got slightly more specific, and the model started "completing" numbers that did not exist. The fix was moving every calculation into code and reducing the model’s role to explaining an already-correct result.
 
 ## Main lesson
 
-A useful agent is not one that can access everything. It operates within **clear and observable boundaries**.
+An AI agent becomes trustworthy with **less** freedom, not more. Defining exactly which tools it can call — and nothing beyond that — is what made the answers verifiable.

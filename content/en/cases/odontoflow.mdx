@@ -1,0 +1,76 @@
+export const meta = {
+  slug: 'odontoflow',
+  locale: 'en',
+  kind: 'personal',
+  eyebrow: 'SAAS / MULTI-TENANT',
+  title: 'OdontoFlow: a serverless, multi-tenant dental SaaS',
+  summary:
+    'Patient records, treatment plans, imaging, and recurring billing for dental clinics, built entirely on serverless infrastructure with real isolation between organizations.',
+  problem:
+    'Small clinics tend to rely on spreadsheets or generic record-keeping systems that do not properly separate data between units and treat recurring billing as a side process instead of a core part of the product.',
+  decisions: [
+    {
+      title: 'Organization isolation at every layer',
+      rationale:
+        'Every request carries the organization context resolved at authentication, and every database query is filtered by that context at the service layer — not just in the controller.',
+      tradeoff:
+        'Every new domain resource has to remember to propagate that filter; it is not automatic.',
+    },
+    {
+      title: 'Payment gateway as an interface, not a direct SDK',
+      rationale:
+        'An internal interface abstracts the payment provider; the domain knows "charge a subscription" and "process a payment event," not the provider’s specific API.',
+      tradeoff:
+        'One more translation layer between external events and the internal subscription model.',
+    },
+    {
+      title: 'Infrastructure as code from the first environment',
+      rationale:
+        'Authentication, file storage, and content delivery come from infrastructure-as-code modules shared between staging and production.',
+      tradeoff:
+        'Infrastructure changes require reviewing a plan before applying, not a direct click in a console.',
+    },
+  ],
+  outcomes: [
+    'Data from different organizations never mixes, even while sharing the same infrastructure.',
+    'Subscription expiration is handled by a scheduled job, not a manual check.',
+    'A CI pipeline with linting, type checking, and automated tests protects a domain with a lot of business logic: treatment plans, attachments, and billing.',
+  ],
+  technologies: [
+    'TypeScript',
+    'AWS Lambda',
+    'Serverless Framework',
+    'Prisma',
+    'PostgreSQL',
+    'AWS Cognito',
+    'Stripe',
+    'Terraform',
+    'Zod',
+  ],
+  knowledgeNodeIds: ['multi-tenancy', 'architecture', 'payments', 'iac'],
+  confidentiality:
+    'A solo project, source code still private; no real clinic or patient data ever existed — only fictional development data.',
+  featured: true,
+};
+
+## Context
+
+OdontoFlow started as an attempt to design a real B2B SaaS from scratch: multiple clients (clinics), multiple users per client, recurring billing, and sensitive patient data — all running on serverless infrastructure.
+
+## Constraints
+
+- Two organizations can never see each other’s data, even if a new endpoint has an implementation mistake.
+- Recurring billing has to survive payment-provider event delivery failures without duplicating or missing a charge.
+- Staging and production environments must come from the same infrastructure definition, not diverging manual steps.
+
+## Architecture
+
+Each serverless function passes through a middleware layer — authentication, schema validation, error handling — before reaching a controller, which delegates to a service. Services apply business rules and always receive an already-resolved organization context. Payment, storage, and email gateways isolate external integrations behind internal interfaces.
+
+## What did not work
+
+The first subscription model treated the payment provider as the source of truth and queried its API on every access check — slow and fragile against external instability. The fix was keeping an internal subscription state, updated by event, using the external provider only as a trigger.
+
+## Main lesson
+
+Multi-tenancy is not an organization column on a table. It is a rule that must be present — and tested — on every path that touches sensitive data.

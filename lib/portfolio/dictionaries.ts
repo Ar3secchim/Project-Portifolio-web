@@ -156,11 +156,11 @@ const dictionaries = {
       eyebrow: 'ESTUDOS DE CASO',
       title: 'Decisões, contexto e aprendizados.',
       description:
-        'Quatro recortes de como eu investigo problemas e desenho soluções. Cases profissionais usam contexto e resultados anonimizados.',
+        'Seis recortes de como eu investigo problemas e desenho soluções. Cases profissionais usam contexto e resultados ficcionalizados.',
       all: 'Ver todos os cases',
       read: 'Abrir case',
       personal: 'Projeto pessoal',
-      professional: 'Case anonimizado',
+      professional: 'Case ficcionalizado',
       pageTitle: 'Estudos de caso',
       pageDescription:
         'Sistemas observados pelo problema, pelas decisões e pelos trade-offs.',
@@ -375,11 +375,11 @@ const dictionaries = {
       eyebrow: 'CASE STUDIES',
       title: 'Decisions, context, and lessons.',
       description:
-        'Four snapshots of how I investigate problems and design solutions. Professional cases use anonymized context and outcomes.',
+        'Six snapshots of how I investigate problems and design solutions. Professional cases use fictionalized context and outcomes.',
       all: 'View all cases',
       read: 'Open case',
       personal: 'Personal project',
-      professional: 'Anonymized case',
+      professional: 'Fictionalized case',
       pageTitle: 'Case studies',
       pageDescription:
         'Systems examined through their problems, decisions, and trade-offs.',
