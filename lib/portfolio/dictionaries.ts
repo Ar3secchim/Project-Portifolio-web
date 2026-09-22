@@ -21,7 +21,7 @@ const dictionaries = {
       eyebrow: 'ENGENHARIA DE SOFTWARE / SISTEMAS',
       titleLines: ['Engenheira', 'de software', 'que entende', 'sistemas.'],
       description:
-        'Construo backends resilientes, pipelines de dados e infraestrutura pensando no caminho completo: contexto, restrições, operação e quem vai manter a solução depois.',
+        'Construo backends resilientes, prefomando processos e otimizando desempenho, pensando no caminho completo: contexto, restrições, operação e quem vai manter a solução depois.',
       primaryCta: 'Explorar cases',
       secondaryCta: 'Conhecer meu raciocínio',
       status: 'PORTFÓLIO / SISTEMAS DOCUMENTADOS',
@@ -29,9 +29,8 @@ const dictionaries = {
     },
     facts: [
       ['LOCALIZAÇÃO', 'Belém, PA'],
-      ['FUNÇÃO ATUAL', 'Engenheira de Software'],
-      ['FOCO', 'Backend · Dados · Plataforma'],
-      ['HOMELAB', 'Topologia documentada'],
+      ['FUNÇÃO ATUAL', 'Engenheira de Software Pleno I'],
+      ['FOCO', 'Backend · DevOps · Performance'],
     ],
     /** Números ilustrativos do homelab — não são telemetria ao vivo. */
     liveStatus: 'LIVE STATUS',
@@ -40,7 +39,6 @@ const dictionaries = {
       ['k3s cluster', '3 nodes / 11 pods'],
       ['plan-finance', 'modelo rodando'],
       ['Gitea CI', '2 pipelines'],
-      ['Proxmox VE', '8 VMs / 6 LXC'],
       ['Jellyfin', 'idle'],
     ],
     about: {
@@ -251,8 +249,7 @@ const dictionaries = {
     facts: [
       ['LOCATION', 'Belém, Brazil'],
       ['CURRENT ROLE', 'Software Engineer'],
-      ['FOCUS', 'Backend · Data · Platform'],
-      ['HOMELAB', 'Documented topology'],
+      ['FOCUS', 'Backend · Platform · Performance'],
     ],
     /** Illustrative homelab numbers — not live telemetry. */
     liveStatus: 'LIVE STATUS',
@@ -261,7 +258,6 @@ const dictionaries = {
       ['k3s cluster', '3 nodes / 11 pods'],
       ['plan-finance', 'model running'],
       ['Gitea CI', '2 pipelines'],
-      ['Proxmox VE', '8 VMs / 6 LXC'],
       ['Jellyfin', 'idle'],
     ],
     about: {

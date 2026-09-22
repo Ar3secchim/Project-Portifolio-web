@@ -1,0 +1,44 @@
+.site-frame {
+  min-height: 100vh;
+  overflow: clip;
+}
+.skip-link {
+  position: fixed;
+  z-index: 200;
+  left: 1rem;
+  top: -5rem;
+  padding: 0.8rem 1rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 800;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+.scroll-progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 180;
+  width: 100%;
+  height: 2px;
+  transform-origin: left;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.5);
+}
+/* O núcleo amplo e as paradas intermediárias criam a iluminação difusa da
+   referência, sem formar uma borda circular marcada no fim do gradiente. */
+.cursor-glow {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    250px circle at var(--cursor-x) var(--cursor-y),
+    rgba(var(--accent-rgb), 0.09),
+    rgba(var(--accent-rgb), 0.06) 5%,
+    rgba(var(--accent-rgb), 0.05) 30%,
+    rgba(var(--accent-rgb), 0.04) 55%,
+    rgba(var(--accent-rgb), 0.015) 70%,
+    transparent 100%
+  );
+}

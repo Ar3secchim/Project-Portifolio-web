@@ -11,9 +11,10 @@ describe('portfolio interactions', () => {
     const dictionary = getDictionary('pt');
     render(<FinanceDemo dictionary={dictionary.finance} locale="pt" />);
 
-    fireEvent.click(
-      screen.getByRole('tab', { name: dictionary.finance.tabs.agent }),
-    );
+    const tabs = screen.getAllByRole('tab');
+    expect(tabs[0]).toHaveTextContent(dictionary.finance.tabs.agent);
+    expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
+
     fireEvent.click(
       screen.getByRole('button', {
         name: new RegExp(dictionary.finance.replay, 'i'),

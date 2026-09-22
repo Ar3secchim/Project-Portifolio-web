@@ -13,6 +13,7 @@ import type { Locale } from '@/lib/portfolio/types';
 
 type DemoTab = 'flow' | 'categories' | 'agent';
 
+const DEMO_TABS: DemoTab[] = ['agent', 'flow', 'categories'];
 const CHART = { w: 720, h: 230, top: 12, bottom: 26, left: 46, right: 8 };
 const FLOW_MAX = 14000;
 const FLOW_TICKS = [14000, 10500, 7000, 3500, 0];
@@ -68,7 +69,7 @@ interface FinanceDemoProps {
 
 export function FinanceDemo({ dictionary, locale }: FinanceDemoProps) {
   const [replayKey, setReplayKey] = useState(0);
-  const [activeTab, setActiveTab] = useState<DemoTab>('flow');
+  const [activeTab, setActiveTab] = useState<DemoTab>('agent');
   const [hovered, setHovered] = useState<number | null>(null);
   const [hoveredCategory, setHoveredCategory] =
     useState<HoveredCategory | null>(null);
@@ -147,7 +148,7 @@ export function FinanceDemo({ dictionary, locale }: FinanceDemoProps) {
             role="tablist"
             aria-label={dictionary.demo}
           >
-            {(Object.keys(dictionary.tabs) as DemoTab[]).map((tab) => (
+            {DEMO_TABS.map((tab) => (
               <button
                 key={tab}
                 type="button"

@@ -1,9 +1,8 @@
 export const siteConfig = {
   name: 'Renara Secchim',
-  shortName: 'RENARA / SWE',
-  role: 'Engenheira de Software',
+  shortName: 'RENARA',
+  role: 'Engenheira de Software Pleno I',
   location: 'Belém, PA · Brasil',
-  email: 'renarasecchim@hotmail.com',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://renaradev.vercel.app',
   social: {
     github: 'https://github.com/Ar3secchim',
@@ -82,15 +81,6 @@ export const homelabNodes = [
     y: 20,
   },
   {
-    id: 'compute',
-    label: 'Proxmox VE',
-    detail: 'Camada de virtualização para máquinas e serviços isolados.',
-    type: 'server',
-    services: ['KVM', 'LXC', 'Backups'],
-    x: 50,
-    y: 20,
-  },
-  {
     id: 'storage',
     label: 'TrueNAS',
     detail: 'Armazenamento com datasets, snapshots e política de recuperação.',
@@ -122,7 +112,7 @@ export const homelabNodes = [
     label: 'Observability',
     detail: 'Sinais operacionais para entender comportamento e falhas.',
     type: 'service',
-    services: ['Prometheus', 'Grafana', 'Logs'],
+    services: ['Grafana', 'Logs'],
     x: 85,
     y: 52,
   },
@@ -185,7 +175,7 @@ export const technologyGroups = [
   },
   {
     id: 'observability',
-    items: ['Prometheus', 'Grafana', 'Elastic Search'],
+    items: ['Grafana', 'Elastic Search'],
   },
   {
     id: 'ai',

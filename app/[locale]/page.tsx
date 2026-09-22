@@ -9,7 +9,6 @@ import { HomelabMap } from '@/components/portfolio/HomelabMap';
 import { KnowledgeGraph } from '@/components/portfolio/KnowledgeGraph';
 import { Reveal } from '@/components/portfolio/Reveal';
 import { SectionHeading } from '@/components/portfolio/SectionHeading';
-import { getAllPosts } from '@/lib/notion/posts';
 import { buildKnowledgeGraph, getCaseStudies } from '@/lib/portfolio/cases';
 import { getDictionary, isLocale } from '@/lib/portfolio/dictionaries';
 import {
@@ -38,7 +37,6 @@ export default async function HomePage({ params }: HomePageProps) {
   const dictionary = getDictionary(locale);
   const cases = getCaseStudies(locale);
   const graph = buildKnowledgeGraph(locale);
-  const posts = (await getAllPosts()).slice(0, 3);
   const snapshot = await getHomelabSnapshot();
   const homelabLive = snapshot
     ? buildHomelabLiveContent(snapshot, locale)
@@ -284,49 +282,6 @@ export default async function HomePage({ params }: HomePageProps) {
             compact
           />
         </Reveal>
-      </section>
-
-      <section
-        className={`section-shell section-block writing-section${
-          posts.length ? '' : ' is-empty'
-        }`}
-        id="writing"
-      >
-        <Reveal>
-          <SectionHeading
-            eyebrow={dictionary.writing.eyebrow}
-            title={dictionary.writing.title}
-            description={dictionary.writing.description}
-            action={
-              <Link className="text-link" href={`/${locale}/blog`}>
-                {dictionary.writing.all} →
-              </Link>
-            }
-          />
-        </Reveal>
-        <div className="writing-grid">
-          {posts.length ? (
-            posts.map((post) => (
-              <article className="writing-card" key={post.id}>
-                <span>
-                  {post.publishAt} · {post.time} {dictionary.writing.minutes}
-                </span>
-                <h3>
-                  <Link href={`/${locale}/blog/${post.slug}`}>
-                    {post.title}
-                  </Link>
-                </h3>
-                <div className="tag-list">
-                  {post.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </article>
-            ))
-          ) : (
-            <p className="empty-state">{dictionary.writing.empty}</p>
-          )}
-        </div>
       </section>
 
       <section className="contact-section section-shell" id="contact">
