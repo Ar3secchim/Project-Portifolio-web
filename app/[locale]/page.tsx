@@ -300,10 +300,6 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </div>
         <div className="contact-links">
-          <a className="contact-link" href={`mailto:${siteConfig.email}`}>
-            <span>Email</span>
-            <strong>{siteConfig.email}</strong>
-          </a>
           <a
             className="contact-link"
             href={siteConfig.social.linkedin}
