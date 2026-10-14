@@ -273,3 +273,31 @@
   cursor: pointer;
   font-weight: 800;
 }
+
+/* Resumo de 20s no topo do case. */
+.case-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  max-width: 990px;
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.case-facts > div {
+  padding: 1rem;
+  background: var(--surface);
+}
+.case-facts dt {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.case-facts dd {
+  margin: 0.55rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}

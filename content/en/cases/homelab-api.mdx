@@ -6,6 +6,9 @@ export const meta = {
   title: 'An API that can only reveal what I already decided is safe',
   summary:
     'A Go service that publishes a snapshot of my home cluster to the internet, designed so a coding mistake can never turn into an infrastructure exposure.',
+  role: 'Solo project, open source.',
+  result: 'Zero inbound ports opened to the cluster.',
+  status: 'In production · public repository',
   problem:
     'I wanted to show real homelab data on this portfolio, but any endpoint with direct access to the cluster is a new attack surface — and "I’ll just be careful in the code" is not a security strategy.',
   decisions: [
@@ -24,7 +27,8 @@ export const meta = {
         'The published snapshot is deliberately less detailed than the cluster actually is.',
     },
     {
-      title: 'Validation that aborts instead of publishing something suspicious',
+      title:
+        'Validation that aborts instead of publishing something suspicious',
       rationale:
         'Every document is validated against a closed schema and a secret/hostname-pattern scanner before upload. Any failure aborts the job and keeps the last good snapshot live.',
       tradeoff:
@@ -72,7 +76,7 @@ This service came from a simple question: how do I show that the homelab exists 
 
 ## Architecture
 
-A Go CronJob runs periodically inside the cluster, collects counts and GitOps sync status, assembles a versioned JSON document, and validates it against a closed schema before publishing to a bucket. A pattern scanner (hostnames, secrets) runs as a last gate before upload. A local dev server with fully fictional data lets the service be iterated on without ever touching the real cluster.
+A Go CronJob runs periodically inside the cluster, collects counts and GitOps sync status, assembles a versioned JSON document, and validates it against a closed schema before publishing to a bucket. A pattern scanner (hostnames, secrets) runs as a last gate before upload. A local dev server with fully fictional data lets the service be iterated on without ever touching the real cluster. Uploads to R2 are signed with AWS SigV4 implemented by hand using only Go’s standard library: the service has zero external dependencies, and the final image is distroless and runs as non-root.
 
 ## What did not work
 

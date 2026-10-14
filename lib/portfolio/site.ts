@@ -1,9 +1,10 @@
 export const siteConfig = {
   name: 'Renara Secchim',
   shortName: 'RENARA',
-  role: 'Engenheira de Software Pleno I',
+  role: 'Engenheira de Software',
+  employer: 'FADESP',
   location: 'Belém, PA · Brasil',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://renaradev.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.renara.dev',
   social: {
     github: 'https://github.com/Ar3secchim',
     linkedin: 'https://www.linkedin.com/in/renarasecchim/',
@@ -44,12 +45,13 @@ export const financeChatBreakdown = [
 ] as const;
 
 export const financeStack = [
-  'FastAPI',
+  'Express',
+  'Prisma',
   'PostgreSQL',
   'Claude API',
   'React',
   'k3s',
-  'WhatsApp API',
+  'WhatsApp (Evolution API)',
 ] as const;
 
 /**
@@ -122,7 +124,7 @@ export const homelabNodes = [
     detail:
       'Aplicação financeira e agente executados com dados de demonstração.',
     type: 'service',
-    services: ['FastAPI', 'PostgreSQL', 'LLM'],
+    services: ['Express', 'PostgreSQL', 'Claude'],
     x: 30,
     y: 84,
   },
@@ -139,9 +141,7 @@ export const homelabNodes = [
 
 /** Arestas da topologia. Uma aresta acende quando um dos seus nós é o selecionado. */
 export const homelabEdges = [
-  ['gateway', 'compute'],
-  ['compute', 'storage'],
-  ['compute', 'cluster'],
+  ['gateway', 'cluster'],
   ['storage', 'cluster'],
   ['ci', 'cluster'],
   ['cluster', 'observability'],
@@ -156,36 +156,49 @@ export const homelabLegend = [
   'storage',
 ] as const satisfies readonly HomelabNodeType[];
 
+/** Camada principal: o que uso todo dia e sustento em entrevista. */
+export const primaryStack = [
+  'Java',
+  'Spring Boot',
+  'TypeScript',
+  'Node.js',
+  'PostgreSQL',
+  'Kubernetes',
+  'Docker',
+  'AWS',
+] as const;
+
+/**
+ * Camada "também uso": só entra o que algum case comprova ou o que vem do
+ * trabalho atual (Angular, Oracle), sem expor nada do empregador.
+ */
 export const technologyGroups = [
   {
-    id: 'languages',
-    items: ['Java', 'TypeScript', 'Go'],
+    id: 'backend',
+    items: ['Spring Batch', 'Express', 'Go', 'ArchUnit', 'Zod', 'Stripe'],
   },
   {
-    id: 'frameworks',
-    items: [
-      'Spring Boot',
-      'React',
-      'Next.js',
-      'Angular',
-      'Express.js',
-      'Prisma',
-    ],
-  },
-  {
-    id: 'databases',
-    items: ['MongoDB', 'Oracle', 'PostgreSQL', 'Redis'],
+    id: 'data',
+    items: ['Oracle', 'Prisma'],
   },
   {
     id: 'platform',
-    items: ['Kubernetes', 'Docker', 'Terraform', 'AWS', 'Cloudflare', 'ArgoCD'],
+    items: [
+      'Terraform',
+      'ArgoCD',
+      'AWS Lambda',
+      'Serverless Framework',
+      'Cloudflare',
+      'GitHub Actions',
+      'Infisical',
+    ],
   },
   {
-    id: 'observability',
-    items: ['Grafana'],
+    id: 'frontend',
+    items: ['React', 'Angular', 'Next.js'],
   },
   {
     id: 'ai',
-    items: ['LLM Tool Use', 'Claude API', 'OpenAI'],
+    items: ['Claude API', 'Tool Use'],
   },
 ] as const;

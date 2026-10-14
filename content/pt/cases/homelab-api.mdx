@@ -6,6 +6,9 @@ export const meta = {
   title: 'Uma API que só pode revelar o que já decidi que é seguro',
   summary:
     'Um serviço em Go que publica um retrato do meu cluster caseiro para a internet, desenhado para que um erro de programação não vire uma exposição de infraestrutura.',
+  role: 'Projeto solo, código aberto.',
+  result: 'Zero porta de entrada aberta para o cluster.',
+  status: 'Em produção · repositório público',
   problem:
     'Eu queria mostrar dados reais do homelab neste portfólio, mas qualquer endpoint com acesso direto ao cluster é uma superfície de ataque nova — e "vou ter cuidado no código" não é uma estratégia de segurança.',
   decisions: [
@@ -72,7 +75,7 @@ Este serviço nasceu de uma pergunta simples: como mostrar que o homelab existe 
 
 ## Arquitetura
 
-Um CronJob em Go roda periodicamente dentro do cluster, coleta contagens e status de sincronização do GitOps, monta um documento JSON versionado e o valida contra um schema fechado antes de publicar em um bucket. Um scanner de padrões (nomes de host, segredos) roda como última barreira antes do upload. Um servidor de desenvolvimento local, com dados totalmente fictícios, permite iterar no serviço sem tocar no cluster real.
+Um CronJob em Go roda periodicamente dentro do cluster, coleta contagens e status de sincronização do GitOps, monta um documento JSON versionado e o valida contra um schema fechado antes de publicar em um bucket. Um scanner de padrões (nomes de host, segredos) roda como última barreira antes do upload. Um servidor de desenvolvimento local, com dados totalmente fictícios, permite iterar no serviço sem tocar no cluster real. O upload para o R2 assina as requisições com AWS SigV4 implementado à mão, só com a biblioteca padrão do Go: o serviço não tem nenhuma dependência externa, e a imagem final é distroless e roda sem root.
 
 ## O que não funcionou
 

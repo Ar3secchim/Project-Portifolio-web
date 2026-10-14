@@ -2,15 +2,19 @@ export const meta = {
   slug: 'modularizacao',
   locale: 'pt',
   kind: 'professional',
-  eyebrow: 'BACKEND / CASE FICCIONALIZADO',
+  eyebrow: 'BACKEND / CENÁRIO DE ARQUITETURA',
   title: 'Arquitetura que se defende sozinha em code review',
   summary:
-    'Cenário ficcionalizado (mesma fintech fictícia, Cobrix) sobre transformar regras de arquitetura em testes executáveis, para que dependências proibidas não voltem silenciosamente.',
+    'Cenário de arquitetura no mesmo sistema de cobrança, baseado em experiência real: transformar regras de arquitetura em testes executáveis, para que dependências proibidas não voltem silenciosamente.',
+  role: 'Desenhei e escrevi os testes de arquitetura que protegem as fronteiras entre módulos.',
+  result: 'Dependência proibida quebra o build, não a produção.',
+  status: 'Experiência profissional · código confidencial',
   problem:
     'Um sistema em produção crescia por módulos de negócio, mas nada impedia, na prática, que um módulo importasse direto uma classe interna de outro — cada acoplamento novo só era percebido quando já tinha causado um efeito colateral em produção.',
   decisions: [
     {
-      title: 'Testes de arquitetura como parte da suíte, não documentação à parte',
+      title:
+        'Testes de arquitetura como parte da suíte, não documentação à parte',
       rationale:
         'Regras como "módulo de domínio não pode depender de infraestrutura" e "beans do Spring precisam ser imutáveis" viraram asserções automatizadas que quebram o build, não um diagrama em uma wiki que ninguém revisita.',
       tradeoff:
@@ -52,13 +56,13 @@ export const meta = {
     'evolutionary-design',
   ],
   confidentiality:
-    'Cenário, empresa (Cobrix) e regras de negócio são ficcionais; a estratégia de modularização e o uso de testes de arquitetura refletem experiência profissional real, generalizada para não identificar o empregador real.',
-  featured: true,
+    'O cenário e as regras de negócio são ilustrativos; a estratégia de modularização e o uso de testes de arquitetura refletem experiência profissional real, generalizada para não identificar o empregador real.',
+  featured: false,
 };
 
 ## Contexto
 
-No mesmo sistema de cobrança da Cobrix (nome fictício), o custo de mudar código pequeno vinha crescendo: uma alteração em um módulo continuava exigindo entender efeitos em outros três.
+No mesmo sistema de cobrança do case do motor de prazos, o custo de mudar código pequeno vinha crescendo: uma alteração em um módulo continuava exigindo entender efeitos em outros três.
 
 ## Restrições
 

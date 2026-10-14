@@ -385,3 +385,8 @@
   font-size: 0.9rem;
   line-height: 1.65;
 }
+
+/* Sem snapshot: a faixa vira um aviso neutro, sem o verde de "ao vivo". */
+.system-status-bar.is-unavailable > strong {
+  color: var(--amber);
+}

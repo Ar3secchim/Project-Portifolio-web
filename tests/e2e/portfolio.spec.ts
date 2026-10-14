@@ -20,7 +20,7 @@ test('loads both locales and keeps the route while switching', async ({
   await localeSwitcher.click();
   await expect(page).toHaveURL(/\/en\/cases\/homelab$/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'learning systems',
+    'learn by operating',
   );
 });
 
