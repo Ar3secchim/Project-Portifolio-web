@@ -7,6 +7,8 @@ a live (and sanitized) view of my Kubernetes homelab, and a knowledge map that
 links each technology to the case where it was actually used. Available in
 Portuguese and English.
 
+![A 17-second tour of the site: case studies, experience timeline, stack, homelab map, and the finance demo](docs/portfolio-tour.gif)
+
 ## What is in here
 
 - **Bilingual routing.** Every page lives under `/[locale]` (`pt` or `en`).
