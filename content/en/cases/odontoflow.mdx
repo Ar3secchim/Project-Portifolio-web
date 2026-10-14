@@ -54,6 +54,7 @@ export const meta = {
   knowledgeNodeIds: ['multi-tenancy', 'architecture', 'payments', 'iac'],
   confidentiality:
     'A pre-launch SaaS, built solo; source code is private. No real clinic or patient data ever existed — only fictional development data.',
+  codeOnRequest: true,
   featured: true,
 };
 
@@ -73,11 +74,59 @@ Each serverless function passes through a middleware layer — authentication, s
 
 WhatsApp appointment reminders follow the same principle: each clinic has its own messaging instance, so one organization’s number and session never serve another. Infrastructure comes from Terraform modules (Cognito, S3, SES, and a budget alert) instantiated for development, staging, and production.
 
+<OdontoFlowDiagram locale="en" />
+
 ## Two decisions recorded as ADRs
 
 **ADR-003 — A fully private bucket, served by a Worker that signs requests.** The frontend used to be served from a public S3 bucket: anyone could fetch files directly, bypassing Cloudflare. The options were keeping the bucket public or paying for an AWS CDN. The choice was a Cloudflare Worker that signs each request with AWS SigV4 and also handles the SPA route fallback — no public access to the bucket, zero CDN cost.
 
 **ADR-009 — Payments behind an interface, not an SDK.** Calling the Stripe SDK straight from services would have been faster, but it would spread the provider across the whole application. The decision was a gateway interface with one adapter per provider; switching providers changes a single construction point. In the webhook, each event has a unique ID and is only recorded as processed after it is handled successfully — a provider redelivery never duplicates a charge.
+
+## Code excerpts
+
+The payment webhook: signature checked first, repeated events ignored, and the record written only after success.
+
+<CodeSource
+  path="packages/api/src/application/controllers/billing/WebhookController.ts ·
+  simplified"
+/>
+
+```ts
+// An invalid signature throws: the event is never handled.
+const event = await paymentGateway.constructWebhookEvent(rawPayload, signature);
+
+const alreadyProcessed = await prismaClient.processedWebhookEvent.findUnique({
+  where: { eventId: event.id },
+});
+if (alreadyProcessed) {
+  return { statusCode: 200, body: { received: true } };
+}
+
+await webhookDispatcher.dispatch(event);
+
+// Only mark as processed after handling succeeded.
+await prismaClient.processedWebhookEvent.create({
+  data: { eventId: event.id, eventType: event.type },
+});
+```
+
+The contract the domain knows about; Stripe is just one implementation of it:
+
+<CodeSource path="packages/api/src/application/gateways/IPaymentGateway.ts · excerpt" />
+
+```ts
+export interface IPaymentGateway {
+  createCustomer(data: CreateCustomerDTO): Promise<GatewayCustomer>;
+  createCheckoutSession(data: CreateCheckoutDTO): Promise<CheckoutSession>;
+  createSubscription(data: CreateSubscriptionDTO): Promise<GatewaySubscription>;
+  cancelSubscription(/* ... */): Promise<GatewaySubscription>;
+  // ...subscriptions, customer portal, and invoices
+  constructWebhookEvent(
+    payload: string,
+    signature: string,
+  ): Promise<WebhookEvent>;
+}
+```
 
 ## What did not work
 

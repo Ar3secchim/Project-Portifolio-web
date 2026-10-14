@@ -301,3 +301,116 @@
   font-size: 0.86rem;
   line-height: 1.55;
 }
+
+/* Código em bloco: o estilo de `code` inline não deve vazar para dentro do pre. */
+.case-prose pre code {
+  /* inline herdaria a altura de linha do pre (texto corrido) */
+  display: block;
+  padding: 0;
+  background: none;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+.case-prose .code-source {
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+}
+
+/* Diagramas de arquitetura: SVG inline que herda os tokens do tema. */
+.case-diagram {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1rem 1.2rem;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.case-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin: 0 auto;
+}
+.case-diagram figcaption {
+  max-width: 560px;
+  margin: 1rem auto 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.diagram-box rect {
+  fill: var(--surface);
+  stroke: var(--line-strong);
+}
+.diagram-box.is-accent rect {
+  stroke: rgba(var(--accent-rgb), 0.65);
+}
+.diagram-box.is-outside rect {
+  fill: transparent;
+  stroke-dasharray: 4 3;
+}
+.diagram-title {
+  fill: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.diagram-detail {
+  fill: var(--muted);
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+.diagram-band rect {
+  fill: var(--surface-3);
+  stroke: var(--line);
+}
+.diagram-band.is-accent rect {
+  fill: var(--accent-soft);
+  stroke: rgba(var(--accent-rgb), 0.45);
+}
+.diagram-band text {
+  fill: var(--text-soft);
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+.diagram-arrow {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.2;
+}
+.diagram-arrow.is-dashed {
+  stroke-dasharray: 3 3;
+}
+.diagram-marker {
+  fill: var(--muted);
+}
+.diagram-label {
+  fill: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+.diagram-boundary {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-dasharray: 6 4;
+}
+.diagram-boundary-label {
+  fill: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.code-on-request {
+  max-width: 780px;
+  margin: 1rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+.code-on-request .text-link {
+  margin-left: 0.25rem;
+  white-space: nowrap;
+}

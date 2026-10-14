@@ -85,6 +85,19 @@ export default function CasePage({ params }: CasePageProps) {
           <strong>PRIVACY NOTE</strong>
           {caseStudy.confidentiality}
         </p>
+        {caseStudy.codeOnRequest && (
+          <p className="code-on-request">
+            {dictionary.codeOnRequest}{' '}
+            <a
+              className="text-link"
+              href={siteConfig.social.linkedin}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {dictionary.codeOnRequestCta} <span aria-hidden="true">↗</span>
+            </a>
+          </p>
+        )}
         {caseStudy.links && caseStudy.links.length > 0 && (
           <div className="case-links">
             {caseStudy.links.map((link) => (
