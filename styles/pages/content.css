@@ -3,8 +3,10 @@
   color: var(--muted);
 }
 .case-hero {
+  padding: 2rem 0 3rem;
+}
+.case-hero h1 {
   max-width: 990px;
-  padding: 2rem 0 5rem;
 }
 .case-hero h1,
 .blog-post h1 {
@@ -31,9 +33,6 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  max-width: 780px;
-  padding: 1rem;
-  border: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.78rem;
   line-height: 1.6;
@@ -274,18 +273,28 @@
   font-weight: 800;
 }
 
-/* Resumo de 20s no topo do case. */
+/* Resumo de 20s no topo do case: resumo, privacidade e acesso formam um
+   único cartão, na mesma largura e com o mesmo recuo interno do bloco
+   "Problema / Tecnologias" logo abaixo, para a leitura seguir contínua. */
+.case-brief {
+  display: grid;
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.case-brief > p {
+  margin: 0;
+  padding: 1.2rem 1.5rem;
+  background: var(--surface);
+}
 .case-facts {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  max-width: 990px;
-  margin: 0 0 1.5rem;
-  border: 1px solid var(--line);
-  background: var(--line);
+  margin: 0;
 }
 .case-facts > div {
-  padding: 1rem;
+  padding: 1.2rem 1.5rem;
   background: var(--surface);
 }
 .case-facts dt {
@@ -404,8 +413,6 @@
 }
 
 .code-on-request {
-  max-width: 780px;
-  margin: 1rem 0 0;
   color: var(--text-soft);
   font-size: 0.86rem;
   line-height: 1.6;

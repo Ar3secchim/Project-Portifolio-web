@@ -62,42 +62,45 @@ export default function CasePage({ params }: CasePageProps) {
         <p className="eyebrow">{caseStudy.eyebrow}</p>
         <h1>{caseStudy.title}</h1>
         <p className="case-summary">{caseStudy.summary}</p>
-        {/* Leitura de 20s para quem faz triagem: papel, stack, resultado e status. */}
-        <dl className="case-facts">
-          <div>
-            <dt>{dictionary.role}</dt>
-            <dd>{caseStudy.role}</dd>
-          </div>
-          <div>
-            <dt>{dictionary.coreStack}</dt>
-            <dd>{caseStudy.technologies.slice(0, 4).join(' · ')}</dd>
-          </div>
-          <div>
-            <dt>{dictionary.result}</dt>
-            <dd>{caseStudy.result}</dd>
-          </div>
-          <div>
-            <dt>{dictionary.status}</dt>
-            <dd>{caseStudy.status}</dd>
-          </div>
-        </dl>
-        <p className="confidentiality">
-          <strong>PRIVACY NOTE</strong>
-          {caseStudy.confidentiality}
-        </p>
-        {caseStudy.codeOnRequest && (
-          <p className="code-on-request">
-            {dictionary.codeOnRequest}{' '}
-            <a
-              className="text-link"
-              href={siteConfig.social.linkedin}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              {dictionary.codeOnRequestCta} <span aria-hidden="true">↗</span>
-            </a>
+        {/* Leitura de 20s para quem faz triagem: um único cartão, na mesma
+            largura dos blocos abaixo, com resumo, privacidade e acesso. */}
+        <div className="case-brief">
+          <dl className="case-facts">
+            <div>
+              <dt>{dictionary.role}</dt>
+              <dd>{caseStudy.role}</dd>
+            </div>
+            <div>
+              <dt>{dictionary.coreStack}</dt>
+              <dd>{caseStudy.technologies.slice(0, 4).join(' · ')}</dd>
+            </div>
+            <div>
+              <dt>{dictionary.result}</dt>
+              <dd>{caseStudy.result}</dd>
+            </div>
+            <div>
+              <dt>{dictionary.status}</dt>
+              <dd>{caseStudy.status}</dd>
+            </div>
+          </dl>
+          <p className="confidentiality">
+            <strong>PRIVACY NOTE</strong>
+            {caseStudy.confidentiality}
           </p>
-        )}
+          {caseStudy.codeOnRequest && (
+            <p className="code-on-request">
+              {dictionary.codeOnRequest}{' '}
+              <a
+                className="text-link"
+                href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {dictionary.codeOnRequestCta} <span aria-hidden="true">↗</span>
+              </a>
+            </p>
+          )}
+        </div>
         {caseStudy.links && caseStudy.links.length > 0 && (
           <div className="case-links">
             {caseStudy.links.map((link) => (
