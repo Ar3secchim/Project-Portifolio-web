@@ -18,7 +18,7 @@ interface HomelabMapProps {
   disclosure: string;
   panelTitle: string;
   servicesLabel: string;
-  stats: readonly (readonly [string, string, string])[];
+  stats?: readonly (readonly [string, string, string])[];
   topologyNodes?: readonly HomelabTopologyNode[];
   topologyEdges?: readonly HomelabTopologyEdge[];
   topologyLegend?: readonly HomelabNodeType[];
@@ -173,17 +173,20 @@ export function HomelabMap({
           </div>
         </article>
 
-        <dl className="homelab-stats">
-          {stats.map(([label, value, note]) => (
-            <div key={label}>
-              <dt>
-                {label}
-                <small>{note}</small>
-              </dt>
-              <dd>{value}</dd>
-            </div>
-          ))}
-        </dl>
+        {/* Métricas só existem com snapshot ao vivo; sem ele, nada de número. */}
+        {stats && stats.length > 0 && (
+          <dl className="homelab-stats">
+            {stats.map(([label, value, note]) => (
+              <div key={label}>
+                <dt>
+                  {label}
+                  <small>{note}</small>
+                </dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
 
         <p className="mono-hint">{hint}</p>
         <p className="demo-disclosure">{disclosure}</p>

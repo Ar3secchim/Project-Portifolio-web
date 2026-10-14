@@ -302,3 +302,106 @@
 .site-footer time {
   flex: 0 0 auto;
 }
+
+/* Camada principal do stack: um cartão largo acima dos grupos secundários. */
+.stack-card-primary {
+  min-height: 0;
+  margin-bottom: 1.4rem;
+  border-color: rgba(var(--accent-rgb), 0.35);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--accent-rgb), 0.06),
+    var(--surface) 70%
+  );
+}
+.stack-card-primary h3 {
+  margin-bottom: 1rem;
+}
+.stack-card-primary .tag-list span {
+  padding: 0.32rem 0.65rem;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 0.78rem;
+}
+.stack-tier-label {
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Linha do tempo de experiência: período à esquerda, papel e escopo à direita. */
+.experience-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.experience-item {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.32fr) 1fr;
+  gap: 2rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.experience-when {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+}
+.experience-when span {
+  color: var(--text);
+  font-size: 0.74rem;
+}
+.experience-when small {
+  color: var(--muted);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+}
+.experience-what h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+.experience-what h3 em {
+  color: var(--accent);
+  font-style: normal;
+}
+.experience-what > p {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.experience-steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+.experience-steps > span {
+  color: var(--text-soft);
+}
+.experience-steps small {
+  color: var(--muted);
+}
+.experience-steps i {
+  margin-right: 0.6rem;
+  color: var(--accent);
+  font-style: normal;
+}
+.experience-steps .experience-steps-label {
+  color: var(--muted);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.experience-what .tag-list {
+  margin-top: 1rem;
+}

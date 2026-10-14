@@ -20,11 +20,7 @@ export function CaseCard({
     <article className="case-card">
       <div className="case-number">0{index + 1}</div>
       <div className="case-card-content">
-        <p className="eyebrow">
-          {caseStudy.kind === 'personal'
-            ? dictionary.personal
-            : dictionary.professional}
-        </p>
+        <p className="eyebrow">{dictionary[caseStudy.kind]}</p>
         <h3>{caseStudy.title}</h3>
         <p>{caseStudy.summary}</p>
         <div className="tag-list">

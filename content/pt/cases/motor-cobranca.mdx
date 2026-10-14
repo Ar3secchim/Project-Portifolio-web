@@ -2,15 +2,19 @@ export const meta = {
   slug: 'motor-cobranca',
   locale: 'pt',
   kind: 'professional',
-  eyebrow: 'FINTECH / CASE FICCIONALIZADO',
+  eyebrow: 'FINTECH / CENÁRIO DE ARQUITETURA',
   title: 'Um motor de prazos que explica por que decidiu o que decidiu',
   summary:
-    'Cenário ficcionalizado (Cobrix, fintech fictícia) inspirado em experiência profissional real: um motor que calcula o prazo de cobrança de uma dívida quando múltiplos eventos concorrem entre si.',
+    'Cenário de arquitetura numa fintech de cobrança, baseado em experiência profissional real: um motor que calcula o prazo de cobrança de uma dívida quando múltiplos eventos concorrem entre si.',
+  role: 'Principal desenvolvedora do motor: modelagem das regras, algoritmo de consolidação e testes.',
+  result: 'Toda data calculada sai com a trilha de auditoria de cada decisão.',
+  status: 'Experiência profissional · código confidencial',
   problem:
     'Uma dívida acumula um histórico de eventos — acordo, disputa, pagamento parcial, suspensão — e alguns desses eventos pausam o prazo de cobrança, outros o reiniciam, e às vezes dois eventos concorrentes se sobrepõem no tempo. Calcular "até quando dá para cobrar" deixou de ser uma soma simples de dias.',
   decisions: [
     {
-      title: 'Precedência explícita entre tipos de evento, não ordem de chegada',
+      title:
+        'Precedência explícita entre tipos de evento, não ordem de chegada',
       rationale:
         'Uma suspensão formal (disputa aberta) sempre prevalece sobre um simples reinício de prazo; a regra de precedência é um registro de decisão, não um `if` disperso pelo código.',
       tradeoff:
@@ -34,7 +38,7 @@ export const meta = {
   outcomes: [
     'Cada data calculada vem com uma trilha auditável — quais eventos foram aplicados, quais foram descartados e por quê — reduzindo o tempo de investigar por que uma dívida específica tem aquele prazo.',
     'Novas regras de negócio para um tipo de contrato diferente entram como uma nova implementação da mesma interface de estratégia, sem tocar no núcleo do motor.',
-    'Recalcular a base inteira (cenário ilustrativo: casas de milhões de registros) passou a rodar como um job resumível, cancelável com segurança no meio do processamento sem deixar dado inconsistente.',
+    'Recalcular a base inteira (ilustrativo: na casa dos milhões de registros) passou a rodar como um job resumível, cancelável com segurança no meio do processamento sem deixar dado inconsistente.',
   ],
   technologies: [
     'Java',
@@ -52,13 +56,13 @@ export const meta = {
     'resilience',
   ],
   confidentiality:
-    'Cenário, empresa (Cobrix) e domínio de negócio são ficcionais; a lógica de precedência de eventos, o algoritmo de consolidação e a arquitetura descritos refletem experiência profissional real, generalizada para não identificar o empregador ou o setor de atuação real.',
+    'O cenário e o domínio de negócio são ilustrativos; a lógica de precedência de eventos, o algoritmo de consolidação e a arquitetura descritos refletem experiência profissional real, generalizada para não identificar o empregador ou o setor de atuação real.',
   featured: true,
 };
 
 ## Contexto
 
-A Cobrix (nome fictício) processa cobrança de dívidas B2B para outras empresas. Cada dívida carrega um histórico de eventos — acordo, disputa, pagamento parcial, suspensão — e o prazo de cobrança se estende ou não dependendo de como esses eventos interagem entre si.
+Imagine uma fintech que processa cobrança de dívidas B2B para outras empresas. Cada dívida carrega um histórico de eventos — acordo, disputa, pagamento parcial, suspensão — e o prazo de cobrança se estende ou não dependendo de como esses eventos interagem entre si.
 
 ## Restrições
 

@@ -3,19 +3,28 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { CaseCard } from '@/components/portfolio/CaseCard';
+import { ExperienceTimeline } from '@/components/portfolio/ExperienceTimeline';
 import { FinanceDemo } from '@/components/portfolio/FinanceDemo';
 import { HeroClock } from '@/components/portfolio/HeroClock';
 import { HomelabMap } from '@/components/portfolio/HomelabMap';
 import { KnowledgeGraph } from '@/components/portfolio/KnowledgeGraph';
 import { Reveal } from '@/components/portfolio/Reveal';
 import { SectionHeading } from '@/components/portfolio/SectionHeading';
-import { buildKnowledgeGraph, getCaseStudies } from '@/lib/portfolio/cases';
+import {
+  buildKnowledgeGraph,
+  getFeaturedCaseStudies,
+} from '@/lib/portfolio/cases';
 import { getDictionary, isLocale } from '@/lib/portfolio/dictionaries';
+import { getExperience } from '@/lib/portfolio/experience';
 import {
   buildHomelabLiveContent,
   getHomelabSnapshot,
 } from '@/lib/portfolio/homelab-snapshot';
-import { siteConfig, technologyGroups } from '@/lib/portfolio/site';
+import {
+  primaryStack,
+  siteConfig,
+  technologyGroups,
+} from '@/lib/portfolio/site';
 
 interface HomePageProps {
   params: { locale: string };
@@ -35,7 +44,8 @@ export default async function HomePage({ params }: HomePageProps) {
   if (!isLocale(params.locale)) notFound();
   const locale = params.locale;
   const dictionary = getDictionary(locale);
-  const cases = getCaseStudies(locale);
+  const cases = getFeaturedCaseStudies(locale);
+  const experience = getExperience(locale);
   const graph = buildKnowledgeGraph(locale);
   const snapshot = await getHomelabSnapshot();
   const homelabLive = snapshot
@@ -46,6 +56,7 @@ export default async function HomePage({ params }: HomePageProps) {
     '@type': 'Person',
     name: siteConfig.name,
     jobTitle: siteConfig.role,
+    worksFor: { '@type': 'Organization', name: siteConfig.employer },
     url: `${siteConfig.url}/${locale}`,
     sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
   };
@@ -106,8 +117,10 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
 
+        {/* Sem snapshot, a faixa só avisa que está indisponível: ela existe
+            para provar que o dado é ao vivo, então não mostra número algum. */}
         <div
-          className="system-status-bar"
+          className={`system-status-bar ${homelabLive ? '' : 'is-unavailable'}`}
           aria-label={dictionary.hero.status}
           role="region"
           tabIndex={0}
@@ -118,88 +131,20 @@ export default async function HomePage({ params }: HomePageProps) {
               : dictionary.snapshotUnavailable}
           </strong>
           <div>
-            {(homelabLive?.statusStrip ?? dictionary.statusStrip).map(
-              ([label, value]) => (
+            {homelabLive ? (
+              homelabLive.statusStrip.map(([label, value]) => (
                 <span key={label}>
                   <i aria-hidden="true" /> {label} <b>{value}</b>
                 </span>
-              ),
+              ))
+            ) : (
+              <span>
+                <b>{dictionary.snapshotUnavailableNote}</b>
+              </span>
             )}
           </div>
         </div>
       </div>
-
-      <section className="section-shell section-block" id="about">
-        <Reveal>
-          <SectionHeading
-            eyebrow={dictionary.about.eyebrow}
-            title={dictionary.about.title}
-            description={dictionary.about.body}
-          />
-        </Reveal>
-        <div className="principles-grid">
-          {dictionary.about.principles.map(
-            ([number, title, description], index) => (
-              <Reveal key={number} delay={index * 70}>
-                <article className="principle-card">
-                  <span>{number}</span>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              </Reveal>
-            ),
-          )}
-        </div>
-      </section>
-
-      <section className="section-shell section-block" id="homelab">
-        <Reveal>
-          <SectionHeading
-            eyebrow={dictionary.homelab.eyebrow}
-            title={dictionary.homelab.title}
-            titleAccent={dictionary.homelab.titleAccent}
-            description={dictionary.homelab.description}
-          />
-        </Reveal>
-        <Reveal delay={100}>
-          <HomelabMap
-            hint={dictionary.homelab.hint}
-            disclosure={
-              homelabLive?.disclosure ?? dictionary.homelab.disclosure
-            }
-            panelTitle={
-              homelabLive
-                ? 'SANITIZED LIVE TOPOLOGY'
-                : dictionary.homelab.panelTitle
-            }
-            servicesLabel={dictionary.homelab.servicesLabel}
-            stats={homelabLive?.stats ?? dictionary.homelab.stats}
-            topologyNodes={homelabLive?.topologyNodes}
-            topologyEdges={homelabLive?.topologyEdges}
-            topologyLegend={homelabLive?.topologyLegend}
-          />
-        </Reveal>
-      </section>
-
-      <section className="section-shell section-block" id="plan-finance">
-        <Reveal>
-          <SectionHeading
-            eyebrow={dictionary.finance.eyebrow}
-            title={dictionary.finance.title}
-            titleAccent={dictionary.finance.titleAccent}
-            description={
-              <>
-                {dictionary.finance.descriptionLead}{' '}
-                <mark>{dictionary.finance.descriptionFlag}</mark>{' '}
-                {dictionary.finance.descriptionTail}
-              </>
-            }
-          />
-        </Reveal>
-        <Reveal delay={100}>
-          <FinanceDemo dictionary={dictionary.finance} locale={locale} />
-        </Reveal>
-      </section>
 
       <section className="section-shell section-block" id="cases">
         <Reveal>
@@ -228,6 +173,32 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
       </section>
 
+      <section className="section-shell section-block" id="experience">
+        <Reveal>
+          <SectionHeading
+            eyebrow={dictionary.experience.eyebrow}
+            title={dictionary.experience.title}
+            description={dictionary.experience.description}
+            action={
+              <a
+                className="text-link"
+                href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {dictionary.experience.linkedin} ↗
+              </a>
+            }
+          />
+        </Reveal>
+        <Reveal delay={100}>
+          <ExperienceTimeline
+            entries={experience}
+            progressionLabel={dictionary.experience.progression}
+          />
+        </Reveal>
+      </section>
+
       <section className="section-shell section-block" id="stack">
         <Reveal>
           <SectionHeading
@@ -236,6 +207,17 @@ export default async function HomePage({ params }: HomePageProps) {
             description={dictionary.stack.description}
           />
         </Reveal>
+        <Reveal>
+          <article className="stack-card stack-card-primary">
+            <h3>{dictionary.stack.primary}</h3>
+            <div className="tag-list">
+              {primaryStack.map((technology) => (
+                <span key={technology}>{technology}</span>
+              ))}
+            </div>
+          </article>
+        </Reveal>
+        <p className="stack-tier-label">{dictionary.stack.secondary}</p>
         <div className="stack-grid">
           {technologyGroups.map((group, index) => {
             const groupLabel =
@@ -255,6 +237,78 @@ export default async function HomePage({ params }: HomePageProps) {
               </Reveal>
             );
           })}
+        </div>
+      </section>
+
+      <section className="section-shell section-block" id="homelab">
+        <Reveal>
+          <SectionHeading
+            eyebrow={dictionary.homelab.eyebrow}
+            title={dictionary.homelab.title}
+            titleAccent={dictionary.homelab.titleAccent}
+            description={dictionary.homelab.description}
+          />
+        </Reveal>
+        <Reveal delay={100}>
+          <HomelabMap
+            hint={dictionary.homelab.hint}
+            disclosure={
+              homelabLive?.disclosure ?? dictionary.homelab.disclosure
+            }
+            panelTitle={
+              homelabLive
+                ? 'SANITIZED LIVE TOPOLOGY'
+                : dictionary.homelab.panelTitle
+            }
+            servicesLabel={dictionary.homelab.servicesLabel}
+            stats={homelabLive?.stats}
+            topologyNodes={homelabLive?.topologyNodes}
+            topologyEdges={homelabLive?.topologyEdges}
+            topologyLegend={homelabLive?.topologyLegend}
+          />
+        </Reveal>
+      </section>
+
+      <section className="section-shell section-block" id="plan-finance">
+        <Reveal>
+          <SectionHeading
+            eyebrow={dictionary.finance.eyebrow}
+            title={dictionary.finance.title}
+            titleAccent={dictionary.finance.titleAccent}
+            description={
+              <>
+                {dictionary.finance.descriptionLead}{' '}
+                <mark>{dictionary.finance.descriptionFlag}</mark>{' '}
+                {dictionary.finance.descriptionTail}
+              </>
+            }
+          />
+        </Reveal>
+        <Reveal delay={100}>
+          <FinanceDemo dictionary={dictionary.finance} locale={locale} />
+        </Reveal>
+      </section>
+
+      <section className="section-shell section-block" id="about">
+        <Reveal>
+          <SectionHeading
+            eyebrow={dictionary.about.eyebrow}
+            title={dictionary.about.title}
+            description={dictionary.about.body}
+          />
+        </Reveal>
+        <div className="principles-grid">
+          {dictionary.about.principles.map(
+            ([number, title, description], index) => (
+              <Reveal key={number} delay={index * 70}>
+                <article className="principle-card">
+                  <span>{number}</span>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </article>
+              </Reveal>
+            ),
+          )}
         </div>
       </section>
 

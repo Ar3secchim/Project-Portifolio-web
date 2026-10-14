@@ -6,6 +6,9 @@ export const meta = {
   title: 'PlanFinance: a financial agent that explains what it computed',
   summary:
     'A personal finance app with an AI agent that answers over WhatsApp using tool-calling on real database data, not loose text — with a hexagonal architecture enforced in CI.',
+  role: 'Solo project: product, backend, frontend, infrastructure, and the agent.',
+  result: '106 test files — 828 lines for the agent loop alone.',
+  status: 'Personal use · private code',
   problem:
     'Rebuilding the same financial questions every month in a spreadsheet was wasted time. Wiring an LLM directly to raw transactions removed the tedium, but introduced a new risk: numeric answers that looked right and weren’t.',
   decisions: [
@@ -44,9 +47,10 @@ export const meta = {
     'PostgreSQL',
     'Claude API',
     'Tool Use',
-    'WhatsApp API',
+    'WhatsApp (Evolution API)',
     'Docker',
     'Kubernetes',
+    'Cloudflare Tunnel',
   ],
   knowledgeNodeIds: ['agents', 'data-modeling', 'architecture', 'reliability'],
   confidentiality:
@@ -67,6 +71,13 @@ PlanFinance started as a way to stop rebuilding the same financial questions eve
 ## Architecture
 
 The backend follows domain, application, infrastructure, and presentation layers. Use cases orchestrate typed tools the agent can call; each tool fetches data through Prisma and returns a structured result, never free text. An architecture-conformance script runs in CI and fails the build if the domain imports anything from outside it.
+
+## Details that matter
+
+- **Credit-card PDF invoices, one parser per bank.** Nubank, Inter, and Santander produce different layouts. Each bank has a _specification_ that recognizes the document and its own parser, wired through a registry: a new bank arrives as a new class with its own test, without touching the others.
+- **The model decides what to show; code draws it.** The charts the agent sends over WhatsApp are rendered server-side, from SVG to PNG with an embedded font — the model is never asked to "generate an image".
+- **Only the frontend reaches the internet.** A Cloudflare Tunnel opens the connection from the inside out and points straight at the frontend service; the backend is unreachable by construction, and `/api` calls go through the frontend’s nginx inside the cluster. No open port, no home IP published.
+- **Tests as part of the design.** There are 106 test files across backend and frontend; the agent loop alone (multi-turn, with tool calls and conversation memory) has 828 lines of tests.
 
 ## What did not work
 

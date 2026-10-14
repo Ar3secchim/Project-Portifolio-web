@@ -6,6 +6,9 @@ export const meta = {
   title: 'PlanFinance: um agente financeiro que explica o que calculou',
   summary:
     'Um app de finanças pessoais com um agente de IA que responde por WhatsApp usando tool-calling sobre dados reais do banco, não sobre texto solto — com arquitetura hexagonal validada em CI.',
+  role: 'Projeto solo: produto, backend, frontend, infraestrutura e o agente.',
+  result: '106 arquivos de teste — 828 linhas só para o loop do agente.',
+  status: 'Uso pessoal · código privado',
   problem:
     'Reconstruir as mesmas perguntas financeiras todo mês em planilha consumia tempo. Conectar um LLM direto aos lançamentos brutos resolvia a preguiça, mas criava um risco novo: respostas numéricas que pareciam certas e não eram.',
   decisions: [
@@ -44,9 +47,10 @@ export const meta = {
     'PostgreSQL',
     'Claude API',
     'Tool Use',
-    'WhatsApp API',
+    'WhatsApp (Evolution API)',
     'Docker',
     'Kubernetes',
+    'Cloudflare Tunnel',
   ],
   knowledgeNodeIds: ['agents', 'data-modeling', 'architecture', 'reliability'],
   confidentiality:
@@ -67,6 +71,13 @@ O PlanFinance começou como um jeito de parar de reconstruir as mesmas perguntas
 ## Arquitetura
 
 O backend segue camadas de domínio, aplicação, infraestrutura e apresentação. Casos de uso orquestram ferramentas tipadas que o agente pode chamar; cada ferramenta busca dados via Prisma e devolve um resultado estruturado, nunca texto livre. Um script de conformidade arquitetural roda em CI e falha o build se o domínio importar algo de fora dele.
+
+## Detalhes que fazem diferença
+
+- **Faturas de cartão em PDF, um parser por banco.** Nubank, Inter e Santander geram layouts diferentes. Cada banco tem uma _specification_ que reconhece o documento e um parser próprio, ligados por um registry: um banco novo entra como uma classe nova, com seu próprio teste, sem tocar nos outros.
+- **O modelo decide o que mostrar; o código desenha.** Os gráficos que o agente manda no WhatsApp são renderizados no servidor, de SVG para PNG com fonte embutida — o modelo nunca é chamado para "gerar uma imagem".
+- **Só o frontend sai para a internet.** Um Cloudflare Tunnel abre a conexão de dentro para fora e aponta direto para o serviço do frontend; o backend fica inalcançável por construção, e as chamadas de `/api` passam pelo nginx do frontend dentro do cluster. Sem porta aberta, sem IP doméstico publicado.
+- **Testes como parte do desenho.** São 106 arquivos de teste entre backend e frontend; só o loop do agente (multi-turno, com chamadas de ferramenta e memória da conversa) tem 828 linhas de teste.
 
 ## O que não funcionou
 

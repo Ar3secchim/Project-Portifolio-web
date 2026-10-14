@@ -49,6 +49,9 @@
   .stack-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .case-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 760px) {
@@ -243,6 +246,13 @@
   .case-overview,
   .decision-grid {
     grid-template-columns: 1fr;
+  }
+  .case-facts {
+    grid-template-columns: 1fr;
+  }
+  .experience-item {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
   }
   .decision-grid article {
     min-height: 290px;

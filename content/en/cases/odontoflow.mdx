@@ -1,11 +1,14 @@
 export const meta = {
   slug: 'odontoflow',
   locale: 'en',
-  kind: 'personal',
+  kind: 'product',
   eyebrow: 'SAAS / MULTI-TENANT',
   title: 'OdontoFlow: a serverless, multi-tenant dental SaaS',
   summary:
     'Patient records, treatment plans, imaging, and recurring billing for dental clinics, built entirely on serverless infrastructure with real isolation between organizations.',
+  role: 'Solo project: product, serverless API, frontend, and infrastructure.',
+  result: '11 ADRs record the decisions, from database to payments.',
+  status: 'SaaS · pre-launch · private code',
   problem:
     'Small clinics tend to rely on spreadsheets or generic record-keeping systems that do not properly separate data between units and treat recurring billing as a side process instead of a core part of the product.',
   decisions: [
@@ -45,11 +48,12 @@ export const meta = {
     'AWS Cognito',
     'Stripe',
     'Terraform',
+    'Cloudflare Workers',
     'Zod',
   ],
   knowledgeNodeIds: ['multi-tenancy', 'architecture', 'payments', 'iac'],
   confidentiality:
-    'A solo project, source code still private; no real clinic or patient data ever existed — only fictional development data.',
+    'A pre-launch SaaS, built solo; source code is private. No real clinic or patient data ever existed — only fictional development data.',
   featured: true,
 };
 
@@ -66,6 +70,14 @@ OdontoFlow started as an attempt to design a real B2B SaaS from scratch: multipl
 ## Architecture
 
 Each serverless function passes through a middleware layer — authentication, schema validation, error handling — before reaching a controller, which delegates to a service. Services apply business rules and always receive an already-resolved organization context. Payment, storage, and email gateways isolate external integrations behind internal interfaces.
+
+WhatsApp appointment reminders follow the same principle: each clinic has its own messaging instance, so one organization’s number and session never serve another. Infrastructure comes from Terraform modules (Cognito, S3, SES, and a budget alert) instantiated for development, staging, and production.
+
+## Two decisions recorded as ADRs
+
+**ADR-003 — A fully private bucket, served by a Worker that signs requests.** The frontend used to be served from a public S3 bucket: anyone could fetch files directly, bypassing Cloudflare. The options were keeping the bucket public or paying for an AWS CDN. The choice was a Cloudflare Worker that signs each request with AWS SigV4 and also handles the SPA route fallback — no public access to the bucket, zero CDN cost.
+
+**ADR-009 — Payments behind an interface, not an SDK.** Calling the Stripe SDK straight from services would have been faster, but it would spread the provider across the whole application. The decision was a gateway interface with one adapter per provider; switching providers changes a single construction point. In the webhook, each event has a unique ID and is only recorded as processed after it is handled successfully — a provider redelivery never duplicates a charge.
 
 ## What did not work
 
