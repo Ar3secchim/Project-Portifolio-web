@@ -9,6 +9,7 @@ const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
   pt: [
     {
       company: 'FADESP',
+      current: true,
       role: 'Engenheira de Software',
       period: 'jul/2025 — atual',
       arrangement: 'Tempo integral · híbrido · Belém',
@@ -28,6 +29,7 @@ const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
     },
     {
       company: 'Fuvir',
+      partTime: true,
       role: 'Desenvolvedora Web Jr e Gerente de Produto UI/UX',
       period: 'fev/2024 — set/2025',
       arrangement: 'Meio período · remoto',
@@ -35,6 +37,7 @@ const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
     },
     {
       company: 'Mentor Cycle',
+      partTime: true,
       role: 'Desenvolvedora Web Front-end',
       period: 'jun/2023 — mai/2024',
       arrangement: 'Meio período · remoto · open source',
@@ -45,6 +48,7 @@ const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
   en: [
     {
       company: 'FADESP',
+      current: true,
       role: 'Software Engineer',
       period: 'Jul 2025 — present',
       arrangement: 'Full-time · hybrid · Belém',
@@ -64,6 +68,7 @@ const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
     },
     {
       company: 'Fuvir',
+      partTime: true,
       role: 'Junior Web Developer and UI/UX Product Manager',
       period: 'Feb 2024 — Sep 2025',
       arrangement: 'Part-time · remote',
@@ -71,6 +76,7 @@ const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
     },
     {
       company: 'Mentor Cycle',
+      partTime: true,
       role: 'Front-end Web Developer',
       period: 'Jun 2023 — May 2024',
       arrangement: 'Part-time · remote · open source',

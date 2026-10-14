@@ -332,19 +332,60 @@
   text-transform: uppercase;
 }
 
-/* Linha do tempo de experiência: período à esquerda, papel e escopo à direita. */
+/* Linha do tempo de experiência: uma trilha vertical à esquerda, com um ponto
+   por vínculo. Cada item desenha o trecho da trilha até o ponto seguinte; o
+   último não desenha nada abaixo de si. */
 .experience-list {
+  --rail-gap: 2.6rem;
+  --marker-size: 13px;
   list-style: none;
   margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--line);
+  padding: 0.6rem 0 0;
 }
 .experience-item {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(180px, 0.32fr) 1fr;
   gap: 2rem;
-  padding: 1.8rem 0;
-  border-bottom: 1px solid var(--line);
+  padding: 0 0 3rem var(--rail-gap);
+}
+.experience-item:last-child {
+  padding-bottom: 0;
+}
+.experience-item::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  bottom: -0.5rem;
+  left: calc(var(--marker-size) / 2 - 0.5px);
+  width: 1px;
+  background: var(--line-strong);
+}
+.experience-item:last-child::before {
+  display: none;
+}
+.experience-marker {
+  position: absolute;
+  top: calc(0.5rem - var(--marker-size) / 2);
+  left: 0;
+  z-index: 1;
+  width: var(--marker-size);
+  height: var(--marker-size);
+  border-radius: 50%;
+  background: var(--muted);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+/* Meio período: ponto vazado — explica a sobreposição de datas sem texto. */
+.experience-item.is-part-time .experience-marker {
+  border: 1.5px solid var(--muted);
+  background: var(--bg);
+}
+.experience-item.is-current .experience-marker {
+  background: var(--accent);
+  box-shadow:
+    0 0 0 4px var(--bg),
+    0 0 14px var(--accent);
+  animation: pulse 2s infinite;
 }
 .experience-when {
   display: flex;
@@ -352,14 +393,52 @@
   gap: 0.45rem;
   font-family: var(--font-mono);
 }
-.experience-when span {
+.experience-when > span {
   color: var(--text);
   font-size: 0.74rem;
 }
-.experience-when small {
+.experience-when > small {
   color: var(--muted);
   font-size: 0.6rem;
   letter-spacing: 0.04em;
+}
+.experience-steps-label {
+  margin: 1.1rem 0 0;
+  color: var(--muted);
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.experience-steps {
+  list-style: none;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.68rem;
+}
+.experience-steps li {
+  position: relative;
+  color: var(--text-soft);
+}
+.experience-steps li::before {
+  content: '';
+  position: absolute;
+  top: 0.38em;
+  left: calc(var(--marker-size) / 2 - 3px - var(--rail-gap));
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.experience-steps li + li::before {
+  background: var(--muted);
+}
+.experience-steps small {
+  margin-left: 0.35rem;
+  color: var(--muted);
 }
 .experience-what h3 {
   margin: 0;
@@ -376,31 +455,6 @@
   margin: 0.7rem 0 0;
   color: var(--muted);
   line-height: 1.7;
-}
-.experience-steps {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-}
-.experience-steps > span {
-  color: var(--text-soft);
-}
-.experience-steps small {
-  color: var(--muted);
-}
-.experience-steps i {
-  margin-right: 0.6rem;
-  color: var(--accent);
-  font-style: normal;
-}
-.experience-steps .experience-steps-label {
-  color: var(--muted);
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 .experience-what .tag-list {
   margin-top: 1rem;

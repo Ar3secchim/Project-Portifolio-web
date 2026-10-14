@@ -48,8 +48,11 @@ export interface ExperienceEntry {
   period: string;
   arrangement: string;
   scope: string;
+  /** Promoções no mesmo vínculo, em ordem cronológica. */
   steps?: ExperienceStep[];
   stack?: string[];
+  current?: boolean;
+  partTime?: boolean;
 }
 
 export interface CaseStudy extends CaseStudyMeta {

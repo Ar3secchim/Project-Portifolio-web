@@ -250,9 +250,13 @@
   .case-facts {
     grid-template-columns: 1fr;
   }
+  .experience-list {
+    --rail-gap: 2rem;
+  }
   .experience-item {
     grid-template-columns: 1fr;
     gap: 0.9rem;
+    padding-bottom: 2.4rem;
   }
   .decision-grid article {
     min-height: 290px;
