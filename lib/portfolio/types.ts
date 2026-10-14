@@ -15,6 +15,20 @@ export interface CaseLink {
   href: string;
 }
 
+export interface CaseVideoCaption {
+  /** Segundos desde o início do vídeo. */
+  start: number;
+  end: number;
+  text: string;
+}
+
+export interface CaseVideo {
+  src: string;
+  poster: string;
+  label: string;
+  captions: CaseVideoCaption[];
+}
+
 export interface CaseStudyMeta {
   slug: string;
   locale: Locale;
@@ -34,6 +48,8 @@ export interface CaseStudyMeta {
   confidentiality: string;
   /** Repositório privado cujo código pode ser mostrado numa avaliação técnica. */
   codeOnRequest?: boolean;
+  /** Gravação curta do produto, mostrada logo abaixo do cabeçalho. */
+  video?: CaseVideo;
   /** Cases com `featured` aparecem na home; os demais só em /cases. */
   featured: boolean;
   links?: CaseLink[];

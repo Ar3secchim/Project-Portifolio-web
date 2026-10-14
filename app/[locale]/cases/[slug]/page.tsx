@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import { CaseVideo } from '@/components/portfolio/CaseVideo';
 import { getCaseStudies, getCaseStudy } from '@/lib/portfolio/cases';
 import { getDictionary, isLocale } from '@/lib/portfolio/dictionaries';
 import { siteConfig } from '@/lib/portfolio/site';
@@ -114,6 +115,8 @@ export default function CasePage({ params }: CasePageProps) {
           </div>
         )}
       </header>
+
+      {caseStudy.video && <CaseVideo video={caseStudy.video} />}
 
       <section className="case-overview">
         <div>
