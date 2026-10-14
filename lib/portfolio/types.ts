@@ -32,6 +32,8 @@ export interface CaseStudyMeta {
   technologies: string[];
   knowledgeNodeIds: string[];
   confidentiality: string;
+  /** Repositório privado cujo código pode ser mostrado numa avaliação técnica. */
+  codeOnRequest?: boolean;
   /** Cases com `featured` aparecem na home; os demais só em /cases. */
   featured: boolean;
   links?: CaseLink[];

@@ -157,6 +157,9 @@ const dictionaries = {
       pageDescription:
         'Sistemas observados pelo problema, pelas decisões e pelos trade-offs.',
       back: 'Voltar aos cases',
+      codeOnRequest:
+        'Código privado, disponível para avaliação técnica sob pedido.',
+      codeOnRequestCta: 'Pedir acesso pelo LinkedIn',
       role: 'Meu papel',
       coreStack: 'Stack principal',
       result: 'Resultado',
@@ -381,6 +384,9 @@ const dictionaries = {
       pageDescription:
         'Systems examined through their problems, decisions, and trade-offs.',
       back: 'Back to cases',
+      codeOnRequest:
+        'Private code, available for a technical review on request.',
+      codeOnRequestCta: 'Ask on LinkedIn',
       role: 'My role',
       coreStack: 'Core stack',
       result: 'Result',
