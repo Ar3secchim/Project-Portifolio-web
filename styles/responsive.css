@@ -343,3 +343,14 @@
     display: none;
   }
 }
+
+@media (max-width: 760px) {
+  .case-video figcaption ol {
+    grid-template-columns: 1fr;
+  }
+  .case-video-caption {
+    bottom: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.72rem;
+  }
+}

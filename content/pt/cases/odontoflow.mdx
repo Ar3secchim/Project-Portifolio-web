@@ -54,6 +54,31 @@ export const meta = {
   knowledgeNodeIds: ['multi-tenancy', 'architecture', 'payments', 'iac'],
   confidentiality:
     'SaaS em pré-lançamento, desenvolvido solo; código-fonte privado. Nenhum dado real de clínica ou paciente existiu — apenas dados fictícios de desenvolvimento.',
+  codeOnRequest: true,
+  video: {
+    src: '/media/odontoflow-tour.mp4',
+    poster: '/media/odontoflow-tour.jpg',
+    label: 'OdontoFlow · homologação, clínica e paciente fictícios',
+    captions: [
+      { start: 0, end: 1.9, text: 'Pacientes da clínica, em lista' },
+      {
+        start: 1.9,
+        end: 5.5,
+        text: 'Pipeline: cada paciente no status do tratamento',
+      },
+      { start: 5.5, end: 7.5, text: 'Prontuário com o plano de tratamento' },
+      {
+        start: 7.5,
+        end: 15,
+        text: 'Cada procedimento vira uma coluna do plano',
+      },
+      {
+        start: 15,
+        end: 25,
+        text: 'Etapas entram com Enter e são salvas na hora',
+      },
+    ],
+  },
   featured: true,
 };
 
@@ -73,11 +98,59 @@ Cada função serverless passa por uma camada de middleware — autenticação, 
 
 Lembretes de consulta pelo WhatsApp seguem o mesmo princípio: cada clínica tem a sua própria instância de mensageria, então o número e a sessão de uma organização nunca atendem outra. A infraestrutura sai de módulos Terraform (Cognito, S3, SES e alerta de orçamento) instanciados em desenvolvimento, homologação e produção.
 
+<OdontoFlowDiagram locale="pt" />
+
 ## Duas decisões registradas em ADR
 
 **ADR-003 — Bucket 100% privado, servido por um Worker que assina as requisições.** O frontend era servido de um bucket S3 público: qualquer um acessava os arquivos direto, contornando a Cloudflare. As alternativas eram manter o bucket público ou pagar um CDN da AWS. A escolha foi um Cloudflare Worker que assina cada requisição com AWS SigV4 e também resolve o fallback de rotas da SPA — bucket sem nenhum acesso público, custo zero de CDN.
 
 **ADR-009 — Pagamento atrás de uma interface, não do SDK.** Usar o SDK do Stripe direto nos services seria mais rápido, mas espalharia o provedor pela aplicação inteira. A decisão foi uma interface de gateway com um adaptador por provedor; trocar de provedor muda um único ponto de construção. No webhook, cada evento tem um identificador único e só é registrado como processado depois de tratado com sucesso — uma reentrega do provedor não duplica cobrança.
+
+## Trechos do código
+
+O webhook de pagamento: assinatura verificada antes de tudo, evento repetido ignorado, e o registro só depois do sucesso.
+
+<CodeSource
+  path="packages/api/src/application/controllers/billing/WebhookController.ts ·
+  simplificado"
+/>
+
+```ts
+// Assinatura inválida lança erro: o evento nem chega a ser tratado.
+const event = await paymentGateway.constructWebhookEvent(rawPayload, signature);
+
+const alreadyProcessed = await prismaClient.processedWebhookEvent.findUnique({
+  where: { eventId: event.id },
+});
+if (alreadyProcessed) {
+  return { statusCode: 200, body: { received: true } };
+}
+
+await webhookDispatcher.dispatch(event);
+
+// Só marca como processado depois que o tratamento deu certo.
+await prismaClient.processedWebhookEvent.create({
+  data: { eventId: event.id, eventType: event.type },
+});
+```
+
+O contrato que o domínio conhece; o Stripe é só uma implementação dele:
+
+<CodeSource path="packages/api/src/application/gateways/IPaymentGateway.ts · trecho" />
+
+```ts
+export interface IPaymentGateway {
+  createCustomer(data: CreateCustomerDTO): Promise<GatewayCustomer>;
+  createCheckoutSession(data: CreateCheckoutDTO): Promise<CheckoutSession>;
+  createSubscription(data: CreateSubscriptionDTO): Promise<GatewaySubscription>;
+  cancelSubscription(/* ... */): Promise<GatewaySubscription>;
+  // ...assinaturas, portal do cliente e faturas
+  constructWebhookEvent(
+    payload: string,
+    signature: string,
+  ): Promise<WebhookEvent>;
+}
+```
 
 ## O que não funcionou
 
