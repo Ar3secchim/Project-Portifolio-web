@@ -8,6 +8,7 @@ const dictionaries = {
       home: 'Início',
       homelab: 'Homelab',
       cases: 'Projetos',
+      experience: 'Experiência',
       stack: 'Stack',
       knowledge: 'Knowledge',
       writing: 'Blog',
@@ -21,26 +22,21 @@ const dictionaries = {
       eyebrow: 'ENGENHARIA DE SOFTWARE / SISTEMAS',
       titleLines: ['Engenheira', 'de software', 'que entende', 'sistemas.'],
       description:
-        'Construo backends resilientes, prefomando processos e otimizando desempenho, pensando no caminho completo: contexto, restrições, operação e quem vai manter a solução depois.',
+        'Backend com foco em plataforma. Mais de 2 anos construindo com Java/Spring e TypeScript, operando Kubernetes e integrando agentes com LLM — pensando no caminho completo, até quem vai manter a solução depois.',
       primaryCta: 'Explorar cases',
       secondaryCta: 'Conhecer meu raciocínio',
       status: 'PORTFÓLIO / SISTEMAS DOCUMENTADOS',
       scrollCue: 'SCROLL PARA EXPLORAR',
     },
     facts: [
+      ['ATUAL', 'Engenheira de Software · FADESP'],
+      ['EXPERIÊNCIA', '2+ anos'],
+      ['FOCO', 'Backend · Plataforma'],
       ['LOCALIZAÇÃO', 'Belém, PA'],
-      ['FUNÇÃO ATUAL', 'Engenheira de Software Pleno I'],
-      ['FOCO', 'Backend · DevOps · Performance'],
     ],
-    /** Números ilustrativos do homelab — não são telemetria ao vivo. */
     liveStatus: 'LIVE STATUS',
     snapshotUnavailable: 'SNAPSHOT INDISPONÍVEL',
-    statusStrip: [
-      ['k3s cluster', '3 nodes / 11 pods'],
-      ['plan-finance', 'modelo rodando'],
-      ['Gitea CI', '2 pipelines'],
-      ['Jellyfin', 'idle'],
-    ],
+    snapshotUnavailableNote: 'sem dados ao vivo no momento',
     about: {
       eyebrow: 'COMO EU PENSO',
       title: 'O código é só uma parte da solução.',
@@ -77,13 +73,8 @@ const dictionaries = {
       panelTitle: 'NETWORK TOPOLOGY',
       servicesLabel: 'SERVIÇOS',
       hint: 'Selecione um nó para entender sua responsabilidade.',
-      disclosure: 'Topologia conceitual e sanitizada. Métricas ilustrativas.',
-      stats: [
-        ['CPU AVG', '14%', '8 cores disponíveis'],
-        ['RAM USADA', '18.4 GB', 'de 32 GB total'],
-        ['STORAGE', '7.2 TB', 'de 12 TB ZFS'],
-        ['SERVIÇOS', '23', 'em k3s + LXC'],
-      ],
+      disclosure:
+        'Topologia conceitual e sanitizada. As métricas aparecem quando o snapshot público está disponível.',
     },
     finance: {
       eyebrow: 'PROJETO / PLAN-FINANCE',
@@ -134,7 +125,7 @@ const dictionaries = {
       how: [
         'Você manda uma mensagem para o Porquinho no WhatsApp',
         'O agente consulta o banco e filtra pelo período ou categoria',
-        'Claude gera a análise textual + gráfico de rosca por categoria',
+        'Claude escreve a análise; o servidor desenha o gráfico de rosca',
         'Resposta chega em segundos com insights acionáveis',
       ],
       examples: [
@@ -156,15 +147,23 @@ const dictionaries = {
       eyebrow: 'ESTUDOS DE CASO',
       title: 'Decisões, contexto e aprendizados.',
       description:
-        'Seis recortes de como eu investigo problemas e desenho soluções. Cases profissionais usam contexto e resultados ficcionalizados.',
+        'Como eu investigo problemas e desenho soluções, em projetos próprios e em cenários de arquitetura baseados na minha experiência profissional.',
       all: 'Ver todos os cases',
       read: 'Abrir case',
       personal: 'Projeto pessoal',
-      professional: 'Case ficcionalizado',
+      professional: 'Cenário de arquitetura · baseado em experiência real',
+      product: 'SaaS · pré-lançamento',
       pageTitle: 'Estudos de caso',
       pageDescription:
         'Sistemas observados pelo problema, pelas decisões e pelos trade-offs.',
       back: 'Voltar aos cases',
+      codeOnRequest:
+        'Código privado, disponível para avaliação técnica sob pedido.',
+      codeOnRequestCta: 'Pedir acesso pelo LinkedIn',
+      role: 'Meu papel',
+      coreStack: 'Stack principal',
+      result: 'Resultado',
+      status: 'Status',
       problem: 'Problema',
       decisions: 'Decisões centrais',
       outcomes: 'Resultados e aprendizados',
@@ -183,17 +182,26 @@ const dictionaries = {
       selected: 'Conexões de',
       instructions: 'Use Tab para navegar pelos nós e Enter para filtrar.',
     },
+    experience: {
+      eyebrow: 'EXPERIÊNCIA / TRAJETÓRIA',
+      title: 'Onde venho construindo software.',
+      description:
+        'Trabalhos como desenvolvedora, do mais recente ao mais antigo. Detalhes de cada empresa ficam no LinkedIn.',
+      linkedin: 'Ver no LinkedIn',
+      progression: 'Progressão',
+    },
     stack: {
       eyebrow: 'INVENTÁRIO / STACK',
       title: 'Ferramentas que uso para construir e operar sistemas.',
       description:
-        'A lista ganha contexto nos cases: cada tecnologia aparece ligada a um problema, uma decisão ou um aprendizado.',
+        'O núcleo é o que uso todo dia. O restante aparece nos cases, ligado a um problema, uma decisão ou um aprendizado.',
+      primary: 'Principal',
+      secondary: 'Também uso',
       groups: {
-        languages: 'Linguagens',
         backend: 'Backend',
-        platform: 'Infra & Cloud',
-        observability: 'Observabilidade',
         data: 'Dados',
+        platform: 'Infra & Cloud',
+        frontend: 'Frontend',
         ai: 'IA & LLMs',
       },
     },
@@ -227,6 +235,7 @@ const dictionaries = {
       home: 'Home',
       homelab: 'Homelab',
       cases: 'Cases',
+      experience: 'Experience',
       stack: 'Stack',
       knowledge: 'Knowledge',
       writing: 'Writing',
@@ -240,26 +249,21 @@ const dictionaries = {
       eyebrow: 'SOFTWARE ENGINEERING / SYSTEMS',
       titleLines: ['Software', 'engineer', 'who understands', 'systems.'],
       description:
-        'I build resilient backends, data pipelines, and infrastructure while considering the whole path: context, constraints, operations, and the people who will maintain it later.',
+        'Backend with a platform focus. 2+ years building with Java/Spring and TypeScript, running Kubernetes, and integrating LLM agents — thinking about the whole path, down to whoever maintains it later.',
       primaryCta: 'Explore cases',
       secondaryCta: 'See how I think',
       status: 'PORTFOLIO / DOCUMENTED SYSTEMS',
       scrollCue: 'SCROLL TO EXPLORE',
     },
     facts: [
+      ['CURRENT', 'Software Engineer · FADESP'],
+      ['EXPERIENCE', '2+ years'],
+      ['FOCUS', 'Backend · Platform'],
       ['LOCATION', 'Belém, Brazil'],
-      ['CURRENT ROLE', 'Software Engineer'],
-      ['FOCUS', 'Backend · Platform · Performance'],
     ],
-    /** Illustrative homelab numbers — not live telemetry. */
     liveStatus: 'LIVE STATUS',
     snapshotUnavailable: 'SNAPSHOT UNAVAILABLE',
-    statusStrip: [
-      ['k3s cluster', '3 nodes / 11 pods'],
-      ['plan-finance', 'model running'],
-      ['Gitea CI', '2 pipelines'],
-      ['Jellyfin', 'idle'],
-    ],
+    snapshotUnavailableNote: 'no live data right now',
     about: {
       eyebrow: 'HOW I THINK',
       title: 'Code is only one part of the solution.',
@@ -296,13 +300,8 @@ const dictionaries = {
       panelTitle: 'NETWORK TOPOLOGY',
       servicesLabel: 'SERVICES',
       hint: 'Select a node to understand its responsibility.',
-      disclosure: 'Conceptual, sanitized topology. Illustrative metrics.',
-      stats: [
-        ['CPU AVG', '14%', '8 cores available'],
-        ['RAM USED', '18.4 GB', 'of 32 GB total'],
-        ['STORAGE', '7.2 TB', 'of 12 TB ZFS'],
-        ['SERVICES', '23', 'on k3s + LXC'],
-      ],
+      disclosure:
+        'Conceptual, sanitized topology. Metrics appear when the public snapshot is available.',
     },
     finance: {
       eyebrow: 'PROJECT / PLAN-FINANCE',
@@ -353,7 +352,7 @@ const dictionaries = {
       how: [
         'You send a message to Porquinho on WhatsApp',
         'The agent queries the database and filters by period or category',
-        'Claude generates the written analysis plus a donut chart by category',
+        'Claude writes the analysis; the server draws the donut chart',
         'The answer arrives in seconds with actionable insights',
       ],
       examples: [
@@ -375,15 +374,23 @@ const dictionaries = {
       eyebrow: 'CASE STUDIES',
       title: 'Decisions, context, and lessons.',
       description:
-        'Six snapshots of how I investigate problems and design solutions. Professional cases use fictionalized context and outcomes.',
+        'How I investigate problems and design solutions, across my own projects and architecture scenarios based on my professional experience.',
       all: 'View all cases',
       read: 'Open case',
       personal: 'Personal project',
-      professional: 'Fictionalized case',
+      professional: 'Architecture scenario · based on real experience',
+      product: 'SaaS · pre-launch',
       pageTitle: 'Case studies',
       pageDescription:
         'Systems examined through their problems, decisions, and trade-offs.',
       back: 'Back to cases',
+      codeOnRequest:
+        'Private code, available for a technical review on request.',
+      codeOnRequestCta: 'Ask on LinkedIn',
+      role: 'My role',
+      coreStack: 'Core stack',
+      result: 'Result',
+      status: 'Status',
       problem: 'Problem',
       decisions: 'Core decisions',
       outcomes: 'Outcomes and lessons',
@@ -402,17 +409,26 @@ const dictionaries = {
       selected: 'Connections for',
       instructions: 'Use Tab to navigate nodes and Enter to filter.',
     },
+    experience: {
+      eyebrow: 'EXPERIENCE / TRACK RECORD',
+      title: 'Where I have been building software.',
+      description:
+        'Developer roles, most recent first. Company details live on LinkedIn.',
+      linkedin: 'View on LinkedIn',
+      progression: 'Progression',
+    },
     stack: {
       eyebrow: 'INVENTORY / STACK',
       title: 'Tools I use to build and operate systems.',
       description:
-        'The list gains context in the cases: every technology is connected to a problem, a decision, or a lesson.',
+        'The core is what I use every day. The rest shows up in the cases, tied to a problem, a decision, or a lesson.',
+      primary: 'Core',
+      secondary: 'Also use',
       groups: {
-        languages: 'Languages',
         backend: 'Backend',
-        platform: 'Infra & Cloud',
-        observability: 'Observability',
         data: 'Data',
+        platform: 'Infra & Cloud',
+        frontend: 'Frontend',
         ai: 'AI & LLMs',
       },
     },

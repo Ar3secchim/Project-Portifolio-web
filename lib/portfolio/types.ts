@@ -2,7 +2,7 @@ import type { ComponentType } from 'react';
 
 export type Locale = 'pt' | 'en';
 
-export type CaseKind = 'personal' | 'professional';
+export type CaseKind = 'personal' | 'professional' | 'product';
 
 export interface CaseDecision {
   title: string;
@@ -15,6 +15,20 @@ export interface CaseLink {
   href: string;
 }
 
+export interface CaseVideoCaption {
+  /** Segundos desde o início do vídeo. */
+  start: number;
+  end: number;
+  text: string;
+}
+
+export interface CaseVideo {
+  src: string;
+  poster: string;
+  label: string;
+  captions: CaseVideoCaption[];
+}
+
 export interface CaseStudyMeta {
   slug: string;
   locale: Locale;
@@ -22,14 +36,41 @@ export interface CaseStudyMeta {
   eyebrow: string;
   title: string;
   summary: string;
+  /** Resumo de 20s no topo do case: papel, resultado e status. */
+  role: string;
+  result: string;
+  status: string;
   problem: string;
   decisions: CaseDecision[];
   outcomes: string[];
   technologies: string[];
   knowledgeNodeIds: string[];
   confidentiality: string;
+  /** Repositório privado cujo código pode ser mostrado numa avaliação técnica. */
+  codeOnRequest?: boolean;
+  /** Gravação curta do produto, mostrada logo abaixo do cabeçalho. */
+  video?: CaseVideo;
+  /** Cases com `featured` aparecem na home; os demais só em /cases. */
   featured: boolean;
   links?: CaseLink[];
+}
+
+export interface ExperienceStep {
+  label: string;
+  date: string;
+}
+
+export interface ExperienceEntry {
+  company: string;
+  role: string;
+  period: string;
+  arrangement: string;
+  scope: string;
+  /** Promoções no mesmo vínculo, em ordem cronológica. */
+  steps?: ExperienceStep[];
+  stack?: string[];
+  current?: boolean;
+  partTime?: boolean;
 }
 
 export interface CaseStudy extends CaseStudyMeta {

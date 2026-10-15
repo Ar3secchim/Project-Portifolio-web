@@ -28,9 +28,10 @@ export function Header({ locale, dictionary }: HeaderProps) {
 
   // O divisor separa âncoras desta página das páginas próprias.
   const sectionLinks = [
-    [`/${locale}#homelab`, dictionary.nav.homelab],
     [`/${locale}#cases`, dictionary.nav.cases],
+    [`/${locale}#experience`, dictionary.nav.experience],
     [`/${locale}#stack`, dictionary.nav.stack],
+    [`/${locale}#homelab`, dictionary.nav.homelab],
   ];
   const pageLinks = [
     [`/${locale}/blog`, dictionary.nav.writing],

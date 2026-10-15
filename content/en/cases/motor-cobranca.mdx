@@ -2,10 +2,13 @@ export const meta = {
   slug: 'motor-cobranca',
   locale: 'en',
   kind: 'professional',
-  eyebrow: 'FINTECH / FICTIONALIZED CASE',
+  eyebrow: 'FINTECH / ARCHITECTURE SCENARIO',
   title: 'A deadline engine that explains why it decided what it decided',
   summary:
-    'A fictionalized scenario (Cobrix, a fictional fintech) inspired by real professional experience: an engine that computes a debt’s collection deadline when multiple events compete with each other.',
+    'An architecture scenario at a collections fintech, based on real professional experience: an engine that computes a debt’s collection deadline when multiple events compete with each other.',
+  role: 'Lead developer of the engine: rule modeling, the consolidation algorithm, and tests.',
+  result: 'Every computed date ships with an audit trail for each decision.',
+  status: 'Professional work · confidential code',
   problem:
     'A debt accumulates a history of events — settlement agreements, disputes, partial payments, suspensions — and some of those events pause the collection deadline, others restart it, and sometimes two competing events overlap in time. Computing "how long can we still collect" stopped being a simple sum of days.',
   decisions: [
@@ -34,7 +37,7 @@ export const meta = {
   outcomes: [
     'Every computed date ships with an auditable trail — which events were applied, which were discarded, and why — drastically cutting the time spent investigating why a given debt has that deadline.',
     'New business rules for a different contract type ship as a new implementation of the same strategy interface, without touching the engine core.',
-    'Recalculating the entire base (illustrative scenario: millions of records) became a resumable job that can be safely cancelled mid-run without leaving inconsistent data.',
+    'Recalculating the entire base (illustrative: millions of records) became a resumable job that can be safely cancelled mid-run without leaving inconsistent data.',
   ],
   technologies: [
     'Java',
@@ -52,13 +55,13 @@ export const meta = {
     'resilience',
   ],
   confidentiality:
-    'The scenario, the company (Cobrix), and the business domain are fictional; the event-precedence logic, the consolidation algorithm, and the architecture described reflect real professional experience, generalized so it does not identify the real employer or industry.',
+    'The scenario and the business domain are illustrative; the event-precedence logic, the consolidation algorithm, and the architecture described reflect real professional experience, generalized so it does not identify the real employer or industry.',
   featured: true,
 };
 
 ## Context
 
-Cobrix (a fictional name) processes B2B debt collection on behalf of other companies. Each debt carries a history of events — settlement, dispute, partial payment, suspension — and the collection deadline extends or not depending on how those events interact.
+Picture a fintech that processes B2B debt collection on behalf of other companies. Each debt carries a history of events — settlement, dispute, partial payment, suspension — and the collection deadline extends or not depending on how those events interact.
 
 ## Constraints
 

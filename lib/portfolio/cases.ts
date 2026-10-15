@@ -50,27 +50,32 @@ function toCase(
   return { ...(meta as unknown as CaseStudyMeta), Content };
 }
 
+// A ordem é a de leitura: o case mais forte para backend vem primeiro.
 const casesByLocale: Record<Locale, CaseStudy[]> = {
   pt: [
-    toCase(ptPlanFinanceMeta, PtPlanFinance),
-    toCase(ptHomelabApiMeta, PtHomelabApi),
-    toCase(ptOdontoFlowMeta, PtOdontoFlow),
-    toCase(ptHomelabMeta, PtHomelab),
     toCase(ptCollectionsEngineMeta, PtCollectionsEngine),
+    toCase(ptPlanFinanceMeta, PtPlanFinance),
+    toCase(ptOdontoFlowMeta, PtOdontoFlow),
+    toCase(ptHomelabApiMeta, PtHomelabApi),
+    toCase(ptHomelabMeta, PtHomelab),
     toCase(ptModularizationMeta, PtModularization),
   ],
   en: [
-    toCase(enPlanFinanceMeta, EnPlanFinance),
-    toCase(enHomelabApiMeta, EnHomelabApi),
-    toCase(enOdontoFlowMeta, EnOdontoFlow),
-    toCase(enHomelabMeta, EnHomelab),
     toCase(enCollectionsEngineMeta, EnCollectionsEngine),
+    toCase(enPlanFinanceMeta, EnPlanFinance),
+    toCase(enOdontoFlowMeta, EnOdontoFlow),
+    toCase(enHomelabApiMeta, EnHomelabApi),
+    toCase(enHomelabMeta, EnHomelab),
     toCase(enModularizationMeta, EnModularization),
   ],
 };
 
 export function getCaseStudies(locale: Locale): CaseStudy[] {
   return casesByLocale[locale];
+}
+
+export function getFeaturedCaseStudies(locale: Locale): CaseStudy[] {
+  return getCaseStudies(locale).filter((item) => item.featured);
 }
 
 export function getCaseStudy(

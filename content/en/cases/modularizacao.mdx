@@ -2,15 +2,19 @@ export const meta = {
   slug: 'modularizacao',
   locale: 'en',
   kind: 'professional',
-  eyebrow: 'BACKEND / FICTIONALIZED CASE',
+  eyebrow: 'BACKEND / ARCHITECTURE SCENARIO',
   title: 'Architecture that defends itself in code review',
   summary:
-    'A fictionalized scenario (the same fictional fintech, Cobrix) about turning architecture rules into executable tests, so forbidden dependencies cannot silently come back.',
+    'An architecture scenario on the same collections system, based on real experience: turning architecture rules into executable tests, so forbidden dependencies cannot silently come back.',
+  role: 'Designed and wrote the architecture tests that guard module boundaries.',
+  result: 'A forbidden dependency breaks the build, not production.',
+  status: 'Professional work · confidential code',
   problem:
     'A production system kept growing by business modules, but nothing actually stopped one module from importing another’s internal class directly — every new coupling was only noticed after it had already caused a side effect in production.',
   decisions: [
     {
-      title: 'Architecture tests as part of the suite, not separate documentation',
+      title:
+        'Architecture tests as part of the suite, not separate documentation',
       rationale:
         'Rules like "the domain module cannot depend on infrastructure" and "Spring beans must be immutable" became automated assertions that break the build, not a diagram in a wiki nobody revisits.',
       tradeoff:
@@ -52,13 +56,13 @@ export const meta = {
     'evolutionary-design',
   ],
   confidentiality:
-    'The scenario, the company (Cobrix), and the business rules are fictional; the modularization strategy and the use of architecture tests reflect real professional experience, generalized so it does not identify the real employer.',
-  featured: true,
+    'The scenario and the business rules are illustrative; the modularization strategy and the use of architecture tests reflect real professional experience, generalized so it does not identify the real employer.',
+  featured: false,
 };
 
 ## Context
 
-On the same Cobrix (fictional name) collections system, the cost of small code changes kept growing: a change in one module still required understanding effects on three others.
+On the same collections system as the deadline-engine case, the cost of small code changes kept growing: a change in one module still required understanding effects on three others.
 
 ## Constraints
 

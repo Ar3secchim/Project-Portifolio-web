@@ -49,6 +49,9 @@
   .stack-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .case-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 760px) {
@@ -244,6 +247,17 @@
   .decision-grid {
     grid-template-columns: 1fr;
   }
+  .case-facts {
+    grid-template-columns: 1fr;
+  }
+  .experience-list {
+    --rail-gap: 2rem;
+  }
+  .experience-item {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    padding-bottom: 2.4rem;
+  }
   .decision-grid article {
     min-height: 290px;
   }
@@ -327,5 +341,16 @@
   }
   .cursor-glow {
     display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .case-video figcaption ol {
+    grid-template-columns: 1fr;
+  }
+  .case-video-caption {
+    bottom: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.72rem;
   }
 }

@@ -6,6 +6,9 @@ export const meta = {
   title: 'PlanFinance: a financial agent that explains what it computed',
   summary:
     'A personal finance app with an AI agent that answers over WhatsApp using tool-calling on real database data, not loose text — with a hexagonal architecture enforced in CI.',
+  role: 'Solo project: product, backend, frontend, infrastructure, and the agent.',
+  result: '106 test files — 828 lines for the agent loop alone.',
+  status: 'Personal use · private code',
   problem:
     'Rebuilding the same financial questions every month in a spreadsheet was wasted time. Wiring an LLM directly to raw transactions removed the tedium, but introduced a new risk: numeric answers that looked right and weren’t.',
   decisions: [
@@ -44,13 +47,42 @@ export const meta = {
     'PostgreSQL',
     'Claude API',
     'Tool Use',
-    'WhatsApp API',
+    'WhatsApp (Evolution API)',
     'Docker',
     'Kubernetes',
+    'Cloudflare Tunnel',
   ],
   knowledgeNodeIds: ['agents', 'data-modeling', 'architecture', 'reliability'],
   confidentiality:
     'Real financial data never appears in screenshots, examples, or public metrics; the demo on this site uses fictional numbers.',
+  codeOnRequest: true,
+  video: {
+    src: '/media/plan-finance-tour.mp4',
+    poster: '/media/plan-finance-tour.jpg',
+    label: 'PlanFinance on the web · development environment, fictional data',
+    captions: [
+      {
+        start: 0,
+        end: 4.6,
+        text: 'Monthly dashboard: income, spending, and where the money went',
+      },
+      {
+        start: 4.6,
+        end: 7.6,
+        text: 'Annual plan: income, expenses, and what was left each month',
+      },
+      {
+        start: 7.6,
+        end: 10.3,
+        text: 'Cash flow per account, including the card invoice',
+      },
+      {
+        start: 10.3,
+        end: 18,
+        text: 'Import: a statement becomes transactions to review before confirming',
+      },
+    ],
+  },
   featured: true,
 };
 
@@ -67,6 +99,92 @@ PlanFinance started as a way to stop rebuilding the same financial questions eve
 ## Architecture
 
 The backend follows domain, application, infrastructure, and presentation layers. Use cases orchestrate typed tools the agent can call; each tool fetches data through Prisma and returns a structured result, never free text. An architecture-conformance script runs in CI and fails the build if the domain imports anything from outside it.
+
+<PlanFinanceDiagram locale="en" />
+
+## Details that matter
+
+- **Credit-card PDF invoices, one parser per bank.** Nubank, Inter, and Santander produce different layouts. Each bank has a _specification_ that recognizes the document and its own parser, wired through a registry: a new bank arrives as a new class with its own test, without touching the others.
+- **The model decides what to show; code draws it.** The charts the agent sends over WhatsApp are rendered server-side, from SVG to PNG with an embedded font — the model is never asked to "generate an image".
+- **Only the frontend reaches the internet.** A Cloudflare Tunnel opens the connection from the inside out and points straight at the frontend service; the backend is unreachable by construction, and `/api` calls go through the frontend’s nginx inside the cluster. No open port, no home IP published.
+- **Tests as part of the design.** There are 106 test files across backend and frontend; the agent loop alone (multi-turn, with tool calls and conversation memory) has 828 lines of tests.
+
+## Code excerpts
+
+The agent loop: the model picks the tool, code does the math, and the result goes back for the model to explain.
+
+<CodeSource path="backend/src/application/use-cases/agent/RunFinancialAgent.ts · simplified" />
+
+```ts
+// The skill defines the model and the list of allowed tools.
+const enabledTools = FINANCIAL_AGENT_TOOLS.filter((tool) =>
+  skill.tools.includes(tool.name),
+);
+
+for (let turn = 0; turn < MAX_TURNS; turn += 1) {
+  const response = await this.client.messages.create({
+    model: skill.model,
+    max_tokens: skill.maxTokens,
+    system: composeSystemPrompt(skill, { mesAtual, hoje, contas }),
+    tools: enabledTools,
+    messages,
+  });
+
+  if (response.stop_reason === 'end_turn') {
+    return toAgentResponse(response, lastResult);
+  }
+  if (response.stop_reason !== 'tool_use') break;
+
+  messages.push({ role: 'assistant', content: response.content });
+  const toolResults: Anthropic.ToolResultBlockParam[] = [];
+
+  for (const block of response.content) {
+    if (block.type !== 'tool_use') continue;
+    // The math happens here, in typed code, against database data.
+    const execution = await this.toolExecutor.execute({
+      name: block.name,
+      arguments: block.input as Record<string, unknown>,
+      userId,
+      currentMonth,
+      today,
+    });
+    toolResults.push({
+      type: 'tool_result',
+      tool_use_id: block.id,
+      content: JSON.stringify(execution.payload),
+    });
+  }
+
+  messages.push({ role: 'user', content: toolResults });
+}
+```
+
+Layer boundaries, checked as the first step of the build:
+
+<CodeSource path="backend/scripts/check-architecture.mjs" />
+
+```js
+const rules = new Map([
+  [
+    'domain',
+    {
+      forbiddenLayers: [
+        'application',
+        'infrastructure',
+        'presentation',
+        'main',
+      ],
+      forbidNode: true, // not even Node APIs are allowed in the domain
+    },
+  ],
+  [
+    'application',
+    { forbiddenLayers: ['infrastructure', 'presentation', 'main'] },
+  ],
+  ['infrastructure', { forbiddenLayers: ['presentation', 'main'] }],
+  ['presentation', { forbiddenLayers: ['infrastructure', 'main'] }],
+]);
+```
 
 ## What did not work
 
