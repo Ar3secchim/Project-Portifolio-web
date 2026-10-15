@@ -7,6 +7,8 @@ trade-offs, uma visão ao vivo (e sanitizada) do meu homelab Kubernetes e um
 mapa de conhecimento que liga cada tecnologia ao case onde ela foi usada de
 verdade. Disponível em português e inglês.
 
+![Um tour de 17 segundos pelo site: estudos de caso, linha do tempo, stack, mapa do homelab e a demo financeira](docs/portfolio-tour.gif)
+
 ## O que tem aqui
 
 - **Rotas bilíngues.** Toda página vive em `/[locale]` (`pt` ou `en`). O
