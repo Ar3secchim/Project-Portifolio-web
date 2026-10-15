@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import { CaseVideo } from '@/components/portfolio/CaseVideo';
 import { getCaseStudies, getCaseStudy } from '@/lib/portfolio/cases';
 import { getDictionary, isLocale } from '@/lib/portfolio/dictionaries';
 import { siteConfig } from '@/lib/portfolio/site';
@@ -85,6 +86,19 @@ export default function CasePage({ params }: CasePageProps) {
           <strong>PRIVACY NOTE</strong>
           {caseStudy.confidentiality}
         </p>
+        {caseStudy.codeOnRequest && (
+          <p className="code-on-request">
+            {dictionary.codeOnRequest}{' '}
+            <a
+              className="text-link"
+              href={siteConfig.social.linkedin}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {dictionary.codeOnRequestCta} <span aria-hidden="true">↗</span>
+            </a>
+          </p>
+        )}
         {caseStudy.links && caseStudy.links.length > 0 && (
           <div className="case-links">
             {caseStudy.links.map((link) => (
@@ -101,6 +115,8 @@ export default function CasePage({ params }: CasePageProps) {
           </div>
         )}
       </header>
+
+      {caseStudy.video && <CaseVideo video={caseStudy.video} />}
 
       <section className="case-overview">
         <div>

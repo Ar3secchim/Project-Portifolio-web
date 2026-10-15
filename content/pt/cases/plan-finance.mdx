@@ -55,6 +55,34 @@ export const meta = {
   knowledgeNodeIds: ['agents', 'data-modeling', 'architecture', 'reliability'],
   confidentiality:
     'Dados financeiros reais nunca aparecem em capturas, exemplos ou métricas públicas; a demonstração neste site usa números fictícios.',
+  codeOnRequest: true,
+  video: {
+    src: '/media/plan-finance-tour.mp4',
+    poster: '/media/plan-finance-tour.jpg',
+    label: 'PlanFinance na web · ambiente de desenvolvimento, dados fictícios',
+    captions: [
+      {
+        start: 0,
+        end: 4.6,
+        text: 'Painel do mês: entradas, gastos e para onde foi o dinheiro',
+      },
+      {
+        start: 4.6,
+        end: 7.6,
+        text: 'Planejamento anual: receita, despesa e quanto sobrou por mês',
+      },
+      {
+        start: 7.6,
+        end: 10.3,
+        text: 'Fluxo de caixa por conta, com a fatura do cartão',
+      },
+      {
+        start: 10.3,
+        end: 18,
+        text: 'Importação: o extrato vira lançamentos para revisar antes de confirmar',
+      },
+    ],
+  },
   featured: true,
 };
 
@@ -72,12 +100,91 @@ O PlanFinance começou como um jeito de parar de reconstruir as mesmas perguntas
 
 O backend segue camadas de domínio, aplicação, infraestrutura e apresentação. Casos de uso orquestram ferramentas tipadas que o agente pode chamar; cada ferramenta busca dados via Prisma e devolve um resultado estruturado, nunca texto livre. Um script de conformidade arquitetural roda em CI e falha o build se o domínio importar algo de fora dele.
 
+<PlanFinanceDiagram locale="pt" />
+
 ## Detalhes que fazem diferença
 
 - **Faturas de cartão em PDF, um parser por banco.** Nubank, Inter e Santander geram layouts diferentes. Cada banco tem uma _specification_ que reconhece o documento e um parser próprio, ligados por um registry: um banco novo entra como uma classe nova, com seu próprio teste, sem tocar nos outros.
 - **O modelo decide o que mostrar; o código desenha.** Os gráficos que o agente manda no WhatsApp são renderizados no servidor, de SVG para PNG com fonte embutida — o modelo nunca é chamado para "gerar uma imagem".
 - **Só o frontend sai para a internet.** Um Cloudflare Tunnel abre a conexão de dentro para fora e aponta direto para o serviço do frontend; o backend fica inalcançável por construção, e as chamadas de `/api` passam pelo nginx do frontend dentro do cluster. Sem porta aberta, sem IP doméstico publicado.
 - **Testes como parte do desenho.** São 106 arquivos de teste entre backend e frontend; só o loop do agente (multi-turno, com chamadas de ferramenta e memória da conversa) tem 828 linhas de teste.
+
+## Trechos do código
+
+O loop do agente: o modelo escolhe a ferramenta, o código faz a conta, e o resultado volta para o modelo explicar.
+
+<CodeSource path="backend/src/application/use-cases/agent/RunFinancialAgent.ts · simplificado" />
+
+```ts
+// O skill define o modelo e a lista de ferramentas permitidas.
+const enabledTools = FINANCIAL_AGENT_TOOLS.filter((tool) =>
+  skill.tools.includes(tool.name),
+);
+
+for (let turn = 0; turn < MAX_TURNS; turn += 1) {
+  const response = await this.client.messages.create({
+    model: skill.model,
+    max_tokens: skill.maxTokens,
+    system: composeSystemPrompt(skill, { mesAtual, hoje, contas }),
+    tools: enabledTools,
+    messages,
+  });
+
+  if (response.stop_reason === 'end_turn') {
+    return toAgentResponse(response, lastResult);
+  }
+  if (response.stop_reason !== 'tool_use') break;
+
+  messages.push({ role: 'assistant', content: response.content });
+  const toolResults: Anthropic.ToolResultBlockParam[] = [];
+
+  for (const block of response.content) {
+    if (block.type !== 'tool_use') continue;
+    // A conta acontece aqui, em código tipado, com dados do banco.
+    const execution = await this.toolExecutor.execute({
+      name: block.name,
+      arguments: block.input as Record<string, unknown>,
+      userId,
+      currentMonth,
+      today,
+    });
+    toolResults.push({
+      type: 'tool_result',
+      tool_use_id: block.id,
+      content: JSON.stringify(execution.payload),
+    });
+  }
+
+  messages.push({ role: 'user', content: toolResults });
+}
+```
+
+As fronteiras entre camadas, verificadas como primeiro passo do build:
+
+<CodeSource path="backend/scripts/check-architecture.mjs" />
+
+```js
+const rules = new Map([
+  [
+    'domain',
+    {
+      forbiddenLayers: [
+        'application',
+        'infrastructure',
+        'presentation',
+        'main',
+      ],
+      forbidNode: true, // nem APIs do Node entram no domínio
+    },
+  ],
+  [
+    'application',
+    { forbiddenLayers: ['infrastructure', 'presentation', 'main'] },
+  ],
+  ['infrastructure', { forbiddenLayers: ['presentation', 'main'] }],
+  ['presentation', { forbiddenLayers: ['infrastructure', 'main'] }],
+]);
+```
 
 ## O que não funcionou
 

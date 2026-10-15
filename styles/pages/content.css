@@ -3,8 +3,10 @@
   color: var(--muted);
 }
 .case-hero {
-  max-width: 990px;
   padding: 2rem 0 5rem;
+}
+.case-hero h1 {
+  max-width: 990px;
 }
 .case-hero h1,
 .blog-post h1 {
@@ -31,8 +33,8 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  max-width: 780px;
-  padding: 1rem;
+  margin: 0;
+  padding: 1rem 1.5rem;
   border: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.78rem;
@@ -274,18 +276,19 @@
   font-weight: 800;
 }
 
-/* Resumo de 20s no topo do case. */
+/* Resumo de 20s no topo do case. Resumo, privacidade e acesso continuam
+   peças separadas, mas todas na largura total, iguais ao bloco
+   "Problema / Tecnologias" logo abaixo, para as bordas se alinharem. */
 .case-facts {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  max-width: 990px;
   margin: 0 0 1.5rem;
   border: 1px solid var(--line);
   background: var(--line);
 }
 .case-facts > div {
-  padding: 1rem;
+  padding: 1.2rem 1.5rem;
   background: var(--surface);
 }
 .case-facts dt {
@@ -300,4 +303,170 @@
   color: var(--text-soft);
   font-size: 0.86rem;
   line-height: 1.55;
+}
+
+/* Código em bloco: o estilo de `code` inline não deve vazar para dentro do pre. */
+.case-prose pre code {
+  /* inline herdaria a altura de linha do pre (texto corrido) */
+  display: block;
+  padding: 0;
+  background: none;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+.case-prose .code-source {
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+}
+
+/* Diagramas de arquitetura: SVG inline que herda os tokens do tema. */
+.case-diagram {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1rem 1.2rem;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.case-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin: 0 auto;
+}
+.case-diagram figcaption {
+  max-width: 560px;
+  margin: 1rem auto 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.diagram-box rect {
+  fill: var(--surface);
+  stroke: var(--line-strong);
+}
+.diagram-box.is-accent rect {
+  stroke: rgba(var(--accent-rgb), 0.65);
+}
+.diagram-box.is-outside rect {
+  fill: transparent;
+  stroke-dasharray: 4 3;
+}
+.diagram-title {
+  fill: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.diagram-detail {
+  fill: var(--muted);
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+.diagram-band rect {
+  fill: var(--surface-3);
+  stroke: var(--line);
+}
+.diagram-band.is-accent rect {
+  fill: var(--accent-soft);
+  stroke: rgba(var(--accent-rgb), 0.45);
+}
+.diagram-band text {
+  fill: var(--text-soft);
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+.diagram-arrow {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.2;
+}
+.diagram-arrow.is-dashed {
+  stroke-dasharray: 3 3;
+}
+.diagram-marker {
+  fill: var(--muted);
+}
+.diagram-label {
+  fill: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+.diagram-boundary {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-dasharray: 6 4;
+}
+.diagram-boundary-label {
+  fill: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.code-on-request {
+  margin: 1rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+.code-on-request .text-link {
+  margin-left: 0.25rem;
+  white-space: nowrap;
+}
+
+/* Gravação do produto: mesma largura dos blocos do cabeçalho, legenda por
+   cima do vídeo e, abaixo, o rótulo e os passos em texto. */
+.case-video {
+  margin: 0 0 3rem;
+}
+.case-video-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.case-video-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+}
+.case-video-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 1.2rem;
+  max-width: min(90%, 640px);
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  border-radius: 6px;
+  background: rgba(6, 6, 8, 0.82);
+  color: #f2f2ec;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+  transform: translateX(-50%);
+}
+.case-video figcaption {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+.case-video figcaption > span {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+}
+.case-video figcaption ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.2rem 2rem;
+  margin: 0;
+  padding-left: 1.2rem;
 }
